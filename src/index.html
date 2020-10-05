@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Where is David Augustus?</title>
+    <meta name="description" content="whar tho?">
+    <meta name="keywords" content="where, is, david, augustus, motorcycle, trip">
+    <meta name="author" content="David Augustus Schalkwijk Lopes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./favicon.png">
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+    <main>
+      <div id="pane-wrapper">
+        <div id="map-pane">
+          <div id="map"></div>
+        </div>
+
+        <div id="content-pane">
+          <div id="content-pane-title">
+            check-ins
+          </div>
+
+          <div id="content-pane-scrollable-area">
+            <div class="checkin-content">
+              <div class="checkin-title">LOADING</div>
+              <div class="checkin-image-pane">
+                <div class="checkin-image-placeholder"></div>
+                <div class="checkin-image-placeholder"></div>
+                <div class="checkin-image-placeholder"></div>
+              </div>
+            </div>
+
+            <div class="checkin-content">
+              <div class="checkin-title">LOADING</div>
+              <div class="checkin-image-pane">
+                <div class="checkin-image-placeholder"></div>
+                <div class="checkin-image-placeholder"></div>
+                <div class="checkin-image-placeholder"></div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </main>
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8&callback=onMapsApiLoad"></script>
+
+    <script src="./checkins.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

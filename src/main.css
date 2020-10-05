@@ -1,0 +1,146 @@
+body {
+  margin: 0px;
+  padding: 0px;
+
+  font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace;
+  background-color: #fafafa;
+}
+
+main {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  width: calc(100vw - 2rem);
+}
+
+#pane-wrapper {
+  position: relative;
+  height: calc(100vh - 6rem);
+  width: 100%;
+}
+
+#map-pane {
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+#content-pane {
+  margin-top: 2rem;
+  height: 100%;
+}
+
+#content-pane-title {
+  font-size: 2rem;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+#content-pane-scrollable-area {
+  height: 100%;
+  width: 100%;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkin-content {
+  margin-bottom: 2rem;
+
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.checkin-title {
+  padding: 1rem;
+}
+
+.checkin-title-name {
+  font-weight: bold;
+}
+
+.checkin-title-date {
+  color: grey;
+}
+
+.checkin-image-pane {
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.checkin-image {
+  vertical-align: middle;
+}
+
+.checkin-image-horizontal-wrapper {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+}
+
+.checkin-image-horizontal-wrapper .first {
+  margin-bottom: 10px;
+}
+
+.checkin-image-placeholder {
+  display: inline-block;
+  width: 200px;
+  height: 411px;
+  background-color: lightgrey;
+}
+
+.no-photos {
+  margin: 1rem;
+  color: grey;
+}
+
+#content-pane-bottom-spacer {
+  height: 2rem;
+}
+
+/* DESKTOP MEDIA QUERY */
+@media only screen and (min-width: 769px) {
+  body {
+    overflow: hidden;
+  }
+
+  main {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 3rem;
+    width: calc(100vw - 6rem);
+  }
+
+  #map-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(33% - 1.5rem);
+  }
+
+  #content-pane {
+    margin-top: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(66% - 1.5rem);
+  }
+
+  #content-pane-scrollable-area {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .checkin-title-name {
+    display: inline-block;
+  }
+
+  .checkin-title-date {
+    display: inline-block;
+    float: right;
+  }
+}
