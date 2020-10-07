@@ -21,6 +21,13 @@ function htmlForCheckin(checkin) {
 
 // ON DOCUMENT LOAD
 (function () {
+  // CREATE HEADER HTML
+  const lastCheckin = david.checkins[david.checkins.length-1]
+  const checkinText = `Last seen: ${lastCheckin.name}<br>${lastCheckin.time}`
+  document.getElementById('header-right-text').innerHTML = checkinText
+
+
+  // CREATE CHECKIN HTML
   const reversedCheckins = [].concat(david.checkins).reverse()
   let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
   htmlForAllCheckins = `${htmlForAllCheckins}

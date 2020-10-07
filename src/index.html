@@ -1,54 +1,79 @@
 <html>
   <head>
+    <!-- TITLE N SHIT -->
     <title>Where is David Augustus?</title>
-    <meta name="description" content="whar tho?">
+    <meta name="description" content="where tho?">
     <meta name="keywords" content="where, is, david, augustus, motorcycle, trip">
     <meta name="author" content="David Augustus Schalkwijk Lopes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- FAVICON -->
     <link rel="icon" href="./favicon.png">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="main.css">
   </head>
 
   <body>
-    <main>
-      <div id="pane-wrapper">
-        <div id="map-pane">
-          <div id="map"></div>
+    <div id="header">
+      <div>
+        <div id="header-left-text">
+          <img id="header-logo" src='favicon.png' />
         </div>
 
-        <div id="content-pane">
-          <div id="content-pane-title">
-            check-ins
-          </div>
-
-          <div id="content-pane-scrollable-area">
-            <div class="checkin-content">
-              <div class="checkin-title">LOADING</div>
-              <div class="checkin-image-pane">
-                <div class="checkin-image-placeholder"></div>
-                <div class="checkin-image-placeholder"></div>
-                <div class="checkin-image-placeholder"></div>
-              </div>
-            </div>
-
-            <div class="checkin-content">
-              <div class="checkin-title">LOADING</div>
-              <div class="checkin-image-pane">
-                <div class="checkin-image-placeholder"></div>
-                <div class="checkin-image-placeholder"></div>
-                <div class="checkin-image-placeholder"></div>
-              </div>
-            </div>
-          </div>
-          
+        <div id="header-right-text">
+          last seen: LOADING
         </div>
       </div>
+    </div>
+    
+    <div id="main-scrollable">
+      <div id="main-gutters">
+        <div id="pane-wrapper">
+          <!-- MAP -->
+          <div id="map-pane">
+            <div id="map"></div>
+          </div>
 
-    </main>
+          <!-- CHECKINS -->
+          <div id="content-pane">
+            <!-- TITLE -->
+            <div id="content-pane-title">
+              check-ins
+            </div>
 
+            <!-- SCROLLABLE AREA -->
+            <div id="content-pane-scrollable-area">
+              <div class="checkin-content">
+                <div class="checkin-title">LOADING</div>
+                <div class="checkin-image-pane">
+                  <div class="checkin-image-placeholder"></div>
+                  <div class="checkin-image-placeholder"></div>
+                  <div class="checkin-image-placeholder"></div>
+                </div>
+              </div>
+
+              <div class="checkin-content">
+                <div class="checkin-title">LOADING</div>
+                <div class="checkin-image-pane">
+                  <div class="checkin-image-placeholder"></div>
+                  <div class="checkin-image-placeholder"></div>
+                  <div class="checkin-image-placeholder"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MAPS API -->
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8&callback=onMapsApiLoad"></script>
 
+    <!-- MY JS -->
     <script src="./checkins.js"></script>
     <script src="./main.js"></script>
   </body>
