@@ -7,7 +7,7 @@ function htmlForCheckin(checkin) {
       <img class="checkin-image" src="./images/${imageName}" />`
     }, '')
   } else {
-    imagesHtml = ''//`<div class="no-photos">No photos for this checkin :(</div>`
+    imagesHtml = `<div class="no-photos">Just letting you know I'm alive :)</div>`
   }
 
   imagesHtml = `<div class="checkin-image-pane">${imagesHtml}</div>`

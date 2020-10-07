@@ -147,6 +147,7 @@ body {
 .no-photos {
   margin: 1rem;
   color: grey;
+  font-size: 0.75rem;
 }
 
 #content-pane-bottom-spacer {
