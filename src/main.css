@@ -10,6 +10,7 @@ body {
   background-color: #ffffff;
 }
 
+/* TABLING THE HEADER FOR NOW
 #header {
   position: fixed;
   top: 0;
@@ -25,8 +26,16 @@ body {
   background-color: #ffffff;
 }
 
+#header-center-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  border-bottom: 5px double orange;
+}
+
 #header-left-text {
-  vertical-align: center;
   float: left;
 }
 
@@ -42,36 +51,43 @@ body {
   text-align: right;
 }
 
+#header-last-seen-text {
+  float: left;
+  color: darkgreen;
+}
+*/
+
 #main-scrollable {
+  /*
   position: fixed;
   top: 3.5rem;
   left: 0;
   z-index: 1;
+  */
 
-  width: 100%;
   height: 100%;
+  width: 100%;
+  
   overflow: scroll;
 
   background-color: #fafafa; /* slight grey*/
 }
 
 #main-gutters {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  width: calc(100vw - 2rem);
-
-  margin-top: 1rem;
+  position: relative;
+  padding: 0;
+  padding-bottom: 0;
   height: 100%;
 }
 
 #pane-wrapper {
   position: relative;
-  height: calc(100vh - 6rem);
   width: 100%;
+  height: 100%;
 }
 
 #map-pane {
-  height: 100%;
+  height: calc(100% - 3rem);
 }
 
 #map {
@@ -82,18 +98,20 @@ body {
 #content-pane {
   margin-top: 2rem;
   height: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #content-pane-title {
+  height: 3rem;
   font-size: 2rem;
   border-bottom: 1px solid #dbdbdb;
 }
 
 #content-pane-scrollable-area {
-  height: 100%;
+  height: calc(100% - 3rem);
   width: 100%;
   padding-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .checkin-content {
@@ -112,11 +130,22 @@ body {
   font-weight: bold;
 }
 
+.checkin-title-location {
+  color: grey;
+}
+
 .checkin-title-date {
   color: grey;
 }
 
+.checkin-blurb {
+  padding: 2rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
 .checkin-image-pane {
+  padding-top: 1rem;
   white-space: nowrap;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -145,7 +174,8 @@ body {
 }
 
 .no-photos {
-  margin: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
   color: grey;
   font-size: 0.75rem;
 }
@@ -156,19 +186,22 @@ body {
 
 /* DESKTOP MEDIA QUERY */
 @media only screen and (min-width: 769px) {
-  body {
-    overflow: hidden;
-  }
-
   #main-scrollable {
     overflow: hidden; /* LOL scrollable my ass */
+  }
+
+  #main-gutters {
+    padding: 3rem;
+    padding-bottom: 0;
   }
 
   #map-pane {
     position: absolute;
     top: 0;
     left: 0;
+    height: 100%;
     width: calc(33% - 1.5rem);
+    padding-bottom: 3rem;
   }
 
   #content-pane {
@@ -184,7 +217,7 @@ body {
     overflow-y: scroll;
   }
 
-  .checkin-title-name {
+  .checkin-title-left {
     display: inline-block;
   }
 
