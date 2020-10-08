@@ -1,7 +1,7 @@
 // HELPER FUNCTIONS TO LOAD PAGE
 function htmlForCheckin(checkin) {
   let imagesHtml = ''
-  if (checkin.images) {
+  if (checkin.images && checkin.images.length > 0) {
     imagesHtml = checkin.images.reduce((html, imageName) => {
       return `${html}
       <img class="checkin-image" src="./images/${imageName}" />`
@@ -67,7 +67,8 @@ function onMapsApiLoad() {
   })
   const map = new google.maps.Map(document.getElementById('map'), {
     disableDefaultUI: true,
-    restriction: { latLngBounds: bounds }
+    restriction: { latLngBounds: bounds },
+    gestureHandling: 'cooperative'
   });
   map.fitBounds(bounds);
 
