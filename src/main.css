@@ -130,18 +130,13 @@ body {
   font-weight: bold;
 }
 
-.checkin-title-location {
-  color: grey;
-}
-
 .checkin-title-date {
   color: grey;
 }
 
 .checkin-blurb {
-  padding: 2rem;
-  padding-right: 1rem;
   padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .checkin-image-pane {
@@ -154,6 +149,8 @@ body {
 
 .checkin-image {
   vertical-align: middle;
+  max-width: 100%;
+  max-height: 80vh;
 }
 
 .checkin-image-horizontal-wrapper {
@@ -215,14 +212,5 @@ body {
   #content-pane-scrollable-area {
     overflow-x: hidden;
     overflow-y: scroll;
-  }
-
-  .checkin-title-left {
-    display: inline-block;
-  }
-
-  .checkin-title-date {
-    display: inline-block;
-    float: right;
   }
 }

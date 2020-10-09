@@ -19,21 +19,21 @@ david.checkins.push({
   location: 'Mima Mounds National Park, WA',
   time: 'Fri Oct 2 2020 12:18PM',
   latlng: { lat: 46.905201, lng: -123.047308 },
+  blurb: 'Geologists still don\'t know what causes this weird shit. I say we lock them all in a room until they figure it out',
   images: [
     '20201002_122240.jpg',
     '20201002_122235.jpg'
   ],
-  blurb: 'Geologists still don\'t know what causes this weird shit. I say we lock them all in a room until they figure it out'
 })
 david.checkins.push({
   name: 'TWIN HARBORS STATE PARK',
   location: 'Twin Harbors State Park, WA',
   time: 'Fri Oct 2 2020 3:09PM',
   latlng: { lat: 46.854694, lng: -124.108482 },
+  blurb: 'Nothing quite as gray as a foggy beach',
   images: [
     '20201002_151457.jpg'
   ],
-  blurb: 'Nothing quite as gray as a foggy beach'
 })
 david.checkins.push({
   name: 'GRAY LAND',
@@ -65,22 +65,22 @@ david.checkins.push({
   location: 'Clatsop State Forest, OR',
   time: 'Sat Oct 3 2020 4:14PM',
   latlng: { lat: 45.949159, lng: -123.560350 },
+  blurb: 'Any forest is top tier riding during the fall. This meadow is supposed to be a safe place for elk but I saw none. I feel jipped',
   images: [
     '2020-10-03_5.jpg',
     '2020-10-03_6.jpg',
     '2020-10-03_7.jpg',
-  ],
-  blurb: 'Any forest is top tier riding during the fall. This meadow is supposed to be a safe place for elk but I saw none. I feel jipped'
+  ]
 })
 david.checkins.push({
   name: 'WOLF CREEK',
   location: 'Highway 26, OR',
   time: 'Sat Oct 3 2020 4:51PM',
   latlng: { lat: 45.761720, lng: -123.310128 },
+  blurb: 'A lonely creek adjacent to a beautiful highway',
   images: [
     '2020-10-03_1.jpg'
-  ],
-  blurb: 'A lonely creek adjacent to a beautiful highway'
+  ]
 })
 david.checkins.push({
   name: 'THE ECONOLODGE',
@@ -97,7 +97,11 @@ david.checkins.push({
     "lat": 45.5115102,
     "lng": -122.6533357
   },
-  blurb: "Decent Latin American food"
+  blurb: "Decent Latin American food",
+  images: [
+    '20201005_131800.jpg',
+    '20201005_132205.jpg'
+  ]
 })
 david.checkins.push({
   name: 'NESTUCCA',
@@ -109,7 +113,11 @@ david.checkins.push({
   },
   blurb: "No joke one of the most beautiful roads I've been on. " 
     + "Winding, empty, covered in trees, accompanied by a river that's nearly shallow enough to be called a creek",
-  images: [],
+  images: [
+    '20201005_172835.jpg',
+    '20201006_143026.jpg',
+    '20201006_145209.jpg',
+  ],
   videos: []
 })
 david.checkins.push({
@@ -127,7 +135,16 @@ Despite riding through gorgeous autumn spectacles, I was sad when I got to the c
 Met Jon and Jonathan, two Navajo Indians who fed me by the fire and nourished my soul with good conversation. And their appreciation for each other. Jon, the cranky but kind old man with a titanium hip. Jonathan, the young hard-working helpful fellow with a good work ethic and head on his shoulders. Well, except for the anti-scientific theories he was parroting from YouTube. Wait, can onions really fight COVID? I'm gonna look real dumb when the research starts backing him.
 <br><br>
 Hunters. They tell stories of finding dead people around these parts. Murdered, or killed by driving off the side of the road. Yikes! I take it as a warning to redouble my caution on the twisting road. Also, to avoid murderers.`,
-  images: [],
+  images: [
+    '20201005_162729.jpg',
+    '20201005_190042.jpg',
+    '20201006_112354.jpg',
+    '20201006_121055.jpg',
+    '20201006_154438.jpg',
+    '20201006_155147.jpg',
+    '20201006_160732.jpg',
+    '20201006_160751.jpg',
+  ],
   videos: []
 })
 david.checkins.push({
@@ -145,14 +162,35 @@ david.checkins.push({
 david.checkins.push({
   name: 'NESTUCCA BAY WILDLIFE REFUGE',
   location: 'Nestucca Bay National Wildlife Refuge, OR',
-  time: 'Wed Oct 7 2020 2:12PM',
+  time: 'Wed Oct 7 2020 1:09PM',
   latlng: {
     lat: 45.163520,
     lng: -123.951590
   },
   blurb: 'A cute little refuge, but unfortunately the best trails were closed off because some stupid trees decided to fall and block the way',
-  images: [],
+  images: [
+    '20201007_134306.jpg',
+    '20201007_134843.jpg',
+    '20201007_141127.jpg',
+    '20201007_141236.jpg',
+  ],
   videos: []
+})
+david.checkins.push({
+  name: 'BEN JONES BRIDGE',
+  location: 'Otter Crest Loop, Depoe Bay, OR',
+  time: 'Thu, Oct 7 2020 3:48PM',
+  latlng: {
+    lat: 44.778708, 
+    lng: -124.071408
+  },
+  blurb: "The Pacific Coast Highway does not disappoint, even when there's all this fog up in your face",
+  images: [
+    '20201007_155257.jpg',
+    '20201007_141236.jpg',
+    '20201007_155041.jpg',
+    '20201007_155053.jpg'
+  ]
 })
 david.checkins.push({
   name: 'ANOTHER ECONOLODGE',
@@ -175,9 +213,12 @@ david.checkins.push({
     lng: -124.052509
   },
   blurb: "They actually bark like in the cartoons lmao",
-  images: [],
+  images: [
+    '20201008_125958.jpg'
+  ],
   videos: []
 })
+
 david.checkins.push({
   name: 'SIUSLAW NATIONAL FOREST',
   location: 'Highway 34, OR',
@@ -187,7 +228,10 @@ david.checkins.push({
     lng: -123.829514
   },
   blurb: "Highway 34 is so pleasantly twisty. I'd recommend it to any motorcycle rider in Oregon",
-  images: [],
+  images: [
+    '20201008_142300~4.jpg',
+    '20201008_142424.jpg'
+  ],
   videos: []
 })
 david.checkins.push({
@@ -199,7 +243,11 @@ david.checkins.push({
     lng: -123.599693
   },
   blurb: "A cute exterior and homey interior. I just had to make a stop when I saw that 1986 Honda Shadow parked out front. Turns out, it belongs to Deb's youngest son. Deb makes a mean omelette. Also I got to watch her get pissed at her grandson for not doing his math homework. 10/10 would recommend",
-  images: [],
+  images: [
+    '20201008_152957.jpg',
+    '20201008_153659.jpg',
+    '20201008_155028.jpg'
+  ],
   videos: []
 })
 david.checkins.push({
