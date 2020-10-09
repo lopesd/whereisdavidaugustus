@@ -145,7 +145,7 @@ david.checkins.push({
 david.checkins.push({
   name: 'NESTUCCA BAY WILDLIFE REFUGE',
   location: 'Nestucca Bay National Wildlife Refuge, OR',
-  time: 'Wed Oct 7 2020 14:12PM',
+  time: 'Wed Oct 7 2020 2:12PM',
   latlng: {
     lat: 45.163520,
     lng: -123.951590
@@ -163,6 +163,54 @@ david.checkins.push({
     lng: -124.060844
   },
   blurb: "The walls are scuffed the rug is ugly but at least my door locks so I don't have to worry about my crazy neighbor",
+  images: [],
+  videos: []
+})
+david.checkins.push({
+  name: 'SEA LION DOCKS',
+  location: 'Newport, OR',
+  time: 'Thu Oct 8 2020 11:49PM',
+  latlng: {
+    lat: 44.630288,
+    lng: -124.052509
+  },
+  blurb: "They actually bark like in the cartoons lmao",
+  images: [],
+  videos: []
+})
+david.checkins.push({
+  name: 'SIUSLAW NATIONAL FOREST',
+  location: 'Highway 34, OR',
+  time: 'Thu Oct 8 2020 1:39PM',
+  latlng: {
+    lat: 44.360198,
+    lng: -123.829514
+  },
+  blurb: "Highway 34 is so pleasantly twisty. I'd recommend it to any motorcycle rider in Oregon",
+  images: [],
+  videos: []
+})
+david.checkins.push({
+  name: "DEB'S CAFE",
+  location: "Alsea, OR",
+  time: 'Thu Oct 8 2020 2:58PM',
+  latlng: {
+    lat: 44.382013,
+    lng: -123.599693
+  },
+  blurb: "A cute exterior and homey interior. I just had to make a stop when I saw that 1986 Honda Shadow parked out front. Turns out, it belongs to Deb's youngest son. Deb makes a mean omelette. Also I got to watch her get pissed at her grandson for not doing his math homework. 10/10 would recommend",
+  images: [],
+  videos: []
+})
+david.checkins.push({
+  name: 'EUGENE WHITEAKER INTERNATIONAL HOSTEL',
+  location: 'Eugene, OR',
+  time: 'Thu Oct 8 2020 10:25PM',
+  latlng: {
+    lat: 44.056239,
+    lng: -123.107410
+  },
+  blurb: "Hol up -- Eugene is actually a super cute town? Like a quainter Portland. I think I might actually love it. And this cheap hostel is absolutely brimming with personality, just like every restaurant and store in the area",
   images: [],
   videos: []
 })
