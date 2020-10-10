@@ -1,3 +1,36 @@
+// ASYNC HELPER TO GET USER LOCATION
+async function getUserLocation(options) {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject, options);
+  });
+}
+
+// ASYNC HELPER TO GET FROM S3
+async function getS3Object(getParams) {
+  return new Promise(function (resolve, reject) {
+    s3.getObject(getParams, function(err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
+
+// ASYNC HELPER TO PUT TO S3
+async function putS3Object(putParams) {
+  return new Promise(function (resolve, reject) {
+    s3.putObject(putParams, function(err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
+
 (function () {
   /** HELPERS **/
   function emptyHtml (id) {
@@ -9,12 +42,6 @@
     emptyHtml('display-div')
     document.getElementById('display-div')
       .appendChild(document.createTextNode(text))
-  }
-
-  async function getUserLocation(options) {
-    return new Promise(function (resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    });
   }
 
   function appendCheckinToContentString(content, checkin) {
@@ -40,9 +67,6 @@ david.checkins.push(${JSON.stringify(checkin, null, 2)})`
     }
     const latlng = { lat, lng }
 
-    // GET S3 CHECKINS LIST
-    displayStatus('Getting S3 object...')
-
     const date = new Date()
     const currentTime = `${date.toDateString()} ${date.toLocaleTimeString()}`
 
@@ -53,6 +77,8 @@ david.checkins.push(${JSON.stringify(checkin, null, 2)})`
     const checkinTime = document.getElementById('checkin-time-input').value || currentTime
     const checkinBlurb = document.getElementById('checkin-blurb-input').value
 
+    // GET S3 CHECKINS LIST
+    displayStatus('Getting S3 object...')
     const expirationDays = 7
     const Bucket = 'www.whereisdavidaugustus.com'
     const region = 'us-west-2'
@@ -73,49 +99,63 @@ david.checkins.push(${JSON.stringify(checkin, null, 2)})`
       Key: checkinFileName
     }
 
-    s3.getObject(params, function(err, data) {
-      if (err) {
-        console.log(err)
-        displayStatus(err)
-      } else {
+    const data = await getS3Object(params)
 
-        // APPEND NEW CHECKIN
-        dat = data
-        console.log(data.Body.toString())
-        const content = data.Body.toString()
+    // APPEND NEW CHECKIN
+    dat = data
+    console.log(data.Body.toString())
+    const content = data.Body.toString()
 
+    const newCheckin = {
+      name: checkinName,
+      time: checkinTime,
+      location: checkinLocation,
+      latlng,
+      blurb: checkinBlurb
+    }
+    console.log(newCheckin)
+    const newContent = appendCheckinToContentString(content, newCheckin)
 
-        const newCheckin = {
-          name: checkinName,
-          time: checkinTime,
-          location: checkinLocation,
-          latlng,
-          blurb: checkinBlurb
+    // UPLOAD NEW CHECKIN LIST
+    displayStatus('Pushing new checkin list...')
+    const putParams = {
+      Body: newContent,
+      Key: checkinFileName,
+      Bucket,
+      ACL: 'public-read'
+    }
+
+    const putData = await putS3Object(putParams)
+
+    console.log(data);
+    displayStatus('Pushed: ' + JSON.stringify(newCheckin, null, 2))
+
+    // BUST CLOUDFRONT CACHE
+    var cdnParams = {
+      DistributionId: 'E8NGZT2IL30A7',
+      InvalidationBatch: {
+        CallerReference: checkinTime,
+        Paths: {
+          Quantity: 1,
+          Items: ['/*']
         }
-        console.log(newCheckin)
-        const newContent = appendCheckinToContentString(content, newCheckin)
-
-        // UPLOAD NEW CHECKIN LIST
-        displayStatus('Pushing new checkin list...')
-        const putParams = {
-          Body: newContent,
-          Key: checkinFileName,
-          Bucket,
-          ACL: 'public-read'
-        }
-
-        s3.putObject(putParams, function(err, data) {
-          if (err) {
-            console.log(err, err.stack)
-            displayStatus(err)
-            return
-          }
-
-          console.log(data);
-          displayStatus('Pushed: ' + JSON.stringify(newCheckin, null, 2))
-        });
       }
+    }
+
+    const cloudfront = new AWS.CloudFront({
+      accessKeyId,
+      secretAccessKey,
+      region
     })
+    cloudfront.createInvalidation(cdnParams, function(err, data) {
+      if (err) {
+        console.log(err, err.stack)
+        displayStatus(`Error on cloudfront invalidation: ${err}`)
+      } else {
+        console.log('Busted cache:', data)
+      }
+    });
+
   })
 
 })()
