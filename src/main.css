@@ -209,7 +209,12 @@ body {
     width: calc(66% - 1.5rem);
   }
 
+  #content-pane-title {
+    margin-right: 0.75rem;
+  }
+
   #content-pane-scrollable-area {
+    padding-right: 0.75rem;
     overflow-x: hidden;
     overflow-y: scroll;
   }
