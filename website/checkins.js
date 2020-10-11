@@ -262,3 +262,15 @@ david.checkins.push({
   images: [],
   videos: []
 })
+david.checkins.push({
+  name: 'EUGENE WHITEAKER INTERNATIONAL HOSTEL',
+  location: 'Eugene, OR',
+  time: 'Thu Oct 10 2020 1:59PM',
+  latlng: {
+    lat: 44.056239,
+    lng: -123.107410
+  },
+  blurb: "Just letting you know I'm still alive. Been working on this website and enjoying the town. I can't really get a full feel for the culture because of COVID, but even with limited human interaction and no group activities I'm digging it",
+  images: [],
+  videos: []
+})

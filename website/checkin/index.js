@@ -1,3 +1,45 @@
+// TEST //
+(async function () {
+  const Bucket = 'www.whereisdavidaugustus.com'
+  const accessKeyId = 'AKIA5GR6CN3PKWQNWBO6'
+  const secretAccessKey = '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'
+  const region = 'us-west-2'
+  const signatureVersion = 'v4'
+  const checkinFileName = 'checkins.js'
+  s3 = new AWS.S3({
+    endpoint: `s3-${region}.amazonaws.com`,
+    accessKeyId,
+    secretAccessKey,
+    Bucket,
+    signatureVersion,
+    region 
+  });
+
+  url = s3.getSignedUrl('putObject', {
+    Bucket: 'www.whereisdavidaugustus.com',
+    Key: 'checkins.js',
+    ContentType: 'application/json'
+  })
+
+  console.log(url)
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://www.whereisdavidaugustus.com'
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify({test: 'test'}) // body data type must match "Content-Type" header
+  });
+  console.log(response)
+  */
+
+// END TEST //
+
 // ASYNC HELPER TO GET USER LOCATION
 async function getUserLocation(options) {
   return new Promise(function (resolve, reject) {
@@ -79,7 +121,6 @@ david.checkins.push(${JSON.stringify(checkin, null, 2)})`
 
     // GET S3 CHECKINS LIST
     displayStatus('Getting S3 object...')
-    const expirationDays = 7
     const Bucket = 'www.whereisdavidaugustus.com'
     const region = 'us-west-2'
     const signatureVersion = 'v4'
