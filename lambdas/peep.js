@@ -3,7 +3,6 @@ const s3 = new AWS.S3()
 const lambda = new AWS.Lambda()
 
 exports.handler = async (event, context, callback) => {
-
   // CHECK IF WE REALLY WANT TO HANDLE THIS REQUEST
   const request = event.Records[0].cf.request
   if (request.method !== 'POST' || request.uri !== '/peep') {

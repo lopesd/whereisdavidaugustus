@@ -1,6 +1,7 @@
 // PARAMETERS
 const Bucket = 'www.whereisdavidaugustus.com'
 const region = 'us-west-2'
+const lambdaRegion = 'us-east-1'
 const signatureVersion = 'v4'
 
 // DOM HELPERS
@@ -114,13 +115,13 @@ async function onDocumentLoad () {
       blurb: checkinBlurb
     }
     console.log(newCheckin)
-    const newContent = contentJson.checkins.push(newCheckin)
+    contentJson.checkins.push(newCheckin)
 
     // UPLOAD NEW CHECKIN LIST
     displayStatus('Pushing new checkin list...')
     try {
-      await putPublicS3Object('checkins.json', JSON.stringify(newContent, null, 2))
-      await putPublicS3Object('checkins.js', `david = ${JSON.stringify(newContent, null, 2)}`)
+      await putPublicS3Object('checkins.json', JSON.stringify(contentJson, null, 2))
+      await putPublicS3Object('checkins.js', `david = ${JSON.stringify(contentJson, null, 2)}`)
     } catch (e) {
       displayStatus(`Uh oh. ${e.toString()}`)
       return
@@ -131,7 +132,7 @@ async function onDocumentLoad () {
     const lambda = new AWS.Lambda({
       accessKeyId,
       secretAccessKey,
-      region
+      region: lambdaRegion
     })
 
     lambda.invoke({

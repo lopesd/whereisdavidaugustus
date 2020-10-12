@@ -49,8 +49,8 @@ exports.handler = async (event, context, callback) => {
 
   // PART 2: BUST CLOUDFRONT CACHE
   // ugh, we have to wait some time because of S3 eventual consistency.
-  await sleep(5000)
-  console.log('Waited 5 seconds')
+  await sleep(10000)
+  console.log('Waited 10 seconds')
 
   var cdnParams = {
     DistributionId: cloudfrontDistributionId,

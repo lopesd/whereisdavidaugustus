@@ -8,7 +8,8 @@ david = {
         "lat": 47.617025,
         "lng": -122.349095
       },
-      "blurb": "I will see you again :)"
+      "blurb": "I will see you again :)",
+      "firstPeeper": "RIP Buckets"
     },
     {
       "name": "OLYMPIA",
@@ -324,7 +325,22 @@ david = {
       "blurb": "New website feature! You can now \"peep\" a checkin by being the first one to click the PEEP button at the bottom of each checkin card. I've locked old checkins from allowing peeps, but I'll be opening them up for peeps randomly over time, so check back often. It's a great way for me to feel connected to whoever is following along, which kind of the point of this website (besides being a fun technical challenge)",
       "images": [],
       "videos": [],
-      "firstPeeper": "IVAN \&#x1f37b;"
-    }
+      "firstPeeper": "IVAN \\&#x1f37b;"
+    },
+    {
+      "name": "WE LIVIN",
+      "location": "Eugene Whiteaker International Hostel, Eugene, OR",
+      "time": "Mon Oct 12 2020 1:54PM",
+      "latlng": {
+        "lat": 44.056239,
+        "lng": -123.10741
+      },
+      "blurb": "I haven't moved. Working on this website is a lot of fun. Who knew that after riding off, the thing most effective at keeping me grounded would be work? I guess it's not work until someone makes you do it",
+      "images": [
+        "20201012_130018.jpg",
+        "20201012_130038.jpg"
+      ],
+      "videos": []
+    },
   ]
 }
