@@ -1,3 +1,80 @@
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function spoofPostPeep(time, peeperName) {
+  await sleep(1000)
+  return { peepSuccessful: firstPeeper === 'david', peeperName: 'david' }
+}
+
+async function onClickPeepButton(event) {
+  const time = event.target.parentElement.dataset.checkinTime
+  const peeperName = event.target.previousElementSibling.value
+  if (!peeperName) {
+    event.target.previousElementSibling.placeholder = 'name is required dummy'
+    return
+  }
+
+  // enter loading state
+  event.target.disabled = true
+  event.target.innerHTML = '...'
+  event.target.previousElementSibling.disabled = true
+
+  // send post
+  let response
+  try {
+    response = await postPeep(time, peeperName)
+  } catch (e) {
+    console.error(e)
+    document.getElementById(`${time}-peeper-pane-wrapper`).innerHTML = 'There was an error :( pls check console and report'
+    return
+  }
+
+  // exit loading state and update html
+  document.getElementById(`${time}-peeper-pane-wrapper`).innerHTML = innerHTMLForPeeperPane(time, response.firstPeeper, !response.peepSuccessful)
+}
+
+async function postPeep(time, peeperName) {
+  const url = 'https://www.whereisdavidaugustus.com/peep'
+  const body = { time, peeper: peeperName }
+  const fetchParams = {
+    method: 'POST',
+    mode: 'same-origin',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(body)
+  }
+
+  const response = await fetch(url, fetchParams)
+
+  const responseJson = await response.json()
+  console.log(response)
+  console.log(responseJson)
+  return responseJson
+}
+
+function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
+  if (peeperName === '$LOCKED$'){
+    return ''
+  } else if (peeperName) {
+    const msg = beatYouToIt ? 'beat you to it' : 'was first peeper'
+    return `
+    <div class="checkin-peeper-pane">
+      <span class="checkin-peepers-icon">\&#128064;</span><span class="checkin-peepers-text"><span class="checkin-peeper-name">${peeperName}</span> ${msg}</span>
+    </div>`
+  } else {
+    return `
+    <div class="checkin-peeper-pane available" data-checkin-time="${time}">
+      <input class="checkin-peeper-name-input" type="text" maxlength="15" placeholder="name?"/>
+      <button class="checkin-claim-first-peep-button" onclick="onClickPeepButton(event)">PEEP</button>
+    </div>
+    `
+  }
+}
+
 // HELPER FUNCTIONS TO LOAD PAGE
 function htmlForCheckin(checkin) {
   let imagesHtml = ''
@@ -9,6 +86,12 @@ function htmlForCheckin(checkin) {
   } else {
     imagesHtml = `<div class="no-photos">No photos here yet D:</div>`
   }
+
+  let peepersHtml = `
+  <div class="checkin-peeper-pane-wrapper" id="${checkin.time}-peeper-pane-wrapper">
+    ${innerHTMLForPeeperPane(checkin.time, checkin.firstPeeper)}
+  </div>
+  `
 
   return `
   <div class="checkin-content">
@@ -34,6 +117,8 @@ function htmlForCheckin(checkin) {
     <div class="checkin-image-pane">
       ${imagesHtml}
     </div>
+
+    ${peepersHtml}
   </div>`
 }
 
@@ -45,7 +130,6 @@ function htmlForCheckin(checkin) {
   const checkinText = `<span id="header-last-seen-text">LAST SEEN:</span> ${lastCheckin.location}<br>${lastCheckin.time}`
   document.getElementById('header-right-text').innerHTML = checkinText
   */
-
   // CREATE CHECKIN HTML
   const reversedCheckins = [].concat(david.checkins).reverse()
   let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
@@ -53,7 +137,7 @@ function htmlForCheckin(checkin) {
 })()
 
 
-// LOAD MAP
+// ON MAP LOAD
 function onMapsApiLoad() {
   // SOME CONFIG
   const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'

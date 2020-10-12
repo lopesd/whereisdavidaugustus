@@ -1,77 +1,97 @@
-// dependencies
-const AWS = require('aws-sdk');
-const util = require('util');
-const sharp = require('sharp');
-
-// get reference to S3 client
-const s3 = new AWS.S3();
+const AWS = require('aws-sdk')
+const s3 = new AWS.S3()
+const lambda = new AWS.Lambda()
 
 exports.handler = async (event, context, callback) => {
 
-  // Read options from the event parameter.
-  console.log("Reading options from event:\n", util.inspect(event, {depth: 5}));
-  const srcBucket = event.Records[0].s3.bucket.name;
-  // Object key may have spaces or unicode non-ASCII characters.
-  const srcKey    = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, " "));
-  const dstBucket = srcBucket + "-resized";
-  const dstKey    = "resized-" + srcKey;
-
-  // Infer the image type from the file suffix.
-  const typeMatch = srcKey.match(/\.([^.]*)$/);
-  if (!typeMatch) {
-    console.log("Could not determine the image type.");
-    return;
+  // CHECK IF WE REALLY WANT TO HANDLE THIS REQUEST
+  const request = event.Records[0].cf.request
+  if (request.method !== 'POST' || request.uri !== '/peep') {
+    return callback(null, request)
   }
 
-  // Check that the image type is supported  
-  const imageType = typeMatch[1].toLowerCase();
-  if (imageType != "jpg" && imageType != "png") {
-    console.log(`Unsupported image type: ${imageType}`);
-    return;
-  }
+  // GET THE EXISTING CHECKINS FILE
+  const bucket = 'www.whereisdavidaugustus.com'
+  const key = 'checkins.json'
 
-  // Download the image from the S3 source bucket. 
-
+  let originalFile
   try {
-    const params = {
-      Bucket: srcBucket,
-      Key: srcKey
-    };
-    var origimage = await s3.getObject(params).promise();
-
+    originalFile = await s3.getObject({
+      Bucket: bucket,
+      Key: key
+    }).promise()
   } catch (error) {
-    console.log(error);
-    return;
+    console.log(error)
+    return
   }  
+  const checkinsJson = JSON.parse(originalFile.Body)
 
-  // set thumbnail width. Resize will set the height automatically to maintain aspect ratio.
-  const width  = 200;
+  // ADD THE FIRST PEEPER
+  const requestBody = Buffer.from(request.body.data, 'base64').toString()
+  const peeperJson = JSON.parse(requestBody)
+  console.log('peeperJson: ', peeperJson)
 
-  // Use the Sharp module to resize the image and save in a buffer.
-  try { 
-    var buffer = await sharp(origimage.Body).resize(width).toBuffer();
-      
-  } catch (error) {
-    console.log(error);
-    return;
-  } 
+  const checkinIndex = checkinsJson.checkins.findIndex(checkin => checkin.time === peeperJson.time)
+  let peepSuccessful = false
+  if (!checkinsJson.checkins[checkinIndex].firstPeeper) {
+    peepSuccessful = true
+    checkinsJson.checkins[checkinIndex].firstPeeper = peeperJson.peeper
+  }
 
-  // Upload the thumbnail image to the destination bucket
+  // UPLOAD NEW CHECKINS.JSON
   try {
-    const destparams = {
-      Bucket: dstBucket,
-      Key: dstKey,
-      Body: buffer,
-      ContentType: "image"
-    };
-
-    const putResult = await s3.putObject(destparams).promise(); 
-    
+    await s3.putObject({
+      Bucket: bucket,
+      Key: key,
+      Body: JSON.stringify(checkinsJson, null, 2),
+      ContentType: "application/json"
+    }).promise()
   } catch (error) {
-    console.log(error);
-    return;
+    console.log(error)
+    return
   } 
-    
-  console.log('Successfully resized ' + srcBucket + '/' + srcKey +
-    ' and uploaded to ' + dstBucket + '/' + dstKey); 
-};
+
+  // UPLOAD NEW CHECKINS.JS
+  try {
+    await s3.putObject({
+      Bucket: bucket,
+      Key: 'checkins.js',
+      Body: `david = ${JSON.stringify(checkinsJson, null, 2)}`,
+      ContentType: "application/text"
+    }).promise()
+  } catch (error) {
+    console.log(error)
+    return
+  } 
+
+  // TRIGGER DEPLOYMENT LAMBDA
+  lambda.invoke({
+    FunctionName: "arn:aws:lambda:us-east-1:907442024158:function:wida-deployment",
+    InvocationType: "Event"
+  }, function (err, data) {
+    console.log(err)
+    console.log(data)
+  })
+
+  // RETURN SUCCESS HTTP
+  const successJson = {
+    peepSuccessful,
+    firstPeeper: checkinsJson.checkins[checkinIndex].firstPeeper
+  }
+
+  callback(null, {
+    status: '200',
+    statusDescription: 'OK',
+    headers: {
+      'cache-control': [{
+        key: 'Cache-Control',
+        value: 'max-age=0'
+      }],
+      'content-type': [{
+        key: 'Content-Type',
+        value: 'application/json'
+      }]
+    },
+    body: JSON.stringify(successJson),
+  })
+}

@@ -1,44 +1,24 @@
-// TEST //
-(async function () {
-  const Bucket = 'www.whereisdavidaugustus.com'
-  const accessKeyId = 'AKIA5GR6CN3PKWQNWBO6'
-  const secretAccessKey = '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'
-  const region = 'us-west-2'
-  const signatureVersion = 'v4'
-  const checkinFileName = 'checkins.js'
-  s3 = new AWS.S3({
-    endpoint: `s3-${region}.amazonaws.com`,
-    accessKeyId,
-    secretAccessKey,
-    Bucket,
-    signatureVersion,
-    region 
-  });
+// PARAMETERS
+const Bucket = 'www.whereisdavidaugustus.com'
+const region = 'us-west-2'
+const signatureVersion = 'v4'
 
-  url = s3.getSignedUrl('putObject', {
-    Bucket: 'www.whereisdavidaugustus.com',
-    Key: 'checkins.js',
-    ContentType: 'application/json'
-  })
+// DOM HELPERS
+function emptyHtml (id) {
+  const el = document.getElementById(id)
+  while (el.firstChild) el.removeChild(el.firstChild);
+}
 
-  console.log(url)
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://www.whereisdavidaugustus.com'
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify({test: 'test'}) // body data type must match "Content-Type" header
-  });
-  console.log(response)
-  */
+function displayStatus(text) {
+  const fullMsg = text + '\n\n'
+  document.getElementById('display-div')
+    .prepend(document.createTextNode(fullMsg))
+}
 
-// END TEST //
+function appendCheckinToContentString(content, checkin) {
+  return content + `
+david.checkins.push(${JSON.stringify(checkin, null, 2)})`
+}
 
 // ASYNC HELPER TO GET USER LOCATION
 async function getUserLocation(options) {
@@ -61,7 +41,8 @@ async function getS3Object(getParams) {
 }
 
 // ASYNC HELPER TO PUT TO S3
-async function putS3Object(putParams) {
+async function putPublicS3Object(Key, Body) {
+  const putParams = { Bucket, Key, Body, ACL: 'public-read' }
   return new Promise(function (resolve, reject) {
     s3.putObject(putParams, function(err, data) {
       if (err) {
@@ -73,24 +54,7 @@ async function putS3Object(putParams) {
   })
 }
 
-(function () {
-  /** HELPERS **/
-  function emptyHtml (id) {
-    const el = document.getElementById(id)
-    while (el.firstChild) el.removeChild(el.firstChild);
-  }
-
-  function displayStatus(text) {
-    emptyHtml('display-div')
-    document.getElementById('display-div')
-      .appendChild(document.createTextNode(text))
-  }
-
-  function appendCheckinToContentString(content, checkin) {
-    return content + `
-david.checkins.push(${JSON.stringify(checkin, null, 2)})`
-  }
-
+async function onDocumentLoad () {
   /** CHECK IN BUTTON **/
   document.getElementById('checkin-button').addEventListener('click', async () => {
     // GET LOCATION
@@ -121,11 +85,6 @@ david.checkins.push(${JSON.stringify(checkin, null, 2)})`
 
     // GET S3 CHECKINS LIST
     displayStatus('Getting S3 object...')
-    const Bucket = 'www.whereisdavidaugustus.com'
-    const region = 'us-west-2'
-    const signatureVersion = 'v4'
-    const checkinFileName = 'checkins.js'
-
     s3 = new AWS.S3({
       endpoint: `s3-${region}.amazonaws.com`,
       accessKeyId,
@@ -133,20 +92,20 @@ david.checkins.push(${JSON.stringify(checkin, null, 2)})`
       Bucket,
       signatureVersion,
       region 
-    });
+    })
 
-    const params = {
-      Bucket,
-      Key: checkinFileName
+    let data
+    try {
+      data = await getS3Object({
+        Bucket,
+        Key: 'checkins.json'
+      })
+    } catch (e) {
+      displayStatus(`Uh oh. ${e.toString()}`)
     }
 
-    const data = await getS3Object(params)
-
     // APPEND NEW CHECKIN
-    dat = data
-    console.log(data.Body.toString())
-    const content = data.Body.toString()
-
+    const contentJson = JSON.parse(data.Body.toString())
     const newCheckin = {
       name: checkinName,
       time: checkinTime,
@@ -155,48 +114,34 @@ david.checkins.push(${JSON.stringify(checkin, null, 2)})`
       blurb: checkinBlurb
     }
     console.log(newCheckin)
-    const newContent = appendCheckinToContentString(content, newCheckin)
+    const newContent = contentJson.checkins.push(newCheckin)
 
     // UPLOAD NEW CHECKIN LIST
     displayStatus('Pushing new checkin list...')
-    const putParams = {
-      Body: newContent,
-      Key: checkinFileName,
-      Bucket,
-      ACL: 'public-read'
+    try {
+      await putPublicS3Object('checkins.json', JSON.stringify(newContent, null, 2))
+      await putPublicS3Object('checkins.js', `david = ${JSON.stringify(newContent, null, 2)}`)
+    } catch (e) {
+      displayStatus(`Uh oh. ${e.toString()}`)
+      return
     }
-
-    const putData = await putS3Object(putParams)
-
-    console.log(data);
     displayStatus('Pushed: ' + JSON.stringify(newCheckin, null, 2))
 
-    // BUST CLOUDFRONT CACHE
-    var cdnParams = {
-      DistributionId: 'E8NGZT2IL30A7',
-      InvalidationBatch: {
-        CallerReference: checkinTime,
-        Paths: {
-          Quantity: 1,
-          Items: ['/*']
-        }
-      }
-    }
-
-    const cloudfront = new AWS.CloudFront({
+    // CALL DEPLOYMENT LAMBDA
+    const lambda = new AWS.Lambda({
       accessKeyId,
       secretAccessKey,
       region
     })
-    cloudfront.createInvalidation(cdnParams, function(err, data) {
-      if (err) {
-        console.log(err, err.stack)
-        displayStatus(`Error on cloudfront invalidation: ${err}`)
-      } else {
-        console.log('Busted cache:', data)
-      }
-    });
 
+    lambda.invoke({
+      FunctionName: "arn:aws:lambda:us-east-1:907442024158:function:wida-deployment",
+    }, function (err, data) {
+      console.log(err)
+      console.log(data)
+    })
   })
 
-})()
+}
+
+onDocumentLoad()
