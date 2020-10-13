@@ -1,12 +1,28 @@
+// UTIL
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function sanitize(string) {
+  const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      "/": '&#x2F;',
+  }
+  const reg = /[&<>"'/]/ig
+  return string.replace(reg, match => map[match])
+}
+
+// TEST UTIL
 async function spoofPostPeep(time, peeperName) {
   await sleep(1000)
   return { peepSuccessful: firstPeeper === 'david', peeperName: 'david' }
 }
 
+// BUTTON CALLBACKS
 async function onClickPeepButton(event) {
   const time = event.target.parentElement.dataset.checkinTime
   const peeperName = event.target.previousElementSibling.value
@@ -56,6 +72,7 @@ async function postPeep(time, peeperName) {
   return responseJson
 }
 
+// TEMPLATING HELPERS
 function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
   if (peeperName === '$LOCKED$'){
     return ''
@@ -63,7 +80,7 @@ function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
     const msg = beatYouToIt ? 'beat you to it' : 'was first peeper'
     return `
     <div class="checkin-peeper-pane">
-      <span class="checkin-peepers-icon">\&#128064;</span><span class="checkin-peepers-text"><span class="checkin-peeper-name">${peeperName}</span> ${msg}</span>
+      <span class="checkin-peepers-icon">\&#128064;</span><span class="checkin-peepers-text"><span class="checkin-peeper-name">${sanitize(peeperName)}</span> ${msg}</span>
     </div>`
   } else {
     return `
@@ -75,7 +92,6 @@ function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
   }
 }
 
-// HELPER FUNCTIONS TO LOAD PAGE
 function htmlForCheckin(checkin) {
   let imagesHtml = ''
   if (checkin.images && checkin.images.length > 0) {

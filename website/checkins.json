@@ -325,7 +325,7 @@
       "blurb": "New website feature! You can now \"peep\" a checkin by being the first one to click the PEEP button at the bottom of each checkin card. I've locked old checkins from allowing peeps, but I'll be opening them up for peeps randomly over time, so check back often. It's a great way for me to feel connected to whoever is following along, which kind of the point of this website (besides being a fun technical challenge)",
       "images": [],
       "videos": [],
-      "firstPeeper": "IVAN \\&#x1f37b;"
+      "firstPeeper": "IVAN 🍻"
     },
     {
       "name": "WE LIVIN",
@@ -340,7 +340,8 @@
         "20201012_130018.jpg",
         "20201012_130038.jpg"
       ],
-      "videos": []
-    },
+      "videos": [],
+      "firstPeeper": "It me 👻"
+    }
   ]
 }
