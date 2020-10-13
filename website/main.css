@@ -73,19 +73,6 @@ body {
   background-color: #fafafa; /* slight grey*/
 }
 
-#main-gutters {
-  position: relative;
-  padding: 0;
-  padding-bottom: 0;
-  height: 100%;
-}
-
-#pane-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 #map-pane {
   height: calc(100% - 3rem);
 }
@@ -228,26 +215,22 @@ body {
     overflow: hidden; /* LOL scrollable my ass */
   }
 
-  #main-gutters {
-    padding: 3rem;
-    padding-bottom: 0;
-  }
-
   #map-pane {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    width: calc(33% - 1.5rem);
-    padding-bottom: 3rem;
+    width: calc(33% - 2rem);
   }
 
   #content-pane {
     margin-top: 0;
+    padding-top: 3rem;
+    padding-right: 4rem;
     position: absolute;
     top: 0;
     right: 0;
-    width: calc(66% - 1.5rem);
+    width: calc(66% - 2rem);
   }
 
   #content-pane-title {
