@@ -85,7 +85,7 @@ function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
   } else {
     return `
     <div class="checkin-peeper-pane available" data-checkin-time="${time}">
-      <input class="checkin-peeper-name-input" type="text" maxlength="15" placeholder="name?"/>
+      <input class="checkin-peeper-name-input" type="text" maxlength="15" placeholder="what's your name? quick!"/>
       <button class="checkin-claim-first-peep-button" onclick="onClickPeepButton(event)">PEEP</button>
     </div>
     `

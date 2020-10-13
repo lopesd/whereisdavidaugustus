@@ -221,7 +221,6 @@ david = {
       "blurb": "The Pacific Coast Highway does not disappoint, even when there's all this fog up in your face",
       "images": [
         "20201007_155257.jpg",
-        "20201007_141236.jpg",
         "20201007_155041.jpg",
         "20201007_155053.jpg"
       ],
@@ -268,8 +267,7 @@ david = {
         "20201008_142300~4.jpg",
         "20201008_142424.jpg"
       ],
-      "videos": [],
-      "firstPeeper": "$LOCKED$"
+      "videos": []
     },
     {
       "name": "DEB'S CAFE",

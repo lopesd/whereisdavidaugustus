@@ -16,6 +16,18 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function invalidateCloudfront(params) {
+  return new Promise(function (resolve, reject) {
+    cloudfront.createInvalidation(params, function(err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
+
 // main
 exports.handler = async (event, context, callback) => {
   // PART 1: UPDATE TIMESTAMP IN INDEX FILE
@@ -52,22 +64,19 @@ exports.handler = async (event, context, callback) => {
   await sleep(10000)
   console.log('Waited 10 seconds')
 
-  var cdnParams = {
-    DistributionId: cloudfrontDistributionId,
-    InvalidationBatch: {
-      CallerReference: timestamp,
-      Paths: {
-        Quantity: 1,
-        Items: ['/*']
+  try {
+    const result = await invalidateCloudfront({
+      DistributionId: cloudfrontDistributionId,
+      InvalidationBatch: {
+        CallerReference: timestamp,
+        Paths: {
+          Quantity: 1,
+          Items: ['/']
+        }
       }
-    }
+    })
+    console.log('Busted cache', result)
+  } catch (e) {
+    console.log(e, e.stack)
   }
-
-  cloudfront.createInvalidation(cdnParams, function(err, data) {
-    if (err) {
-      console.log(err, err.stack)
-    } else {
-      console.log('Busted cache:', data)
-    }
-  })
 };
