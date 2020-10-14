@@ -126,7 +126,7 @@ function htmlForCheckin(checkin) {
     </div>
 
     <div class="checkin-blurb">
-      ${checkin.blurb}
+${checkin.blurb}
     </div>
 
     <div class="checkin-image-pane">

@@ -124,6 +124,7 @@ body {
 .checkin-blurb {
   padding-left: 1rem;
   padding-right: 1rem;
+  white-space: pre-wrap;
 }
 
 .checkin-image-pane {
