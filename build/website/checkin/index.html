@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>CHECK IN</title>
+    <meta name="description" content="where he is?">
+    <meta name="keywords" content="where, is, david, augustus, motorcycle, trip">
+    <meta name="author" content="David Augustus Schalkwijk Lopes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../assets/favicon.png">
+    <link rel="stylesheet" href="checkin.css">
+  </head>
+  
+  <body>
+    CREATE CHECK-IN<br><br>
+
+    <label for="access-key-id-input">Access Key ID</label><br>
+    <input type="text" name="username" id="access-key-id-input"><br>
+
+    <label for="secret-key-input">Secret Key</label><br>
+    <input type="text" name="password" id="secret-key-input"><br><br>
+
+    <label for="checkin-name-input">Checkin Name</label><br>
+    <input type="text" id="checkin-name-input"><br>
+
+    <label for="checkin-location-input">Location</label><br>
+    <input type="text" id="checkin-location-input"><br>
+
+    <label for="checkin-lat-input">Latitude</label><br>
+    <input type="text" id="checkin-lat-input" placeholder="Leave blank for current"><br>
+
+    <label for="checkin-lng-input">Longitude</label><br>
+    <input type="text" id="checkin-lng-input" placeholder="Leave blank for current"><br>
+
+    <label for="checkin-time-input">Time</label><br>
+    <input type="text" id="checkin-time-input" placeholder="Leave blank for current"><br><br>
+
+    <label for="checkin-blurb-input">Blurb</label><br>
+    <textarea rows=10 style="width:100%" id="checkin-blurb-input"></textarea><br><br>
+
+    UPLOAD IMAGES<br>
+    <input type="file" id="image-file-input" multiple>
+    <div id="images-div">
+    </div>
+
+    <br><br>
+
+    <button id="checkin-button">
+      CHECK IN WITH CURRENT LOCATION
+    </button><br><br>
+
+    <div id="display-div">
+    </div>
+
+    <!-- DEPENDENCIES -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.751.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/6.1.1/pica.min.js" integrity="sha512-bfVc1C16JO+zN0PADKfNz2gZz+x3H1ZGo7aLsHz1i7XncAb3eE/GV559ndX1pMhwPtjwIe+0y9EgX99l4PmFIA==" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -71,7 +71,7 @@ exports.handler = async (event, context, callback) => {
         CallerReference: timestamp,
         Paths: {
           Quantity: 1,
-          Items: ['/']
+          Items: ['/*']
         }
       }
     })
