@@ -221,17 +221,19 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: calc(33% - 2rem);
+    width: 33%;
   }
 
   #content-pane {
     margin-top: 0;
     padding-top: 3rem;
-    padding-right: 4rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
     position: absolute;
     top: 0;
     right: 0;
-    width: calc(66% - 2rem);
+    width: 66%;
+    overflow: scroll;
   }
 
   #content-pane-title {
@@ -240,7 +242,5 @@ body {
 
   #content-pane-scrollable-area {
     padding-right: 0.75rem;
-    overflow-x: hidden;
-    overflow-y: scroll;
   }
 }

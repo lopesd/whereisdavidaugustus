@@ -1,3 +1,12 @@
+// GLOBAL SCOPE
+david = david || {}
+david.allMarkers = {}
+
+// SOME CONSTANTS
+const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+const lastCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+const highlightedCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+
 // UTIL
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -109,7 +118,10 @@ function htmlForCheckin(checkin) {
   `
 
   return `
-  <div class="checkin-content">
+  <div class="checkin-content" 
+    onmouseenter="onMouseEnterCheckin(event, '${checkin.time}')"
+    onmouseleave="onMouseLeaveCheckin(event, '${checkin.time}')"
+    >
 
     <div class="checkin-title">
       <div class="checkin-title-left">
@@ -137,6 +149,30 @@ ${checkin.blurb}
   </div>`
 }
 
+// ON MOUSE OVER A CHECKIN CARD
+function onMouseEnterCheckin(event, checkinTime) {
+  const marker = david.allMarkers[checkinTime]
+  if (!marker) {
+    return
+  }
+  marker.setIcon(highlightedCheckinIconUrl)
+  console.log(marker.getZIndex())
+  marker.setZIndex(500)
+}
+
+function onMouseLeaveCheckin(event, checkinTime) {
+  const marker = david.allMarkers[checkinTime]
+  if (!marker) {
+    return
+  }
+  if (david.checkins[david.checkins.length-1].time === checkinTime) {
+    marker.setIcon(lastCheckinIconUrl)
+  } else {
+    marker.setIcon(defaultCheckinIconUrl)
+  }
+  marker.setZIndex(undefined)
+}
+
 // ON DOCUMENT LOAD
 (function () {
   // CREATE HEADER HTML
@@ -154,11 +190,6 @@ ${checkin.blurb}
 
 // ON MAP LOAD
 function onMapsApiLoad() {
-  // SOME CONFIG
-  const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-  const lastCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
-
-
   // CREATE MAP AND CONFIGURE BOUNDS
   const bounds = new google.maps.LatLngBounds();
   david.checkins.forEach(({ latlng }) => {
@@ -178,12 +209,16 @@ function onMapsApiLoad() {
     if (isLastCheckin) {
       icon = { url: lastCheckinIconUrl }
     }
-    const marker = new google.maps.Marker({
+    david.allMarkers[checkin.time] = new google.maps.Marker({
       position: checkin.latlng,
-      animation: google.maps.Animation.DROP,
+      animation: google.maps.Animation.BOUNCE,
       icon,
       map: map
-    });
+    })
+
+    setTimeout(() => {
+      david.allMarkers[checkin.time].setAnimation(null)
+    }, 400)
   }
 
   for (var i = 0; i < david.checkins.length; ++i) {
@@ -191,7 +226,7 @@ function onMapsApiLoad() {
     const isLastCheckin = i === david.checkins.length - 1
     setTimeout(function () {
       addCheckinMarker(checkin, isLastCheckin)
-    }, i * 300 + 500)
+    }, i * 200 + 500)
   }
 
 }
