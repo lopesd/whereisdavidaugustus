@@ -156,7 +156,7 @@ async function onDocumentLoad () {
     try {
       data = await getS3Object({
         Bucket,
-        Key: 'checkins.json'
+        Key: 'content/data/checkins.json'
       })
     } catch (e) {
       displayStatus(`Uh oh. ${e.toString()}`)
@@ -179,7 +179,7 @@ async function onDocumentLoad () {
     for (let i = 0; i < david.images.length; ++i) {
       displayStatus('Uploading image ' + i)
       try {
-        await putHeavyPublicS3Object(`images/${checkinTime}/${checkinTime}-${i}.jpeg`, david.images[i])
+        await putHeavyPublicS3Object(`content/images/${checkinTime}/${checkinTime}-${i}.jpeg`, david.images[i])
       } catch (e) {
         displayStatus('Uh oh. ' + e.toString())
         return
@@ -189,29 +189,13 @@ async function onDocumentLoad () {
     // UPLOAD NEW CHECKIN LIST
     displayStatus('Pushing new checkin list...')
     try {
-      await putPublicS3Object('checkins.json', JSON.stringify(contentJson, null, 2))
-      await putPublicS3Object('checkins.js', `david = ${JSON.stringify(contentJson, null, 2)}`)
+      await putPublicS3Object('content/data/checkins.json', JSON.stringify(contentJson, null, 2))
+      await putPublicS3Object('content/data/checkins.js', `david = ${JSON.stringify(contentJson, null, 2)}`)
     } catch (e) {
       displayStatus(`Uh oh. ${e.toString()}`)
       return
     }
     displayStatus('Pushed: ' + JSON.stringify(newCheckin, null, 2))
-
-    // CALL DEPLOYMENT LAMBDA
-    const lambda = new AWS.Lambda({
-      accessKeyId,
-      secretAccessKey,
-      region: lambdaRegion
-    })
-
-    displayStatus('Invoking deployment lambda...')
-    lambda.invoke({
-      FunctionName: "arn:aws:lambda:us-east-1:907442024158:function:wida-deployment",
-    }, function (err, data) {
-      console.log(err)
-      console.log(data)
-      displayStatus('COMPLETE')
-    })
   })
 
 }

@@ -91,14 +91,14 @@ task :deployment_lambda do
 end
 
 task :push => :build do
-  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{S3_ROOT} --exclude #{WEBSITE_BUILD_DIR}/#{CONTENT_DIR} --delete --acl public-read", "Pushing static website files to S3"
+  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{S3_ROOT} --exclude #{CONTENT_DIR}/* --delete --acl public-read", "Pushing static website files to S3"
   puts "PUSH COMPLETE"
   puts
 end
 
 task :push_checkins do
-  run_cmd "aws s3 cp #{WEBSITE_ROOT}/#{CHECKINS_JS} #{S3_ROOT} --acl public-read", "Pushing checkins.js file to S3"
-  run_cmd "aws s3 cp #{WEBSITE_ROOT}/#{CHECKINS_JSON} #{S3_ROOT} --acl public-read", "Pushing checkins.json file to S3"
+  run_cmd "aws s3 cp #{WEBSITE_ROOT}/#{CHECKINS_JS} #{S3_ROOT}/#{CHECKINS_JS} --acl public-read", "Pushing checkins.js file to S3"
+  run_cmd "aws s3 cp #{WEBSITE_ROOT}/#{CHECKINS_JSON} #{S3_ROOT}/#{CHECKINS_JSON} --acl public-read", "Pushing checkins.json file to S3"
   puts "PUSH CHECKINS COMPLETE"
   puts
 end
