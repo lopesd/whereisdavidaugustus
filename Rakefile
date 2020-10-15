@@ -2,15 +2,17 @@ require 'fileutils'
 
 task default: :build
 
-s3_root = 's3://www.whereisdavidaugustus.com/'
-checkins_js = 'checkins.js'
-checkins_json = 'checkins.json'
-website_root = './website'
-
-WEBSITE_BUILD_DIR = './build/website'
-
+S3_ROOT = 's3://www.whereisdavidaugustus.com'
 DEPLOYMENT_LAMBDA_ARN = 'arn:aws:lambda:us-east-1:907442024158:function:wida-deployment'
 CLOUDFRONT_DISTRIBUTION_ID = 'E8NGZT2IL30A7'
+
+WEBSITE_ROOT = './website'
+WEBSITE_BUILD_DIR = './build/website'
+
+CONTENT_DIR = 'content'
+CHECKINS_JS = "#{CONTENT_DIR}/data/checkins.js"
+CHECKINS_JSON = "#{CONTENT_DIR}/data/checkins.json"
+IMAGES_DIR = "#{CONTENT_DIR}/images"
 
 FILES_TO_VERSION = [
   'scripts/main.js',
@@ -26,9 +28,9 @@ def run_cmd cmd, msg
   `#{cmd}`
 end
 
-#def invalidate_cloudfront
-#  run_cmd "aws cloudfront create-invalidation --distribution-id #{CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'", "Busting Cloudfront cache"
-#end
+def invalidate_cloudfront
+  run_cmd "aws cloudfront create-invalidation --distribution-id #{CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'", "Busting Cloudfront cache"
+end
 
 def invoke_deployment_lamdda
   run_cmd "aws lambda invoke --function-name #{DEPLOYMENT_LAMBDA_ARN} --region us-east-1 ./logs/deployment-#{Time.now.to_i}.log", "Invoking deployment Lambda"
@@ -72,33 +74,52 @@ task :build => :clean do
     end
     File.open(full_filename, "w") { |file| file.puts(new_contents) }
   end
+  puts "BUILD COMPLETE"
+  puts
 end
 
-task :bust_cache do
+task :bust_cloudfront do
+  invalidate_cloudfront
+  puts "CLOUDFRONT BUST COMPLETE"
+  puts
+end
+
+task :deployment_lambda do
   invoke_deployment_lamdda
-  puts "Complete"
+  puts "DEPLOYMENT COMPLETE"
+  puts
 end
 
 task :push => :build do
-  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{s3_root} --exclude *.jpg --exclude #{WEBSITE_BUILD_DIR}/#{checkins_js} --exclude #{WEBSITE_BUILD_DIR}/#{checkins_json} --delete --acl public-read", "Pushing static website files to S3"
-  #invoke_deployment_lamdda
+  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{S3_ROOT} --exclude #{WEBSITE_BUILD_DIR}/#{CONTENT_DIR} --delete --acl public-read", "Pushing static website files to S3"
+  puts "PUSH COMPLETE"
+  puts
 end
 
 task :push_checkins do
-  run_cmd "aws s3 cp #{website_root}/checkins.js #{s3_root} --acl public-read", "Pushing checkins.js file to S3"
-  run_cmd "aws s3 cp #{website_root}/checkins.json #{s3_root} --acl public-read", "Pushing checkins.json file to S3"
-  #invoke_deployment_lamdda
-  puts "Complete"
+  run_cmd "aws s3 cp #{WEBSITE_ROOT}/#{CHECKINS_JS} #{S3_ROOT} --acl public-read", "Pushing checkins.js file to S3"
+  run_cmd "aws s3 cp #{WEBSITE_ROOT}/#{CHECKINS_JSON} #{S3_ROOT} --acl public-read", "Pushing checkins.json file to S3"
+  puts "PUSH CHECKINS COMPLETE"
+  puts
 end
 
 task :pull_checkins do
-  run_cmd "aws s3 cp #{s3_root}checkins.js #{website_root}/checkins.js", "Pulling checkins files to local folder"
-  run_cmd "aws s3 cp #{s3_root}checkins.json #{website_root}/checkins.json", "Pulling checkins files to local folder"
-  #invoke_deployment_lamdda
-  puts "Complete"
+  run_cmd "aws s3 cp #{S3_ROOT}/#{CHECKINS_JS} #{WEBSITE_ROOT}/#{CHECKINS_JS}", "Pulling checkins files to local folder"
+  run_cmd "aws s3 cp #{S3_ROOT}/#{CHECKINS_JSON} #{WEBSITE_ROOT}/#{CHECKINS_JSON}", "Pulling checkins files to local folder"
+  puts "PULL CHECKINS COMPLETE"
+  puts
+end
+
+task :sync_images => :build do
+  run_cmd "aws s3 sync #{S3_ROOT}/#{IMAGES_DIR} #{WEBSITE_ROOT}/#{IMAGES_DIR}", "Syncing images in the cloud locally"
+  run_cmd "aws s3 sync #{WEBSITE_ROOT}/#{IMAGES_DIR} #{S3_ROOT}/#{IMAGES_DIR} --acl public-read", "Syncing local images to the cloud"
+  puts "SYNC IMAGES COMPLETE"
+  puts
 end
 
 ### CLEAN TASKS
 task :clean do
-  `rm -rf build`
+  run_cmd 'rm -rf build', 'Cleaning build directory'
+  puts 'CLEAN COMPLETE'
+  puts
 end

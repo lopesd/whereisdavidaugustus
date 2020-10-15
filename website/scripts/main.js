@@ -96,7 +96,7 @@ function htmlForCheckin(checkin) {
   if (checkin.images && checkin.images.length > 0) {
     imagesHtml = checkin.images.reduce((html, imageName) => {
       return `${html}
-      <img class="checkin-image" src="./images/${imageName}" />`
+      <img class="checkin-image" src="./content/images/${imageName}" />`
     }, '')
   } else {
     imagesHtml = `<div class="no-photos">No photos here yet D:</div>`

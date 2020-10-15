@@ -14,7 +14,7 @@ exports.handler = async (event, context, callback) => {
 
   // GET THE EXISTING CHECKINS FILE
   const bucket = 'www.whereisdavidaugustus.com'
-  const key = 'checkins.json'
+  const key = 'content/data/checkins.json'
 
   let originalFile
   try {
@@ -57,7 +57,7 @@ exports.handler = async (event, context, callback) => {
   try {
     await s3.putObject({
       Bucket: bucket,
-      Key: 'checkins.js',
+      Key: 'content/data/checkins.js',
       Body: `david = ${JSON.stringify(checkinsJson, null, 2)}`,
       ContentType: "application/text"
     }).promise()
