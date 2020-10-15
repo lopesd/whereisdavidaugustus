@@ -165,7 +165,7 @@ david = {
         "lat": 45.291887,
         "lng": -123.493444
       },
-      "blurb": "A beautiful and nearly deserted campsite. The only other campers were out hunting deer most of the day.\n\nDespite riding through gorgeous autumn spectacles, I was sad when I got to the campsite. Lonely, tired, hungry.\n\nMet Jon and Jonathan, two Navajo Indians who fed me by the fire and nourished my soul with good conversation. And their appreciation for each other. Jon, the cranky but kind old man with a titanium hip. Jonathan, the young hard-working helpful fellow with a good work ethic and head on his shoulders. Well, except for the anti-scientific theories he was parroting from YouTube. Wait, can onions really fight COVID? I'm gonna look real dumb when the research starts backing him.\n\nHunters. They tell stories of finding dead people around these parts. Murdered, or killed by driving off the side of the road. Yikes! I take it as a warning to redouble my caution on the twisting road. Also, to avoid murderers.",
+      "blurb": "A beautiful and nearly deserted campsite. The only other campers were out hunting deer most of the day.\n<br><br>\nDespite riding through gorgeous autumn spectacles, I was sad when I got to the campsite. Lonely, tired, hungry.\n<br><br>\nMet Jon and Jonathan, two Navajo Indians who fed me by the fire and nourished my soul with good conversation. And their appreciation for each other. Jon, the cranky but kind old man with a titanium hip. Jonathan, the young hard-working helpful fellow with a good work ethic and head on his shoulders. Well, except for the anti-scientific theories he was parroting from YouTube. Wait, can onions really fight COVID? I'm gonna look real dumb when the research starts backing him.\n<br><br>\nHunters. They tell stories of finding dead people around these parts. Murdered, or killed by driving off the side of the road. Yikes! I take it as a warning to redouble my caution on the twisting road. Also, to avoid murderers.",
       "images": [
         "20201005_162729.jpg",
         "20201005_190042.jpg",
@@ -177,7 +177,7 @@ david = {
         "20201006_160751.jpg"
       ],
       "videos": [],
-      "firstPeeper": "$LOCKED$"
+      "firstPeeper": "Z̶̡̖̩̯̘̱͚͖̖̥̻̲̲"
     },
     {
       "name": "OREGON COAST HIGHWAY",
@@ -351,7 +351,36 @@ david = {
         "lng": -123.1074515
       },
       "blurb": "There's a young man, Cliff, who wears a beard that reminds me of Ian, an old co-worker. \n\nThere's a young lady, Emily, who wants to be the world's next big prog rock pianist. She listens when I play guitar.\n\nThere were these two older gentlemen being insulting toward each other over nothing. \"He started it!\" I call them out for fighting like grade school kids. They settle down when they realize their attitudes only make them look foolish.\n\nThe hostel owner - also the head handyman - is a gruff middle aged gentleman with a heart similar to mine. He spent a few years working in schools in Europe, busked for a living for a while, and did odd jobs ranging from carpentry to web dev. He's trying to sell the place, and I semi-seriously consider it. He offers me his joint - I decline. COVID rules. I prefer sativa anyway.\n\nI take pictures of places and sights but I shouldn't forget to take note of the people I meet. And I'm thankful I get to meet anyone at all, even if briefly, even as we sanitize the things we touch, cover our face holes, keep our distance like we're radioactive. It's not personal.",
-      "images": []
+      "images": [],
+      "firstPeeper": "Not Ajax"
+    },
+    {
+      "name": "GOODBYE EUGENE",
+      "time": "Wed Oct 14 2020 2:17:35 PM",
+      "location": "Highway 5, OR",
+      "latlng": {
+        "lat": 43.707938,
+        "lng": -123.2288258
+      },
+      "blurb": "I'm on the road again. Plan is to book it to Redwood National Forest to spend the night.",
+      "images": [
+        "Wed Oct 14 2020 2:17:35 PM/Wed Oct 14 2020 2:17:35 PM-0.jpeg"
+      ],
+      "firstPeeper": "teen spirit"
+    },
+    {
+      "name": "I LOST MY BACKPACK",
+      "time": "Wed Oct 14 2020 6:06:31 PM",
+      "location": "Highway 5, OR",
+      "latlng": {
+        "lat": 42.9730766,
+        "lng": -123.3406704
+      },
+      "blurb": "😭😭😭😭😭😭😭\nI LOST MY FREAKING BACKPACK\n\nIt was with me at the gas station and I must've forgotten to strap it back down. Either it never left the station or it somehow fell off my bike on the I-5. I checked back at the station but no luck :/\n\nLuckily I only put replaceable, inexpensive items in there, as a precaution against this exact scenario. I feel pretty deflated though, and the time lost means I won't make it to Redwood tonight.\n\nWhatever I'm over it. Let's be stoic",
+      "images": [
+        "Wed Oct 14 2020 6:06:31 PM/Wed Oct 14 2020 6:06:31 PM-0.jpeg"
+      ],
+      "firstPeeper": "Hannah"
     }
   ]
 }

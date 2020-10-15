@@ -36,9 +36,7 @@ end
 
 def versioned_filename(filename, version_id)
   extension = File.extname(filename)
-  puts "extension: #{extension}"
   basename = filename.delete_suffix(extension)
-  puts "basename: #{basename}"
   return "#{basename}.#{version_id}#{extension}"
 end
 
@@ -81,15 +79,15 @@ task :bust_cache do
   puts "Complete"
 end
 
-task :push do
-  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{s3_root} --exclude #{WEBSITE_BUILD_DIR}/#{checkins_js} --exclude #{WEBSITE_BUILD_DIR}/#{checkins_json} --delete --acl public-read", "Pushing static website files to S3"
+task :push => :build do
+  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{s3_root} --exclude *.jpg --exclude #{WEBSITE_BUILD_DIR}/#{checkins_js} --exclude #{WEBSITE_BUILD_DIR}/#{checkins_json} --delete --acl public-read", "Pushing static website files to S3"
   #invoke_deployment_lamdda
 end
 
 task :push_checkins do
   run_cmd "aws s3 cp #{website_root}/checkins.js #{s3_root} --acl public-read", "Pushing checkins.js file to S3"
   run_cmd "aws s3 cp #{website_root}/checkins.json #{s3_root} --acl public-read", "Pushing checkins.json file to S3"
-  invoke_deployment_lamdda
+  #invoke_deployment_lamdda
   puts "Complete"
 end
 
