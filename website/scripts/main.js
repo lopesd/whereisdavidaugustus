@@ -156,7 +156,6 @@ function onMouseEnterCheckin(event, checkinTime) {
     return
   }
   marker.setIcon(highlightedCheckinIconUrl)
-  console.log(marker.getZIndex())
   marker.setZIndex(500)
 }
 
@@ -226,7 +225,7 @@ function onMapsApiLoad() {
     const isLastCheckin = i === david.checkins.length - 1
     setTimeout(function () {
       addCheckinMarker(checkin, isLastCheckin)
-    }, i * 200 + 500)
+    }, i * 150 + 500)
   }
 
 }

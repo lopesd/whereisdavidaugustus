@@ -122,13 +122,30 @@ async function onDocumentLoad () {
     }
     displayStatus('Getting location...')
 
-    let lat = document.getElementById('checkin-lat-input').value
-    let lng = document.getElementById('checkin-lng-input').value
-    if (!lat || !lng) {
+    const latString = document.getElementById('checkin-lat-input').value
+    const lngString = document.getElementById('checkin-lng-input').value
+    let lat, lng
+    if ((latString && !lngString) || (!latString && lngString)) {
+      displayStatus('Must input both latitude and longitude or neither.')
+      return
+
+    } else if (latString && lngString) {
+      lat = parseFloat(latString)
+      lng = parseFloat(lngString)
+      if (isNaN(lat)) {
+        displayStatus('Fix your latitude')
+        return
+      } else if (isNaN(lng)) {
+        displayStatus('Fix your longitude')
+        return
+      }
+
+    } else {
       const location = await getUserLocation()
-      lat = lat || location.coords.latitude
-      lng = lng || location.coords.longitude
+      lat = location.coords.latitude
+      lng = location.coords.longitude
     }
+
     const latlng = { lat, lng }
 
     const date = new Date()

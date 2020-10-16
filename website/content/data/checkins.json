@@ -19,7 +19,8 @@
         "lat": 47.047992,
         "lng": -122.90257
       },
-      "blurb": "\"Olympia has a problem\""
+      "blurb": "\"Olympia has a problem\"",
+      "firstPeeper": "TREEYAZ"
     },
     {
       "name": "MIMA MOUNDS",
@@ -47,8 +48,7 @@
       "blurb": "Nothing quite as gray as a foggy beach",
       "images": [
         "20201002_151457.jpg"
-      ],
-      "firstPeeper": "$LOCKED$"
+      ]
     },
     {
       "name": "GRAY LAND",
@@ -392,6 +392,38 @@
       "blurb": "Got myself a nice hotel room as compensation for today going far less than perfect.\n\nBut losing the backpack is a blessing in disguise. I'm still learning how to pack most efficiently and what's really necessary to bring. Now there's a forcing function. If I restock on the lost stuff frugally, I might have room for a travel guitar.\n\nI've been interested in these carbon-fiber detachable-neck guitars made by KLOS... and their headquarters would make a convenient next destination if I decide to go to Utah. Hm",
       "images": [],
       "firstPeeper": "👻🎃"
+    },
+    {
+      "name": "FOREST ROUTE 17N49",
+      "time": "Thu Oct 15 2020 3:01PM",
+      "location": "US Route 199, CA",
+      "latlng": {
+        "lat": 41.856692,
+        "lng": -124.004026
+      },
+      "blurb": "Love me some deserted forest service roads",
+      "images": [
+        "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-0.jpeg",
+        "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-1.jpeg",
+        "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-2.jpeg",
+        "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-3.jpeg",
+        "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-4.jpeg"
+      ],
+      "firstPeeper": "🎃👻"
+    },
+    {
+      "name": "CALIFORNIA",
+      "time": "Thu Oct 15 2020 5:56:09 PM",
+      "location": "Redwood Highway, CA",
+      "latlng": {
+        "lat": 41.6176059,
+        "lng": -124.1093267
+      },
+      "blurb": "yup",
+      "images": [
+        "Thu Oct 15 2020 5:56:09 PM/Thu Oct 15 2020 5:56:09 PM-0.jpeg"
+      ],
+      "firstPeeper": "Pacific coast h"
     }
   ]
 }
