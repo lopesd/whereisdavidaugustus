@@ -91,18 +91,6 @@ body {
   padding-right: 1rem;
 }
 
-#content-pane-title {
-  height: 3rem;
-  font-size: 2rem;
-  border-bottom: 1px solid #dbdbdb;
-}
-
-#checkins-wrapper {
-  height: calc(100% - 3rem);
-  width: 100%;
-  padding-top: 1rem;
-}
-
 .checkin-content {
   position: relative;
 
@@ -118,8 +106,8 @@ body {
 
 .checkin-content.mouse-over-highlight {
   border-color: #dacaba;
-  transform: translateX(-1px) translateY(-1px);
-  box-shadow: 2px 2px 4px -2px grey;
+  transform: translateX(-2px) translateY(-2px);
+  box-shadow: 2px 2px 4px -1px grey;
 }
 
 .checkin-content-anchor {
@@ -249,17 +237,6 @@ body {
   border-radius: 3px;
 }
 
-.no-photos {
-  padding-bottom: 1rem;
-  padding-left: 1rem;
-  color: grey;
-  font-size: 0.75rem;
-}
-
-#content-pane-bottom-spacer {
-  height: 3rem;
-}
-
 /* DESKTOP MEDIA QUERY */
 @media only screen and (min-width: 769px) {
   body {
@@ -276,6 +253,8 @@ body {
     left: 0;
     height: 100%;
     width: 33%;
+
+    border-right: 1px solid #80808091;
   }
 
   #content-pane {
@@ -286,15 +265,11 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 66%;
+    width: 67%;
     overflow: scroll;
   }
 
   #content-pane-title {
     margin-right: 0.75rem;
-  }
-
-  #checkins-wrapper {
-    padding-right: 0.75rem;
   }
 }

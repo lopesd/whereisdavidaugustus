@@ -210,7 +210,7 @@ function scrollCheckinIntoView(checkinTime) {
   // CREATE CHECKIN HTML
   const reversedCheckins = [].concat(david.checkins).reverse()
   let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
-  document.getElementById('checkins-wrapper').innerHTML = htmlForAllCheckins
+  document.getElementById('content-pane').innerHTML = htmlForAllCheckins
 })()
 
 
