@@ -111,13 +111,14 @@ body {
   border-radius: 3px;
   background-color: #ffffff;
 
-  transition-property: transform box-shadow;
+  transition-property: transform box-shadow border-color;
   transition-duration: 0.2s;
 }
 
 .checkin-content.mouse-over-highlight {
+  border-color: #dacaba;
   transform: translateX(-2px) translateY(-2px);
-  box-shadow: 3px 3px 5px 0px grey;
+  box-shadow: 3px 3px 5px -2px grey;
 }
 
 .checkin-content-anchor {
