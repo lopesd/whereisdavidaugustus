@@ -48,7 +48,8 @@
       "blurb": "Nothing quite as gray as a foggy beach",
       "images": [
         "20201002_151457.jpg"
-      ]
+      ],
+      "firstPeeper": "creeper"
     },
     {
       "name": "GRAY LAND",
@@ -228,7 +229,7 @@
     {
       "name": "ANOTHER ECONOLODGE",
       "location": "Newport, OR",
-      "time": "Wed Oct 7 2020 12:39PM",
+      "time": "Wed Oct 7 2020 10:39PM",
       "latlng": {
         "lat": 44.631351,
         "lng": -124.060844

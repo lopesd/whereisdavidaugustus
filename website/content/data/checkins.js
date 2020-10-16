@@ -48,7 +48,8 @@ david = {
       "blurb": "Nothing quite as gray as a foggy beach",
       "images": [
         "20201002_151457.jpg"
-      ]
+      ],
+      "firstPeeper": "creeper"
     },
     {
       "name": "GRAY LAND",
@@ -188,6 +189,7 @@ david = {
       },
       "blurb": "JK I'm back on the fog hype. Made for some eerie riding today. #fogpog",
       "images": [],
+      "videos": [],
       "firstPeeper": "$LOCKED$"
     },
     {
@@ -240,7 +242,7 @@ david = {
     {
       "name": "SEA LION DOCKS",
       "location": "Newport, OR",
-      "time": "Thu Oct 8 2020 11:49AM",
+      "time": "Thu Oct 8 2020 11:49PM",
       "latlng": {
         "lat": 44.630288,
         "lng": -124.052509
