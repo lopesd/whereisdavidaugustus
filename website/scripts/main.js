@@ -121,7 +121,9 @@ function htmlForCheckin(checkin) {
   <div class="checkin-content" 
     onmouseenter="onMouseEnterCheckin(event, '${checkin.time}')"
     onmouseleave="onMouseLeaveCheckin(event, '${checkin.time}')"
+    id="checkin-content-${checkin.time}"
     >
+    <div class="checkin-content-anchor" id="checkin-content-anchor-${checkin.time}"></div>
 
     <div class="checkin-title">
       <div class="checkin-title-left">
@@ -183,7 +185,7 @@ function onMouseLeaveCheckin(event, checkinTime) {
   // CREATE CHECKIN HTML
   const reversedCheckins = [].concat(david.checkins).reverse()
   let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
-  document.getElementById('content-pane-scrollable-area').innerHTML = htmlForAllCheckins
+  document.getElementById('checkins-wrapper').innerHTML = htmlForAllCheckins
 })()
 
 
@@ -208,16 +210,23 @@ function onMapsApiLoad() {
     if (isLastCheckin) {
       icon = { url: lastCheckinIconUrl }
     }
-    david.allMarkers[checkin.time] = new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: checkin.latlng,
       animation: google.maps.Animation.BOUNCE,
       icon,
-      map: map
+      map
     })
 
+    marker.addListener("click", () => {
+      const checkinAnchor = document.getElementById(`checkin-content-anchor-${checkin.time}`)
+      checkinAnchor.scrollIntoView({ behavior: 'smooth' })
+    });
+
     setTimeout(() => {
-      david.allMarkers[checkin.time].setAnimation(null)
+      marker.setAnimation(null)
     }, 400)
+
+    david.allMarkers[checkin.time] = marker
   }
 
   for (var i = 0; i < david.checkins.length; ++i) {

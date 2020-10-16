@@ -95,18 +95,26 @@ body {
   border-bottom: 1px solid #dbdbdb;
 }
 
-#content-pane-scrollable-area {
+#checkins-wrapper {
   height: calc(100% - 3rem);
   width: 100%;
   padding-top: 1rem;
 }
 
 .checkin-content {
+  position: relative;
+
   margin-bottom: 2rem;
 
   border: 1px solid #dbdbdb;
   border-radius: 3px;
   background-color: #ffffff;
+}
+
+.checkin-content-anchor {
+  position: absolute;
+  top: -2rem;
+  left: 0;
 }
 
 .checkin-title {
@@ -240,7 +248,7 @@ body {
     margin-right: 0.75rem;
   }
 
-  #content-pane-scrollable-area {
+  #checkins-wrapper {
     padding-right: 0.75rem;
   }
 }
