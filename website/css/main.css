@@ -7,6 +7,7 @@ body {
   padding: 0px;
 
   font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace;
+  font-size: 0.85rem;
   background-color: #fafafa;
 }
 
@@ -109,6 +110,14 @@ body {
   border: 1px solid #dbdbdb;
   border-radius: 3px;
   background-color: #ffffff;
+
+  transition-property: transform box-shadow;
+  transition-duration: 0.2s;
+}
+
+.checkin-content.mouse-over-highlight {
+  transform: translateX(-2px) translateY(-2px);
+  box-shadow: 3px 3px 5px 0px grey;
 }
 
 .checkin-content-anchor {
@@ -220,6 +229,10 @@ body {
 
 /* DESKTOP MEDIA QUERY */
 @media only screen and (min-width: 769px) {
+  body {
+    font-size: 1rem;
+  }
+  
   #main-scrollable {
     overflow: hidden; /* LOL scrollable my ass */
   }

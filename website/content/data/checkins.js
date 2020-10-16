@@ -188,7 +188,6 @@ david = {
       },
       "blurb": "JK I'm back on the fog hype. Made for some eerie riding today. #fogpog",
       "images": [],
-      "videos": [],
       "firstPeeper": "$LOCKED$"
     },
     {
@@ -228,7 +227,7 @@ david = {
     {
       "name": "ANOTHER ECONOLODGE",
       "location": "Newport, OR",
-      "time": "Wed Oct 7 2020 12:39PM",
+      "time": "Wed Oct 7 2020 10:39PM",
       "latlng": {
         "lat": 44.631351,
         "lng": -124.060844
@@ -241,7 +240,7 @@ david = {
     {
       "name": "SEA LION DOCKS",
       "location": "Newport, OR",
-      "time": "Thu Oct 8 2020 11:49PM",
+      "time": "Thu Oct 8 2020 11:49AM",
       "latlng": {
         "lat": 44.630288,
         "lng": -124.052509

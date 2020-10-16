@@ -119,8 +119,8 @@ function htmlForCheckin(checkin) {
 
   return `
   <div class="checkin-content" 
-    onmouseenter="onMouseEnterCheckin(event, '${checkin.time}')"
-    onmouseleave="onMouseLeaveCheckin(event, '${checkin.time}')"
+    onmouseenter="mouseOverHighlight('${checkin.time}')"
+    onmouseleave="mouseLeaveHighlight('${checkin.time}')"
     id="checkin-content-${checkin.time}"
     >
     <div class="checkin-content-anchor" id="checkin-content-anchor-${checkin.time}"></div>
@@ -151,27 +151,38 @@ ${checkin.blurb}
   </div>`
 }
 
-// ON MOUSE OVER A CHECKIN CARD
-function onMouseEnterCheckin(event, checkinTime) {
+// HIGHLIGHT
+
+// MOUSE OVER HIGHLIGHT EFFECTS
+function mouseOverHighlight(checkinTime) {
+  // highlight the marker
   const marker = david.allMarkers[checkinTime]
-  if (!marker) {
-    return
+  if (marker) {
+    marker.setIcon(highlightedCheckinIconUrl)
+    marker.setZIndex(500)
   }
-  marker.setIcon(highlightedCheckinIconUrl)
-  marker.setZIndex(500)
+
+  // highlight the checkin div
+  const checkinDiv = document.getElementById(`checkin-content-${checkinTime}`)
+  checkinDiv.classList.add('mouse-over-highlight')
 }
 
-function onMouseLeaveCheckin(event, checkinTime) {
+
+function mouseLeaveHighlight(checkinTime) {
+  // unhighlight the marker
   const marker = david.allMarkers[checkinTime]
-  if (!marker) {
-    return
+  if (marker) {
+    if (david.checkins[david.checkins.length-1].time === checkinTime) {
+      marker.setIcon(lastCheckinIconUrl)
+    } else {
+      marker.setIcon(defaultCheckinIconUrl)
+    }
+    marker.setZIndex(undefined)
   }
-  if (david.checkins[david.checkins.length-1].time === checkinTime) {
-    marker.setIcon(lastCheckinIconUrl)
-  } else {
-    marker.setIcon(defaultCheckinIconUrl)
-  }
-  marker.setZIndex(undefined)
+
+  // unhighlight the checkin div
+  const checkinDiv = document.getElementById(`checkin-content-${checkinTime}`)
+  checkinDiv.classList.remove('mouse-over-highlight')
 }
 
 // ON DOCUMENT LOAD
@@ -217,10 +228,19 @@ function onMapsApiLoad() {
       map
     })
 
+    marker.addListener("mouseover", () => {
+      mouseOverHighlight(checkin.time)
+    })
+
+    marker.addListener("mouseout", () => {
+      mouseLeaveHighlight(checkin.time)
+    })
+
     marker.addListener("click", () => {
+      // strong sticky highlight the marker and corresponding checkin
       const checkinAnchor = document.getElementById(`checkin-content-anchor-${checkin.time}`)
       checkinAnchor.scrollIntoView({ behavior: 'smooth' })
-    });
+    })
 
     setTimeout(() => {
       marker.setAnimation(null)
