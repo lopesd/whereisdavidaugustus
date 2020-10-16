@@ -121,6 +121,7 @@ function htmlForCheckin(checkin) {
   <div class="checkin-content" 
     onmouseenter="mouseOverHighlight('${checkin.time}')"
     onmouseleave="mouseLeaveHighlight('${checkin.time}')"
+    onclick="scrollCheckinIntoView('${checkin.time}')"
     id="checkin-content-${checkin.time}"
     >
     <div class="checkin-content-anchor" id="checkin-content-anchor-${checkin.time}"></div>
@@ -185,6 +186,12 @@ function mouseLeaveHighlight(checkinTime) {
   checkinDiv.classList.remove('mouse-over-highlight')
 }
 
+// SCROLL CHECKIN INTO VIEW
+function scrollCheckinIntoView(checkinTime) {
+  const checkinAnchor = document.getElementById(`checkin-content-anchor-${checkinTime}`)
+  checkinAnchor.scrollIntoView({ behavior: 'smooth' })
+}
+
 // ON DOCUMENT LOAD
 (function () {
   // CREATE HEADER HTML
@@ -237,9 +244,7 @@ function onMapsApiLoad() {
     })
 
     marker.addListener("click", () => {
-      // strong sticky highlight the marker and corresponding checkin
-      const checkinAnchor = document.getElementById(`checkin-content-anchor-${checkin.time}`)
-      checkinAnchor.scrollIntoView({ behavior: 'smooth' })
+      scrollCheckIntoView(checkin.time)
     })
 
     setTimeout(() => {
