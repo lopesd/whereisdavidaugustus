@@ -101,21 +101,31 @@ function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
 }
 
 function htmlForCheckin(checkin) {
-  let imagesHtml = ''
+  let imagesInnerHtml = ''
   if (checkin.images && checkin.images.length > 0) {
-    imagesHtml = checkin.images.reduce((html, imageName) => {
+    imagesInnerHtml = checkin.images.reduce((html, imageName) => {
       return `${html}
       <img class="checkin-image" src="./content/images/${imageName}" />`
     }, '')
-  } else {
-    imagesHtml = ''
   }
 
-  let peepersHtml = `
-  <div class="checkin-peeper-pane-wrapper" id="${checkin.time}-peeper-pane-wrapper">
+  let peepersHtml =
+  `<div class="checkin-peeper-pane-wrapper" id="${checkin.time}-peeper-pane-wrapper">
     ${innerHTMLForPeeperPane(checkin.time, checkin.firstPeeper)}
   </div>
   `
+
+  const blurbHtml = !checkin.blurb ? '' :
+  `<div class="checkin-blurb">
+${checkin.blurb}
+  </div>`
+
+  const imagesHtml = !checkin.images || checkin.images.length === 0 ? '' :
+  `<div class="checkin-image-pane">
+${imagesInnerHtml}
+  </div>`
+
+  const miniMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${checkin.latlng.lat},${checkin.latlng.lng}&zoom=7&size=72x72&maptype=map&markers=color:green%7Csize:tiny%7C${checkin.latlng.lat},${checkin.latlng.lng}&key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8`
 
   return `
   <div class="checkin-content" 
@@ -128,25 +138,22 @@ function htmlForCheckin(checkin) {
 
     <div class="checkin-title">
       <div class="checkin-title-left">
-        <div class="checkin-title-name">
-          ${checkin.name}
-        </div>
-        <div class="checkin-title-location">
-          ${checkin.location}
-        </div>
+        <div class="checkin-title-name">${checkin.name}</div>
+        <div class="checkin-title-location">${checkin.location}</div>
+        <div class="checkin-title-date">${checkin.time}</div>
       </div>
-      <div class="checkin-title-date">
-        ${checkin.time}
+
+      <!--
+      <div class="checkin-title-right">
+        <img class="mini-map" id="mini-map-${checkin.time}" src="${miniMapUrl}"/>
+        <div class="mini-map-cheat"></div>
       </div>
+      -->
     </div>
 
-    <div class="checkin-blurb">
-${checkin.blurb}
-    </div>
+    ${blurbHtml}
 
-    <div class="checkin-image-pane">
-      ${imagesHtml}
-    </div>
+    ${imagesHtml}
 
     ${peepersHtml}
   </div>`
@@ -247,9 +254,7 @@ function onMapsApiLoad() {
       scrollCheckinIntoView(checkin.time)
     })
 
-    setTimeout(() => {
-      marker.setAnimation(null)
-    }, 400)
+    setTimeout(() => marker.setAnimation(null), 400)
 
     david.allMarkers[checkin.time] = marker
   }
@@ -261,5 +266,4 @@ function onMapsApiLoad() {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * 150 + 500)
   }
-
 }

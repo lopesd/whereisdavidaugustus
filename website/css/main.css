@@ -81,6 +81,7 @@ body {
 #map {
   height: 100%;
   width: 100%;
+  background-color: #c7eac7;
 }
 
 #content-pane {
@@ -127,8 +128,9 @@ body {
   left: 0;
 }
 
-.checkin-title {
+.checkin-title-left {
   padding: 1rem;
+  display: inline-block;
 }
 
 .checkin-title-name {
@@ -137,6 +139,34 @@ body {
 
 .checkin-title-date {
   color: grey;
+}
+
+.checkin-title-right {
+  display: inline-block;
+  float: right;
+  position: relative;
+  padding: 0.3rem;
+  z-index: 1;
+}
+
+.mini-map {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: 4.6rem;
+  width: 4.6rem;
+  background-color: red;
+}
+
+.mini-map-cheat {
+  height: 1rem;
+  width: 4.6rem;
+  /*background-color: #ffffff;*/
+  z-index: 200;
+
+  position: absolute;
+  top: 4.6rem;
+  right: 0.5rem;
 }
 
 .checkin-blurb {
@@ -178,6 +208,8 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  z-index: 3;
 }
 
 .checkin-peeper-pane.available {
