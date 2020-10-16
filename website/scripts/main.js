@@ -244,7 +244,7 @@ function onMapsApiLoad() {
     })
 
     marker.addListener("click", () => {
-      scrollCheckIntoView(checkin.time)
+      scrollCheckinIntoView(checkin.time)
     })
 
     setTimeout(() => {

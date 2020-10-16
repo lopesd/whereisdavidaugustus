@@ -117,8 +117,8 @@ body {
 
 .checkin-content.mouse-over-highlight {
   border-color: #dacaba;
-  transform: translateX(-2px) translateY(-2px);
-  box-shadow: 3px 3px 5px -2px grey;
+  transform: translateX(-1px) translateY(-1px);
+  box-shadow: 2px 2px 4px -2px grey;
 }
 
 .checkin-content-anchor {
