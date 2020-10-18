@@ -1,6 +1,8 @@
 SUB-PROJECTS
+- Icons for checkins
+- Support 1-5 star reviews
 - Map interaction revamp
-- Peep upgrades (longer usernames, emoji picker, message?)
+- Peep upgrades (longer usernames, emoji picker, message)
 - Better carousel
 - Votes and polls
 - High five
@@ -9,3 +11,6 @@ SUB-PROJECTS
 - Auto-route created from GoPro recording
 - Google Analytics
 - Changelog
+- Route drawn on map
+- Save checkin as draft
+- Infrastructure improvements
