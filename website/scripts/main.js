@@ -89,12 +89,12 @@ function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
     const msg = beatYouToIt ? 'beat you to it' : 'was first peeper'
     return `
     <div class="checkin-peeper-pane">
-      <span class="checkin-peepers-icon">\&#128064;</span><span class="checkin-peepers-text"><span class="checkin-peeper-name">${sanitize(peeperName)}</span> ${msg}</span>
+      <span class="checkin-peeper-icon">\&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name">${sanitize(peeperName)}</span> ${msg}</span>
     </div>`
   } else {
     return `
     <div class="checkin-peeper-pane available" data-checkin-time="${time}">
-      <input class="checkin-peeper-name-input" type="text" maxlength="15" placeholder="what's your name? quick!"/>
+      <input class="checkin-peeper-name-input" type="text" maxlength="40" placeholder="what's your name? quick!"/>
       <button class="checkin-claim-first-peep-button" onclick="onClickPeepButton(event)">PEEP</button>
     </div>`
   }

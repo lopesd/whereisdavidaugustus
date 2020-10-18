@@ -204,9 +204,13 @@ body {
   background-color: #aadafe;
 }
 
-.checkin-peepers-icon {
+.checkin-peeper-icon {
   font-size: 1.5rem;
   padding: 0 1rem;
+}
+
+.checkin-peeper-text {
+  padding-right: 1rem;
 }
 
 .checkin-peeper-name {

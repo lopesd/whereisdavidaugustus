@@ -31,7 +31,7 @@ exports.handler = async (event, context, callback) => {
   // ADD THE FIRST PEEPER
   const requestBody = Buffer.from(request.body.data, 'base64').toString()
   const peeperJson = JSON.parse(requestBody)
-  peeperJson.peeper = peeperJson.peeper.substring(0,15)
+  peeperJson.peeper = peeperJson.peeper.substring(0,40)
 
   const checkinIndex = checkinsJson.checkins.findIndex(checkin => checkin.time === peeperJson.time)
   let peepSuccessful = false
