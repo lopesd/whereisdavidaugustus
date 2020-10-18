@@ -1,9 +1,0 @@
-https://github.com/KonradIT/gopro-ble-py
-
-here's what it'll look like:
-- turn on the gopro
-- turn click the button in the app on the phone
-- phone pairs and tells it to start recording
-- phone samples location data every x seconds
-- recording can be quitted by either turning the gopro off (the phone should detect this) or pushing a button on the phone (it can tell the gopro to turn off)
-- later, we somehow pair the location metadata and enrich the video with it, worst case as a json file on the side
