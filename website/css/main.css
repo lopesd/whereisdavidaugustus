@@ -160,11 +160,11 @@ body {
 .checkin-blurb {
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-bottom: 1rem;
   white-space: pre-wrap;
 }
 
 .checkin-image-pane {
-  padding-top: 1rem;
   white-space: nowrap;
   overflow-y: hidden;
   overflow-x: scroll;

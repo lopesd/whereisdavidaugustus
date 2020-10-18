@@ -1,0 +1,20 @@
+-- MAP INTERACTION ON MOBILE --
+- MAP ON TOP REVISED
+  - Two views - map view and checkin/minimap view
+  - Checkin/minimap view
+    - The starting view of the website
+    - Minimap is a thin slice at the top, maybe like 20% of the viewport, centered at the latest checkin
+    - The other 80% is just the regular checkin view we already have
+    - Scrolling through the checkin view will change which checkin marker is at the center of the minimap
+    - Click on the map will smoothly transition to the map view
+  - Map view
+    - Map is fullscreen
+    - A thin styled card at the top displays the latest checkin header data (maybe the name is less emphasized though). As the highlighted marker changes, the checkin headers appear to scroll in from the left/right while the card remains in place.
+    - Latest checkin marker is highlighted initially.
+    - Moving between markers can be done three ways:
+      - Subtle arrows controls on the left and right let you touch and go from highlighting one marker to the next.
+      - Swiping left and right let you "scroll" your way through checkin markers (greensock swipe control style)
+      - Touching a marker highlights that marker immediately and switches to checkin view
+    - Downward arrow at the bottom lets you click (or swipe) to smoothly transition back to checkin/minimap view.
+  - Questions:
+    - should we make the left/right arrows available on the minimap?

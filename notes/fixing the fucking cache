@@ -1,0 +1,20 @@
+-- FIXING THE FUCKING CACHE --
+- never cache index.html
+- version everything else
+- points of website modification:
+  -> 1) build time
+    - append a timestamp to every non-index filename
+    - change all file references to use that timestamp
+      - design and use templating standard
+      - replace all uses of the template with the timestamped filename
+    - upload everything
+      - how do we avoid massive bucket clutter
+      - maybe we just deal with it later? it won't affect my souce code
+  -> 2) checkin time
+    - append to the database
+    - changes will be pulled live and consistent directly from the database
+    - requires an AJAX call
+  -> 3) peep time
+    - append to the database
+    - changes will be pulled live and consistent directly from the database
+    - requires an AJAX call

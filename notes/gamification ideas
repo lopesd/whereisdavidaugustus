@@ -1,0 +1,26 @@
+-- Gamification ideas --
+expiring peeps
+allow users to "challenge" a peep
+lock peeper only when a new checkin comes in
+let user pick the color of the peep pane
+5-minute expiring peeps as a kind of currency (gusbucks lol)
+peeps as votes, and people can vote where i go next
+  - this would be awesome!!! we would need to draw the route out and describe each
+  - but bots are a real concern :( how can we fix the bot problem?
+  - if peeps expire randomly within a certain range, then at least it becomes harder for bots to run in browser because they'd need to refresh and inspect. or just AJAX GET that shit and inspect. ugh, still breakable.
+CAPTCHAS! 
+site key: 6Le2t9YZAAAAAHUydWrVSbHY3aqUc8F9o_Slwub0
+secret key: 6Le2t9YZAAAAAHP2ngHOMNTdf2-lOJ266pUv2J2t
+
+- 1 vote allowed every 5-10 minutes, randomly
+- or maybe it's more of a who has the ball scenario, and last person to peep gets at least 10 minutes of time, and the next person can hop in with a new name and change the vote? 
+- oo, so maybe each checkin card has firstPeeper and latestPeeper???? that's fun. and leaderboards would be good then 
+so there's three mechanics:
+- firstPeeper
+  - first to peep
+- latestPeeper
+  - latest to peep, status is held for X minutes (this number will be important!) and then can be overridden or challenged!? if challenged, the defending peeper has to respond to the challenge (they keep their status if they do, for another Y minutes (shorter than X, probably). maybe X and Y can get tweaked over time so you become harder to dethrone the longer you've held power??? that gives people a reason to reuse a username!! ooh, and maybe they can choose from 4 preset colors so they form unofficial teams?? which means they can strengthen their votes. ooh, latestPeeped time is a currency that can be traded in for vote strength???
+- voting - each option is represented by a color, and the amount of currency you have determines the strength of your vote. this will encourage people to reuse their latestPeeped usernames
+
+- allow users to password-protect a username (or maybe individual peeps?)
+  - eh too much of a security concern

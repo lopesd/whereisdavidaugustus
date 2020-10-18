@@ -116,9 +116,7 @@ function htmlForCheckin(checkin) {
   `
 
   const blurbHtml = !checkin.blurb ? '' :
-  `<div class="checkin-blurb">
-${checkin.blurb}
-  </div>`
+  `<div class="checkin-blurb">${checkin.blurb}</div>`
 
   const imagesHtml = !checkin.images || checkin.images.length === 0 ? '' :
   `<div class="checkin-image-pane">

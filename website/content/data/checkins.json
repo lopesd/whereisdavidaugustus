@@ -425,6 +425,103 @@
         "Thu Oct 15 2020 5:56:09 PM/Thu Oct 15 2020 5:56:09 PM-0.jpeg"
       ],
       "firstPeeper": "Pacific coast h"
+    },
+    {
+      "name": "MAP IMPROVEMENTS",
+      "time": "Fri Oct 16 2020 12:53:05 AM",
+      "location": "Motel Trees, Redwood Highway, CA",
+      "latlng": {
+        "lat": 41.5837563,
+        "lng": -124.0870117
+      },
+      "blurb": "Made some upgrades! Now you can click on a marker to automatically scroll to the corresponding check-in. Hovering over either a check-in card or map marker will highlight them both.\n\nHuge shout outs to this raccoon I just met",
+      "images": [
+        "Fri Oct 16 2020 12:53:05 AM/Fri Oct 16 2020 12:53:05 AM-0.jpeg"
+      ],
+      "firstPeeper": "Hendrika Vascon"
+    },
+    {
+      "name": "299 EAST",
+      "time": "Fri Oct 16 2020 3:28:37 PM",
+      "location": "Highway 299 East, CA",
+      "latlng": {
+        "lat": 40.9099155,
+        "lng": -123.7861577
+      },
+      "blurb": "Just beautiful",
+      "images": [
+        "Fri Oct 16 2020 3:28:37 PM/Fri Oct 16 2020 3:28:37 PM-0.jpeg",
+        "Fri Oct 16 2020 3:28:37 PM/Fri Oct 16 2020 3:28:37 PM-1.jpeg"
+      ],
+      "firstPeeper": "🐶🐶🐶"
+    },
+    {
+      "name": "299 EAST",
+      "time": "Fri Oct 16 2020 4:26PM",
+      "location": "Highway 299 East, CA",
+      "latlng": {
+        "lat": 40.7888,
+        "lng": -123.348
+      },
+      "blurb": "",
+      "images": [
+        "Fri Oct 16 2020 4:26PM/Fri Oct 16 2020 4:26PM-0.jpeg",
+        "Fri Oct 16 2020 4:26PM/Fri Oct 16 2020 4:26PM-1.jpeg"
+      ],
+      "firstPeeper": "Watson"
+    },
+    {
+      "name": "MAN SHALL NOT LIVE BY CLIF BARS AND BEEF JERKY ALONE",
+      "time": "Fri Oct 16 2020 8:01:26 PM",
+      "location": "Highway 299 East, CA",
+      "latlng": {
+        "lat": 40.6567269,
+        "lng": -122.9458387
+      },
+      "blurb": "but I sure as hell can try",
+      "images": [],
+      "firstPeeper": "Yolo 🤷🏻‍♀️"
+    },
+    {
+      "name": "FROM ONE NUTJOB TO ANOTHER",
+      "time": "Fri Oct 16 2020 10:56:45 PM",
+      "location": "Douglas City Campground, CA",
+      "latlng": {
+        "lat": 40.6473494,
+        "lng": -122.953579
+      },
+      "blurb": "Am I crazy? Who does this - jumps on a bike with only a vague plan and leaves his life behind?\n\nDon't get me wrong, this stunt I'm pulling is freaking awesome. But I work hard to stave off the loneliness and the creeping doubts and sometimes I wonder if I thought this through enough. Today was rough and filled with questions.\n\nBut tonight at the campsite I met three bikers with a diverse set of motorcycles - an old-school V-Strom (pre-beak), a Harley Dynah Street Bob, and a frankenstein project dirt bike that at one point was some sort of Honda (I think?). Jeff, Thomas, and Chris. Cherry and friendly af. Thomas pulls up a metal pannier by the fire for me to sit on. I pull it back a couple more feet. COVID rules. And what a surprise - they have no plans and no dates either! They're hitting the coast tomorrow and just gonna mosey on wherever the wind takes them. Thomas is a software dev like me, and Jeff even lives on the bike like I do. I lay down the questions and we talk it through. I get recommendations, stories, laughs. Lots of laughs. These guys are nuts. Jeff gives me a sticker that says \"Go fast, don't die\".\n\nI wanted to feel sane. I still feel crazy. But at least I'm not alone.",
+      "images": [],
+      "firstPeeper": "OdF"
+    },
+    {
+      "name": "LASSEN",
+      "time": "Sat Oct 17 2020 3:39:02 PM",
+      "location": "Lassen National Forest, CA",
+      "latlng": {
+        "lat": 40.7018419,
+        "lng": -121.4060566
+      },
+      "blurb": "",
+      "images": [
+        "Sat Oct 17 2020 3:39:02 PM/Sat Oct 17 2020 3:39:02 PM-0.jpeg"
+      ],
+      "firstPeeper": "ojeje"
+    },
+    {
+      "name": "RACE TO RENO",
+      "time": "Sat Oct 17 2020 5:42:49 PM",
+      "location": "Highway 395, CA",
+      "latlng": {
+        "lat": 40.0012047,
+        "lng": -120.0869824
+      },
+      "blurb": "Black bike best bike",
+      "images": [
+        "Sat Oct 17 2020 5:42:49 PM/Sat Oct 17 2020 5:42:49 PM-1.jpeg",
+        "Sat Oct 17 2020 5:42:49 PM/Sat Oct 17 2020 5:42:49 PM-0.jpeg"
+      ],
+      "firstPeeper": "Ace"
     }
   ]
 }
