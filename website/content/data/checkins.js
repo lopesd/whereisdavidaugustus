@@ -522,6 +522,18 @@ david = {
         "Sat Oct 17 2020 5:42:49 PM/Sat Oct 17 2020 5:42:49 PM-0.jpeg"
       ],
       "firstPeeper": "Ace"
+    },
+    {
+      "name": "WHAT'S YOUR FAVORITE GENRE OF MUSIC",
+      "time": "Sun Oct 18 2020 12:25:55 AM",
+      "location": "Studio 6 Sparks, NV",
+      "latlng": {
+        "lat": 39.5540595,
+        "lng": -119.4894386
+      },
+      "blurb": "and why is it LoFi",
+      "images": [],
+      "firstPeeper": "Creeper"
     }
   ]
 }

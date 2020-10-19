@@ -140,13 +140,6 @@ ${imagesInnerHtml}
         <div class="checkin-title-location">${checkin.location}</div>
         <div class="checkin-title-date">${checkin.time}</div>
       </div>
-
-      <!--
-      <div class="checkin-title-right">
-        <img class="mini-map" id="mini-map-${checkin.time}" src="${miniMapUrl}"/>
-        <div class="mini-map-cheat"></div>
-      </div>
-      -->
     </div>
 
     ${blurbHtml}
@@ -196,20 +189,6 @@ function scrollCheckinIntoView(checkinTime) {
   const checkinAnchor = document.getElementById(`checkin-content-anchor-${checkinTime}`)
   checkinAnchor.scrollIntoView({ behavior: 'smooth' })
 }
-
-// ON DOCUMENT LOAD
-(function () {
-  // CREATE HEADER HTML
-  /* TABLING THE HEADER FOR NOW
-  const lastCheckin = david.checkins[david.checkins.length-1]
-  const checkinText = `<span id="header-last-seen-text">LAST SEEN:</span> ${lastCheckin.location}<br>${lastCheckin.time}`
-  document.getElementById('header-right-text').innerHTML = checkinText
-  */
-  // CREATE CHECKIN HTML
-  const reversedCheckins = [].concat(david.checkins).reverse()
-  let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
-  document.getElementById('content-pane').innerHTML = htmlForAllCheckins
-})()
 
 
 // ON MAP LOAD
@@ -265,3 +244,16 @@ function onMapsApiLoad() {
     }, i * 150 + 500)
   }
 }
+
+// ON DOCUMENT LOAD
+(function () {
+  // CREATE CHECKIN HTML
+  const reversedCheckins = [].concat(david.checkins).reverse()
+  let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
+  document.getElementById('checkins-pane').innerHTML = htmlForAllCheckins
+
+  // ADD LISTENERS TO MAP CONTROLS
+  document.getElementById('map-down-arrow').addEventListener('click', () => {
+    document.getElementById('right-pane-anchor').scrollIntoView({ behavior: 'smooth' })
+  })
+})()

@@ -25,40 +25,25 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/about.css">
   </head>
 
-  <body>    
+  <body>
     <main>
-      <!-- MAP -->
-      <div id="left-pane">
-        <div id="map"></div>
-        <div id="map-down-arrow">
-          <img id="map-down-arrow-svg" src="./assets/down-arrow.svg" />
-        </div>
+      <!-- HEADER -->
+      <div id="header">
+        <a id="header-home-link" href="./index.html">HOME</a>
+        <a id="header-about-link" href="./about.html">ABOUT</a>
+        <a id="header-devlog-link" href="./devlog.html">DEVLOG</a>
       </div>
 
-      <!-- CONTENT -->
-      <div id="right-pane">
-        <div id="right-pane-anchor"></div>
+      <div id="main-gutters">
 
-        <!-- HEADER -->
-        <div id="header">
-          <a id="header-home-link" href="./index.html">HOME</a>
-          <a id="header-about-link" href="./about.html">ABOUT</a>
-          <a id="header-devlog-link" href="./devlog.html">DEVLOG</a>
-        </div>
-
-        <!-- CHECKINS -->
-        <div id="checkins-pane"></div>
       </div>
     </main>
 
     <!-- MAPS API -->
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8&callback=onMapsApiLoad"></script>
 
     <!-- MY JS -->
-    <script src="./content/data/checkins.js"></script>
-    <script src="./scripts/main.js"></script>
   </body>
 </html>
