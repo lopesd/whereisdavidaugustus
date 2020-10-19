@@ -110,8 +110,7 @@ david = {
       "blurb": "A lonely creek adjacent to a beautiful highway",
       "images": [
         "2020-10-03_1.jpg"
-      ],
-      "firstPeeper": "$LOCKED$"
+      ]
     },
     {
       "name": "THE ECONOLODGE",
