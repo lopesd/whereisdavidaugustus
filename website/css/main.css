@@ -1,63 +1,3 @@
-div {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0px;
-  padding: 0px;
-
-  font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace;
-  font-size: 0.85rem;
-  background-color: #fafafa;
-}
-
-main {
-  height: 100%;
-  width: 100%;
-  
-  overflow: scroll;
-
-  background-color: #fafafa; /* slight grey*/
-}
-
-#header {
-  height: 2.5rem;
-  width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-
-  border-bottom: 1px solid grey;
-  background-color: white;
-}
-
-#header a {
-  color: grey;
-  text-decoration: none;
-  padding: 0 0.75rem;
-  border-right: 1px solid black;
-}
-
-#header a:first-child {
-  padding-left: 1rem;
-}
-
-#header a:last-child {
-  padding-right: 0;
-  border: 0;
-}
-
-a#header-home-link {
-  color: black;
-  font-weight: bold;
-}
-
 #left-pane {
   position: relative;
   height: calc(100% - 2.5rem);
@@ -238,21 +178,6 @@ a#header-home-link {
 
 /* DESKTOP MEDIA QUERY */
 @media only screen and (min-width: 769px) {
-  body {
-    font-size: 1rem;
-    overflow: hidden;
-  }
-  
-  main {
-    overflow: hidden;
-  }
-
-  #header {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
   #left-pane {
     position: absolute;
     top: 0;
