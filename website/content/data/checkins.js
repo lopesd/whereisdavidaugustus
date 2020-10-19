@@ -64,7 +64,8 @@ david = {
         "20201002_155712.jpg",
         "20201002_155637.jpg",
         "20201002_155304.jpg"
-      ]
+      ],
+      "firstPeeper": "AJAX"
     },
     {
       "name": "ASTORIA",
