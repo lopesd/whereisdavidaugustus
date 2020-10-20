@@ -14,9 +14,9 @@ CHECKINS_JS = "#{CONTENT_DIR}/data/checkins.js"
 CHECKINS_JSON = "#{CONTENT_DIR}/data/checkins.json"
 IMAGES_DIR = "#{CONTENT_DIR}/images"
 
-FILES_TO_VERSION = [
-  'scripts/main.js',
-  'css/main.css'
+FOLDERS_TO_VERSION = [
+  'scripts',
+  'css'
 ]
 FILES_TO_TEMPLATE = [
   'index.html'
@@ -55,11 +55,12 @@ task :build => :clean do
 
   # change the filenames of all .css and .js in build folder
   puts "Versioning"
-  FILES_TO_VERSION.each do |filename|
-    full_filename = "#{WEBSITE_BUILD_DIR}/#{filename}"
-    new_filename = versioned_filename(full_filename, version_id)
-    puts "  #{full_filename} => #{new_filename}"
-    FileUtils.mv(full_filename, new_filename)
+  puts "  Folders: #{FOLDERS_TO_VERSION.join(', ')}"
+  files_to_version = FOLDERS_TO_VERSION.flat_map { |folder| Dir["#{WEBSITE_BUILD_DIR}/#{folder}/*"] }
+  files_to_version.each do |filename|
+    new_filename = versioned_filename(filename, version_id)
+    puts "  #{filename} => #{new_filename}"
+    FileUtils.mv(filename, new_filename)
   end
 
   # replace references
@@ -68,7 +69,7 @@ task :build => :clean do
     full_filename = "#{WEBSITE_BUILD_DIR}/#{filename}"
     puts "  #{full_filename}"
     new_contents = File.read(full_filename)
-    FILES_TO_VERSION.each do |filename_to_version|
+    files_to_version.each do |filename_to_version|
       versioned = versioned_filename(filename_to_version, version_id)
       new_contents = new_contents.gsub(/#{filename_to_version}/, versioned)
     end
