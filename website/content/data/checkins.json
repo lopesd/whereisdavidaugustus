@@ -111,7 +111,8 @@
       "blurb": "A lonely creek adjacent to a beautiful highway",
       "images": [
         "2020-10-03_1.jpg"
-      ]
+      ],
+      "firstPeeper": "🍆"
     },
     {
       "name": "THE ECONOLODGE",
@@ -533,6 +534,48 @@
       "blurb": "and why is it LoFi",
       "images": [],
       "firstPeeper": "Creeper"
+    },
+    {
+      "name": "LOOSE CHAINZ",
+      "time": "Mon Oct 19 2020 11:05:41 AM",
+      "location": "Studio 6 Sparks, NV",
+      "latlng": {
+        "lat": 39.5540923,
+        "lng": -119.4899894
+      },
+      "blurb": "Luckily there's a shop in Reno that can help me out as soon as I get there. But damn this chain is loose! That's what 4 days full of riding gets you apparently",
+      "images": [
+        "Mon Oct 19 2020 11:05:41 AM/Mon Oct 19 2020 11:05:41 AM-0.jpeg",
+        "Mon Oct 19 2020 11:05:41 AM/Mon Oct 19 2020 11:05:41 AM-1.jpeg"
+      ],
+      "firstPeeper": "THE JEW"
+    },
+    {
+      "name": "MINIMAL MAINTENANCE",
+      "time": "Mon Oct 19 2020 5:37:38 PM",
+      "location": "Humboldt County, NV",
+      "latlng": {
+        "lat": 40.8928347,
+        "lng": -117.2990084
+      },
+      "blurb": "The best part about this trip is being able to just take an exit that looks cool whenever the spirit moves me",
+      "images": [
+        "Mon Oct 19 2020 5:37:38 PM/Mon Oct 19 2020 5:37:38 PM-0.jpeg",
+        "Mon Oct 19 2020 5:37:38 PM/Mon Oct 19 2020 5:37:38 PM-1.jpeg"
+      ],
+      "firstPeeper": "BBBS"
+    },
+    {
+      "name": "I HAVE A FEELING WE AREN'T IN SEATTLE ANYMORE",
+      "time": "Mon Oct 19 2020 11:33:14 PM",
+      "location": "Quality Inn, Elko, NV",
+      "latlng": {
+        "lat": 40.8558241,
+        "lng": -115.7406676
+      },
+      "blurb": "Man, the people that work at motorcycle shops are really cool. Feels like bikers are a super friendly bunch if you're \"in\". I'm glad I'm in. This is my tribe! Well, one of them. \n\nThe I-80 stretches as far as the eye can see in a straight line. I think they call it the 80 because that's actually the speed limit for most of it. First time I've ever seen a speed limit that high. Kinda wish I had a bigger bike - the ol NC, full cargo, struggles against the wind sometimes.\n\nAt around 6 the sun steps behind a mountain and the temperature drops abruptly. At around 6:20 the bugs come out, and I can feel them kamikaze against my jeans and jacket. Put your visor down. I don't care how beautiful the twilight is.\n\nElko is busier than I thought it would be! One of the bike shop guys I mentioned in the first paragraph gave me a recommendation for a food place called The Star, so I decide to check it out. I step inside, and it's completely packed. Not a mask in sight. There's some hand sanitizer by the door, and hilariously it's empty. I leave. COVID rules.",
+      "images": [],
+      "firstPeeper": "Dikers"
     }
   ]
 }
