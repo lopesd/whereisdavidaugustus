@@ -51,10 +51,6 @@ main {
   color: black;
 }
 
-#header a:active {
-  background-color: #c7eac7;
-}
-
 #header a:first-child {
   padding-left: 1rem;
 }
@@ -68,7 +64,7 @@ main {
   font-weight: bold;
 }
 
-.header-vertical-spacer {
+.header-vertical-line {
   height: 1rem;
   width: 1px;
   border-right: 1px solid grey;
