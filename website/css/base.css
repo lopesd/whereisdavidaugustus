@@ -18,15 +18,20 @@ main {
   overflow: scroll;
 
   background-color: #fafafa; /* slight grey*/
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* hide scrollbar for Chrome, Safari and Opera */
+main::-webkit-scrollbar {
+  display: none;
 }
 
 #header {
   height: 2.5rem;
   width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 
   position: fixed;
   top: 0;
@@ -35,6 +40,12 @@ main {
 
   border-bottom: 1px solid grey;
   background-color: white;
+}
+
+#header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #header a {
@@ -90,10 +101,7 @@ main {
     overflow: hidden;
   }
 
-  #header {
-    position: absolute;
-    top: 0;
-    left: 0;
+  #header-content {
     justify-content: flex-end;
   }
 }

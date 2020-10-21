@@ -1,0 +1,20 @@
+.devlog-entry {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  padding: 1rem;
+}
+
+.devlog-entry-date {
+  color: grey;
+}
+
+.devlog-entry-content {
+  white-space: pre-wrap;
+}
+
+hr {
+  margin: 2rem 0;
+  border: none;
+  border-bottom: 1px solid #dbdbdb;
+}
