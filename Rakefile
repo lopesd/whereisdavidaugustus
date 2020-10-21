@@ -69,7 +69,8 @@ task :build => :clean do
     full_filename = "#{WEBSITE_BUILD_DIR}/#{filename}"
     puts "  #{full_filename}"
     new_contents = File.read(full_filename)
-    files_to_version.each do |filename_to_version|
+    files_to_version.each do |full_filename_to_version|
+      filename_to_version = File.basename(full_filename_to_version)
       versioned = versioned_filename(filename_to_version, version_id)
       new_contents = new_contents.gsub(/#{filename_to_version}/, versioned)
     end
