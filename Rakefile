@@ -19,7 +19,9 @@ FOLDERS_TO_VERSION = [
   'css'
 ]
 FILES_TO_TEMPLATE = [
-  'index.html'
+  'index.html',
+  'devlog.html',
+  'about.html'
 ]
 
 def run_cmd cmd, msg

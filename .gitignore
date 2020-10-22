@@ -2,3 +2,6 @@
 logs
 build
 notes
+*.mp4
+*.MP4
+node_modules
