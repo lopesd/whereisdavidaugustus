@@ -81,7 +81,8 @@
         "2020-10-03_3.jpg",
         "2020-10-03_4.jpg",
         "20201003_125745.jpg"
-      ]
+      ],
+      "firstPeeper": "Tom"
     },
     {
       "name": "JEWELL MEADOWS STATE WILDLIFE PRESERVE",
@@ -96,8 +97,7 @@
         "2020-10-03_5.jpg",
         "2020-10-03_6.jpg",
         "2020-10-03_7.jpg"
-      ],
-      "firstPeeper": "$LOCKED$"
+      ]
     },
     {
       "name": "WOLF CREEK",
@@ -575,6 +575,48 @@
       "blurb": "Man, the people that work at motorcycle shops are really cool. Feels like bikers are a super friendly bunch if you're \"in\". I'm glad I'm in. This is my tribe! Well, one of them. \n\nThe I-80 stretches as far as the eye can see in a straight line. I think they call it the 80 because that's actually the speed limit for most of it. First time I've ever seen a speed limit that high. Kinda wish I had a bigger bike - the ol NC, full cargo, struggles against the wind sometimes.\n\nAt around 6 the sun steps behind a mountain and the temperature drops abruptly. At around 6:20 the bugs come out, and I can feel them kamikaze against my jeans and jacket. Put your visor down. I don't care how beautiful the twilight is.\n\nElko is busier than I thought it would be! One of the bike shop guys I mentioned in the first paragraph gave me a recommendation for a food place called The Star, so I decide to check it out. I step inside, and it's completely packed. Not a mask in sight. There's some hand sanitizer by the door, and hilariously it's empty. I leave. COVID rules.",
       "images": [],
       "firstPeeper": "Dikers"
+    },
+    {
+      "name": "LAMOILLE",
+      "time": "Wed Oct 21 2020 11:38AM",
+      "location": "Lamoille Canyon, NV",
+      "latlng": {
+        "lat": 40.6615,
+        "lng": -115.443
+      },
+      "blurb": "Another recommendation from the guys at the bike shop. I didn't have much time to explore since I'm trying to make it to Salt Lake City today. Worth a stop though, especially considering Nevada has been mostly a drive-through state so far",
+      "images": [
+        "Wed Oct 21 2020 11:38AM/Wed Oct 21 2020 11:38AM-0.jpeg",
+        "Wed Oct 21 2020 11:38AM/Wed Oct 21 2020 11:38AM-1.jpeg",
+        "Wed Oct 21 2020 11:38AM/Wed Oct 21 2020 11:38AM-2.jpeg"
+      ],
+      "firstPeeper": "lets see if the limit is really 40 chara"
+    },
+    {
+      "name": "GOOD MOOD IDK",
+      "time": "Wed Oct 21 2020 1:09:49 PM",
+      "location": "Garibaldi's Mexican Restaurant, Elko, NV",
+      "latlng": {
+        "lat": 40.8438033,
+        "lng": -115.75044
+      },
+      "blurb": "Along with the check, my server just brought me this tortilla chip topped with cinnamon and whipped cream and I'm frEAKING OUT",
+      "images": [
+        "Wed Oct 21 2020 1:09:49 PM/Wed Oct 21 2020 1:09:49 PM-0.jpeg"
+      ],
+      "firstPeeper": "Ultimate Semite"
+    },
+    {
+      "name": "U TAH",
+      "time": "Wed Oct 21 2020 10:13:51 PM",
+      "location": "Quality Inn Downtown, Salt Lake City, UT",
+      "latlng": {
+        "lat": 40.75556,
+        "lng": -111.8972805
+      },
+      "blurb": "no u tah",
+      "images": [],
+      "firstPeeper": "Lin"
     }
   ]
 }
