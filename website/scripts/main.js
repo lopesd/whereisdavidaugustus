@@ -236,12 +236,15 @@ function onMapsApiLoad() {
     david.allMarkers[checkin.time] = marker
   }
 
+  const pathAnimationTime = 3000 // ms
+  const pathAnimationDelay = 500 // ms
+  const pathAnimationStep = pathAnimationTime / david.checkins.length
   for (var i = 0; i < david.checkins.length; ++i) {
     const checkin = david.checkins[i]
     const isLastCheckin = i === david.checkins.length - 1
     setTimeout(function () {
       addCheckinMarker(checkin, isLastCheckin)
-    }, i * 150 + 500)
+    }, i * pathAnimationStep + pathAnimationDelay)
   }
 }
 
