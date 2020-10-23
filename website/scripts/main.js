@@ -109,6 +109,14 @@ function htmlForCheckin(checkin) {
     }, '')
   }
 
+  let videosInnerHtml = ''
+  if (checkin.videos && checkin.videos.length > 0) {
+    videosInnerHtml = checkin.videos.reduce((html, videoName) => {
+      return `${html}
+      <video class="checkin-video" controls src="./content/videos/${videoName}" />`
+    }, '')
+  }
+
   let peepersHtml =
   `<div class="checkin-peeper-pane-wrapper" id="${checkin.time}-peeper-pane-wrapper">
     ${innerHTMLForPeeperPane(checkin.time, checkin.firstPeeper)}
@@ -118,9 +126,14 @@ function htmlForCheckin(checkin) {
   const blurbHtml = !checkin.blurb ? '' :
   `<div class="checkin-blurb">${checkin.blurb}</div>`
 
-  const imagesHtml = !checkin.images || checkin.images.length === 0 ? '' :
+  const imagesHtml = !imagesInnerHtml ? '' :
   `<div class="checkin-image-pane">
 ${imagesInnerHtml}
+  </div>`
+
+  const videosHtml = !videosInnerHtml ? '' :
+  `<div class="checkin-video-pane">
+${videosInnerHtml}
   </div>`
 
   const miniMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${checkin.latlng.lat},${checkin.latlng.lng}&zoom=7&size=72x72&maptype=map&markers=color:green%7Csize:tiny%7C${checkin.latlng.lat},${checkin.latlng.lng}&key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8`
@@ -140,11 +153,20 @@ ${imagesInnerHtml}
         <div class="checkin-title-location">${checkin.location}</div>
         <div class="checkin-title-date">${checkin.time}</div>
       </div>
+      <!--
+      <div class="checkin-title-right">
+        <img class="checkin-minimap" src="${miniMapUrl}" />
+      </div>
+      -->
     </div>
 
     ${blurbHtml}
 
     ${imagesHtml}
+
+    <!--
+    ${videosHtml}
+    -->
 
     ${peepersHtml}
   </div>`
@@ -193,6 +215,7 @@ function scrollCheckinIntoView(checkinTime) {
 
 // ON MAP LOAD
 function onMapsApiLoad() {
+  /*
   // CREATE MAP AND CONFIGURE BOUNDS
   const bounds = new google.maps.LatLngBounds();
   david.checkins.forEach(({ latlng }) => {
@@ -246,6 +269,47 @@ function onMapsApiLoad() {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
   }
+  */
+
+  // This example adds an animated symbol to a polyline.
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 40.2520756, lng: -111.6639886 },
+    zoom: 16,
+    disableDefaultUI: true
+  })
+
+  // Define the symbol, using one of the predefined paths ('CIRCLE')
+  // supplied by the Google Maps JavaScript API.
+  const lineSymbol = {
+    path: google.maps.SymbolPath.CIRCLE,
+    scale: 8,
+    strokeColor: "#393",
+  }
+
+  // Create the polyline and add the symbol to it via the 'icons' property.
+  const line = new google.maps.Polyline({
+    path,
+    icons: [
+      {
+        icon: lineSymbol,
+        offset: "100%",
+      },
+    ],
+    map: map,
+  })
+  animateCircle(line)
+}
+
+// Use the DOM setInterval() function to change the offset of the symbol
+// at fixed intervals.
+function animateCircle(line) {
+  let count = 0;
+  window.setInterval(() => {
+    count = (count + 1) % 200
+    const icons = line.get("icons")
+    icons[0].offset = count / 2 + "%"
+    line.set("icons", icons)
+  }, 20)
 }
 
 // ON DOCUMENT LOAD

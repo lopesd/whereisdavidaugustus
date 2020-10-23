@@ -121,8 +121,7 @@
         "lat": 45.4898047,
         "lng": -122.5783726
       },
-      "blurb": "A couple nights in the Weird City. Considered rioting to fit in with the locals",
-      "firstPeeper": "$LOCKED$"
+      "blurb": "A couple nights in the Weird City. Considered rioting to fit in with the locals"
     },
     {
       "name": "TEOTE HOUSE CAFE",
@@ -617,6 +616,21 @@
       "blurb": "no u tah",
       "images": [],
       "firstPeeper": "Lin"
+    },
+    {
+      "name": "NEW CHAIN WHO DIS",
+      "time": "Thu Oct 22 2020 4:05:02 PM",
+      "location": "Moto Station, Salt Lake City, UT",
+      "latlng": {
+        "lat": 40.6765709,
+        "lng": -111.9080765
+      },
+      "blurb": "Went in for new tires. Re-evaluated my chain, and decided I needed a new one of those too. Really hate that they didn't have sprockets in stock too, but my current one isn't too bad and should hold together until the next major city.",
+      "images": [
+        "Thu Oct 22 2020 4:05:02 PM/Thu Oct 22 2020 4:05:02 PM-0.jpeg",
+        "Thu Oct 22 2020 4:05:02 PM/Thu Oct 22 2020 4:05:02 PM-1.jpeg"
+      ],
+      "firstPeeper": "SEAAAA"
     }
   ]
 }
