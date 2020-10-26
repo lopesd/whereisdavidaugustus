@@ -136,7 +136,7 @@ ${imagesInnerHtml}
 ${videosInnerHtml}
   </div>`
 
-  const miniMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${checkin.latlng.lat},${checkin.latlng.lng}&zoom=7&size=72x72&maptype=map&markers=color:green%7Csize:tiny%7C${checkin.latlng.lat},${checkin.latlng.lng}&key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8`
+  const miniMapUrl = '' // `https://maps.googleapis.com/maps/api/staticmap?center=${checkin.latlng.lat},${checkin.latlng.lng}&zoom=7&size=72x72&maptype=map&markers=color:green%7Csize:tiny%7C${checkin.latlng.lat},${checkin.latlng.lng}&key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8`
 
   return `
   <div class="checkin-content" 
@@ -214,14 +214,15 @@ function scrollCheckinIntoView(checkinTime) {
 // ON MAP LOAD
 function onMapsApiLoad() {
   // CREATE MAP AND CONFIGURE BOUNDS
-  const bounds = new google.maps.LatLngBounds();
-  david.checkins.forEach(({ latlng }) => {
-    if (Array.isArray(latlng)) {
-      latlng.forEach(ltln => bounds.extend(ltln))
-    } else {
+  const bounds = new google.maps.LatLngBounds()
+  david.checkins.forEach(({ latlng, path }) => {
+    if (latlng) {
       bounds.extend(latlng)
+    } else if (path) {
+      path.forEach(latlng => bounds.extend(latlng))
     }
   })
+
   const map = new google.maps.Map(document.getElementById('map'), {
     disableDefaultUI: true,
     restriction: { latLngBounds: bounds },
@@ -232,37 +233,28 @@ function onMapsApiLoad() {
 
   // CREATE CHECKIN MARKERS
   const addCheckinMarker = (checkin, isLastCheckin) => {
-    // TODO: add route on map
-    if (Array.isArray(checkin.latlng)) {
-      return
+    if (checkin.latlng) {
+      let icon = { url: defaultCheckinIconUrl }
+      if (isLastCheckin) {
+        icon = { url: lastCheckinIconUrl }
+      }
+      const marker = new google.maps.Marker({
+        position: checkin.latlng,
+        animation: google.maps.Animation.BOUNCE,
+        icon,
+        map
+      })
+      setTimeout(() => marker.setAnimation(null), 400)
+      marker.addListener("mouseover", () => mouseOverHighlight(checkin.time))
+      marker.addListener("mouseout", () => mouseLeaveHighlight(checkin.time))
+      marker.addListener("click", () => scrollCheckinIntoView(checkin.time))
+      david.allMarkers[checkin.time] = marker
+    } else if (checkin.path) {
+      const line = new google.maps.Polyline({
+        path: checkin.path,
+        map: map,
+      })
     }
-
-    let icon = { url: defaultCheckinIconUrl }
-    if (isLastCheckin) {
-      icon = { url: lastCheckinIconUrl }
-    }
-    const marker = new google.maps.Marker({
-      position: checkin.latlng,
-      animation: google.maps.Animation.BOUNCE,
-      icon,
-      map
-    })
-
-    marker.addListener("mouseover", () => {
-      mouseOverHighlight(checkin.time)
-    })
-
-    marker.addListener("mouseout", () => {
-      mouseLeaveHighlight(checkin.time)
-    })
-
-    marker.addListener("click", () => {
-      scrollCheckinIntoView(checkin.time)
-    })
-
-    setTimeout(() => marker.setAnimation(null), 400)
-
-    david.allMarkers[checkin.time] = marker
   }
 
   const pathAnimationTime = 3000 // ms
@@ -275,8 +267,8 @@ function onMapsApiLoad() {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
   }
-  /*
 
+  /*
   // This example adds an animated symbol to a polyline.
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.2520756, lng: -111.6639886 },

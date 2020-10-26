@@ -638,7 +638,7 @@
       "name": "TEST",
       "time": "Thu Oct 22 2020 4:05:02 PM",
       "location": "Days Inn, Provo, UT",
-      "latlng": [
+      "path": [
         {
           "lat": 40.2520756,
           "lng": -111.6639886
