@@ -13,6 +13,7 @@ CONTENT_DIR = 'content'
 CHECKINS_JS = "#{CONTENT_DIR}/data/checkins.js"
 CHECKINS_JSON = "#{CONTENT_DIR}/data/checkins.json"
 IMAGES_DIR = "#{CONTENT_DIR}/images"
+VIDEOS_DIR = "#{CONTENT_DIR}/videos"
 
 FOLDERS_TO_VERSION = [
   'scripts',
@@ -114,10 +115,13 @@ task :pull_checkins do
   puts
 end
 
-task :sync_images => :build do
-  run_cmd "aws s3 sync #{S3_ROOT}/#{IMAGES_DIR} #{WEBSITE_ROOT}/#{IMAGES_DIR}", "Syncing images in the cloud locally"
-  run_cmd "aws s3 sync #{WEBSITE_ROOT}/#{IMAGES_DIR} #{S3_ROOT}/#{IMAGES_DIR} --acl public-read", "Syncing local images to the cloud"
-  puts "SYNC IMAGES COMPLETE"
+task :sync_media => :build do
+  run_cmd "aws s3 sync #{S3_ROOT}/#{IMAGES_DIR} #{WEBSITE_ROOT}/#{IMAGES_DIR}", "Syncing images from S3 to local"
+  run_cmd "aws s3 sync #{WEBSITE_ROOT}/#{IMAGES_DIR} #{S3_ROOT}/#{IMAGES_DIR} --acl public-read", "Syncing images from local to S3"
+
+  run_cmd "aws s3 sync #{S3_ROOT}/#{VIDEOS_DIR} #{WEBSITE_ROOT}/#{VIDEOS_DIR}", "Syncing videos from S3 to local"
+  run_cmd "aws s3 sync #{WEBSITE_ROOT}/#{VIDEOS_DIR} #{S3_ROOT}/#{VIDEOS_DIR} --acl public-read", "Syncing videos from local to S3"
+  puts "SYNC MEDIA COMPLETE"
   puts
 end
 

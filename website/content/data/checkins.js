@@ -97,7 +97,8 @@ david = {
         "2020-10-03_5.jpg",
         "2020-10-03_6.jpg",
         "2020-10-03_7.jpg"
-      ]
+      ],
+      "firstPeeper": "Hype for TX braaaps"
     },
     {
       "name": "WOLF CREEK",
@@ -122,6 +123,7 @@ david = {
         "lng": -122.5783726
       },
       "blurb": "A couple nights in the Weird City. Considered rioting to fit in with the locals",
+      "firstPeeper": "Oh look lots of old unlocks"
     },
     {
       "name": "TEOTE HOUSE CAFE",
@@ -631,6 +633,210 @@ david = {
         "Thu Oct 22 2020 4:05:02 PM/Thu Oct 22 2020 4:05:02 PM-1.jpeg"
       ],
       "firstPeeper": "SEAAAA"
+    },
+    {
+      "name": "TEST",
+      "time": "Thu Oct 22 2020 4:05:02 PM",
+      "location": "Days Inn, Provo, UT",
+      "latlng": [
+        {
+          "lat": 40.2520756,
+          "lng": -111.6639886
+        },
+        {
+          "lat": 40.2523784,
+          "lng": -111.6639863
+        },
+        {
+          "lat": 40.2527142,
+          "lng": -111.6640139
+        },
+        {
+          "lat": 40.2530275,
+          "lng": -111.6640009
+        },
+        {
+          "lat": 40.2533634,
+          "lng": -111.6640192
+        },
+        {
+          "lat": 40.2536959,
+          "lng": -111.6640252
+        },
+        {
+          "lat": 40.2540231,
+          "lng": -111.6640269
+        },
+        {
+          "lat": 40.2543475,
+          "lng": -111.6640344
+        },
+        {
+          "lat": 40.2546762,
+          "lng": -111.6640459
+        },
+        {
+          "lat": 40.2550069,
+          "lng": -111.664044
+        },
+        {
+          "lat": 40.2553055,
+          "lng": -111.6640298
+        },
+        {
+          "lat": 40.2555407,
+          "lng": -111.6640166
+        },
+        {
+          "lat": 40.2556661,
+          "lng": -111.6640749
+        },
+        {
+          "lat": 40.2556773,
+          "lng": -111.6642389
+        },
+        {
+          "lat": 40.2557162,
+          "lng": -111.6643329
+        },
+        {
+          "lat": 40.255787,
+          "lng": -111.6642917
+        },
+        {
+          "lat": 40.2559217,
+          "lng": -111.6641741
+        },
+        {
+          "lat": 40.2561472,
+          "lng": -111.6641161
+        },
+        {
+          "lat": 40.2563763,
+          "lng": -111.6640976
+        },
+        {
+          "lat": 40.2565927,
+          "lng": -111.664092
+        },
+        {
+          "lat": 40.2568063,
+          "lng": -111.6641144
+        },
+        {
+          "lat": 40.2570189,
+          "lng": -111.6641056
+        },
+        {
+          "lat": 40.2572096,
+          "lng": -111.6640414
+        },
+        {
+          "lat": 40.2574096,
+          "lng": -111.6639201
+        },
+        {
+          "lat": 40.2576335,
+          "lng": -111.6638245
+        },
+        {
+          "lat": 40.257845,
+          "lng": -111.6637411
+        },
+        {
+          "lat": 40.2579906,
+          "lng": -111.6636561
+        },
+        {
+          "lat": 40.2580299,
+          "lng": -111.6635416
+        },
+        {
+          "lat": 40.2579517,
+          "lng": -111.6634149
+        },
+        {
+          "lat": 40.2578349,
+          "lng": -111.663301
+        }
+      ],
+      "blurb": "Testing video integration...",
+      "videos": [
+        "GH010440.MP4"
+      ],
+      "firstPeeper": "$LOCKED$"
+    },
+    {
+      "name": "KLOS",
+      "time": "Fri Oct 23 2020 1:37:59 PM",
+      "location": "KLOS Guitars Headquarters, Provo, UT",
+      "latlng": {
+        "lat": 40.2196479,
+        "lng": -111.6385709
+      },
+      "blurb": "Holy shit I pulled the trigger and bought one of these\n\nThe one I got is full carbon fiber, travel sized, and can disassemble into a backpack-sized pack\n\nThe guys at the shop were so cool! They gave me a full tour of their operation, listened to me play, answered all my questions, and even gave me a free T-shirt and sticker",
+      "images": [
+        "Fri Oct 23 2020 1:37:59 PM/Fri Oct 23 2020 1:37:59 PM-0.jpeg",
+        "Fri Oct 23 2020 1:37:59 PM/Fri Oct 23 2020 1:37:59 PM-1.jpeg",
+        "Fri Oct 23 2020 1:37:59 PM/Fri Oct 23 2020 1:37:59 PM-2.jpeg"
+      ],
+      "firstPeeper": "Anyway, here's wonderwall"
+    },
+    {
+      "name": "OFF THE HIGHWAY",
+      "time": "Fri Oct 23 2020 4:46:00 PM",
+      "location": "Highway 191, UT",
+      "latlng": {
+        "lat": 39.3323059,
+        "lng": -110.373993
+      },
+      "blurb": "",
+      "images": [
+        "Fri Oct 23 2020 4:46:00 PM/Fri Oct 23 2020 4:46:00 PM-0.jpeg"
+      ],
+      "firstPeeper": "AJAX"
+    },
+    {
+      "name": "LA SAL",
+      "time": "Sat Oct 24 2020 1:32PM",
+      "location": "La Sal Loop Road, UT",
+      "latlng": {
+        "lat": 38.6663,
+        "lng": -109.417
+      },
+      "blurb": "",
+      "images": [
+        "Sat Oct 24 2020 1:32PM/Sat Oct 24 2020 1:32PM-0.jpeg",
+        "Sat Oct 24 2020 1:32PM/Sat Oct 24 2020 1:32PM-1.jpeg"
+      ],
+      "firstPeeper": "AJAX"
+    },
+    {
+      "name": "LA SAL 2",
+      "time": "Sat Oct 24 2020 3:07PM",
+      "location": "La Sal Loop Road, UT",
+      "latlng": {
+        "lat": 38.4553,
+        "lng": -109.379
+      },
+      "blurb": "",
+      "images": [
+        "Sat Oct 24 2020 3:07PM/Sat Oct 24 2020 3:07PM-0.jpeg",
+        "Sat Oct 24 2020 3:07PM/Sat Oct 24 2020 3:07PM-1.jpeg"
+      ],
+      "firstPeeper": "AJAX"
+    },
+    {
+      "name": "AVOIDING THE STORM",
+      "time": "Sun Oct 25 2020 3:15:11 PM",
+      "location": "El Charro Loco, Moab, UT",
+      "latlng": {
+        "lat": 38.5606064,
+        "lng": -109.5478013
+      },
+      "blurb": "Yesterday was great. Finally had a real campfire with Mark and Patrick at Jaycee Park Campground. Loving the new guitar. Met some dirt bikers and helped them jump start one of their bikes. I guess dealing with a dead battery back in September payed off.\n\nThere's a major winter storm warning going on right now in this area, so I holed up in a hostel nearby to avoid the rain and snow. Will probably be grounded tomorrow as well since I'd rather not be out in freezing temperatures. Black ice is bad enough for cars.",
+      "images": [],
+      "firstPeeper": "AJAX"
     }
   ]
 }

@@ -105,7 +105,7 @@ function htmlForCheckin(checkin) {
   if (checkin.images && checkin.images.length > 0) {
     imagesInnerHtml = checkin.images.reduce((html, imageName) => {
       return `${html}
-      <img class="checkin-image" src="./content/images/${imageName}" />`
+      <img loading="lazy" class="checkin-image" src="./content/images/${imageName}" />`
     }, '')
   }
 
@@ -113,7 +113,7 @@ function htmlForCheckin(checkin) {
   if (checkin.videos && checkin.videos.length > 0) {
     videosInnerHtml = checkin.videos.reduce((html, videoName) => {
       return `${html}
-      <video class="checkin-video" controls src="./content/videos/${videoName}" />`
+      <video class="checkin-video" controls preload="metadata" src="./content/videos/${videoName}" />`
     }, '')
   }
 
@@ -164,9 +164,7 @@ ${videosInnerHtml}
 
     ${imagesHtml}
 
-    <!--
     ${videosHtml}
-    -->
 
     ${peepersHtml}
   </div>`
@@ -215,11 +213,14 @@ function scrollCheckinIntoView(checkinTime) {
 
 // ON MAP LOAD
 function onMapsApiLoad() {
-  /*
   // CREATE MAP AND CONFIGURE BOUNDS
   const bounds = new google.maps.LatLngBounds();
   david.checkins.forEach(({ latlng }) => {
-    bounds.extend(latlng)
+    if (Array.isArray(latlng)) {
+      latlng.forEach(ltln => bounds.extend(ltln))
+    } else {
+      bounds.extend(latlng)
+    }
   })
   const map = new google.maps.Map(document.getElementById('map'), {
     disableDefaultUI: true,
@@ -231,6 +232,11 @@ function onMapsApiLoad() {
 
   // CREATE CHECKIN MARKERS
   const addCheckinMarker = (checkin, isLastCheckin) => {
+    // TODO: add route on map
+    if (Array.isArray(checkin.latlng)) {
+      return
+    }
+
     let icon = { url: defaultCheckinIconUrl }
     if (isLastCheckin) {
       icon = { url: lastCheckinIconUrl }
@@ -269,7 +275,7 @@ function onMapsApiLoad() {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
   }
-  */
+  /*
 
   // This example adds an animated symbol to a polyline.
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -298,6 +304,7 @@ function onMapsApiLoad() {
     map: map,
   })
   animateCircle(line)
+  */
 }
 
 // Use the DOM setInterval() function to change the offset of the symbol
