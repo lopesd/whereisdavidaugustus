@@ -83,6 +83,7 @@ async function performExport(r) {
     path: r.trimmedPath,
     name: `${r.rename}.mp4`
   }
+  console.log('writing name', r.rename)
   fs.writeFileSync(outputMetadataFileName, JSON.stringify(metadata, null, 2))
 }
 
