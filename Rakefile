@@ -112,7 +112,7 @@ task :deployment_lambda do
 end
 
 task :push => :build do
-  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{S3_ROOT} --exclude #{CONTENT_DIR}/* --delete --acl public-read", "Pushing static website files to S3"
+  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{S3_ROOT} --exclude '#{CONTENT_DIR}/*' --delete --acl public-read", "Pushing static website files to S3"
   puts "PUSH COMPLETE"
   puts
 end
@@ -131,16 +131,25 @@ task :pull_checkins do
   puts
 end
 
-task :sync_media => :build do
+task :pull_images do 
   run_cmd "aws s3 sync #{S3_IMAGES_DIR} #{LOCAL_IMAGES_DIR}", "Syncing images from S3 to local"
-  run_cmd "aws s3 sync #{LOCAL_IMAGES_DIR} #{S3_IMAGES_DIR} --acl public-read", "Syncing images from local to S3"
-
-  run_cmd "aws s3 sync #{S3_VIDEOS_DIR} #{LOCAL_VIDEOS_DIR}", "Syncing videos from S3 to local"
-  run_cmd "aws s3 sync #{LOCAL_VIDEOS_DIR} #{S3_VIDEOS_DIR} --acl public-read", "Syncing videos from local to S3"
-
-  puts "SYNC MEDIA COMPLETE"
-  puts
 end
+
+task :push_images do
+  run_cmd "aws s3 sync #{LOCAL_IMAGES_DIR} #{S3_IMAGES_DIR} --acl public-read", "Syncing images from local to S3"
+end
+
+task :pull_videos do
+  run_cmd "aws s3 sync #{S3_VIDEOS_DIR} #{LOCAL_VIDEOS_DIR}", "Syncing videos from S3 to local"
+end
+
+task :push_videos do
+  run_cmd "aws s3 sync #{LOCAL_VIDEOS_DIR} #{S3_VIDEOS_DIR} --acl public-read", "Syncing videos from local to S3"
+end
+
+task :sync_images => [:pull_images, :push_images]
+task :sync_videos => [:pull_videos, :push_videos]
+task :sync_media => [:sync_images, :sync_videos]
 
 ### TOOLS TASKS
 task :tools_server do

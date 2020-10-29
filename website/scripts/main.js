@@ -113,7 +113,7 @@ function htmlForCheckin(checkin) {
   if (checkin.videos && checkin.videos.length > 0) {
     videosInnerHtml = checkin.videos.reduce((html, { name }) => {
       return `${html}
-      <video class="checkin-video" controls preload="metadata" src="./content/videos/${name}/${name}-720p.mp4" />`
+      <video class="checkin-video" controls preload="metadata" src="./content/videos/${name}" />`
     }, '')
   }
 
