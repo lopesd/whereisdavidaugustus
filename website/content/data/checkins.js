@@ -154,8 +154,7 @@ david = {
         "20201006_143026.jpg",
         "20201006_145209.jpg"
       ],
-      "videos": [],
-      "firstPeeper": "$LOCKED$"
+      "videos": []
     },
     {
       "name": "CAMPING BY THE NESTUCCA RIVER",
