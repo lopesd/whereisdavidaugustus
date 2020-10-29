@@ -9,6 +9,16 @@ function emptyHtml (id) {
   while (el.firstChild) el.removeChild(el.firstChild);
 }
 
+function disableControls() {
+  document.getElementById('video-name-select').disabled = true
+  document.getElementById('export-button').disabled = true
+}
+
+function enableControls() {
+  document.getElementById('video-name-select').disabled = false
+  document.getElementById('export-button').disabled = false
+}
+
 // REQUEST LIST OF FILES AND POPULATE THE LIST ON SCREEN
 async function populateVideoNameOptions() {
   const resp = await (await fetch('./list-raw-videos')).json()
@@ -39,10 +49,10 @@ function updateTrim({ start, end }) {
   let startIndex = 0
   let endIndex = david.path.length - 1
   if (david.trimStart !== 0) {
-    startIndex = david.telemetry.properties.RelativeMicroSec.findIndex(t => t && t > david.trimStart*1000)
+    startIndex = david.path.findIndex(t => t.ms > david.trimStart*1000)
   }
   if (david.trimEnd !== 0) {
-    endIndex = david.telemetry.properties.RelativeMicroSec.findIndex(t => t && t > david.trimEnd*1000)
+    endIndex = david.path.findIndex(t => t.ms > david.trimEnd*1000)
   }
   console.log("trimStart", david.trimStart)
   console.log("trimEnd", david.trimEnd)
@@ -56,9 +66,12 @@ function updateTrim({ start, end }) {
 async function requestPath(videoName) {
   const resp = await (await fetch(`./telemetry?video=${videoName}`)).json()
   david.telemetry = resp.telemetry
-  david.path = david.telemetry.geometry.coordinates
+  const pathWithoutMs = path = david.telemetry.geometry.coordinates
     .filter(p => p)
     .map(p => ({ lat: p[1], lng: p[0] }))
+  david.path = david.telemetry.properties.RelativeMicroSec
+    .filter(ms => ms)
+    .map((ms, i) => ({ ms, ...pathWithoutMs[i] }))
   david.trimmedPath = david.path.filter(p => p)
 }
 
@@ -67,6 +80,7 @@ async function setVideoPathOnMap() {
   const bounds = new google.maps.LatLngBounds()
   david.trimmedPath.forEach(latlng => bounds.extend(latlng))
   david.map.fitBounds(bounds)
+
   if (david.polyline) {
     david.polyline.setPath(david.trimmedPath)
   } else {
@@ -102,9 +116,9 @@ async function setVideoPathOnMap() {
     }
 
     // GRAB THE PATH AND DISPLAY IT ON THE MAP
-    videoNameSelect.disabled = true
+    disableControls()
     await requestPath(videoName)
-    videoNameSelect.disabled = false
+    enableControls()
     setVideoPathOnMap()
 
     // PUT THE VIDEO ON SCREEN
@@ -121,7 +135,7 @@ async function setVideoPathOnMap() {
     }
 
     // move the marker along
-    const index = david.telemetry.properties.RelativeMicroSec.findIndex(t => t && t > videoElement.currentTime*1000)
+    const index = david.path.findIndex(t => t.ms > videoElement.currentTime*1000)
     const position = david.path[index]
     david.marker.setPosition(position)
   })
@@ -154,6 +168,35 @@ async function setVideoPathOnMap() {
   document.getElementById('play-trimmed-video-button').addEventListener('click', () => {
     videoElement.currentTime = david.trimStart || 0
     videoElement.play()
+  })
+
+  document.getElementById('export-button').addEventListener('click', async () => {
+    const videoName = document.getElementById('video-name-select').value
+    const rename = document.getElementById('rename-input').value
+    if (!rename || !videoName) {
+      return
+    }
+
+    const exportParams = {
+      trimStart: david.trimStart,
+      trimEnd: david.trimEnd,
+      trimmedPath: david.trimmedPath,
+      videoName,
+      rename
+    }
+
+    disableControls()
+    const resp = await fetch('/export', {
+      method: 'POST',
+      body: JSON.stringify(exportParams),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    enableControls()
+
+    const respJson = await resp.json()
+    console.log(respJson)
   })
 })()
 

@@ -640,8 +640,8 @@
       "location": "Days Inn, Provo, UT",
       "blurb": "Testing video integration...",
       "videos": [
-        { 
-          "name": "trimmed_scaled.mp4",
+        {
+          "name": "lasal1/lasal1-720p.mp4",
           "path": [
             {
               "lat": 40.2520756,
@@ -799,6 +799,21 @@
       "firstPeeper": "AJAX"
     },
     {
+      "name": "COLORADO RIVER",
+      "time": "Sat Oct 24 2020 1:10:01 PM",
+      "location": "Highway 128, Moab, UT",
+      "latlng": {
+        "lat": 38.5561456,
+        "lng": -109.5349425
+      },
+      "blurb": "",
+      "videos": [
+        {
+          "name": "sink_inside1.mp4"
+        }
+      ]
+    },
+    {
       "name": "LA SAL",
       "time": "Sat Oct 24 2020 1:32PM",
       "location": "La Sal Loop Road, UT",
@@ -867,7 +882,9 @@
         {
           "name": "sink_inside1.mp4"
         }
-      ]
-    }
+      ],
+      "firstPeeper": "STREAK ENDED ALSO WHAT IS THIS VERT VID"
+    },
+
   ]
 }

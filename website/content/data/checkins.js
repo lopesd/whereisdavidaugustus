@@ -640,7 +640,7 @@ david = {
       "location": "Days Inn, Provo, UT",
       "blurb": "Testing video integration...",
       "videos": [
-        { 
+        {
           "name": "lasal1/lasal1-720p.mp4",
           "path": [
             {
@@ -862,12 +862,13 @@ david = {
         "lat": 38.5561456,
         "lng": -109.5349425
       },
-      "blurb": "I haven't pushed any changes to the website lately, mostly because I've been busy designing video support and prototyping a GoPro GPS pathing feature. Speaking of prototypes, here's a musical one",
+      "blurb": "I haven't pushed any changes to the website lately, mostly because I've been busy prototyping a GoPro GPS pathing feature. Speaking of prototypes, here's a musical one",
       "videos": [
         {
           "name": "sink_inside1.mp4"
         }
-      ]
+      ],
+      "firstPeeper": "STREAK ENDED ALSO WHAT IS THIS VERT VID"
     }
   ]
 }

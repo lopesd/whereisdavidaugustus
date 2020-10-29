@@ -3,9 +3,17 @@ main {
   height: 100vh;
 }
 
-#video {
+#video-wrapper-div {
   float: left;
   width: 50%;
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#video {
+  height: 400px;
 }
 
 #map {

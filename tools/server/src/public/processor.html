@@ -6,21 +6,32 @@
   <main>
     <div id="control-panel">
       RAW VIDEO: <select id="video-name-select"></select>
+ 
       <br>
+ 
+      RENAME: <input id="rename-input" type="text" />.mp4
+
+      <br><br>
+ 
       <button id="set-trim-start-button">SET TRIM START</button>
       <input type="text" id="trim-start"/>
       <button id="clear-trim-start-button">CLEAR</button>
+
       <br>
+
       <button id="set-trim-end-button">SET TRIM END</button>
       <input type="text" id="trim-end" />
       <button id="clear-trim-end-button">CLEAR</button>
+
       <br>
-      <button id="play-trimmed-video-button">PLAY TRIMMED VIDEO</button>
+      <br>
+      <button id="export-button">EXPORT</button>
     </div>
 
     <div id="content-panel">
       <div id="video-wrapper-div">
         <video controls id="video"></video>
+        <button id="play-trimmed-video-button">PLAY TRIMMED SECTION</button>
       </div>
       <div id="map"></div>
     </div>

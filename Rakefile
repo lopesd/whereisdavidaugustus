@@ -112,7 +112,7 @@ task :deployment_lambda do
 end
 
 task :push => :build do
-  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{S3_ROOT} --exclude '#{CONTENT_DIR}/*' --delete --acl public-read", "Pushing static website files to S3"
+  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{S3_ROOT} --exclude 'content/*' --delete --acl public-read", "Pushing static website files to S3"
   puts "PUSH COMPLETE"
   puts
 end
