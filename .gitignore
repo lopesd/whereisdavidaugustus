@@ -5,6 +5,5 @@ notes
 *.mp4
 *.MP4
 node_modules
-tools
-telemetry.json
-telemetry.js
+videos
+raw

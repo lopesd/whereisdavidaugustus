@@ -1,0 +1,34 @@
+<head>
+  <link rel="stylesheet" href="processor.css" />
+</head>
+
+<body>
+  <main>
+    <div id="control-panel">
+      RAW VIDEO: <select id="video-name-select"></select>
+      <br>
+      <button id="set-trim-start-button">SET TRIM START</button>
+      <input type="text" id="trim-start"/>
+      <button id="clear-trim-start-button">CLEAR</button>
+      <br>
+      <button id="set-trim-end-button">SET TRIM END</button>
+      <input type="text" id="trim-end" />
+      <button id="clear-trim-end-button">CLEAR</button>
+      <br>
+      <button id="play-trimmed-video-button">PLAY TRIMMED VIDEO</button>
+    </div>
+
+    <div id="content-panel">
+      <div id="video-wrapper-div">
+        <video controls id="video"></video>
+      </div>
+      <div id="map"></div>
+    </div>
+  </main>
+
+
+  <!-- MAPS API -->
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8&callback=onMapsApiLoad"></script>
+
+  <script src="processor.js"></script>
+</body>

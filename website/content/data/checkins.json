@@ -762,7 +762,7 @@
       ],
       "blurb": "Testing video integration...",
       "videos": [
-        "GH010440.MP4"
+        "trimmed_scaled.mp4"
       ],
       "firstPeeper": "$LOCKED$"
     },
@@ -837,6 +837,20 @@
       "blurb": "Yesterday was great. Finally had a real campfire with Mark and Patrick at Jaycee Park Campground. Loving the new guitar. Met some dirt bikers and helped them jump start one of their bikes. I guess dealing with a dead battery back in September payed off.\n\nThere's a major winter storm warning going on right now in this area, so I holed up in a hostel nearby to avoid the rain and snow. Will probably be grounded tomorrow as well since I'd rather not be out in freezing temperatures. Black ice is bad enough for cars.",
       "images": [],
       "firstPeeper": "AJAX"
+    },
+    {
+      "name": "\"PRACTICE",
+      "time": "Tue Oct 27 2020 3:28:56 PM",
+      "location": "Lazy Lizard Hostel, Moab, UT",
+      "latlng": {
+        "lat": 38.5561456,
+        "lng": -109.5349425
+      },
+      "blurb": "or practice your excuses\"",
+      "images": [
+        "Tue Oct 27 2020 3:28:56 PM/Tue Oct 27 2020 3:28:56 PM-0.jpeg"
+      ],
+      "firstPeeper": "PENTA PEEP"
     }
   ]
 }

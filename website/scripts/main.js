@@ -111,9 +111,9 @@ function htmlForCheckin(checkin) {
 
   let videosInnerHtml = ''
   if (checkin.videos && checkin.videos.length > 0) {
-    videosInnerHtml = checkin.videos.reduce((html, videoName) => {
+    videosInnerHtml = checkin.videos.reduce((html, { name }) => {
       return `${html}
-      <video class="checkin-video" controls preload="metadata" src="./content/videos/${videoName}" />`
+      <video class="checkin-video" controls preload="metadata" src="./content/videos/${name}/${name}-720p.mp4" />`
     }, '')
   }
 
@@ -224,8 +224,8 @@ function onMapsApiLoad() {
   })
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    disableDefaultUI: true,
     restriction: { latLngBounds: bounds },
+    disableDefaultUI: true,
     gestureHandling: 'cooperative'
   });
   map.fitBounds(bounds);
@@ -249,10 +249,11 @@ function onMapsApiLoad() {
       marker.addListener("mouseout", () => mouseLeaveHighlight(checkin.time))
       marker.addListener("click", () => scrollCheckinIntoView(checkin.time))
       david.allMarkers[checkin.time] = marker
-    } else if (checkin.path) {
-      const line = new google.maps.Polyline({
-        path: checkin.path,
-        map: map,
+    }
+
+    if (checkin.videos) {
+      checkin.videos.forEach(async ({ path }) => {
+        new google.maps.Polyline({ path, map })
       })
     }
   }
