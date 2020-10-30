@@ -1802,7 +1802,6 @@ david = {
         }
       ],
       "firstPeeper": "STREAK ENDED ALSO WHAT IS THIS VERT VID"
-    },
-
+    }
   ]
 }
