@@ -80,7 +80,7 @@
 
 .checkin-title-left {
   padding: 1rem;
-  width: calc(100% - 3rem);
+  /*width: calc(100% - 3rem);*/
 }
 
 .checkin-title-name {

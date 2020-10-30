@@ -41,14 +41,32 @@
 
       <div id="main-gutters">
         <div class="devlog-entry">
-          <span class="devlog-entry-date">Tue Oct 20 2020 9:24PM |</span>
-          <span class="devlog-entry-content">I'll add an entry here when I push a change or new feature. It's just meant to be a super simple way to share the technical side of what I'm doing. By the way, did you know that the length limit for peeper names has been increased to 40 chars?</span>
+          <div class="devlog-entry-content"><span class="devlog-entry-date">Thu Oct 29 2020 9:26PM |</span><b> GoPro video and GPS data trimming |</b> My ultimate goal with this feature is to be able to display a GoPro video within a checkin, while the map on the left displays the video's route and an icon that follows along the route in step with the video (basically like an aerial view). I've made some significant steps and have a working prototype, but there are a few more hurdles and design decisions to make before this thing is just the way I want it.
+
+TL;DR: GoPros since the Hero5 sample GPS coordinates multiple times per second while recording. This GPS data, alongside a lot of other telemetry, is encoded as a track within the MP4 files alongside the video and audio streams, in a format called GPMF (GoPro Metadata Format). Which is super cool! A combination of two open-source tools (gpmf-extract and gopro-telemetry) allow you to extract and export the data automatically as GeoJSON, from which you can easily read the lat/lng coordinates array, match them with their corresponding entries in the relative milliseconds array, and voila - you have a route and a timeline for your icon to follow.
+
+There is one big hurdle, and it's taken up a decent amount of time to solve to my satisfaction. If you trim any portion of the MP4 that has a GPMF track, the GPMF track becomes unreadle by the libraries I mentioned. It must be because of whatever compression algorithm is being used. The obvious solution is to extract the coordinate data first and then trim both, but that would be super tedious to do manually for every GoPro video I want to trim, so obviously I stood up a local node express server with a simple front-end that lets me pick the trim start and end times and gives me a live preview. I'm just trying to enable my artistic side!
+
+The Colorado River checkin (which, as of this writing, no one has peeped yet 👀) is the first example of this in action on the website, though it doesn't have the moving icon yet. Zoom in on the location of the marker and you'll see the route taken by the video. Eventually I want to make that zoom automatic, and obviously I want that moving icon. There's a lot of design considerations to take into account with the automatic zoom, especially on mobile. That's a story for another devlog post.
+</div>
+        <img title="this isn't xkcd" class="devlog-entry-image" src="content/images/tools_server_screenshot.png" />
+
+<div class="devlog-entry-content">
+<b>Links:</b>
+<a href="https://github.com/JuanIrache/gpmf-extract">gpmf-extract (Github)</a>
+<a href="https://github.com/JuanIrache/gopro-telemetry">gopro-telemetry (Github)</a>
+<a href="https://geojson.org/">GeoJSON.org</a>
+</div>
+        </div>
+
+        <div class="devlog-entry">
+          <div class="devlog-entry-content"><span class="devlog-entry-date">Tue Oct 20 2020 9:24PM |</span> I'll add an entry here when I push a change or new feature. It's just meant to be a super simple way to share the technical side of what I'm doing. By the way, did you know that the length limit for peeper names has been increased to 40 chars?</div>
         </div>
 
         <hr>
 
         <div class="devlog-entry">
-          <span class="devlog-entry-content"><b>SHOUT OUTS</b>
+          <div class="devlog-entry-content"><b>SHOUT OUTS</b>
 
 <b>Giulio Finestrali</b> was the original peeper - among other things, he helped with AWS Lambda@Edge and fixing caching problems
 

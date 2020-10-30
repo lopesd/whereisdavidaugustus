@@ -1,8 +1,22 @@
+body {
+  overflow: scroll;
+}
+
+main {
+  overflow: scroll;
+}
+
 .devlog-entry {
   background-color: white;
   border: 1px solid #dbdbdb;
   border-radius: 3px;
-  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.devlog-entry-image {
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
 }
 
 .devlog-entry-date {
@@ -11,6 +25,7 @@
 
 .devlog-entry-content {
   white-space: pre-wrap;
+  padding: 1rem;
 }
 
 hr {
