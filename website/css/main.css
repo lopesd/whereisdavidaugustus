@@ -111,6 +111,7 @@
 
 .checkin-image {
   vertical-align: middle;
+  height: auto;
   max-width: 100%;
   max-height: 80vh;
 }

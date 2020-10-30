@@ -103,9 +103,10 @@ function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
 function htmlForCheckin(checkin) {
   let imagesInnerHtml = ''
   if (checkin.images && checkin.images.length > 0) {
-    imagesInnerHtml = checkin.images.reduce((html, imageName) => {
+    imagesInnerHtml = checkin.images.reduce((html, { name, width, height }) => {
+
       return `${html}
-      <img loading="lazy" class="checkin-image" src="./content/images/${imageName}" />`
+      <img width="${width}" height="${height}" loading="lazy" class="checkin-image" src="./content/images/${name}" />`
     }, '')
   }
 
