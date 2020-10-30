@@ -41,6 +41,10 @@
 
       <div id="main-gutters">
         <div class="devlog-entry">
+          <div class="devlog-entry-content"><span class="devlog-entry-date">Fri Oct 30 2020 1:27PM | </span><b>Backfilling image dimensions | </b>I thought my days of running backfill scripts were over. Today I wrote some Ruby to grab the dimensions of every checkin image and augment the checkin JSON with those dimensions. This is needed because if you don't set width and height of the image tag before it fully loads, the page won't preallocate the right amount of room for each image. So if the user scrolls down past the images while they are still loading, the page will appear to flicker as the HTML updates the sizes of the img tags. This was a fun and easy one to fix.</div>
+        </div>
+
+        <div class="devlog-entry">
           <div class="devlog-entry-content"><span class="devlog-entry-date">Thu Oct 29 2020 10:14PM |</span><b> GoPro video and GPS data trimming |</b> My ultimate goal with this feature is to be able to display a GoPro video within a checkin, while the map on the left displays the video's route and an icon that follows along the route in step with the video (basically like an aerial view). I've made some significant steps and have a working prototype, but there are a few more hurdles and design decisions to make before this thing is just the way I want it.
 
 TL;DR: GoPros since the Hero5 sample GPS coordinates multiple times per second while recording. This GPS data, alongside a lot of other telemetry, is encoded as a track within the MP4 files alongside the video and audio streams, in a format called GPMF (GoPro Metadata Format). Which is super cool! A combination of two open-source tools (gpmf-extract and gopro-telemetry) allow you to extract and export the data automatically as GeoJSON, from which you can easily read the lat/lng coordinates array, match them with their corresponding entries in the relative milliseconds array (it's called RelativeMicroSeconds, but it's lying), and voila - you have a route and a timeline for your icon to follow.
@@ -73,6 +77,8 @@ Just for fun, here's what the server looks like:
 <b>Giulio Finestrali</b> was the original peeper - among other things, he helped with AWS Lambda@Edge and fixing caching problems
 
 <b>Ivan Petkov</b> is constantly checking this thing and giving me feedback - he even caught an XSS vuln and proved it by hacking my mainframe. He also holds the record for most peeps
+
+<b>Jake Jensen</b> has since smashed Ivan's record, including a ridiculous penta peep streak
 
 <b>Ari Richtberg</b> was a soundboard and focus mate as I was fixing caching problems and writing templating logic
 
