@@ -106,7 +106,13 @@ async function onDocumentLoad () {
           destinationCanvas.width = img.width * 600 / img.height
         }
         await resizer.resize(img, destinationCanvas)
-        destinationCanvas.toBlob(blob => david.images.push(blob), 'image/jpeg')
+        destinationCanvas.toBlob(blob => {
+          david.images.push({
+            data: blob,
+            width: destinationCanvas.width,
+            height: destinationCanvas.height
+          }) 
+        }, 'image/jpeg')
       }
       img.src = URL.createObjectURL(file)
     }
@@ -115,6 +121,24 @@ async function onDocumentLoad () {
 
   // CHECK IN BUTTON
   document.getElementById('checkin-button').addEventListener('click', async () => {
+    // GRAB STUFF FROM THE FORM
+    const date = new Date()
+    const currentTime = `${date.toDateString()} ${date.toLocaleTimeString()}`
+
+    const accessKeyId = document.getElementById('access-key-id-input').value
+    const secretAccessKey = document.getElementById('secret-key-input').value
+    const checkinName = document.getElementById('checkin-name-input').value
+    const checkinLocation = document.getElementById('checkin-location-input').value
+    const checkinTime = document.getElementById('checkin-time-input').value || currentTime
+    const checkinBlurb = document.getElementById('checkin-blurb-input').value
+
+    // PREPARE IMAGE JSON
+    const imageJson = david.images.map((img, i) => ({
+      name: `${checkinTime}/${checkinTime}-${i}.jpeg`,
+      width: img.width,
+      height: img.height
+    }))
+
     // GET LOCATION
     if (!navigator.geolocation) {
       displayStatus("Geolocation is not supported by this browser.")
@@ -148,16 +172,6 @@ async function onDocumentLoad () {
 
     const latlng = { lat, lng }
 
-    const date = new Date()
-    const currentTime = `${date.toDateString()} ${date.toLocaleTimeString()}`
-
-    const accessKeyId = document.getElementById('access-key-id-input').value
-    const secretAccessKey = document.getElementById('secret-key-input').value
-    const checkinName = document.getElementById('checkin-name-input').value
-    const checkinLocation = document.getElementById('checkin-location-input').value
-    const checkinTime = document.getElementById('checkin-time-input').value || currentTime
-    const checkinBlurb = document.getElementById('checkin-blurb-input').value
-
     // GET S3 CHECKINS LIST
     displayStatus('Getting S3 object...')
     s3 = new AWS.S3({
@@ -187,7 +201,7 @@ async function onDocumentLoad () {
       location: checkinLocation,
       latlng,
       blurb: checkinBlurb,
-      images: david.images.map((img, i) => `${checkinTime}/${checkinTime}-${i}.jpeg`)
+      images: imageJson
     }
     console.log(newCheckin)
     contentJson.checkins.push(newCheckin)
@@ -196,7 +210,7 @@ async function onDocumentLoad () {
     for (let i = 0; i < david.images.length; ++i) {
       displayStatus('Uploading image ' + i)
       try {
-        await putHeavyPublicS3Object(`content/images/${checkinTime}/${checkinTime}-${i}.jpeg`, david.images[i])
+        await putHeavyPublicS3Object(`content/images/${checkinTime}/${checkinTime}-${i}.jpeg`, david.images[i].data)
       } catch (e) {
         displayStatus('Uh oh. ' + e.toString())
         return
