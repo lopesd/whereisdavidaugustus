@@ -213,6 +213,12 @@ function scrollCheckinIntoView(checkinTime) {
 // ON MAP LOAD
 function onMapsApiLoad() {
   // CREATE MAP AND CONFIGURE BOUNDS
+  const continentalUSABounds = new google.maps.LatLngBounds()
+  continentalUSABounds.extend({ lat: 49.271721, lng: -125.635007 })
+  continentalUSABounds.extend({ lat: 49.531478, lng: -59.414887 })
+  continentalUSABounds.extend({ lat: 24.186119, lng: -125.193349 })
+  continentalUSABounds.extend({ lat: 24.186119, lng: -59.414887 })
+
   const bounds = new google.maps.LatLngBounds()
   david.checkins.forEach(({ latlng, path }) => {
     if (latlng) {
@@ -223,7 +229,7 @@ function onMapsApiLoad() {
   })
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    restriction: { latLngBounds: bounds }, 
+    restriction: { latLngBounds: continentalUSABounds }, 
     disableDefaultUI: true,
     gestureHandling: 'cooperative'
   })
