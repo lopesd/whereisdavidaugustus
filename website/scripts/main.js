@@ -13,7 +13,7 @@ function sleep(ms) {
 }
 
 function sanitize(string) {
-  const map = {
+  const sanitizeMap = {
       '&': '&amp;',
       '<': '&lt;',
       '>': '&gt;',
@@ -22,7 +22,7 @@ function sanitize(string) {
       "/": '&#x2F;',
   }
   const reg = /[&<>"'/]/ig
-  return string.replace(reg, match => map[match])
+  return string.replace(reg, match => sanitizeMap[match])
 }
 
 // TEST UTIL
@@ -106,15 +106,15 @@ function htmlForCheckin(checkin) {
     imagesInnerHtml = checkin.images.reduce((html, { name, width, height }) => {
 
       return `${html}
-      <img width="${width}" height="${height}" loading="lazy" class="checkin-image" src="./content/images/${name}" />`
+      <img width="${width}px" loading="lazy" class="checkin-image" src="./content/images/${name}" />`
     }, '')
   }
 
   let videosInnerHtml = ''
   if (checkin.videos && checkin.videos.length > 0) {
-    videosInnerHtml = checkin.videos.reduce((html, { name }) => {
+    videosInnerHtml = checkin.videos.reduce((html, { name, width, height }) => {
       return `${html}
-      <video class="checkin-video" controls preload="metadata" src="./content/videos/${name}" />`
+      <video style="width:${width}px;height:${height}px" class="checkin-video" controls preload="metadata" src="./content/videos/${name}" />`
     }, '')
   }
 
@@ -141,8 +141,8 @@ ${videosInnerHtml}
 
   return `
   <div class="checkin-content" 
-    onmouseenter="mouseOverHighlight('${checkin.time}')"
-    onmouseleave="mouseLeaveHighlight('${checkin.time}')"
+    onmouseenter="highlightCheckinAndMarker('${checkin.time}')"
+    onmouseleave="unHighlightCheckinAndMarker('${checkin.time}')"
     onclick="scrollCheckinIntoView('${checkin.time}')"
     id="checkin-content-${checkin.time}"
     >
@@ -172,24 +172,22 @@ ${videosInnerHtml}
 }
 
 // HIGHLIGHT
-
-// MOUSE OVER HIGHLIGHT EFFECTS
-function mouseOverHighlight(checkinTime) {
-  // highlight the marker
+function highlightCheckinAndMarker(checkinTime) {
+  // marker
   const marker = david.allMarkers[checkinTime]
   if (marker) {
     marker.setIcon(highlightedCheckinIconUrl)
     marker.setZIndex(500)
   }
 
-  // highlight the checkin div
+  // checkin div
   const checkinDiv = document.getElementById(`checkin-content-${checkinTime}`)
   checkinDiv.classList.add('mouse-over-highlight')
 }
 
 
-function mouseLeaveHighlight(checkinTime) {
-  // unhighlight the marker
+function unHighlightCheckinAndMarker(checkinTime) {
+  // marker
   const marker = david.allMarkers[checkinTime]
   if (marker) {
     if (david.checkins[david.checkins.length-1].time === checkinTime) {
@@ -200,7 +198,7 @@ function mouseLeaveHighlight(checkinTime) {
     marker.setZIndex(undefined)
   }
 
-  // unhighlight the checkin div
+  // checkin div
   const checkinDiv = document.getElementById(`checkin-content-${checkinTime}`)
   checkinDiv.classList.remove('mouse-over-highlight')
 }
@@ -225,12 +223,12 @@ function onMapsApiLoad() {
   })
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    restriction: { latLngBounds: bounds },
+    restriction: { latLngBounds: bounds }, 
     disableDefaultUI: true,
     gestureHandling: 'cooperative'
-  });
-  map.fitBounds(bounds);
-
+  })
+  map.fitBounds(bounds)
+  david.map = map
 
   // CREATE CHECKIN MARKERS
   const addCheckinMarker = (checkin, isLastCheckin) => {
@@ -245,20 +243,22 @@ function onMapsApiLoad() {
         icon,
         map
       })
-      setTimeout(() => marker.setAnimation(null), 400)
-      marker.addListener("mouseover", () => mouseOverHighlight(checkin.time))
-      marker.addListener("mouseout", () => mouseLeaveHighlight(checkin.time))
+      marker.addListener("mouseover", () => highlightCheckinAndMarker(checkin.time))
+      marker.addListener("mouseout", () => unHighlightCheckinAndMarker(checkin.time))
       marker.addListener("click", () => scrollCheckinIntoView(checkin.time))
       david.allMarkers[checkin.time] = marker
+      setTimeout(() => marker.setAnimation(null), 400)
     }
 
     if (checkin.videos) {
       checkin.videos.forEach(async ({ path }) => {
+        if (!path) return
         new google.maps.Polyline({ path, map })
       })
     }
   }
 
+  // animate the markers as they enter the screen
   const pathAnimationTime = 3000 // ms
   const pathAnimationDelay = 500 // ms
   const pathAnimationStep = pathAnimationTime / david.checkins.length
@@ -269,48 +269,6 @@ function onMapsApiLoad() {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
   }
-
-  /*
-  // This example adds an animated symbol to a polyline.
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 40.2520756, lng: -111.6639886 },
-    zoom: 16,
-    disableDefaultUI: true
-  })
-
-  // Define the symbol, using one of the predefined paths ('CIRCLE')
-  // supplied by the Google Maps JavaScript API.
-  const lineSymbol = {
-    path: google.maps.SymbolPath.CIRCLE,
-    scale: 8,
-    strokeColor: "#393",
-  }
-
-  // Create the polyline and add the symbol to it via the 'icons' property.
-  const line = new google.maps.Polyline({
-    path,
-    icons: [
-      {
-        icon: lineSymbol,
-        offset: "100%",
-      },
-    ],
-    map: map,
-  })
-  animateCircle(line)
-  */
-}
-
-// Use the DOM setInterval() function to change the offset of the symbol
-// at fixed intervals.
-function animateCircle(line) {
-  let count = 0;
-  window.setInterval(() => {
-    count = (count + 1) % 200
-    const icons = line.get("icons")
-    icons[0].offset = count / 2 + "%"
-    line.set("icons", icons)
-  }, 20)
 }
 
 // ON DOCUMENT LOAD
@@ -323,5 +281,28 @@ function animateCircle(line) {
   // ADD LISTENERS TO MAP CONTROLS
   document.getElementById('map-down-arrow').addEventListener('click', () => {
     document.getElementById('right-pane-anchor').scrollIntoView({ behavior: 'smooth' })
+  })
+
+  // WORK IN PROGRESS 
+  // Code to highlight the checkin that has been scrolled to
+  // Note - include GSAP for this to work
+  reversedCheckins.forEach(checkin => {
+    const element = document.getElementById(`checkin-content-${checkin.time}`) 
+    ScrollTrigger.create({
+      trigger: element,
+      scroller: '#checkins-pane',
+      start: "top center",
+      end: "bottom center",
+      onToggle: self => {
+        if (self.isActive) {
+          highlightCheckinAndMarker(checkin.time)
+          if (david.map) {
+            david.map.panTo(checkin.latlng)
+          }
+        } else {
+          unHighlightCheckinAndMarker(checkin.time)
+        }
+      }
+    })
   })
 })()
