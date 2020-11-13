@@ -34,13 +34,13 @@ david = {
       "images": [
         {
           "name": "20201002_122240.jpg",
-          "width": "411",
-          "height": "200"
+          "width": 411,
+          "height": 200
         },
         {
           "name": "20201002_122235.jpg",
-          "width": "411",
-          "height": "200"
+          "width": 411,
+          "height": 200
         }
       ],
       "firstPeeper": "Barack Obama"
@@ -57,8 +57,8 @@ david = {
       "images": [
         {
           "name": "20201002_151457.jpg",
-          "width": "200",
-          "height": "411"
+          "width": 200,
+          "height": 411
         }
       ],
       "firstPeeper": "creeper"
@@ -75,18 +75,18 @@ david = {
       "images": [
         {
           "name": "20201002_155712.jpg",
-          "width": "200",
-          "height": "411"
+          "width": 200,
+          "height": 411
         },
         {
           "name": "20201002_155637.jpg",
-          "width": "200",
-          "height": "411"
+          "width": 200,
+          "height": 411
         },
         {
           "name": "20201002_155304.jpg",
-          "width": "411",
-          "height": "200"
+          "width": 411,
+          "height": 200
         }
       ],
       "firstPeeper": "AJAX"
@@ -103,23 +103,23 @@ david = {
       "images": [
         {
           "name": "2020-10-03_2.jpg",
-          "width": "200",
-          "height": "411"
+          "width": 200,
+          "height": 411
         },
         {
           "name": "2020-10-03_3.jpg",
-          "width": "200",
-          "height": "411"
+          "width": 200,
+          "height": 411
         },
         {
           "name": "2020-10-03_4.jpg",
-          "width": "200",
-          "height": "411"
+          "width": 200,
+          "height": 411
         },
         {
           "name": "20201003_125745.jpg",
-          "width": "200",
-          "height": "411"
+          "width": 200,
+          "height": 411
         }
       ],
       "firstPeeper": "Tom"
@@ -136,18 +136,18 @@ david = {
       "images": [
         {
           "name": "2020-10-03_5.jpg",
-          "width": "411",
-          "height": "200"
+          "width": 411,
+          "height": 200
         },
         {
           "name": "2020-10-03_6.jpg",
-          "width": "200",
-          "height": "411"
+          "width": 200,
+          "height": 411
         },
         {
           "name": "2020-10-03_7.jpg",
-          "width": "411",
-          "height": "200"
+          "width": 411,
+          "height": 200
         }
       ],
       "firstPeeper": "Hype for TX braaaps"
@@ -164,8 +164,8 @@ david = {
       "images": [
         {
           "name": "2020-10-03_1.jpg",
-          "width": "200",
-          "height": "412"
+          "width": 200,
+          "height": 412
         }
       ],
       "firstPeeper": "🍆"
@@ -193,13 +193,13 @@ david = {
       "images": [
         {
           "name": "20201005_131800.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201005_132205.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         }
       ],
       "firstPeeper": "Lin"
@@ -216,18 +216,18 @@ david = {
       "images": [
         {
           "name": "20201005_172835.jpg",
-          "width": "450",
-          "height": "600"
+          "width": 450,
+          "height": 600
         },
         {
           "name": "20201006_143026.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201006_145209.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         }
       ],
       "videos": [
@@ -247,43 +247,43 @@ david = {
       "images": [
         {
           "name": "20201005_162729.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201005_190042.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201006_112354.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201006_121055.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201006_154438.jpg",
-          "width": "600",
-          "height": "292"
+          "width": 600,
+          "height": 292
         },
         {
           "name": "20201006_155147.jpg",
-          "width": "600",
-          "height": "292"
+          "width": 600,
+          "height": 292
         },
         {
           "name": "20201006_160732.jpg",
-          "width": "600",
-          "height": "292"
+          "width": 600,
+          "height": 292
         },
         {
           "name": "20201006_160751.jpg",
-          "width": "292",
-          "height": "600"
+          "width": 292,
+          "height": 600
         }
       ],
       "videos": [
@@ -320,23 +320,23 @@ david = {
       "images": [
         {
           "name": "20201007_134306.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201007_134843.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201007_141127.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201007_141236.jpg",
-          "width": "600",
-          "height": "800"
+          "width": 600,
+          "height": 800
         }
       ],
       "videos": [
@@ -356,18 +356,18 @@ david = {
       "images": [
         {
           "name": "20201007_155257.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201007_155041.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         },
         {
           "name": "20201007_155053.jpg",
-          "width": "450",
-          "height": "600"
+          "width": 450,
+          "height": 600
         }
       ],
       "firstPeeper": "$LOCKED$"
@@ -401,8 +401,8 @@ david = {
       "images": [
         {
           "name": "20201008_125958.jpg",
-          "width": "600",
-          "height": "450"
+          "width": 600,
+          "height": 450
         }
       ],
       "videos": [
@@ -422,13 +422,13 @@ david = {
       "images": [
         {
           "name": "20201008_142300~4.jpg",
-          "width": "336",
-          "height": "600"
+          "width": 336,
+          "height": 600
         },
         {
           "name": "20201008_142424.jpg",
-          "width": "600",
-          "height": "338"
+          "width": 600,
+          "height": 338
         }
       ],
       "videos": [
@@ -448,18 +448,18 @@ david = {
       "images": [
         {
           "name": "20201008_152957.jpg",
-          "width": "600",
-          "height": "338"
+          "width": 600,
+          "height": 338
         },
         {
           "name": "20201008_153659.jpg",
-          "width": "338",
-          "height": "600"
+          "width": 338,
+          "height": 600
         },
         {
           "name": "20201008_155028.jpg",
-          "width": "600",
-          "height": "338"
+          "width": 600,
+          "height": 338
         }
       ],
       "videos": [
@@ -530,13 +530,13 @@ david = {
       "images": [
         {
           "name": "20201012_130018.jpg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         },
         {
           "name": "20201012_130038.jpg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         }
       ],
       "videos": [
@@ -570,8 +570,8 @@ david = {
       "images": [
         {
           "name": "Wed Oct 14 2020 2:17:35 PM/Wed Oct 14 2020 2:17:35 PM-0.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         }
       ],
       "firstPeeper": "teen spirit"
@@ -588,8 +588,8 @@ david = {
       "images": [
         {
           "name": "Wed Oct 14 2020 6:06:31 PM/Wed Oct 14 2020 6:06:31 PM-0.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         }
       ],
       "firstPeeper": "Hannah"
@@ -620,28 +620,28 @@ david = {
       "images": [
         {
           "name": "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-0.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-1.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         },
         {
           "name": "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-2.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-3.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Thu Oct 15 2020 3:01PM/Thu Oct 15 2020 3:01PM-4.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         }
       ],
       "firstPeeper": "🎃👻"
@@ -658,8 +658,8 @@ david = {
       "images": [
         {
           "name": "Thu Oct 15 2020 5:56:09 PM/Thu Oct 15 2020 5:56:09 PM-0.jpeg",
-          "width": "600",
-          "height": "291"
+          "width": 600,
+          "height": 291
         }
       ],
       "firstPeeper": "Pacific coast h"
@@ -676,8 +676,8 @@ david = {
       "images": [
         {
           "name": "Fri Oct 16 2020 12:53:05 AM/Fri Oct 16 2020 12:53:05 AM-0.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         }
       ],
       "firstPeeper": "Hendrika Vascon"
@@ -694,13 +694,13 @@ david = {
       "images": [
         {
           "name": "Fri Oct 16 2020 3:28:37 PM/Fri Oct 16 2020 3:28:37 PM-0.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         },
         {
           "name": "Fri Oct 16 2020 3:28:37 PM/Fri Oct 16 2020 3:28:37 PM-1.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         }
       ],
       "firstPeeper": "🐶🐶🐶"
@@ -717,13 +717,13 @@ david = {
       "images": [
         {
           "name": "Fri Oct 16 2020 4:26PM/Fri Oct 16 2020 4:26PM-0.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Fri Oct 16 2020 4:26PM/Fri Oct 16 2020 4:26PM-1.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         }
       ],
       "firstPeeper": "Watson"
@@ -768,8 +768,8 @@ david = {
       "images": [
         {
           "name": "Sat Oct 17 2020 3:39:02 PM/Sat Oct 17 2020 3:39:02 PM-0.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         }
       ],
       "firstPeeper": "ojeje"
@@ -786,13 +786,13 @@ david = {
       "images": [
         {
           "name": "Sat Oct 17 2020 5:42:49 PM/Sat Oct 17 2020 5:42:49 PM-1.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Sat Oct 17 2020 5:42:49 PM/Sat Oct 17 2020 5:42:49 PM-0.jpeg",
-          "width": "450",
-          "height": "600"
+          "width": 450,
+          "height": 600
         }
       ],
       "firstPeeper": "Ace"
@@ -823,13 +823,13 @@ david = {
       "images": [
         {
           "name": "Mon Oct 19 2020 11:05:41 AM/Mon Oct 19 2020 11:05:41 AM-0.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Mon Oct 19 2020 11:05:41 AM/Mon Oct 19 2020 11:05:41 AM-1.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         }
       ],
       "firstPeeper": "THE JEW"
@@ -846,13 +846,13 @@ david = {
       "images": [
         {
           "name": "Mon Oct 19 2020 5:37:38 PM/Mon Oct 19 2020 5:37:38 PM-0.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Mon Oct 19 2020 5:37:38 PM/Mon Oct 19 2020 5:37:38 PM-1.jpeg",
-          "width": "600",
-          "height": "291"
+          "width": 600,
+          "height": 291
         }
       ],
       "firstPeeper": "BBBS"
@@ -883,18 +883,18 @@ david = {
       "images": [
         {
           "name": "Wed Oct 21 2020 11:38AM/Wed Oct 21 2020 11:38AM-0.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Wed Oct 21 2020 11:38AM/Wed Oct 21 2020 11:38AM-1.jpeg",
-          "width": "291",
-          "height": "600"
+          "width": 291,
+          "height": 600
         },
         {
           "name": "Wed Oct 21 2020 11:38AM/Wed Oct 21 2020 11:38AM-2.jpeg",
-          "width": "600",
-          "height": "291"
+          "width": 600,
+          "height": 291
         }
       ],
       "firstPeeper": "lets see if the limit is really 40 chara"
@@ -911,8 +911,8 @@ david = {
       "images": [
         {
           "name": "Wed Oct 21 2020 1:09:49 PM/Wed Oct 21 2020 1:09:49 PM-0.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         }
       ],
       "firstPeeper": "Ultimate Semite"
@@ -943,13 +943,13 @@ david = {
       "images": [
         {
           "name": "Thu Oct 22 2020 4:05:02 PM/Thu Oct 22 2020 4:05:02 PM-0.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         },
         {
           "name": "Thu Oct 22 2020 4:05:02 PM/Thu Oct 22 2020 4:05:02 PM-1.jpeg",
-          "width": "600",
-          "height": "600"
+          "width": 600,
+          "height": 600
         }
       ],
       "firstPeeper": "SEAAAA"
@@ -966,18 +966,18 @@ david = {
       "images": [
         {
           "name": "Fri Oct 23 2020 1:37:59 PM/Fri Oct 23 2020 1:37:59 PM-0.jpeg",
-          "width": "600",
-          "height": "337"
+          "width": 600,
+          "height": 337
         },
         {
           "name": "Fri Oct 23 2020 1:37:59 PM/Fri Oct 23 2020 1:37:59 PM-1.jpeg",
-          "width": "600",
-          "height": "337"
+          "width": 600,
+          "height": 337
         },
         {
           "name": "Fri Oct 23 2020 1:37:59 PM/Fri Oct 23 2020 1:37:59 PM-2.jpeg",
-          "width": "337",
-          "height": "600"
+          "width": 337,
+          "height": 600
         }
       ],
       "firstPeeper": "Anyway, here's wonderwall"
@@ -994,8 +994,8 @@ david = {
       "images": [
         {
           "name": "Fri Oct 23 2020 4:46:00 PM/Fri Oct 23 2020 4:46:00 PM-0.jpeg",
-          "width": "600",
-          "height": "291"
+          "width": 600,
+          "height": 291
         }
       ],
       "firstPeeper": "AJAX"
@@ -2065,7 +2065,8 @@ david = {
           ],
           "name": "colorado_river.mp4"
         }
-      ]
+      ],
+      "firstPeeper": "So purty"
     },
     {
       "name": "LA SAL",
@@ -2079,13 +2080,13 @@ david = {
       "images": [
         {
           "name": "Sat Oct 24 2020 1:32PM/Sat Oct 24 2020 1:32PM-0.jpeg",
-          "width": "600",
-          "height": "291"
+          "width": 600,
+          "height": 291
         },
         {
           "name": "Sat Oct 24 2020 1:32PM/Sat Oct 24 2020 1:32PM-1.jpeg",
-          "width": "600",
-          "height": "291"
+          "width": 600,
+          "height": 291
         }
       ],
       "firstPeeper": "AJAX"
@@ -2102,13 +2103,13 @@ david = {
       "images": [
         {
           "name": "Sat Oct 24 2020 3:07PM/Sat Oct 24 2020 3:07PM-0.jpeg",
-          "width": "600",
-          "height": "291"
+          "width": 600,
+          "height": 291
         },
         {
           "name": "Sat Oct 24 2020 3:07PM/Sat Oct 24 2020 3:07PM-1.jpeg",
-          "width": "600",
-          "height": "291"
+          "width": 600,
+          "height": 291
         }
       ],
       "firstPeeper": "AJAX"
@@ -2139,8 +2140,8 @@ david = {
       "images": [
         {
           "name": "Tue Oct 27 2020 3:28:56 PM/Tue Oct 27 2020 3:28:56 PM-0.jpeg",
-          "width": "600",
-          "height": "312"
+          "width": 600,
+          "height": 312
         }
       ],
       "firstPeeper": "PENTA PEEP"
@@ -2160,6 +2161,414 @@ david = {
         }
       ],
       "firstPeeper": "STREAK ENDED ALSO WHAT IS THIS VERT VID"
+    },
+    {
+      "name": "👀",
+      "time": "Fri Oct 30 2020 11:30:56 PM",
+      "location": "Lazy Lizard Hostel, Moab, UT",
+      "latlng": {
+        "lat": 38.5516022,
+        "lng": -109.5330185
+      },
+      "blurb": "",
+      "images": [
+
+      ],
+      "firstPeeper": "404 content not found"
+    },
+    {
+      "name": "MILL CREEK",
+      "time": "Sat Oct 31 2020 1:34PM",
+      "location": "Mill Creek Trail, Moab, UT",
+      "latlng": {
+        "lat": 38.564045,
+        "lng": -109.506303
+      },
+      "blurb": "Fewer tourists, more locals.\n\nThere's a cave hidden in plain sight if you look to your right at the canyonside as you're heading back to the parking lot. I feel an overwhelming urge to camp in it.",
+      "images": [
+        {
+          "name": "Sat Oct 31 2020 1:34PM/Sat Oct 31 2020 1:34PM-0.jpeg",
+          "width": 337,
+          "height": 600
+        },
+        {
+          "name": "Sat Oct 31 2020 1:34PM/Sat Oct 31 2020 1:34PM-1.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Oct 31 2020 1:34PM/Sat Oct 31 2020 1:34PM-2.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Oct 31 2020 1:34PM/Sat Oct 31 2020 1:34PM-3.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Oct 31 2020 1:34PM/Sat Oct 31 2020 1:34PM-4.jpeg",
+          "width": 337,
+          "height": 600
+        },
+        {
+          "name": "Sat Oct 31 2020 1:34PM/Sat Oct 31 2020 1:34PM-5.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "GMTB"
+    },
+    {
+      "name": "MY CAVE",
+      "time": "Sat Oct 31 2020 11:49PM",
+      "location": "a cave just off Mill Creek Trail, Moab, UT",
+      "latlng": {
+        "lat": 38.564622,
+        "lng": -109.512715
+      },
+      "blurb": "The full moon is so bright tonight that my headlamp barely makes a difference.\n\nThe river murmurs and even talks sometimes, I swear! Moonlight bounces off the twists in the creek, and it looks like eyes are watching. I even walked out there with my fight stick in hand to ward off whatever it was. Not sure what the plan was, honestly.\n\nDid I mention I recruited a fight stick? This thing is a freaking longsword. I was practicing my swings earlier. What am I so afraid of? Well, wildlife. I've taken all the proper bear safety precautions (you know, for all the desert bears) but I don't know if there's anything else out there. Coyotes? Shit. I don't know. This stick probably wouldn't make a difference in a fight, but it does make me feel better.\n\nClaudia, a hostel friend, spotted this cave when we were hiking the Mill Creek Waterfall Loop earlier today. It's hidden in plain sight in the canyonside, far off enough that most people aren't paying close enough attention to see it. We crossed the creek to explore it - me, Claudia, and David. Other David.\n\nOther David is a seeker. He's two years younger than me. He ditched his church a few years ago and is on a quest for highest truth. He's a thoughtful guy, not content with small talk, and so instead we try to define love and the soul. I'm richer for it. Claudia is a masseuse. I helped her set up her business address with Google and SquareSpace. She's working from the hostel, taking tourist clients in the city. No funny business. We talk about how she protects herself from weirdos.\n\nThe fire I started is just red coals now. Soon it'll start getting cold in my little cave. Seriously, what an awesome little cave.\n\nMan, some interesting people at the Lazy Lizard. Bill might have been my favorite. He's a techie troubadour like me! He's older (pushing 50 maybe) and likes to build webapps that track location history and download maps directly to your phone. He recommends I switch from Google Maps to Leaflet, and we bond over GeoJSON. Amazing! It seems like a silly thing to bond over, until you think about what it really means to both of us: an intersection between exploration and tech, two of our shared passions.\n\nBill even showed me how to fashion a weed bowl out of a soda can, which came in handy tonight. Actually, now that I think about it, weed is probably why I was stupid paranoid about coyotes earlier. Or maybe it's the Halloween spirit? Oof! It's definitely getting colder in here. I should sleep. Without a sleep mask, I'm forced to get up with the sun. I used to have a sleep mask, but... it was in the backpack. Keep forgetting to replace it.",
+      "images": [
+        {
+          "name": "Sat Oct 31 2020 11:49PM/Sat Oct 31 2020 11:49PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Oct 31 2020 11:49PM/Sat Oct 31 2020 11:49PM-1.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Oct 31 2020 11:49PM/Sat Oct 31 2020 11:49PM-2.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Oct 31 2020 11:49PM/Sat Oct 31 2020 11:49PM-3.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "GUESS WHO'S BACK, AJAX BACK"
+    },
+    {
+      "name": "LANDMARKS",
+      "time": "Sun Nov 1 2020 4:35PM",
+      "location": "Arches and Canyonlands National Parks, UT",
+      "latlng": {
+        "lat": 38.447197,
+        "lng": -109.823951
+      },
+      "blurb": "Yesterday was the 1 month anniversary of me being on the road, plus I woke up in a cave and then hit 10k on the odometer\n\nAmazing",
+      "images": [
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-1.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-2.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-3.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-4.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-5.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-6.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-7.jpeg",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "name": "Sun Nov 1 2020 4:35PM/Sun Nov 1 2020 4:35PM-8.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "Just say no to the streak. Uber"
+    },
+    {
+      "name": "PIT STOP",
+      "time": "Mon Nov 02 2020 6:51:41 PM",
+      "location": "Cortez, CO",
+      "latlng": {
+        "lat": 37.3482698,
+        "lng": -108.5813821
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Mon Nov 02 2020 6:51:41 PM/Mon Nov 02 2020 6:51:41 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "chemtrails"
+    },
+    {
+      "name": "REST DAY",
+      "time": "Tue Nov 03 2020 8:26:17 PM",
+      "location": "Best Western Inn, Cortez, CO",
+      "latlng": {
+        "lat": 37.3482336,
+        "lng": -108.5774113
+      },
+      "blurb": "Feels like the right day to binge the entire Switchfoot discography\n\nAnd by \"entire\" I mean The Legend of Chin through Oh Gravity",
+      "images": [
+
+      ],
+      "firstPeeper": "AJAX"
+    },
+    {
+      "name": "TRYING TO UNLOCK THE WING CAP",
+      "time": "Wed Nov 04 2020 2:23:10 PM",
+      "location": "Highway 160, Shonto, AZ",
+      "latlng": {
+        "lat": 36.5314065,
+        "lng": -110.5700371
+      },
+      "blurb": "lol",
+      "images": [
+        {
+          "name": "Wed Nov 04 2020 2:23:10 PM/Wed Nov 04 2020 2:23:10 PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "Praise the sun"
+    },
+    {
+      "name": "DID YOU KNOW",
+      "time": "Wed Nov 04 2020 6:06:35 PM",
+      "location": "Flagstaff, AZ",
+      "latlng": {
+        "lat": 35.1949822,
+        "lng": -111.6342862
+      },
+      "blurb": "Flagstaff is neither a flag nor a staff",
+      "images": [
+
+      ],
+      "firstPeeper": "portmanteaus"
+    },
+    {
+      "name": "GRAND CANYON INN & MOTEL",
+      "time": "Wed Nov 04 2020 9:50:38 PM",
+      "location": "Valle, AZ",
+      "latlng": {
+        "lat": 35.6531418,
+        "lng": -112.1384016
+      },
+      "blurb": "Tomorrow is gonna be sickkkkk",
+      "images": [
+
+      ],
+      "firstPeeper": "🏞"
+    },
+    {
+      "name": "GRAND CANYONEERING",
+      "time": "Thu Nov 05 2020 1:44:49 PM",
+      "location": "Mather Point Overlook, Grand Canyon, AZ",
+      "latlng": {
+        "lat": 36.0616239,
+        "lng": -112.107911
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Thu Nov 05 2020 1:44:49 PM/Thu Nov 05 2020 1:44:49 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Thu Nov 05 2020 1:44:49 PM/Thu Nov 05 2020 1:44:49 PM-1.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "Uber"
+    },
+    {
+      "name": "THE HECKIN' CHONK CANYON",
+      "time": "Thu Nov 05 2020 3:14:07 PM",
+      "location": "Angel Bright Trail, Grand Canyon, AZ",
+      "latlng": {
+        "lat": 36.0578941,
+        "lng": -112.1423876
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Thu Nov 05 2020 3:14:07 PM/Thu Nov 05 2020 3:14:07 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Thu Nov 05 2020 3:14:07 PM/Thu Nov 05 2020 3:14:07 PM-1.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Thu Nov 05 2020 3:14:07 PM/Thu Nov 05 2020 3:14:07 PM-2.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Thu Nov 05 2020 3:14:07 PM/Thu Nov 05 2020 3:14:07 PM-3.jpeg",
+          "width": 600,
+          "height": 353
+        }
+      ],
+      "firstPeeper": "Momo"
+    },
+    {
+      "name": "AZ-64",
+      "time": "Thu Nov 05 2020 5:19:39 PM",
+      "location": "State Highway 64, AZ",
+      "latlng": {
+        "lat": 35.802327,
+        "lng": -112.1309783
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Thu Nov 05 2020 5:19:39 PM/Thu Nov 05 2020 5:19:39 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Thu Nov 05 2020 5:19:39 PM/Thu Nov 05 2020 5:19:39 PM-1.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "AYYYYYYYYYYYYYYYYYYYYYJAX"
+    },
+    {
+      "name": "IT BEARS THE REMINDER",
+      "time": "Thu Nov 05 2020 8:12:56 PM",
+      "location": "Grand Canyon Inn Restaurant, Valle, AZ",
+      "latlng": {
+        "lat": 35.6540351,
+        "lng": -112.1386047
+      },
+      "blurb": "OK, we need to talk about the Grand Canyon. It's like the biggest geological feature I've ever laid eyes on besides the freaking ocean. It's got more greenery to it than I saw in the canyons in Utah - which is a plus in these PNW-accustomed eyes - and the multi-day hike to the river and back is a tantalizing challenge that I've bookmarked for a later time.\n\nHonestly, it was sensorial and emotional overload after a point. Maybe my heart, or my spirit, or whatever it is, isn't wide open enough to let all the light in. Am I broken?  Is my rational grip on reality so tight that I've blotted out the sublime?\n\nNah. That's just talk. I've been struck by many things in the last 36 days, things that make me laugh manically and whoop into my helmet and string together expletives as creatively as I can. It's just hard to be fully appreciative when I'm running low on sleep (mild insomnia, my arch nemesis!). You learn, after years of living in an emotional human, to have a checklist for when your emotions feel off. Am I tired? Hungry? Thirsty? Lacking in exercise? Sick or in pain somewhere? Our physical bodies are, for the most part, responsible for the state of our brains. It's an obvious fact, but it bears the reminder. At least, for me.\n\nUnrelated but - what better way to appreciate this country than to visit the Grand Canyon, eat some apple pie, and watch an election unfold?",
+      "images": [
+        {
+          "name": "Thu Nov 05 2020 8:12:56 PM/Thu Nov 05 2020 8:12:56 PM-0.jpeg",
+          "width": 600,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "🥧🍰"
+    },
+    {
+      "name": "TEGENWIND",
+      "time": "Fri Nov 06 2020 2:36:46 PM",
+      "location": "Sunset Point, Highway 17, AZ",
+      "latlng": {
+        "lat": 34.1859018,
+        "lng": -112.1344534
+      },
+      "blurb": "Strong crosswinds today keeping me in 5th gear.\n\nWish I could've stayed at the Grand Canyon longer but a storm's brewing, and they're expecting snow. I'm Phoenix bound today.",
+      "images": [
+        {
+          "name": "Fri Nov 06 2020 2:36:46 PM/Fri Nov 06 2020 2:36:46 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "Watson 🐶"
+    },
+    {
+      "name": "REGROUPING",
+      "time": "Sat Nov 07 2020 5:37:55 PM",
+      "location": "Phoenix, Arizona",
+      "latlng": {
+        "lat": 33.4350655,
+        "lng": -111.8294569
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Sat Nov 07 2020 5:37:55 PM/Sat Nov 07 2020 5:37:55 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "🔥🦅"
+    },
+    {
+      "name": "PAPAGO",
+      "time": "Tue Nov 10 2020 4:08:03 PM",
+      "location": "Papago Park, Phoenix, AZ",
+      "latlng": {
+        "lat": 33.4576131,
+        "lng": -111.9489534
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Tue Nov 10 2020 4:08:03 PM/Tue Nov 10 2020 4:08:03 PM-0.jpeg",
+          "width": 600,
+          "height": 337
+        }
+      ],
+      "firstPeeper": "🌵🏜"
+    },
+    {
+      "name": "SAGUARO",
+      "time": "Wed Nov 11 2020 2:42:10 PM",
+      "location": "Saguaro National Park, Tucson, AX",
+      "latlng": {
+        "lat": 32.2472924,
+        "lng": -111.1751158
+      },
+      "blurb": "don't drink the cactus juice",
+      "images": [
+        {
+          "name": "Wed Nov 11 2020 2:42:10 PM/Wed Nov 11 2020 2:42:10 PM-0.jpeg",
+          "width": 600,
+          "height": 337
+        }
+      ],
+      "firstPeeper": "AJAX"
+    },
+    {
+      "name": "ONESON TUCSON",
+      "time": "Wed Nov 11 2020 10:39:00 PM",
+      "location": "Red Lion Inn & Suites, Tucson, AZ",
+      "latlng": {
+        "lat": 32.2199006,
+        "lng": -110.9809176
+      },
+      "blurb": "redson blueson",
+      "images": [
+
+      ]
     }
   ]
 }
