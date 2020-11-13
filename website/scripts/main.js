@@ -106,7 +106,7 @@ function htmlForCheckin(checkin) {
     imagesInnerHtml = checkin.images.reduce((html, { name, width, height }) => {
 
       return `${html}
-      <img width="${width}px" loading="lazy" class="checkin-image" src="./content/images/${name}" />`
+      <img width="${width}px" height="${height}px" loading="lazy" class="checkin-image" src="./content/images/${name}" />`
     }, '')
   }
 
