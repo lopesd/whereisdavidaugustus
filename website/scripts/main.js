@@ -59,6 +59,13 @@ async function onClickPeepButton(event) {
   document.getElementById(`${time}-peeper-pane-wrapper`).innerHTML = innerHTMLForPeeperPane(time, response.firstPeeper, !response.peepSuccessful)
 }
 
+// Don't trigger a click on the checkin if you click in the peeper pane
+// This prevents a bug where the user can't type in the pane because it 
+// scrolled out of the way.
+function peeperPaneClick(e) {
+  e.stopPropagation()
+}
+
 async function postPeep(time, peeperName) {
   const url = 'https://www.whereisdavidaugustus.com/peep'
   const body = { time, peeper: peeperName }
@@ -93,7 +100,7 @@ function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
     </div>`
   } else {
     return `
-    <div class="checkin-peeper-pane available" data-checkin-time="${time}">
+    <div onclick="peeperPaneClick(event)" class="checkin-peeper-pane available" data-checkin-time="${time}">
       <input class="checkin-peeper-name-input" type="text" maxlength="40" placeholder="what's your name? quick!"/>
       <button class="checkin-claim-first-peep-button" onclick="onClickPeepButton(event)">PEEP</button>
     </div>`
@@ -292,6 +299,7 @@ function onMapsApiLoad() {
   // WORK IN PROGRESS 
   // Code to highlight the checkin that has been scrolled to
   // Note - include GSAP for this to work
+  /*
   reversedCheckins.forEach(checkin => {
     const element = document.getElementById(`checkin-content-${checkin.time}`) 
     ScrollTrigger.create({
@@ -311,4 +319,5 @@ function onMapsApiLoad() {
       }
     })
   })
+  */
 })()
