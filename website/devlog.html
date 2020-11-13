@@ -41,7 +41,9 @@
 
       <div id="main-gutters">
         <div class="devlog-entry">
-          <div class="devlog-entry-content"><span class="devlog-entry-date">Fri Oct 30 2020 1:27PM | </span><b>Backfilling image dimensions | </b>I thought my days of running backfill scripts were over. Today I wrote some Ruby to grab the dimensions of every checkin image and augment the checkin JSON with those dimensions. This is needed because if you don't set width and height of the image tag before it fully loads, the page won't preallocate the right amount of room for each image. So if the user scrolls down past the images while they are still loading, the page will appear to flicker as the HTML updates the sizes of the img tags. This was a fun and easy one to fix.</div>
+          <div class="devlog-entry-content"><span class="devlog-entry-date">Fri Oct 30 2020 1:27PM | </span><b>Backfilling image dimensions | </b>I thought my days of running backfill scripts were over. Today I wrote some Ruby to grab the dimensions of every checkin image and augment the checkin JSON with those dimensions. This is needed because if you don't set width and height of the image tag before it fully loads, the page won't preallocate the right amount of room for each image. So if the user scrolls down past the images while they are still loading, the page will appear to flicker as the HTML updates the sizes of the img tags.
+
+I wasn't planning on fixing this bug yet but since I'm planning on pushing some features that require a consistent scrolling experience, the priority got bumped.</div>
         </div>
 
         <div class="devlog-entry">
