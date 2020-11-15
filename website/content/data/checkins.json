@@ -2484,7 +2484,7 @@
     {
       "name": "SAGUARO",
       "time": "Wed Nov 11 2020 2:42:10 PM",
-      "location": "Saguaro National Park, Tucson, AX",
+      "location": "Saguaro National Park, Tucson, AZ",
       "latlng": {
         "lat": 32.2472924,
         "lng": -111.1751158
@@ -2510,6 +2510,91 @@
       "blurb": "redson blueson",
       "images": [],
       "firstPeeper": "I do not like green eggs and ham"
+    },
+    {
+      "name": "MOUNT LEMMON",
+      "time": "Sat Nov 14 2020 1:52:16 PM",
+      "location": "Mt Lemmon Highway, Tucson, AZ",
+      "latlng": {
+        "lat": 32.3577039,
+        "lng": -110.7252652
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Sat Nov 14 2020 1:52:16 PM/Sat Nov 14 2020 1:52:16 PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "Tell me, dear brother - did you find it?"
+    },
+    {
+      "name": "WHEN LIFE GIVES YOU LEMMONS",
+      "time": "Sat Nov 14 2020 3:45PM",
+      "location": "Mt Lemmon Highway, Tucson, AZ",
+      "latlng": {
+        "lat": 32.453246,
+        "lng": -110.746186
+      },
+      "blurb": "Mount Lemmon was disgusting. One full hour of twisting highway (with even an occasional switchback!) grants you gradually more spectacular views of a mountainside that's way too green for this kind of desert, peppered with boulders and rock formations that look almost intentionally arranged, all set under the kind of vastly empty sky and maximally distant horizon that only the desert offers. It's like someone mashed together the best parts of Washington, Utah, and Arizona. Make sure you catch the sunset on the way down. I've never seen a mountainside quite so pink set against a sky so deeply orange.\n\nAt the top is a little community called Summerhaven, with a gift shop, cabins, a few eateries. I park just outside the Cookie Cabin and sit for a while lamenting how crowded the dessert shop is. I want a cookie. But I'm not going in. COVID rules. A young lady (early college aged, I'm guessing) notices me on the bike and waves. \"Can I get on the back??\" \"Sure,\" I joke. She's serious though, and promptly gets up and walks over. \"Uhhh, I don't have a helmet for you...\" \"Can you just go slow? I haven't been on a bike in ten years. Lately I've been ranting about wanting to ride one.\" I allow it. She puts on her mask, hops on the back, and we take a short joyride to the ski resort and back. Her name's Madelyn, and she comes from a family of Harley riders. She puts the ride on Snapchat and asks me to do a wheelie. Freakin' zoomers.\n\nNear the summit, take a right and continue past the fire district. A primitive rocky road begins. Old Mt Lemmon Road slithers northeast down the mountain, so thoroughly twisty you'd think it was carved by a river. I can't resist the call, but I also can't confidently break 15mph in this rough terrain. My Honda NC700X lies partway between adventure and street bike. I've got the tires and suspension to do this kind of thing, but the lackluster ground clearance and medium weight class mean I should stay away from anything you wouldn't classify as \"light off-roading\". Trust me. I nearly died in the Yakima desert proving this to myself. \n\nFifteen minutes down the rocky road, I run into an older gentleman on a red Honda CRF250 going up the mountain. We stop next to each other with grins and knowing looks in our eyes. We're part of the same tribe. During solitary moments like these, meeting someone who's on the same kind of journey instantly generates a kind of provisional familiarity - an intimacy, even. \"Turn your bike all the way off,\" he advises, implying he wants more than just a cursory exchange of pleasantries. I oblige. He takes a look at my bike, and I know exactly what he's thinking. \"Don't worry,\" I say, \"I know not to bite off more than I can chew.\" His CRF is a much better fit for this kind of trail. With a skeptical glance, he points to an angry pile of rocks on the side of the road and says \"THAT'S what the road looks like about half a mile down. Rocks so sharp they'll tear your tires rim to rim.\" Gulp. I assure him that I'm not going much further and that I know my limits - though I'm grateful for the heads up. We trade stories.\n\nAs the sun sets and I head back down the way I came in, I stop at a pullout for a picture. The family in the car ahead of me looks... a little off? I ask them if they're OK, and the young father says \"yeah we're good - just having a little throw-up problem\" as he herds his toddler back into the car. A kid pokes her head out the window, sees my GoPro, and asks \"Do you have a YouTube channel??\" \"Yeah!\" \"Are you famous??\" \"Nope!\" \"Oh.\" Freakin' zoomers.",
+      "images": [
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-1.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-2.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-3.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-4.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-5.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-6.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-7.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-8.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-9.jpeg",
+          "width": 600,
+          "height": 300
+        },
+        {
+          "name": "Sat Nov 14 2020 3:45PM/Sat Nov 14 2020 3:45PM-10.jpeg",
+          "width": 600,
+          "height": 182
+        }
+      ]
     }
   ]
 }
