@@ -119,10 +119,17 @@ function htmlForCheckin(checkin) {
 
   let videosInnerHtml = ''
   if (checkin.videos && checkin.videos.length > 0) {
-    videosInnerHtml = checkin.videos.reduce((html, { name, width, height }) => {
+    videosInnerHtml = checkin.videos.reduce((html, video) => {
+      const { name, width, height } = video
       return `${html}
-      <video style="width:${width}px;height:${height}px" class="checkin-video" controls preload="metadata" src="./content/videos/${name}" />`
+      <video style="width:${width}px;height:${height}px" class="checkin-video" controls preload="metadata" src="./content/videos/${name}" data-video-name="${name}"/>`
     }, '')
+
+    // also add each video metadata to a global array for easy access (helpful for the video callbacks)
+    david.allCheckinVideos = david.allCheckinVideos || {}
+    checkin.videos.forEach(video => { 
+      david.allCheckinVideos[video.name] = video
+    })
   }
 
   let peepersHtml =
@@ -282,6 +289,17 @@ function onMapsApiLoad() {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
   }
+
+  // create the circular path marker for gopro videos, invisible for now
+  david.pathMarker = new google.maps.Marker({
+    map: david.map,
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 6,
+      strokeColor: "#393",
+    },
+    visibility: false
+  })
 }
 
 // ON DOCUMENT LOAD
@@ -294,6 +312,34 @@ function onMapsApiLoad() {
   // ADD LISTENERS TO MAP CONTROLS
   document.getElementById('map-down-arrow').addEventListener('click', () => {
     document.getElementById('right-pane-anchor').scrollIntoView({ behavior: 'smooth' })
+  })
+
+  // ADD LISTENERS TO VIDEO ELEMENTS
+  document.querySelectorAll('.checkin-video').forEach(videoElement => {
+    // pause all other videos when a video plays
+    videoElement.addEventListener('play', () => {
+      document.querySelectorAll('.checkin-video').forEach(otherVideoElement => {
+        if (otherVideoElement !== videoElement) {
+          otherVideoElement.pause()
+        }
+      })
+    })
+
+    // erase the path marker when a video pauses
+    videoElement.addEventListener('pause', () => {
+      david.pathMarker.setVisible(false) 
+    })
+
+    // update the path marker as the video plays
+    videoElement.addEventListener('timeupdate', () => {
+      // place a marker along the path
+      const video = david.allCheckinVideos[videoElement.dataset.videoName]
+      if (!video.path) return
+      const index = video.path.findIndex(t => t.ms > videoElement.currentTime*1000)
+      const position = video.path[index]
+      david.pathMarker.setPosition(position)
+      david.pathMarker.setVisible(true)
+    })
   })
 
   // WORK IN PROGRESS 
