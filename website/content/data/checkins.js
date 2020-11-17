@@ -305,8 +305,7 @@ david = {
       ],
       "videos": [
 
-      ],
-      "firstPeeper": "$LOCKED$"
+      ]
     },
     {
       "name": "NESTUCCA BAY WILDLIFE REFUGE",
