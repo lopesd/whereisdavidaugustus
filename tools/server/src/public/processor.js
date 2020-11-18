@@ -66,10 +66,11 @@ function updateTrim({ start, end }) {
 async function requestPath(videoName) {
   const resp = await (await fetch(`./telemetry?video=${videoName}`)).json()
   david.telemetry = resp.telemetry
-  const pathWithoutMs = path = david.telemetry.geometry.coordinates
+  console.log("Received telemetry: ", david.telemetry)
+  const pathWithoutMs = david.telemetry.geometry.coordinates
     .filter(p => p)
     .map(p => ({ lat: p[1], lng: p[0] }))
-  david.path = david.telemetry.properties.RelativeMicroSec
+  david.path = (david.telemetry.properties.RelativeMicroSec || [])
     .filter(ms => ms)
     .map((ms, i) => ({ ms, ...pathWithoutMs[i] }))
   david.trimmedPath = david.path.filter(p => p)
@@ -180,7 +181,6 @@ async function setVideoPathOnMap() {
     const exportParams = {
       trimStart: david.trimStart,
       trimEnd: david.trimEnd,
-      trimmedPath: david.trimmedPath,
       videoName,
       rename
     }
