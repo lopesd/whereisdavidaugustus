@@ -230,9 +230,7 @@ david = {
           "height": 450
         }
       ],
-      "videos": [
-
-      ],
+      "videos": [],
       "firstPeeper": "FUCK YES I GOT A PEEP"
     },
     {
@@ -286,9 +284,7 @@ david = {
           "height": 600
         }
       ],
-      "videos": [
-
-      ],
+      "videos": [],
       "firstPeeper": "Z̶̡̖̩̯̘̱͚͖̖̥̻̲̲"
     },
     {
@@ -300,12 +296,9 @@ david = {
         "lng": -123.893772
       },
       "blurb": "JK I'm back on the fog hype. Made for some eerie riding today. #fogpog",
-      "images": [
-
-      ],
-      "videos": [
-
-      ]
+      "images": [],
+      "videos": [],
+      "firstPeeper": "AAALLLLEEEXXXXXX"
     },
     {
       "name": "NESTUCCA BAY WILDLIFE REFUGE",
@@ -338,9 +331,7 @@ david = {
           "height": 800
         }
       ],
-      "videos": [
-
-      ],
+      "videos": [],
       "firstPeeper": "$LOCKED$"
     },
     {
@@ -380,12 +371,8 @@ david = {
         "lng": -124.060844
       },
       "blurb": "The walls are scuffed the rug is ugly but at least my door locks so I don't have to worry about my crazy neighbor",
-      "images": [
-
-      ],
-      "videos": [
-
-      ],
+      "images": [],
+      "videos": [],
       "firstPeeper": "$LOCKED$"
     },
     {
@@ -404,9 +391,7 @@ david = {
           "height": 450
         }
       ],
-      "videos": [
-
-      ],
+      "videos": [],
       "firstPeeper": "$LOCKED$"
     },
     {
@@ -430,9 +415,7 @@ david = {
           "height": 338
         }
       ],
-      "videos": [
-
-      ],
+      "videos": [],
       "firstPeeper": "Tham"
     },
     {
@@ -461,9 +444,7 @@ david = {
           "height": 338
         }
       ],
-      "videos": [
-
-      ],
+      "videos": [],
       "firstPeeper": "$LOCKED$"
     },
     {
@@ -475,12 +456,8 @@ david = {
         "lng": -123.10741
       },
       "blurb": "Hol up -- Eugene is actually a super cute town? Like a quainter Portland. I think I might actually love it. And this cheap hostel is absolutely brimming with personality, just like every restaurant and store in the area",
-      "images": [
-
-      ],
-      "videos": [
-
-      ],
+      "images": [],
+      "videos": [],
       "firstPeeper": "AJAX"
     },
     {
@@ -492,12 +469,8 @@ david = {
         "lng": -123.10741
       },
       "blurb": "Just letting you know I'm still alive. Been working on this website and enjoying the town. I can't really get a full feel for the culture because of COVID, but even with limited human interaction and no group activities I'm digging it",
-      "images": [
-
-      ],
-      "videos": [
-
-      ],
+      "images": [],
+      "videos": [],
       "firstPeeper": "mr peanut"
     },
     {
@@ -509,12 +482,8 @@ david = {
         "lng": -123.10741
       },
       "blurb": "New website feature! You can now \"peep\" a checkin by being the first one to click the PEEP button at the bottom of each checkin card. I've locked old checkins from allowing peeps, but I'll be opening them up for peeps randomly over time, so check back often. It's a great way for me to feel connected to whoever is following along, which kind of the point of this website (besides being a fun technical challenge)",
-      "images": [
-
-      ],
-      "videos": [
-
-      ],
+      "images": [],
+      "videos": [],
       "firstPeeper": "IVAN 🍻"
     },
     {
@@ -538,9 +507,7 @@ david = {
           "height": 600
         }
       ],
-      "videos": [
-
-      ],
+      "videos": [],
       "firstPeeper": "It me 👻"
     },
     {
@@ -552,9 +519,7 @@ david = {
         "lng": -123.1074515
       },
       "blurb": "There's a young man, Cliff, who wears a beard that reminds me of Ian, an old co-worker. \n\nThere's a young lady, Emily, who wants to be the world's next big prog rock pianist. She listens when I play guitar.\n\nThere were these two older gentlemen being insulting toward each other over nothing. \"He started it!\" I call them out for fighting like grade school kids. They settle down when they realize their attitudes only make them look foolish.\n\nThe hostel owner - also the head handyman - is a gruff middle aged gentleman with a heart similar to mine. He spent a few years working in schools in Europe, busked for a living for a while, and did odd jobs ranging from carpentry to web dev. He's trying to sell the place, and I semi-seriously consider it. He offers me his joint - I decline. COVID rules. I prefer sativa anyway.\n\nI take pictures of places and sights but I shouldn't forget to take note of the people I meet. And I'm thankful I get to meet anyone at all, even if briefly, even as we sanitize the things we touch, cover our face holes, keep our distance like we're radioactive. It's not personal.",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "Not Ajax"
     },
     {
@@ -602,9 +567,7 @@ david = {
         "lng": -123.290948
       },
       "blurb": "Got myself a nice hotel room as compensation for today going far less than perfect.\n\nBut losing the backpack is a blessing in disguise. I'm still learning how to pack most efficiently and what's really necessary to bring. Now there's a forcing function. If I restock on the lost stuff frugally, I might have room for a travel guitar.\n\nI've been interested in these carbon-fiber detachable-neck guitars made by KLOS... and their headquarters would make a convenient next destination if I decide to go to Utah. Hm",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "👻🎃"
     },
     {
@@ -736,9 +699,7 @@ david = {
         "lng": -122.9458387
       },
       "blurb": "but I sure as hell can try",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "Yolo 🤷🏻‍♀️"
     },
     {
@@ -750,9 +711,7 @@ david = {
         "lng": -122.953579
       },
       "blurb": "Am I crazy? Who does this - jumps on a bike with only a vague plan and leaves his life behind?\n\nDon't get me wrong, this stunt I'm pulling is freaking awesome. But I work hard to stave off the loneliness and the creeping doubts and sometimes I wonder if I thought this through enough. Today was rough and filled with questions.\n\nBut tonight at the campsite I met three bikers with a diverse set of motorcycles - an old-school V-Strom (pre-beak), a Harley Dynah Street Bob, and a frankenstein project dirt bike that at one point was some sort of Honda (I think?). Jeff, Thomas, and Chris. Cherry and friendly af. Thomas pulls up a metal pannier by the fire for me to sit on. I pull it back a couple more feet. COVID rules. And what a surprise - they have no plans and no dates either! They're hitting the coast tomorrow and just gonna mosey on wherever the wind takes them. Thomas is a software dev like me, and Jeff even lives on the bike like I do. I lay down the questions and we talk it through. I get recommendations, stories, laughs. Lots of laughs. These guys are nuts. Jeff gives me a sticker that says \"Go fast, don't die\".\n\nI wanted to feel sane. I still feel crazy. But at least I'm not alone.",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "OdF"
     },
     {
@@ -805,9 +764,7 @@ david = {
         "lng": -119.4894386
       },
       "blurb": "and why is it LoFi",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "Creeper"
     },
     {
@@ -865,9 +822,7 @@ david = {
         "lng": -115.7406676
       },
       "blurb": "Man, the people that work at motorcycle shops are really cool. Feels like bikers are a super friendly bunch if you're \"in\". I'm glad I'm in. This is my tribe! Well, one of them. \n\nThe I-80 stretches as far as the eye can see in a straight line. I think they call it the 80 because that's actually the speed limit for most of it. First time I've ever seen a speed limit that high. Kinda wish I had a bigger bike - the ol NC, full cargo, struggles against the wind sometimes.\n\nAt around 6 the sun steps behind a mountain and the temperature drops abruptly. At around 6:20 the bugs come out, and I can feel them kamikaze against my jeans and jacket. Put your visor down. I don't care how beautiful the twilight is.\n\nElko is busier than I thought it would be! One of the bike shop guys I mentioned in the first paragraph gave me a recommendation for a food place called The Star, so I decide to check it out. I step inside, and it's completely packed. Not a mask in sight. There's some hand sanitizer by the door, and hilariously it's empty. I leave. COVID rules.",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "Dikers"
     },
     {
@@ -925,9 +880,7 @@ david = {
         "lng": -111.8972805
       },
       "blurb": "no u tah",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "Lin"
     },
     {
@@ -2122,9 +2075,7 @@ david = {
         "lng": -109.5478013
       },
       "blurb": "Yesterday was great. Finally had a real campfire with Mark and Patrick at Jaycee Park Campground. Loving the new guitar. Met some dirt bikers and helped them jump start one of their bikes. I guess dealing with a dead battery back in September payed off.\n\nThere's a major winter storm warning going on right now in this area, so I holed up in a hostel nearby to avoid the rain and snow. Will probably be grounded tomorrow as well since I'd rather not be out in freezing temperatures. Black ice is bad enough for cars.",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "AJAX"
     },
     {
@@ -2170,9 +2121,7 @@ david = {
         "lng": -109.5330185
       },
       "blurb": "",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "404 content not found"
     },
     {
@@ -2336,9 +2285,7 @@ david = {
         "lng": -108.5774113
       },
       "blurb": "Feels like the right day to binge the entire Switchfoot discography\n\nAnd by \"entire\" I mean The Legend of Chin through Oh Gravity",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "AJAX"
     },
     {
@@ -2368,9 +2315,7 @@ david = {
         "lng": -111.6342862
       },
       "blurb": "Flagstaff is neither a flag nor a staff",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "portmanteaus"
     },
     {
@@ -2382,9 +2327,7 @@ david = {
         "lng": -112.1384016
       },
       "blurb": "Tomorrow is gonna be sickkkkk",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "🏞"
     },
     {
@@ -2565,9 +2508,7 @@ david = {
         "lng": -110.9809176
       },
       "blurb": "redson blueson",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "I do not like green eggs and ham"
     },
     {
@@ -2726,9 +2667,7 @@ david = {
         "lng": -110.8321488
       },
       "blurb": "Work is love made visible.\n\nAnd if you cannot work with love but only with distaste, it is better that you should leave your work and sit at the gate of the temple and take alms of those who work with joy.\n\nFor if you bake bread with indifference, you bake a bitter bread that feeds but half man’s hunger.\n\nAnd if you grudge the crushing of the grapes, your grudge distils a poison in the wine.\n\nAnd if you sing though as angels, and love not the singing, you muffle man’s ears to the voices of the day and the voices of the night.\n\n- \"The Prophet\", by Kahlil Gibran\n\nI've been thinking this for a long time: one of the things I'm most grateful for is how much I enjoy computer programming. This website is my love made visible.\n\nMight be a little mushy, but hey it's 4AM and Gibran really has a way of making you feel things. Highly recommend this short book.",
-      "images": [
-
-      ],
+      "images": [],
       "firstPeeper": "derelictprophet"
     },
     {
@@ -2740,14 +2679,12 @@ david = {
         "lng": -110.7011892
       },
       "blurb": "Here's a relatively long GoPro video of Mt Lemmon. Hopefully its length doesn't cause any issues. Zoom into this check-in's marker on the map and you should see a moving indicator of where I was while the video was being taken! Mobile users - don't worry, I'm working on it. But you might be able to snag a peek if you let the video run and scroll back up to the map.",
-      "images": [
-
-      ],
+      "images": [],
       "videos": [
         {
           "path": [
             {
-              "ms": 0.0,
+              "ms": 0,
               "lat": 32.377345,
               "lng": -110.7011892
             },
@@ -7257,7 +7194,7 @@ david = {
               "lng": -110.7127296
             },
             {
-              "ms": 88534.0,
+              "ms": 88534,
               "lat": 32.3702949,
               "lng": -110.7127388
             },
@@ -18269,7 +18206,302 @@ david = {
           ],
           "name": "lemmon1.mp4"
         }
-      ]
+      ],
+      "firstPeeper": "🏍"
+    },
+    {
+      "name": "SP👀KY",
+      "time": "Wed Nov 18 2020 11:45:49 PM",
+      "location": "Bisbee, AZ",
+      "latlng": {
+        "lat": 31.4416036,
+        "lng": -109.9130622
+      },
+      "blurb": "Most of the hotels in Bisbee are haunted. This one was once a jailhouse! They even have big decorative iron doors to prove it. Wonder if I'll get haunted by an inmate.",
+      "images": [],
+      "firstPeeper": "Momo"
+    },
+    {
+      "name": "FINALLY",
+      "time": "Thu Nov 19 2020 5:11PM",
+      "location": "Juniper Flats Rd, Bisbee, AZ",
+      "latlng": {
+        "lat": 31.4717,
+        "lng": -109.952
+      },
+      "blurb": "A throne fit for a king",
+      "images": [
+        {
+          "name": "Thu Nov 19 2020 5:11PM/Thu Nov 19 2020 5:11PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Thu Nov 19 2020 5:11PM/Thu Nov 19 2020 5:11PM-1.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Thu Nov 19 2020 5:11PM/Thu Nov 19 2020 5:11PM-2.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "sofa king good! "
+    },
+    {
+      "name": "S SWAN RD",
+      "time": "Fri Nov 20 2020 3:59:43 PM",
+      "location": "Warren, AZ",
+      "latlng": {
+        "lat": 31.3681661,
+        "lng": -109.8728771
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Fri Nov 20 2020 3:59:43 PM/Fri Nov 20 2020 3:59:43 PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "black yosh"
+    },
+    {
+      "name": "ACCOMODATIONS",
+      "time": "Fri Nov 20 2020 10:01PM",
+      "location": "Jonquil Motel Backyard, Bisbee, AZ",
+      "latlng": {
+        "lat": 31.4442785,
+        "lng": -109.9234722
+      },
+      "blurb": "The biker special is $20. The owner is a motorcycle Youtuber so he likes to cater to bikers",
+      "images": [
+        {
+          "name": "Fri Nov 20 2020 10:01PM/Fri Nov 20 2020 10:01PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "Chungus Fungus"
+    },
+    {
+      "name": "TOMBSTONE",
+      "time": "Sat Nov 21 2020 3:32:09 PM",
+      "location": "Tombstone, AZ",
+      "latlng": {
+        "lat": 31.7120859,
+        "lng": -110.0657251
+      },
+      "blurb": "This lil tourist town is straight out of an old western",
+      "images": [
+        {
+          "name": "Sat Nov 21 2020 3:32:09 PM/Sat Nov 21 2020 3:32:09 PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 21 2020 3:32:09 PM/Sat Nov 21 2020 3:32:09 PM-1.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 21 2020 3:32:09 PM/Sat Nov 21 2020 3:32:09 PM-2.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 21 2020 3:32:09 PM/Sat Nov 21 2020 3:32:09 PM-3.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "Appa "
+    },
+    {
+      "name": "KARTCHNER",
+      "time": "Sat Nov 21 2020 4:51:43 PM",
+      "location": "Kartchner Caverns Park, AZ",
+      "latlng": {
+        "lat": 31.8350626,
+        "lng": -110.3566493
+      },
+      "blurb": "Highway 82 has the best skies don't @ me",
+      "images": [
+        {
+          "name": "Sat Nov 21 2020 4:51:43 PM/Sat Nov 21 2020 4:51:43 PM-0.jpeg",
+          "width": 600,
+          "height": 337
+        },
+        {
+          "name": "Sat Nov 21 2020 4:51:43 PM/Sat Nov 21 2020 4:51:43 PM-1.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sat Nov 21 2020 4:51:43 PM/Sat Nov 21 2020 4:51:43 PM-2.jpeg",
+          "width": 600,
+          "height": 337
+        }
+      ],
+      "firstPeeper": "🌵🏜️🌵🏜️"
+    },
+    {
+      "name": "BISBEE RECOLLECTIONS",
+      "time": "Sat Nov 21 2020 9:10:08 PM",
+      "location": "Nogales, AZ",
+      "latlng": {
+        "lat": 31.3441978,
+        "lng": -110.931905
+      },
+      "blurb": "Tucked away in southwest Arizona and stuck in time in the early 1900s, the old copper mining town of Bisbee is a tiny, cozy, historic gem. Head east through Mule Pass Tunnel - affectionately called \"time-warp\" - and the town gradually presents itself. At first, every other building is abandoned. Slowly the charm comes through, and downtown is a single street flanked tightly by quirky old shops, bars, eateries.\n\nIf you ever visit Bisbee, take a drive up Juniper Flats Road. About 80% of the way to the top, keep an eye out for that recliner hilariously placed in a camp spot to your left. Watch the sunset.\n\nIf you ever visit Bisbee, explore the lazily sprawled high road residential areas. Enter through an unassuming alleyway hidden in plain sight between two shops downtown. Go up the staircase slowly and meditatively.\n\nIf you ever visit Bisbee, get to know the people, including the tourists. Often they are fascinating. I met some very interesting folk, but most notably Ben, a van nomad whose house is a repurposed old ambulance. A kindred spirit and a welcome reminder of my good buddy Mark. He made some good money in real estate and lives off savings, taking each day at a time with only a loose plan and a desire to cover the world in tracks. Ben, if you're reading this: sup.\n\nIf you ever visit Bisbee, you ought to have at least one meal at the Copper Queen Hotel and Restaurant. Ask the bartender about the ghosts. He's always seeing things out of the corner of his eye 👀 and one time, he says he went to bed in room 304 and woke up in the middle of the night in room 214. Everything was tarped over, as if the room was closed for remodeling. The next morning he asked the staff if the room was closed - yes, and apparently a woman had been raped there only three months ago. The door was locked. How did he get in?\n\nIf you ever visit Bisbee, hit me up and let's share a room at the Copper Queen. I didn't have the stones to do it alone, but I'd love to spend a night in 412 (Billy's Room), where the ghost of a drowned 8-year-old is said to play with whatever toys you bring him. Or maybe Julia Lowell's Room, where the ghost of a prostitute who committed suicide after falling madly in love with a married man can sometimes be seen dancing provocatively or tugging at your bedsheets.\n\nOn second thought, don't wait up. That shit's terrifying.",
+      "images": [
+        {
+          "name": "Sat Nov 21 2020 9:10:08 PM/Sat Nov 21 2020 9:10:08 PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "Mr Peanut was here"
+    },
+    {
+      "name": "RUBY ROAD",
+      "time": "Sun Nov 22 2020 4:58:23 PM",
+      "location": "Arivaca, AZ",
+      "latlng": {
+        "lat": 31.5749043,
+        "lng": -111.3308412
+      },
+      "blurb": "Ruby is a ghost town. Well, except for one dude, the caretaker, who charges a fee for visits and camping and fishing. You have to call ahead though and I suck at that.\n\nAtascosa Trail has the nerve to call itself a trail when really it's just an idea. Some loose rocks guide you about 10% of the way up and the rest is up to you. The path you design will inevitably be brambly, so learn from my mistakes and wear long pants.\n\nThe top offers an incredible view. I stand on a rock and take in the sights and proclaim myself the king of this world. A wave of self-consciousness washes over me - hah! - even as no one is within eye or earshot. I pause and think on Lao Tzu: \"when you realize nothing is missing, the whole world belongs to you.\" \n\nSix turkey vultures begin to circle above me. I've been sitting for a bit so maybe they're hoping I won't get up. They don't attack living humans right? They scare me anyway, so I stand and walk and pick up a stick and wave it. They retreat.",
+      "images": [
+        {
+          "name": "Sun Nov 22 2020 4:58:23 PM/Sun Nov 22 2020 4:58:23 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sun Nov 22 2020 4:58:23 PM/Sun Nov 22 2020 4:58:23 PM-1.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sun Nov 22 2020 4:58:23 PM/Sun Nov 22 2020 4:58:23 PM-2.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sun Nov 22 2020 4:58:23 PM/Sun Nov 22 2020 4:58:23 PM-3.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sun Nov 22 2020 4:58:23 PM/Sun Nov 22 2020 4:58:23 PM-4.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Sun Nov 22 2020 4:58:23 PM/Sun Nov 22 2020 4:58:23 PM-5.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "See you did not have a dull moment 2day"
+    },
+    {
+      "name": "COYOTES",
+      "time": "Sun Nov 22 2020 11:26:05 PM",
+      "location": "Buenos Aires National Wildlife Preserve, AZ",
+      "latlng": {
+        "lat": 31.6231293,
+        "lng": -111.4416143
+      },
+      "blurb": "all around me 😱",
+      "images": [],
+      "firstPeeper": "LOGGY"
+    },
+    {
+      "name": "BUENOS DIAS",
+      "time": "Mon Nov 23 2020 2:26:57 PM",
+      "location": "Buenos Aires National Wildlife Preserve, AZ",
+      "latlng": {
+        "lat": 31.592537,
+        "lng": -111.5328564
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Mon Nov 23 2020 2:26:57 PM/Mon Nov 23 2020 2:26:57 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "Mr Bear"
+    },
+    {
+      "name": "BUENOS DIAS",
+      "time": "Mon Nov 23 2020 2:39:13 PM",
+      "location": "Buenos Aires National Wildlife Preserve, AZ",
+      "latlng": {
+        "lat": 31.5401416,
+        "lng": -111.5283657
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Mon Nov 23 2020 2:39:13 PM/Mon Nov 23 2020 2:39:13 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "RAWR 🐻"
+    },
+    {
+      "name": "JUST A HOT DOG",
+      "time": "Mon Nov 23 2020 6:08:12 PM",
+      "location": "Buenos Aires National Wildlife Preserve, AZ",
+      "latlng": {
+        "lat": 31.6231017,
+        "lng": -111.4416649
+      },
+      "blurb": "nothing to see here",
+      "images": [
+        {
+          "name": "Mon Nov 23 2020 6:08:12 PM/Mon Nov 23 2020 6:08:12 PM-0.jpeg",
+          "width": 600,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "I FINALLY GOT IT!"
+    },
+    {
+      "name": "KITT PEAK NATIONAL OBSERVATORY",
+      "time": "Wed Nov 25 2020 1:34:37 PM",
+      "location": "Highway 386, AZ",
+      "latlng": {
+        "lat": 32.022605,
+        "lng": -111.5766969
+      },
+      "blurb": ":C",
+      "images": [
+        {
+          "name": "Wed Nov 25 2020 1:34:37 PM/Wed Nov 25 2020 1:34:37 PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "Momo"
+    },
+    {
+      "name": "PREP",
+      "time": "Fri Nov 27 2020 11:47:55 AM",
+      "location": "Tucson, AZ",
+      "latlng": {
+        "lat": 32.2490705,
+        "lng": -110.8321739
+      },
+      "blurb": "The plan is to head east tomorrow. Hitting NM and then TX, where I'll probably stay for a few weeks.",
+      "images": [],
+      "firstPeeper": "🤖🤖🤖"
     }
   ]
 }
