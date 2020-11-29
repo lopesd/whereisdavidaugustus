@@ -18421,24 +18421,6 @@
     },
     {
       "name": "BUENOS DIAS",
-      "time": "Mon Nov 23 2020 2:26:57 PM",
-      "location": "Buenos Aires National Wildlife Preserve, AZ",
-      "latlng": {
-        "lat": 31.592537,
-        "lng": -111.5328564
-      },
-      "blurb": "",
-      "images": [
-        {
-          "name": "Mon Nov 23 2020 2:26:57 PM/Mon Nov 23 2020 2:26:57 PM-0.jpeg",
-          "width": 291,
-          "height": 600
-        }
-      ],
-      "firstPeeper": "Mr Bear"
-    },
-    {
-      "name": "BUENOS DIAS",
       "time": "Mon Nov 23 2020 2:39:13 PM",
       "location": "Buenos Aires National Wildlife Preserve, AZ",
       "latlng": {
@@ -18502,6 +18484,67 @@
       "blurb": "The plan is to head east tomorrow. Hitting NM and then TX, where I'll probably stay for a few weeks.",
       "images": [],
       "firstPeeper": "🤖🤖🤖"
-    }
+    },
+    {
+      "name": "MOOD",
+      "time": "Sat Nov 28 2020 12:36 AM",
+      "location": "Tucson, AZ",
+      "latlng": {
+        "lat": 32.2490705,
+        "lng": -110.8321739
+      },
+      "blurb": "",
+      "images": [],
+      "videos": [
+        {
+          "name": "stop_this_bike.mp4"
+        }
+      ],
+      "firstPeeper": "LOGGY"
+    },
+    {
+      "name": "DRAGOON",
+      "time": "Sat Nov 28 2020 5:06:20 PM",
+      "location": "Dragoon, AZ",
+      "latlng": {
+        "lat": 32.0266167,
+        "lng": -110.037784
+      },
+      "blurb": "I have returned",
+      "images": [
+        {
+          "name": "Sat Nov 28 2020 5:06:20 PM/Sat Nov 28 2020 5:06:20 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Nov 28 2020 5:06:20 PM/Sat Nov 28 2020 5:06:20 PM-1.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Sat Nov 28 2020 5:06:20 PM/Sat Nov 28 2020 5:06:20 PM-2.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "T"
+    },
+    {
+      "name": "IT'S PAST MY BEDTIME",
+      "time": "Sun Nov 29 2020 12:55 AM",
+      "location": "OYO Hotel, Willcox, AZ",
+      "latlng": {
+        "lat": 32.2609312,
+        "lng": -109.8273028
+      },
+      "blurb": "but I need to nail this riff",
+      "images": [],
+      "videos": [
+        {
+          "name": "guitarables_riff.mp4"
+        }
+      ]
+    },
   ]
 }
