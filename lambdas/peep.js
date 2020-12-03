@@ -92,6 +92,10 @@ exports.handler = async (event, context, callback) => {
       'content-type': [{
         key: 'Content-Type',
         value: 'application/json'
+      }],
+      'access-control-allow-origin': [{
+        key: 'Access-Control-Allow-Origin',
+        value: '*'
       }]
     },
     body: JSON.stringify(successJson),

@@ -1,4 +1,5 @@
 // GLOBAL SCOPE
+var david
 david = david || {}
 david.allMarkers = {}
 
@@ -303,7 +304,11 @@ function onMapsApiLoad() {
 }
 
 // ON DOCUMENT LOAD
-(function () {
+(async function () {
+  // GET CHECKINS
+  //const resp = await fetch('https://www.whereisdavidaugustus.com/get_checkins')
+  //david.checkins = (await resp.json()).checkins
+
   // CREATE CHECKIN HTML
   const reversedCheckins = [].concat(david.checkins).reverse()
   let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
@@ -367,3 +372,11 @@ function onMapsApiLoad() {
   })
   */
 })()
+
+
+async function getCheckins () {
+  const url = 'https://www.whereisdavidaugustus.com/get_checkins'
+  const resp = await fetch(url)
+  const json = await resp.json()
+  david.yo = json
+}

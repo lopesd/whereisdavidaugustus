@@ -18544,7 +18544,100 @@
         {
           "name": "guitarables_riff.mp4"
         }
-      ]
+      ],
+      "firstPeeper": "DADGAD"
     },
+    {
+      "name": "WILLCOX",
+      "time": "Sun Nov 29 2020 8:03:28 PM",
+      "location": "OYO Hotel, Willcox, AZ",
+      "latlng": {
+        "lat": 32.2533434,
+        "lng": -109.8187099
+      },
+      "blurb": "A lot happened last week that I haven't documented. I was circled by coyotes in the desert (I heard them howling from way too close and scared them off with the sound of my engine), got bit by a spider in my glove (I'm fine mom), did some amazing nighttime riding under the open sky. Today I'm at a quiet hotel in the tiny town of Willcox, AZ. I wanted to visit Colossal Cave, but I didn't like the park's COVID health policies - it mentioned masks but didn't state that they were reducing the amount of visitors per tour. Too bad! I was pretty excited to see a cave.\n\nLast night I didn't sleep at all. Sometimes my mind just whirs. Usually as a result of staying up late doing something brain intensive, which was the case this time - I'm binging Hades on my Switch. Amid the wanton vacationing and the \"sucking the marrow out of life\", it's nice to activate couch potato mode every once in a while. Necessary, even.",
+      "images": [],
+      "firstPeeper": "Couch Hippo"
+    },
+    {
+      "name": "CHIRICAHUA",
+      "time": "Mon Nov 30 2020 12:46:05 PM",
+      "location": "Chiricahua National Monument, AZ",
+      "latlng": {
+        "lat": 32.0071931,
+        "lng": -109.3125194
+      },
+      "blurb": "Ok this might be my favorite place in Arizona",
+      "images": [
+        {
+          "name": "Mon Nov 30 2020 12:46:05 PM/Mon Nov 30 2020 12:46:05 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Mon Nov 30 2020 12:46:05 PM/Mon Nov 30 2020 12:46:05 PM-1.jpeg",
+          "width": 600,
+          "height": 291
+        },
+        {
+          "name": "Mon Nov 30 2020 12:46:05 PM/Mon Nov 30 2020 12:46:05 PM-2.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "Zagreus"
+    },
+    {
+      "name": "VAMOS A LA PLAYA",
+      "time": "Mon Nov 30 2020 4:01 PM",
+      "location": "Willcox Playa, AZ",
+      "latlng": {
+        "lat": 32.148350508473214,
+        "lng": -109.83945310251595
+      },
+      "blurb": "Today was so siiiiiick\n\nI met a random biker at Chiricahua National Momument and we rode to Fort Bowie, doing some awesome dirt roads\n\nThen the hotel owner invited me to ride out with him over a dried out lake\n\nUnfortunately the GoPro GPS data didn't pick up the lake route but here's a snippet anyway",
+      "videos": [
+        {
+          "name": "lake_willcox.mp4"
+        }
+      ],
+      "firstPeeper": "Cheetah King"
+    },
+    {
+      "name": "NEW MEJICO",
+      "time": "Wed Dec 02 2020 7:46:51 PM",
+      "location": "Deming, NM",
+      "latlng": {
+        "lat": 32.2658756,
+        "lng": -107.7769795
+      },
+      "blurb": "it's freezing",
+      "images": [
+        {
+          "name": "Wed Dec 02 2020 7:46:51 PM/Wed Dec 02 2020 7:46:51 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "lil piggy "
+    },
+    {
+      "name": ":)",
+      "time": "Thu Dec 03 2020 11:50:04 AM",
+      "location": "Deming, NM",
+      "latlng": {
+        "lat": 32.2659608,
+        "lng": -107.776543
+      },
+      "blurb": "",
+      "images": [
+        {
+          "name": "Thu Dec 03 2020 11:50:04 AM/Thu Dec 03 2020 11:50:04 AM-0.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": ":^P"
+    }
   ]
 }
