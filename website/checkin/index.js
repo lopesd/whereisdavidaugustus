@@ -6,7 +6,7 @@ david = {
 // PARAMETERS
 const Bucket = 'www.whereisdavidaugustus.com'
 const region = 'us-west-2'
-const lambdaRegion = 'us-east-1'
+const dynamoRegion = 'us-east-1'
 const signatureVersion = 'v4'
 
 // DOM HELPERS
@@ -74,6 +74,19 @@ async function putHeavyPublicS3Object(Key, Body) {
   })
 }
 
+// ASYNC HELPER FUNCTION TO PUT TO DYNAMO
+async function putToDynamoDB(TableName, Item) {
+  return new Promise(function (resolve, reject) {
+    dynamo.put({ TableName, Item }, function(err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  }
+}
+
 async function onDocumentLoad () {
   // IMAGE HANDLER AND RESIZER
   document.getElementById('image-file-input').addEventListener('change', () => {
@@ -124,6 +137,8 @@ async function onDocumentLoad () {
     // GRAB STUFF FROM THE FORM
     const date = new Date()
     const currentTime = `${date.toDateString()} ${date.toLocaleTimeString()}`
+    const currentEpoch = date.getTime()
+    const currentTimeISO = date.toISOString()
 
     const accessKeyId = document.getElementById('access-key-id-input').value
     const secretAccessKey = document.getElementById('secret-key-input').value
@@ -131,6 +146,24 @@ async function onDocumentLoad () {
     const checkinLocation = document.getElementById('checkin-location-input').value
     const checkinTime = document.getElementById('checkin-time-input').value || currentTime
     const checkinBlurb = document.getElementById('checkin-blurb-input').value
+
+    // INITIALIZE AWS CLIENTS
+    displayStatus('Initializing AWS clients...')
+
+    dynamo = new AWS.DynamoDB.DocumentClient({
+      region: dynamoRegion,
+      accessKeyId,
+      secretAccessKey
+    })
+
+    s3 = new AWS.S3({
+      endpoint: `s3-${region}.amazonaws.com`,
+      accessKeyId,
+      secretAccessKey,
+      Bucket,
+      signatureVersion,
+      region 
+    })
 
     // PREPARE IMAGE JSON
     const imageJson = david.images.map((img, i) => ({
@@ -174,15 +207,6 @@ async function onDocumentLoad () {
 
     // GET S3 CHECKINS LIST
     displayStatus('Getting S3 object...')
-    s3 = new AWS.S3({
-      endpoint: `s3-${region}.amazonaws.com`,
-      accessKeyId,
-      secretAccessKey,
-      Bucket,
-      signatureVersion,
-      region 
-    })
-
     let data
     try {
       data = await getS3Object({
@@ -196,8 +220,10 @@ async function onDocumentLoad () {
     // APPEND NEW CHECKIN
     const contentJson = JSON.parse(data.Body.toString())
     const newCheckin = {
+      checkinId: currentEpoch,
       name: checkinName,
       time: checkinTime,
+      uploadTime: currentTimeISO,
       location: checkinLocation,
       latlng,
       blurb: checkinBlurb,
@@ -226,9 +252,22 @@ async function onDocumentLoad () {
       displayStatus(`Uh oh. ${e.toString()}`)
       return
     }
-    displayStatus('Pushed: ' + JSON.stringify(newCheckin, null, 2))
-  })
+    displayStatus('Push to S3 successful.')
 
+    // UPLOAD TO DYNAMODB
+    displayStatus('Putting to DynamoDB...')
+    try {
+      await putToDynamoDB('checkins', newCheckin)
+    } catch (e) {
+      displayStatus(`Uh oh. ${e.toString()}`)
+      return
+    }
+    displayStatus('Push to DynamoDB successful.')
+
+
+    // We're done!
+    displayStatus('Completed push: ' + JSON.stringify(newCheckin, null, 2))
+  })
 }
 
 onDocumentLoad()

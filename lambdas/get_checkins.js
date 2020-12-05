@@ -6,12 +6,6 @@ const s3 = new AWS.S3()
 const lambda = new AWS.Lambda()
 
 exports.handler = async (event, context, callback) => {
-  // CHECK IF WE REALLY WANT TO HANDLE THIS REQUEST
-  const request = event.Records[0].cf.request
-  if (request.method !== 'GET' || request.uri !== '/get_checkins') {
-    return callback(null, request)
-  }
-
   // GET THE EXISTING CHECKINS FILE
   const bucket = 'www.whereisdavidaugustus.com'
   const key = 'content/data/checkins.json'
@@ -29,6 +23,7 @@ exports.handler = async (event, context, callback) => {
   const checkinsJson = JSON.parse(originalFile.Body)
 
   // RETURN SUCCESS HTTP
+  /*
   callback(null, {
     status: '200',
     statusDescription: 'OK',
@@ -47,5 +42,6 @@ exports.handler = async (event, context, callback) => {
       }]
     },
     body: JSON.stringify(checkinsJson),
-  })
+  })*/
+  return checkinsJson
 }
