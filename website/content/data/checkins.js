@@ -9,7 +9,8 @@ david = {
         "lng": -122.349095
       },
       "blurb": "I will see you again :)",
-      "firstPeeper": "RIP Buckets"
+      "firstPeeper": "RIP Buckets",
+      "checkinId": 1601555640
     },
     {
       "name": "OLYMPIA",
@@ -20,7 +21,8 @@ david = {
         "lng": -122.90257
       },
       "blurb": "\"Olympia has a problem\"",
-      "firstPeeper": "TREEYAZ"
+      "firstPeeper": "TREEYAZ",
+      "checkinId": 1601586600
     },
     {
       "name": "MIMA MOUNDS",
@@ -43,7 +45,8 @@ david = {
           "height": 200
         }
       ],
-      "firstPeeper": "Barack Obama"
+      "firstPeeper": "Barack Obama",
+      "checkinId": 1601641080
     },
     {
       "name": "TWIN HARBORS STATE PARK",
@@ -61,7 +64,8 @@ david = {
           "height": 411
         }
       ],
-      "firstPeeper": "creeper"
+      "firstPeeper": "creeper",
+      "checkinId": 1601651340
     },
     {
       "name": "GRAY LAND",
@@ -89,7 +93,8 @@ david = {
           "height": 200
         }
       ],
-      "firstPeeper": "AJAX"
+      "firstPeeper": "AJAX",
+      "checkinId": 1601655120
     },
     {
       "name": "ASTORIA",
@@ -122,7 +127,8 @@ david = {
           "height": 411
         }
       ],
-      "firstPeeper": "Tom"
+      "firstPeeper": "Tom",
+      "checkinId": 1601671440
     },
     {
       "name": "JEWELL MEADOWS STATE WILDLIFE PRESERVE",
@@ -150,7 +156,8 @@ david = {
           "height": 200
         }
       ],
-      "firstPeeper": "Hype for TX braaaps"
+      "firstPeeper": "Hype for TX braaaps",
+      "checkinId": 1601741640
     },
     {
       "name": "WOLF CREEK",
@@ -168,7 +175,8 @@ david = {
           "height": 412
         }
       ],
-      "firstPeeper": "🍆"
+      "firstPeeper": "🍆",
+      "checkinId": 1601743860
     },
     {
       "name": "THE ECONOLODGE",
@@ -179,7 +187,8 @@ david = {
         "lng": -122.5783726
       },
       "blurb": "A couple nights in the Weird City. Considered rioting to fit in with the locals",
-      "firstPeeper": "Oh look lots of old unlocks"
+      "firstPeeper": "Oh look lots of old unlocks",
+      "checkinId": 1601759880
     },
     {
       "name": "TEOTE HOUSE CAFE",
@@ -202,7 +211,8 @@ david = {
           "height": 450
         }
       ],
-      "firstPeeper": "Lin"
+      "firstPeeper": "Lin",
+      "checkinId": 1601905980
     },
     {
       "name": "NESTUCCA",
@@ -230,8 +240,11 @@ david = {
           "height": 450
         }
       ],
-      "videos": [],
-      "firstPeeper": "FUCK YES I GOT A PEEP"
+      "videos": [
+
+      ],
+      "firstPeeper": "FUCK YES I GOT A PEEP",
+      "checkinId": 1601912940
     },
     {
       "name": "CAMPING BY THE NESTUCCA RIVER",
@@ -284,8 +297,11 @@ david = {
           "height": 600
         }
       ],
-      "videos": [],
-      "firstPeeper": "Z̶̡̖̩̯̘̱͚͖̖̥̻̲̲"
+      "videos": [
+
+      ],
+      "firstPeeper": "Z̶̡̖̩̯̘̱͚͖̖̥̻̲̲",
+      "checkinId": 1601985600
     },
     {
       "name": "OREGON COAST HIGHWAY",
@@ -296,9 +312,14 @@ david = {
         "lng": -123.893772
       },
       "blurb": "JK I'm back on the fog hype. Made for some eerie riding today. #fogpog",
-      "images": [],
-      "videos": [],
-      "firstPeeper": "AAALLLLEEEXXXXXX"
+      "images": [
+
+      ],
+      "videos": [
+
+      ],
+      "firstPeeper": "AAALLLLEEEXXXXXX",
+      "checkinId": 1602074340
     },
     {
       "name": "NESTUCCA BAY WILDLIFE REFUGE",
@@ -331,8 +352,11 @@ david = {
           "height": 800
         }
       ],
-      "videos": [],
-      "firstPeeper": "$LOCKED$"
+      "videos": [
+
+      ],
+      "firstPeeper": "$LOCKED$",
+      "checkinId": 1602076140
     },
     {
       "name": "BEN JONES BRIDGE",
@@ -360,7 +384,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "$LOCKED$"
+      "firstPeeper": "$LOCKED$",
+      "checkinId": 1602085680
     },
     {
       "name": "ANOTHER ECONOLODGE",
@@ -371,9 +396,14 @@ david = {
         "lng": -124.060844
       },
       "blurb": "The walls are scuffed the rug is ugly but at least my door locks so I don't have to worry about my crazy neighbor",
-      "images": [],
-      "videos": [],
-      "firstPeeper": "$LOCKED$"
+      "images": [
+
+      ],
+      "videos": [
+
+      ],
+      "firstPeeper": "$LOCKED$",
+      "checkinId": 1602110340
     },
     {
       "name": "SEA LION DOCKS",
@@ -391,8 +421,11 @@ david = {
           "height": 450
         }
       ],
-      "videos": [],
-      "firstPeeper": "$LOCKED$"
+      "videos": [
+
+      ],
+      "firstPeeper": "$LOCKED$",
+      "checkinId": 1602200940
     },
     {
       "name": "SIUSLAW NATIONAL FOREST",
@@ -415,8 +448,11 @@ david = {
           "height": 338
         }
       ],
-      "videos": [],
-      "firstPeeper": "Tham"
+      "videos": [
+
+      ],
+      "firstPeeper": "Tham",
+      "checkinId": 1602164340
     },
     {
       "name": "DEB'S CAFE",
@@ -444,8 +480,11 @@ david = {
           "height": 338
         }
       ],
-      "videos": [],
-      "firstPeeper": "$LOCKED$"
+      "videos": [
+
+      ],
+      "firstPeeper": "$LOCKED$",
+      "checkinId": 1602169080
     },
     {
       "name": "EUGENE WHITEAKER INTERNATIONAL HOSTEL",
@@ -456,9 +495,14 @@ david = {
         "lng": -123.10741
       },
       "blurb": "Hol up -- Eugene is actually a super cute town? Like a quainter Portland. I think I might actually love it. And this cheap hostel is absolutely brimming with personality, just like every restaurant and store in the area",
-      "images": [],
-      "videos": [],
-      "firstPeeper": "AJAX"
+      "images": [
+
+      ],
+      "videos": [
+
+      ],
+      "firstPeeper": "AJAX",
+      "checkinId": 1602195900
     },
     {
       "name": "EUGENE WHITEAKER INTERNATIONAL HOSTEL",
@@ -469,9 +513,14 @@ david = {
         "lng": -123.10741
       },
       "blurb": "Just letting you know I'm still alive. Been working on this website and enjoying the town. I can't really get a full feel for the culture because of COVID, but even with limited human interaction and no group activities I'm digging it",
-      "images": [],
-      "videos": [],
-      "firstPeeper": "mr peanut"
+      "images": [
+
+      ],
+      "videos": [
+
+      ],
+      "firstPeeper": "mr peanut",
+      "checkinId": 1602338340
     },
     {
       "name": "PEEPS ARE LIVE!",
@@ -482,9 +531,14 @@ david = {
         "lng": -123.10741
       },
       "blurb": "New website feature! You can now \"peep\" a checkin by being the first one to click the PEEP button at the bottom of each checkin card. I've locked old checkins from allowing peeps, but I'll be opening them up for peeps randomly over time, so check back often. It's a great way for me to feel connected to whoever is following along, which kind of the point of this website (besides being a fun technical challenge)",
-      "images": [],
-      "videos": [],
-      "firstPeeper": "IVAN 🍻"
+      "images": [
+
+      ],
+      "videos": [
+
+      ],
+      "firstPeeper": "IVAN 🍻",
+      "checkinId": 1602453540
     },
     {
       "name": "WE LIVIN",
@@ -507,8 +561,11 @@ david = {
           "height": 600
         }
       ],
-      "videos": [],
-      "firstPeeper": "It me 👻"
+      "videos": [
+
+      ],
+      "firstPeeper": "It me 👻",
+      "checkinId": 1602510840
     },
     {
       "name": "COVID CONSCIOUS",
@@ -519,8 +576,11 @@ david = {
         "lng": -123.1074515
       },
       "blurb": "There's a young man, Cliff, who wears a beard that reminds me of Ian, an old co-worker. \n\nThere's a young lady, Emily, who wants to be the world's next big prog rock pianist. She listens when I play guitar.\n\nThere were these two older gentlemen being insulting toward each other over nothing. \"He started it!\" I call them out for fighting like grade school kids. They settle down when they realize their attitudes only make them look foolish.\n\nThe hostel owner - also the head handyman - is a gruff middle aged gentleman with a heart similar to mine. He spent a few years working in schools in Europe, busked for a living for a while, and did odd jobs ranging from carpentry to web dev. He's trying to sell the place, and I semi-seriously consider it. He offers me his joint - I decline. COVID rules. I prefer sativa anyway.\n\nI take pictures of places and sights but I shouldn't forget to take note of the people I meet. And I'm thankful I get to meet anyone at all, even if briefly, even as we sanitize the things we touch, cover our face holes, keep our distance like we're radioactive. It's not personal.",
-      "images": [],
-      "firstPeeper": "Not Ajax"
+      "images": [
+
+      ],
+      "firstPeeper": "Not Ajax",
+      "checkinId": 1602634943
     },
     {
       "name": "GOODBYE EUGENE",
@@ -538,7 +598,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "teen spirit"
+      "firstPeeper": "teen spirit",
+      "checkinId": 1602685055
     },
     {
       "name": "I LOST MY BACKPACK",
@@ -556,7 +617,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Hannah"
+      "firstPeeper": "Hannah",
+      "checkinId": 1602698791
     },
     {
       "name": "MARIE KONDO STOLE MY BACKPACK",
@@ -567,8 +629,11 @@ david = {
         "lng": -123.290948
       },
       "blurb": "Got myself a nice hotel room as compensation for today going far less than perfect.\n\nBut losing the backpack is a blessing in disguise. I'm still learning how to pack most efficiently and what's really necessary to bring. Now there's a forcing function. If I restock on the lost stuff frugally, I might have room for a travel guitar.\n\nI've been interested in these carbon-fiber detachable-neck guitars made by KLOS... and their headquarters would make a convenient next destination if I decide to go to Utah. Hm",
-      "images": [],
-      "firstPeeper": "👻🎃"
+      "images": [
+
+      ],
+      "firstPeeper": "👻🎃",
+      "checkinId": 1602716180
     },
     {
       "name": "FOREST ROUTE 17N49",
@@ -606,7 +671,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "🎃👻"
+      "firstPeeper": "🎃👻",
+      "checkinId": 1602774060
     },
     {
       "name": "CALIFORNIA",
@@ -624,7 +690,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Pacific coast h"
+      "firstPeeper": "Pacific coast h",
+      "checkinId": 1602784569
     },
     {
       "name": "MAP IMPROVEMENTS",
@@ -642,7 +709,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Hendrika Vascon"
+      "firstPeeper": "Hendrika Vascon",
+      "checkinId": 1602809585
     },
     {
       "name": "299 EAST",
@@ -665,7 +733,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "🐶🐶🐶"
+      "firstPeeper": "🐶🐶🐶",
+      "checkinId": 1602862117
     },
     {
       "name": "299 EAST",
@@ -688,7 +757,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Watson"
+      "firstPeeper": "Watson",
+      "checkinId": 1602865560
     },
     {
       "name": "MAN SHALL NOT LIVE BY CLIF BARS AND BEEF JERKY ALONE",
@@ -699,8 +769,11 @@ david = {
         "lng": -122.9458387
       },
       "blurb": "but I sure as hell can try",
-      "images": [],
-      "firstPeeper": "Yolo 🤷🏻‍♀️"
+      "images": [
+
+      ],
+      "firstPeeper": "Yolo 🤷🏻‍♀️",
+      "checkinId": 1602878486
     },
     {
       "name": "FROM ONE NUTJOB TO ANOTHER",
@@ -711,8 +784,11 @@ david = {
         "lng": -122.953579
       },
       "blurb": "Am I crazy? Who does this - jumps on a bike with only a vague plan and leaves his life behind?\n\nDon't get me wrong, this stunt I'm pulling is freaking awesome. But I work hard to stave off the loneliness and the creeping doubts and sometimes I wonder if I thought this through enough. Today was rough and filled with questions.\n\nBut tonight at the campsite I met three bikers with a diverse set of motorcycles - an old-school V-Strom (pre-beak), a Harley Dynah Street Bob, and a frankenstein project dirt bike that at one point was some sort of Honda (I think?). Jeff, Thomas, and Chris. Cherry and friendly af. Thomas pulls up a metal pannier by the fire for me to sit on. I pull it back a couple more feet. COVID rules. And what a surprise - they have no plans and no dates either! They're hitting the coast tomorrow and just gonna mosey on wherever the wind takes them. Thomas is a software dev like me, and Jeff even lives on the bike like I do. I lay down the questions and we talk it through. I get recommendations, stories, laughs. Lots of laughs. These guys are nuts. Jeff gives me a sticker that says \"Go fast, don't die\".\n\nI wanted to feel sane. I still feel crazy. But at least I'm not alone.",
-      "images": [],
-      "firstPeeper": "OdF"
+      "images": [
+
+      ],
+      "firstPeeper": "OdF",
+      "checkinId": 1602889005
     },
     {
       "name": "LASSEN",
@@ -730,7 +806,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "ojeje"
+      "firstPeeper": "ojeje",
+      "checkinId": 1602949142
     },
     {
       "name": "RACE TO RENO",
@@ -753,7 +830,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Ace"
+      "firstPeeper": "Ace",
+      "checkinId": 1602956569
     },
     {
       "name": "WHAT'S YOUR FAVORITE GENRE OF MUSIC",
@@ -764,8 +842,11 @@ david = {
         "lng": -119.4894386
       },
       "blurb": "and why is it LoFi",
-      "images": [],
-      "firstPeeper": "Creeper"
+      "images": [
+
+      ],
+      "firstPeeper": "Creeper",
+      "checkinId": 1602980755
     },
     {
       "name": "LOOSE CHAINZ",
@@ -788,7 +869,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "THE JEW"
+      "firstPeeper": "THE JEW",
+      "checkinId": 1603105541
     },
     {
       "name": "MINIMAL MAINTENANCE",
@@ -811,7 +893,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "BBBS"
+      "firstPeeper": "BBBS",
+      "checkinId": 1603129058
     },
     {
       "name": "I HAVE A FEELING WE AREN'T IN SEATTLE ANYMORE",
@@ -822,8 +905,11 @@ david = {
         "lng": -115.7406676
       },
       "blurb": "Man, the people that work at motorcycle shops are really cool. Feels like bikers are a super friendly bunch if you're \"in\". I'm glad I'm in. This is my tribe! Well, one of them. \n\nThe I-80 stretches as far as the eye can see in a straight line. I think they call it the 80 because that's actually the speed limit for most of it. First time I've ever seen a speed limit that high. Kinda wish I had a bigger bike - the ol NC, full cargo, struggles against the wind sometimes.\n\nAt around 6 the sun steps behind a mountain and the temperature drops abruptly. At around 6:20 the bugs come out, and I can feel them kamikaze against my jeans and jacket. Put your visor down. I don't care how beautiful the twilight is.\n\nElko is busier than I thought it would be! One of the bike shop guys I mentioned in the first paragraph gave me a recommendation for a food place called The Star, so I decide to check it out. I step inside, and it's completely packed. Not a mask in sight. There's some hand sanitizer by the door, and hilariously it's empty. I leave. COVID rules.",
-      "images": [],
-      "firstPeeper": "Dikers"
+      "images": [
+
+      ],
+      "firstPeeper": "Dikers",
+      "checkinId": 1603150394
     },
     {
       "name": "LAMOILLE",
@@ -851,7 +937,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "lets see if the limit is really 40 chara"
+      "firstPeeper": "lets see if the limit is really 40 chara",
+      "checkinId": 1603280280
     },
     {
       "name": "GOOD MOOD IDK",
@@ -869,7 +956,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Ultimate Semite"
+      "firstPeeper": "Ultimate Semite",
+      "checkinId": 1603285789
     },
     {
       "name": "U TAH",
@@ -880,8 +968,11 @@ david = {
         "lng": -111.8972805
       },
       "blurb": "no u tah",
-      "images": [],
-      "firstPeeper": "Lin"
+      "images": [
+
+      ],
+      "firstPeeper": "Lin",
+      "checkinId": 1603318431
     },
     {
       "name": "NEW CHAIN WHO DIS",
@@ -904,7 +995,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "SEAAAA"
+      "firstPeeper": "SEAAAA",
+      "checkinId": 1603382702
     },
     {
       "name": "KLOS",
@@ -932,7 +1024,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Anyway, here's wonderwall"
+      "firstPeeper": "Anyway, here's wonderwall",
+      "checkinId": 1603460279
     },
     {
       "name": "OFF THE HIGHWAY",
@@ -950,7 +1043,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "AJAX"
+      "firstPeeper": "AJAX",
+      "checkinId": 1603471560
     },
     {
       "name": "COLORADO RIVER",
@@ -2018,7 +2112,8 @@ david = {
           "name": "colorado_river.mp4"
         }
       ],
-      "firstPeeper": "So purty"
+      "firstPeeper": "So purty",
+      "checkinId": 1603545001
     },
     {
       "name": "LA SAL",
@@ -2041,7 +2136,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "AJAX"
+      "firstPeeper": "AJAX",
+      "checkinId": 1603546320
     },
     {
       "name": "LA SAL 2",
@@ -2064,7 +2160,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "AJAX"
+      "firstPeeper": "AJAX",
+      "checkinId": 1603552020
     },
     {
       "name": "AVOIDING THE STORM",
@@ -2075,8 +2172,11 @@ david = {
         "lng": -109.5478013
       },
       "blurb": "Yesterday was great. Finally had a real campfire with Mark and Patrick at Jaycee Park Campground. Loving the new guitar. Met some dirt bikers and helped them jump start one of their bikes. I guess dealing with a dead battery back in September payed off.\n\nThere's a major winter storm warning going on right now in this area, so I holed up in a hostel nearby to avoid the rain and snow. Will probably be grounded tomorrow as well since I'd rather not be out in freezing temperatures. Black ice is bad enough for cars.",
-      "images": [],
-      "firstPeeper": "AJAX"
+      "images": [
+
+      ],
+      "firstPeeper": "AJAX",
+      "checkinId": 1603638911
     },
     {
       "name": "\"PRACTICE",
@@ -2094,7 +2194,8 @@ david = {
           "height": 312
         }
       ],
-      "firstPeeper": "PENTA PEEP"
+      "firstPeeper": "PENTA PEEP",
+      "checkinId": 1603812536
     },
     {
       "name": "PROTOTYPES",
@@ -2110,7 +2211,8 @@ david = {
           "name": "sink_inside1.mp4"
         }
       ],
-      "firstPeeper": "STREAK ENDED ALSO WHAT IS THIS VERT VID"
+      "firstPeeper": "STREAK ENDED ALSO WHAT IS THIS VERT VID",
+      "checkinId": 1603921251
     },
     {
       "name": "👀",
@@ -2121,8 +2223,11 @@ david = {
         "lng": -109.5330185
       },
       "blurb": "",
-      "images": [],
-      "firstPeeper": "404 content not found"
+      "images": [
+
+      ],
+      "firstPeeper": "404 content not found",
+      "checkinId": 1604100656
     },
     {
       "name": "MILL CREEK",
@@ -2165,7 +2270,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "GMTB"
+      "firstPeeper": "GMTB",
+      "checkinId": 1604151240
     },
     {
       "name": "MY CAVE",
@@ -2198,7 +2304,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "GUESS WHO'S BACK, AJAX BACK"
+      "firstPeeper": "GUESS WHO'S BACK, AJAX BACK",
+      "checkinId": 1604188140
     },
     {
       "name": "LANDMARKS",
@@ -2256,7 +2363,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Just say no to the streak. Uber"
+      "firstPeeper": "Just say no to the streak. Uber",
+      "checkinId": 1604248500
     },
     {
       "name": "PIT STOP",
@@ -2274,7 +2382,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "chemtrails"
+      "firstPeeper": "chemtrails",
+      "checkinId": 1604343101
     },
     {
       "name": "REST DAY",
@@ -2285,8 +2394,11 @@ david = {
         "lng": -108.5774113
       },
       "blurb": "Feels like the right day to binge the entire Switchfoot discography\n\nAnd by \"entire\" I mean The Legend of Chin through Oh Gravity",
-      "images": [],
-      "firstPeeper": "AJAX"
+      "images": [
+
+      ],
+      "firstPeeper": "AJAX",
+      "checkinId": 1604435177
     },
     {
       "name": "TRYING TO UNLOCK THE WING CAP",
@@ -2304,7 +2416,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Praise the sun"
+      "firstPeeper": "Praise the sun",
+      "checkinId": 1604499790
     },
     {
       "name": "DID YOU KNOW",
@@ -2315,8 +2428,11 @@ david = {
         "lng": -111.6342862
       },
       "blurb": "Flagstaff is neither a flag nor a staff",
-      "images": [],
-      "firstPeeper": "portmanteaus"
+      "images": [
+
+      ],
+      "firstPeeper": "portmanteaus",
+      "checkinId": 1604513195
     },
     {
       "name": "GRAND CANYON INN & MOTEL",
@@ -2327,8 +2443,11 @@ david = {
         "lng": -112.1384016
       },
       "blurb": "Tomorrow is gonna be sickkkkk",
-      "images": [],
-      "firstPeeper": "🏞"
+      "images": [
+
+      ],
+      "firstPeeper": "🏞",
+      "checkinId": 1604526638
     },
     {
       "name": "GRAND CANYONEERING",
@@ -2351,7 +2470,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Uber"
+      "firstPeeper": "Uber",
+      "checkinId": 1604583889
     },
     {
       "name": "THE HECKIN' CHONK CANYON",
@@ -2384,7 +2504,8 @@ david = {
           "height": 353
         }
       ],
-      "firstPeeper": "Momo"
+      "firstPeeper": "Momo",
+      "checkinId": 1604589247
     },
     {
       "name": "AZ-64",
@@ -2407,7 +2528,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "AYYYYYYYYYYYYYYYYYYYYYJAX"
+      "firstPeeper": "AYYYYYYYYYYYYYYYYYYYYYJAX",
+      "checkinId": 1604596779
     },
     {
       "name": "IT BEARS THE REMINDER",
@@ -2425,7 +2547,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "🥧🍰"
+      "firstPeeper": "🥧🍰",
+      "checkinId": 1604607176
     },
     {
       "name": "TEGENWIND",
@@ -2443,7 +2566,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Watson 🐶"
+      "firstPeeper": "Watson 🐶",
+      "checkinId": 1604673406
     },
     {
       "name": "REGROUPING",
@@ -2461,7 +2585,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "🔥🦅"
+      "firstPeeper": "🔥🦅",
+      "checkinId": 1604770675
     },
     {
       "name": "PAPAGO",
@@ -2479,7 +2604,8 @@ david = {
           "height": 337
         }
       ],
-      "firstPeeper": "🌵🏜"
+      "firstPeeper": "🌵🏜",
+      "checkinId": 1605024483
     },
     {
       "name": "SAGUARO",
@@ -2497,7 +2623,8 @@ david = {
           "height": 337
         }
       ],
-      "firstPeeper": "AJAX"
+      "firstPeeper": "AJAX",
+      "checkinId": 1605105730
     },
     {
       "name": "ONESON TUCSON",
@@ -2508,8 +2635,11 @@ david = {
         "lng": -110.9809176
       },
       "blurb": "redson blueson",
-      "images": [],
-      "firstPeeper": "I do not like green eggs and ham"
+      "images": [
+
+      ],
+      "firstPeeper": "I do not like green eggs and ham",
+      "checkinId": 1605134340
     },
     {
       "name": "MOUNT LEMMON",
@@ -2527,7 +2657,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Tell me, dear brother - did you find it?"
+      "firstPeeper": "Tell me, dear brother - did you find it?",
+      "checkinId": 1605361936
     },
     {
       "name": "WHEN LIFE GIVES YOU LEMMONS",
@@ -2595,7 +2726,8 @@ david = {
           "height": 182
         }
       ],
-      "firstPeeper": "BBH"
+      "firstPeeper": "BBH",
+      "checkinId": 1605368700
     },
     {
       "name": "ARIZONA'S ALRIGHT",
@@ -2613,7 +2745,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Ur kinda hot tho "
+      "firstPeeper": "Ur kinda hot tho ",
+      "checkinId": 1605534140
     },
     {
       "name": "SONORA",
@@ -2656,7 +2789,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "🎅🎄"
+      "firstPeeper": "🎅🎄",
+      "checkinId": 1605540660
     },
     {
       "name": "THE PROPHET",
@@ -2667,8 +2801,11 @@ david = {
         "lng": -110.8321488
       },
       "blurb": "Work is love made visible.\n\nAnd if you cannot work with love but only with distaste, it is better that you should leave your work and sit at the gate of the temple and take alms of those who work with joy.\n\nFor if you bake bread with indifference, you bake a bitter bread that feeds but half man’s hunger.\n\nAnd if you grudge the crushing of the grapes, your grudge distils a poison in the wine.\n\nAnd if you sing though as angels, and love not the singing, you muffle man’s ears to the voices of the day and the voices of the night.\n\n- \"The Prophet\", by Kahlil Gibran\n\nI've been thinking this for a long time: one of the things I'm most grateful for is how much I enjoy computer programming. This website is my love made visible.\n\nMight be a little mushy, but hey it's 4AM and Gibran really has a way of making you feel things. Highly recommend this short book.",
-      "images": [],
-      "firstPeeper": "derelictprophet"
+      "images": [
+
+      ],
+      "firstPeeper": "derelictprophet",
+      "checkinId": 1605674044
     },
     {
       "name": "SCALE TEST",
@@ -2679,7 +2816,9 @@ david = {
         "lng": -110.7011892
       },
       "blurb": "Here's a relatively long GoPro video of Mt Lemmon. Hopefully its length doesn't cause any issues. Zoom into this check-in's marker on the map and you should see a moving indicator of where I was while the video was being taken! Mobile users - don't worry, I'm working on it. But you might be able to snag a peek if you let the video run and scroll back up to the map.",
-      "images": [],
+      "images": [
+
+      ],
       "videos": [
         {
           "path": [
@@ -18207,7 +18346,8 @@ david = {
           "name": "lemmon1.mp4"
         }
       ],
-      "firstPeeper": "🏍"
+      "firstPeeper": "🏍",
+      "checkinId": 1605687445
     },
     {
       "name": "SP👀KY",
@@ -18218,8 +18358,11 @@ david = {
         "lng": -109.9130622
       },
       "blurb": "Most of the hotels in Bisbee are haunted. This one was once a jailhouse! They even have big decorative iron doors to prove it. Wonder if I'll get haunted by an inmate.",
-      "images": [],
-      "firstPeeper": "Momo"
+      "images": [
+
+      ],
+      "firstPeeper": "Momo",
+      "checkinId": 1605743149
     },
     {
       "name": "FINALLY",
@@ -18247,7 +18390,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "sofa king good! "
+      "firstPeeper": "sofa king good! ",
+      "checkinId": 1605805860
     },
     {
       "name": "S SWAN RD",
@@ -18265,7 +18409,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "black yosh"
+      "firstPeeper": "black yosh",
+      "checkinId": 1605887983
     },
     {
       "name": "ACCOMODATIONS",
@@ -18283,7 +18428,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Chungus Fungus"
+      "firstPeeper": "Chungus Fungus",
+      "checkinId": 1605909660
     },
     {
       "name": "TOMBSTONE",
@@ -18316,7 +18462,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Appa "
+      "firstPeeper": "Appa ",
+      "checkinId": 1605972729
     },
     {
       "name": "KARTCHNER",
@@ -18344,7 +18491,8 @@ david = {
           "height": 337
         }
       ],
-      "firstPeeper": "🌵🏜️🌵🏜️"
+      "firstPeeper": "🌵🏜️🌵🏜️",
+      "checkinId": 1605977503
     },
     {
       "name": "BISBEE RECOLLECTIONS",
@@ -18362,7 +18510,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Mr Peanut was here"
+      "firstPeeper": "Mr Peanut was here",
+      "checkinId": 1605993008
     },
     {
       "name": "RUBY ROAD",
@@ -18405,7 +18554,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "See you did not have a dull moment 2day"
+      "firstPeeper": "See you did not have a dull moment 2day",
+      "checkinId": 1606064303
     },
     {
       "name": "COYOTES",
@@ -18416,8 +18566,11 @@ david = {
         "lng": -111.4416143
       },
       "blurb": "all around me 😱",
-      "images": [],
-      "firstPeeper": "LOGGY"
+      "images": [
+
+      ],
+      "firstPeeper": "LOGGY",
+      "checkinId": 1606087565
     },
     {
       "name": "BUENOS DIAS",
@@ -18435,7 +18588,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "RAWR 🐻"
+      "firstPeeper": "RAWR 🐻",
+      "checkinId": 1606142353
     },
     {
       "name": "JUST A HOT DOG",
@@ -18453,7 +18607,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "I FINALLY GOT IT!"
+      "firstPeeper": "I FINALLY GOT IT!",
+      "checkinId": 1606154892
     },
     {
       "name": "KITT PEAK NATIONAL OBSERVATORY",
@@ -18471,7 +18626,8 @@ david = {
           "height": 291
         }
       ],
-      "firstPeeper": "Momo"
+      "firstPeeper": "Momo",
+      "checkinId": 1606311277
     },
     {
       "name": "PREP",
@@ -18482,8 +18638,11 @@ david = {
         "lng": -110.8321739
       },
       "blurb": "The plan is to head east tomorrow. Hitting NM and then TX, where I'll probably stay for a few weeks.",
-      "images": [],
-      "firstPeeper": "🤖🤖🤖"
+      "images": [
+
+      ],
+      "firstPeeper": "🤖🤖🤖",
+      "checkinId": 1606477675
     },
     {
       "name": "MOOD",
@@ -18494,13 +18653,16 @@ david = {
         "lng": -110.8321739
       },
       "blurb": "",
-      "images": [],
+      "images": [
+
+      ],
       "videos": [
         {
           "name": "stop_this_bike.mp4"
         }
       ],
-      "firstPeeper": "LOGGY"
+      "firstPeeper": "LOGGY",
+      "checkinId": 1606523760
     },
     {
       "name": "DRAGOON",
@@ -18528,7 +18690,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "T"
+      "firstPeeper": "T",
+      "checkinId": 1606583180
     },
     {
       "name": "IT'S PAST MY BEDTIME",
@@ -18539,13 +18702,16 @@ david = {
         "lng": -109.8273028
       },
       "blurb": "but I need to nail this riff",
-      "images": [],
+      "images": [
+
+      ],
       "videos": [
         {
           "name": "guitarables_riff.mp4"
         }
       ],
-      "firstPeeper": "DADGAD"
+      "firstPeeper": "DADGAD",
+      "checkinId": 1606611300
     },
     {
       "name": "WILLCOX",
@@ -18556,8 +18722,11 @@ david = {
         "lng": -109.8187099
       },
       "blurb": "A lot happened last week that I haven't documented. I was circled by coyotes in the desert (I heard them howling from way too close and scared them off with the sound of my engine), got bit by a spider in my glove (I'm fine mom), did some amazing nighttime riding under the open sky. Today I'm at a quiet hotel in the tiny town of Willcox, AZ. I wanted to visit Colossal Cave, but I didn't like the park's COVID health policies - it mentioned masks but didn't state that they were reducing the amount of visitors per tour. Too bad! I was pretty excited to see a cave.\n\nLast night I didn't sleep at all. Sometimes my mind just whirs. Usually as a result of staying up late doing something brain intensive, which was the case this time - I'm binging Hades on my Switch. Amid the wanton vacationing and the \"sucking the marrow out of life\", it's nice to activate couch potato mode every once in a while. Necessary, even.",
-      "images": [],
-      "firstPeeper": "Couch Hippo"
+      "images": [
+
+      ],
+      "firstPeeper": "Couch Hippo",
+      "checkinId": 1606680208
     },
     {
       "name": "CHIRICAHUA",
@@ -18585,7 +18754,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "Zagreus"
+      "firstPeeper": "Zagreus",
+      "checkinId": 1606740365
     },
     {
       "name": "VAMOS A LA PLAYA",
@@ -18601,7 +18771,8 @@ david = {
           "name": "lake_willcox.mp4"
         }
       ],
-      "firstPeeper": "Cheetah King"
+      "firstPeeper": "Cheetah King",
+      "checkinId": 1606752060
     },
     {
       "name": "NEW MEJICO",
@@ -18619,7 +18790,8 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": "lil piggy "
+      "firstPeeper": "lil piggy ",
+      "checkinId": 1606938411
     },
     {
       "name": ":)",
@@ -18637,7 +18809,85 @@ david = {
           "height": 600
         }
       ],
-      "firstPeeper": ":^P"
+      "firstPeeper": ":^P",
+      "checkinId": 1606996204
+    },
+    {
+      "name": "BRR",
+      "time": "Fri Dec 04 2020 11:33:45 AM",
+      "location": "Best Western Inn, Deming, NM",
+      "latlng": {
+        "lat": 32.2659565,
+        "lng": -107.7765648
+      },
+      "blurb": "Stayed in yesterday to wait out the worst of the cold. This hotel is very good for the price so it made sense.\n\nYou know it's cold when you whip out the rain gear to use as a windbreaker. I can barely move in all these layers!",
+      "images": [
+
+      ],
+      "firstPeeper": "T",
+      "checkinId": 1607081625
+    },
+    {
+      "name": "12345",
+      "time": "Fri Dec 04 2020 5:02:18 PM",
+      "location": "Highway 10, TX",
+      "latlng": {
+        "lat": 31.2095991,
+        "lng": -105.5010615
+      },
+      "blurb": "yesssss i caught it",
+      "images": [
+        {
+          "name": "Fri Dec 04 2020 5:02:18 PM/Fri Dec 04 2020 5:02:18 PM-0.jpeg",
+          "width": 600,
+          "height": 291
+        }
+      ],
+      "firstPeeper": "Next Stop, 8008S. ALSO TX WEW",
+      "checkinId": 1607101338
+    },
+    {
+      "name": "SANDS MOTEL",
+      "time": "Fri Dec 04 2020 6:20:06 PM",
+      "location": "Sands Motel, Van Horn, TX",
+      "latlng": {
+        "lat": 31.0408173,
+        "lng": -104.8199341
+      },
+      "blurb": "this hotel is cheaper than your mom",
+      "images": [
+        {
+          "name": "Fri Dec 04 2020 6:20:06 PM/Fri Dec 04 2020 6:20:06 PM-0.jpeg",
+          "width": 291,
+          "height": 600
+        },
+        {
+          "name": "Fri Dec 04 2020 6:20:06 PM/Fri Dec 04 2020 6:20:06 PM-1.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "How about tree fiddy? ",
+      "checkinId": 1607106006
+    },
+    {
+      "name": "DAMN COLD SPELLS",
+      "time": "Sat Dec 05 2020 10:50:56 AM",
+      "location": "Sands Motel, Van Horn, TX",
+      "latlng": {
+        "lat": 31.0411567,
+        "lng": -104.8211004
+      },
+      "blurb": "The weather today is not so gud. Temps not far above freezing, threats of rain and snow up ahead.\n\nTomorrow looks nearly 15 degrees warmer, so I figure I'll wait it out. I have to migrate my backend to a real database anyway so there's plenty to do.",
+      "images": [
+        {
+          "name": "Sat Dec 05 2020 10:50:56 AM/Sat Dec 05 2020 10:50:56 AM-0.jpeg",
+          "width": 291,
+          "height": 600
+        }
+      ],
+      "firstPeeper": "T",
+      "checkinId": 1607165456
     }
   ]
 }
