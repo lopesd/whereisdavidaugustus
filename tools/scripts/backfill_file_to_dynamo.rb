@@ -13,5 +13,7 @@ dynamo = Aws::DynamoDB::Client.new(region: 'us-east-1')
 
 puts "Initialized"
 json['checkins'].each_with_index do |checkin|
+  puts checkin['checkinId']
   dynamo.put_item(table_name: 'checkins', item: checkin)
 end
+puts 'ayyy'

@@ -2,6 +2,17 @@
 var david
 david = david || {}
 david.allMarkers = {}
+david.checkins = new Promise(async (resolve, reject) => {
+  try {
+    const resp = await fetch('https://www.whereisdavidaugustus.com/get_checkins')
+    const respJson = await resp.json()
+    resolve(respJson.checkins)
+  } catch (e) {
+    console.log('Error fetching checkins: ', e)
+    reject(e)
+  }
+})
+david.checkins.then(onCheckinLoad)
 
 // SOME CONSTANTS
 const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
@@ -201,11 +212,13 @@ function highlightCheckinAndMarker(checkinTime) {
 }
 
 
-function unHighlightCheckinAndMarker(checkinTime) {
+async function unHighlightCheckinAndMarker(checkinTime) {
+  const checkins = await david.checkins
+
   // marker
   const marker = david.allMarkers[checkinTime]
   if (marker) {
-    if (david.checkins[david.checkins.length-1].time === checkinTime) {
+    if (checkins[checkins.length-1].time === checkinTime) {
       marker.setIcon(lastCheckinIconUrl)
     } else {
       marker.setIcon(defaultCheckinIconUrl)
@@ -226,7 +239,7 @@ function scrollCheckinIntoView(checkinTime) {
 
 
 // ON MAP LOAD
-function onMapsApiLoad() {
+async function onMapsApiLoad() {
   // CREATE MAP AND CONFIGURE BOUNDS
   const continentalUSABounds = new google.maps.LatLngBounds()
   continentalUSABounds.extend({ lat: 49.271721, lng: -125.635007 })
@@ -234,22 +247,23 @@ function onMapsApiLoad() {
   continentalUSABounds.extend({ lat: 24.186119, lng: -125.193349 })
   continentalUSABounds.extend({ lat: 24.186119, lng: -59.414887 })
 
+  const map = new google.maps.Map(document.getElementById('map'), {
+    disableDefaultUI: true,
+    gestureHandling: 'cooperative'
+  })
+  map.fitBounds(continentalUSABounds)
+  david.map = map
+
+  const checkins = await david.checkins
   const bounds = new google.maps.LatLngBounds()
-  david.checkins.forEach(({ latlng, path }) => {
+  checkins.forEach(({ latlng, path }) => {
     if (latlng) {
       bounds.extend(latlng)
     } else if (path) {
       path.forEach(latlng => bounds.extend(latlng))
     }
   })
-
-  const map = new google.maps.Map(document.getElementById('map'), {
-    restriction: { latLngBounds: continentalUSABounds }, 
-    disableDefaultUI: true,
-    gestureHandling: 'cooperative'
-  })
-  map.fitBounds(bounds)
-  david.map = map
+  david.map.fitBounds(bounds)
 
   // CREATE CHECKIN MARKERS
   const addCheckinMarker = (checkin, isLastCheckin) => {
@@ -282,10 +296,10 @@ function onMapsApiLoad() {
   // animate the markers as they enter the screen
   const pathAnimationTime = 3000 // ms
   const pathAnimationDelay = 500 // ms
-  const pathAnimationStep = pathAnimationTime / david.checkins.length
-  for (var i = 0; i < david.checkins.length; ++i) {
-    const checkin = david.checkins[i]
-    const isLastCheckin = i === david.checkins.length - 1
+  const pathAnimationStep = pathAnimationTime / checkins.length
+  for (var i = 0; i < checkins.length; ++i) {
+    const checkin = checkins[i]
+    const isLastCheckin = i === checkins.length - 1
     setTimeout(function () {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
@@ -303,16 +317,20 @@ function onMapsApiLoad() {
   })
 }
 
+function onCheckinLoad(checkins) {
+  console.log('on checkin load')
+}
+
 // ON DOCUMENT LOAD
 (async function () {
   // GET CHECKINS
-  //const resp = await fetch('https://www.whereisdavidaugustus.com/get_checkins')
-  //david.checkins = (await resp.json()).checkins
+  const checkins = await david.checkins
 
   // CREATE CHECKIN HTML
-  const reversedCheckins = [].concat(david.checkins).reverse()
+  const reversedCheckins = [].concat(checkins).reverse()
   let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
-  document.getElementById('checkins-pane').innerHTML = htmlForAllCheckins
+  let htmlForAllCheckinsWrapped = `<div id="checkins-wrapper" class="slide-up-and-fade-in-immediately">${htmlForAllCheckins}</div>`
+  document.getElementById('checkins-pane').innerHTML = htmlForAllCheckinsWrapped
 
   // ADD LISTENERS TO MAP CONTROLS
   document.getElementById('map-down-arrow').addEventListener('click', () => {
