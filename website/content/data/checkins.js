@@ -18831,7 +18831,7 @@ david = {
     },
     {
       "checkinId": 1607311451630,
-      "name": "RIP",
+      "name": "A CELLULAR ELEGY",
       "time": "Sun Dec 06 2020 9:24:11 PM",
       "uploadTime": "2020-12-07T03:24:11.630Z",
       "location": "Holiday Inn Express Suites, Alpine, TX",
