@@ -84,7 +84,7 @@ async function putToDynamoDB(TableName, Item) {
         resolve(data)
       }
     })
-  }
+  })
 }
 
 async function onDocumentLoad () {
