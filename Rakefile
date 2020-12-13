@@ -4,17 +4,17 @@ require './buildtools/wida_build'
 
 task default: :build
 
-S3_ROOT = 's3://www.whereisdavidaugustus.com'
+S3_SRC_ROOT = 's3://src-www.whereisdavidaugustus.com'
 DEPLOYMENT_LAMBDA_ARN = 'arn:aws:lambda:us-east-1:907442024158:function:wida-deployment'
 CLOUDFRONT_DISTRIBUTION_ID = 'E8NGZT2IL30A7'
 
 ROOT = Rake.application.original_dir
 BUILD_ROOT = "#{ROOT}/build"
 SRC_ROOT = "#{ROOT}/src"
-WEBSITE_ROOT = "#{SRC_ROOT}/website"
+WEBSITE_SRC_ROOT = "#{SRC_ROOT}/website"
 TOOLS_ROOT = "#{SRC_ROOT}/tools"
 
-CONTENT_DIR = "#{WEBSITE_ROOT}/content"
+CONTENT_DIR = "#{WEBSITE_SRC_ROOT}/content"
 
 WEBSITE_BUILD_DIR = "#{BUILD_ROOT}/website"
 
@@ -25,10 +25,10 @@ LOCAL_CHECKINS_JSON = "#{CONTENT_DIR}/data/checkins.json"
 LOCAL_IMAGES_DIR = "#{CONTENT_DIR}/images"
 LOCAL_VIDEOS_DIR = "#{CONTENT_DIR}/videos"
 
-S3_CHECKINS_JS = "#{S3_ROOT}/content/data/checkins.js"
-S3_CHECKINS_JSON = "#{S3_ROOT}/content/data/checkins.json"
-S3_IMAGES_DIR = "#{S3_ROOT}/content/images"
-S3_VIDEOS_DIR = "#{S3_ROOT}/content/videos"
+S3_CHECKINS_JS = "#{S3_SRC_ROOT}/content/data/checkins.js"
+S3_CHECKINS_JSON = "#{S3_SRC_ROOT}/content/data/checkins.json"
+S3_IMAGES_DIR = "#{S3_SRC_ROOT}/content/images"
+S3_VIDEOS_DIR = "#{S3_SRC_ROOT}/content/videos"
 
 TOOLS_SERVER_DIR = "#{TOOLS_ROOT}/server"
 
@@ -65,7 +65,7 @@ task :deployment_lambda do
 end
 
 task :push => :build do
-  run_cmd "aws s3 sync #{WEBSITE_BUILD_DIR} #{S3_ROOT} --exclude 'content/*' --delete --acl public-read", "Pushing static website files to S3"
+  run_cmd "aws s3 sync #{WEBSITE_SRC_ROOT} #{S3_SRC_ROOT} --exclude 'content/*' --delete --acl public-read", "Pushing static website files to S3"
   puts "PUSH COMPLETE"
   puts
 end

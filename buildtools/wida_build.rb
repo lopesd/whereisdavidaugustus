@@ -3,6 +3,16 @@ require 'fileutils'
 require 'json'
 
 class WidaBuild
+  HTML_SANITIZE_REGEX = Regexp.new('[&<>"\'/]', 'i')
+  HTML_SANITIZE_MAP = {
+      '&' => '&amp;',
+      '<' => '&lt;',
+      '>' => '&gt;',
+      '"' => '&quot;',
+      "'" => '&#x27;',
+      "/" => '&#x2F;',
+  }
+
   FOLDERS_TO_VERSION = [
     'scripts',
     'css'
@@ -20,6 +30,11 @@ class WidaBuild
     extension = File.extname(filename)
     basename = filename.delete_suffix(extension)
     return "#{basename}.#{build_version_id}#{extension}"
+  end
+
+  # html sanitize a string
+  def sanitize(string)
+    string.gsub(HTML_SANITIZE_REGEX) { |match| HTML_SANITIZE_MAP[match] }
   end
 
   def build

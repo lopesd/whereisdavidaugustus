@@ -100,11 +100,22 @@
                 </div>
               <% end %>
 
-              <div class="checkin-peeper-pane-wrapper" id="${checkin.time}-peeper-pane-wrapper">
-                <div class="checkin-peeper-pane loading">
-                  <span class="checkin-peeper-text">...</span>
+              <% if checkin['firstPeeper'] && checkin['firstPeeper'] == '$LOCKED$' %>
+                <%# empty %>
+
+              <% elsif checkin['firstPeeper'] && !checkin['firstPeeper'].empty? %>
+                <div class="checkin-peeper-pane">
+                  <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(checkin['firstPeeper']) %></span> was first peeper</span>
                 </div>
-              </div>
+
+              <% else %> 
+                <div onclick="peeperPaneClick(event)" class="checkin-peeper-pane available" data-checkin-time="<%= checkin['time'] %>">
+                  <input class="checkin-peeper-name-input" type="text" maxlength="40" placeholder="what's your name? quick!"/>
+                  <button class="checkin-claim-first-peep-button" onclick="onClickPeepButton(event)">PEEP</button>
+                </div>
+
+              <% end %>
+
             </div>
           <% end %>
         </div>
