@@ -18840,7 +18840,36 @@ david = {
         "lng": -103.64075891585897
       },
       "blurb": "Somewhere along the 90\nI left a thing behind me\nI lost my phone.\n\nI doubled back and looked for it\nBut it was hopeless, I'll admit\nI lost my phone.\n\nIf you are on the 90\nAnd something black and shiny\nHas caught your eye, it might be\nmy phone.\n\n\n\n(Context: I lost my phone)",
-      "images": []
+      "images": [],
+      "firstPeeper": "📱💀💸"
+    },
+    {
+      "checkinId": 1607389109097,
+      "name": "SAN ANTONIO",
+      "time": "Mon Dec 07 2020 6:58:29 PM",
+      "uploadTime": "2020-12-08T00:58:29.097Z",
+      "location": "Leon Springs Starbucks, San Antonio, TX",
+      "latlng": {
+        "lat": 29.663192,
+        "lng": -98.631713
+      },
+      "blurb": "I should make it to Ari's place in about half an hour\n\nI wonder if he sees this before I get there",
+      "images": [],
+      "firstPeeper": "Oh FUCK"
+    },
+    {
+      "checkinId": 1607584739728,
+      "name": "ARI'S HOUSE",
+      "time": "Thu Dec 10 2020 1:18:59 AM",
+      "uploadTime": "2020-12-10T07:18:59.728Z",
+      "location": "Ari's House, San Antonio",
+      "latlng": {
+        "lat": 29.591099200000002,
+        "lng": -98.3757615
+      },
+      "blurb": "Still haven't replace my phone. I'm thinking maybe a OnePlus 8 or a Pixel. It's nice to be slightly removed from the grid.\nI bought a bottle of Angel's Envy Rye so I could drink it while I trash Ari at Smash Bros. That rum cask finish is just... mmm.\nTomorrow I'll get to work on the chores that I've been putting off. Maybe I'll get to fixing the slow load times on this website. Definitely not kosher.\nSpeaking of, Hanukkah just started! I memorized the Hannukah prayer to impress Ari with. I don't think it worked but I do feel more cultured.",
+      "images": [],
+      "firstPeeper": "Falcon PUUUUUNCH!"
     }
   ]
 }
