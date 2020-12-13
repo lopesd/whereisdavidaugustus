@@ -1,4 +1,6 @@
 require 'fileutils'
+require 'erb'
+require './buildtools/wida_build'
 
 task default: :build
 
@@ -6,16 +8,17 @@ S3_ROOT = 's3://www.whereisdavidaugustus.com'
 DEPLOYMENT_LAMBDA_ARN = 'arn:aws:lambda:us-east-1:907442024158:function:wida-deployment'
 CLOUDFRONT_DISTRIBUTION_ID = 'E8NGZT2IL30A7'
 
-TOP_DIR = Rake.application.original_dir
-WEBSITE_ROOT = "#{TOP_DIR}/website"
-BUILD_ROOT = "#{TOP_DIR}/build"
-TOOLS_DIR = "#{TOP_DIR}/tools"
+ROOT = Rake.application.original_dir
+BUILD_ROOT = "#{ROOT}/build"
+SRC_ROOT = "#{ROOT}/src"
+WEBSITE_ROOT = "#{SRC_ROOT}/website"
+TOOLS_ROOT = "#{SRC_ROOT}/tools"
 
 CONTENT_DIR = "#{WEBSITE_ROOT}/content"
 
 WEBSITE_BUILD_DIR = "#{BUILD_ROOT}/website"
 
-PROCESSED_VIDEOS_DIR = "#{TOOLS_DIR}/videos/processed"
+PROCESSED_VIDEOS_DIR = "#{TOOLS_ROOT}/videos/processed"
 
 LOCAL_CHECKINS_JS = "#{CONTENT_DIR}/data/checkins.js"
 LOCAL_CHECKINS_JSON = "#{CONTENT_DIR}/data/checkins.json"
@@ -27,18 +30,7 @@ S3_CHECKINS_JSON = "#{S3_ROOT}/content/data/checkins.json"
 S3_IMAGES_DIR = "#{S3_ROOT}/content/images"
 S3_VIDEOS_DIR = "#{S3_ROOT}/content/videos"
 
-
-TOOLS_SERVER_DIR = "#{TOOLS_DIR}/server"
-
-FOLDERS_TO_VERSION = [
-  'scripts',
-  'css'
-]
-FILES_TO_TEMPLATE = [
-  'index.html',
-  'devlog.html',
-  'about.html'
-]
+TOOLS_SERVER_DIR = "#{TOOLS_ROOT}/server"
 
 def run_cmd cmd, msg
   puts msg
@@ -54,47 +46,8 @@ def invoke_deployment_lamdda
   run_cmd "aws lambda invoke --function-name #{DEPLOYMENT_LAMBDA_ARN} --region us-east-1 ./logs/deployment-#{Time.now.to_i}.log", "Invoking deployment Lambda"
 end
 
-def versioned_filename(filename, version_id)
-  extension = File.extname(filename)
-  basename = filename.delete_suffix(extension)
-  return "#{basename}.#{version_id}#{extension}"
-end
-
 task :build => :clean do
-  # create build folder if non existent
-  FileUtils.mkdir_p(WEBSITE_BUILD_DIR)
-
-  # copy src files into build folder
-  # TODO: don't copy images?
-  FileUtils.cp_r(WEBSITE_ROOT, BUILD_ROOT)
-
-  # create a version timestamp
-  version_id = Time.now.to_i
-
-  # change the filenames of all .css and .js in build folder
-  puts "Versioning"
-  puts "  Folders: #{FOLDERS_TO_VERSION.join(', ')}"
-  files_to_version = FOLDERS_TO_VERSION.flat_map { |folder| Dir["#{WEBSITE_BUILD_DIR}/#{folder}/*"] }
-  files_to_version.each do |filename|
-    new_filename = versioned_filename(filename, version_id)
-    puts "  #{filename} => #{new_filename}"
-    FileUtils.mv(filename, new_filename)
-  end
-
-  # replace references
-  puts "Templating"
-  FILES_TO_TEMPLATE.each do |filename|
-    full_filename = "#{WEBSITE_BUILD_DIR}/#{filename}"
-    puts "  #{full_filename}"
-    new_contents = File.read(full_filename)
-    files_to_version.each do |full_filename_to_version|
-      filename_to_version = File.basename(full_filename_to_version)
-      versioned = versioned_filename(filename_to_version, version_id)
-      new_contents = new_contents.gsub(/#{filename_to_version}/, versioned)
-    end
-    File.open(full_filename, "w") { |file| file.puts(new_contents) }
-  end
-
+  WidaBuild.new('local', src_root: SRC_ROOT, build_root: BUILD_ROOT).build
   puts "BUILD COMPLETE"
   puts
 end
