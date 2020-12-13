@@ -47,7 +47,7 @@ def invoke_deployment_lamdda
 end
 
 task :build => :clean do
-  WidaBuild.new('local', src_root: SRC_ROOT, build_root: BUILD_ROOT).build
+  WidaBuild.new(src_root: SRC_ROOT, build_root: BUILD_ROOT).build
   puts "BUILD COMPLETE"
   puts
 end
