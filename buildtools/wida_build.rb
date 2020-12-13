@@ -18,7 +18,7 @@ class WidaBuild
     'css'
   ]
 
-  # options hash should include :src_root, :build_root
+  # options hash should include :src_root, :build_root, :checkins_file
   def initialize(options)
     @options = options
   end
@@ -38,7 +38,6 @@ class WidaBuild
   def build
     website_dir = "#{@options[:src_root]}/website"
     website_build_dir = "#{@options[:build_root]}/website"
-    checkins_json_filename = "#{website_dir}/content/data/checkins.json"
 
     # create build folder if non existent
     FileUtils.mkdir_p(website_build_dir)
@@ -50,7 +49,7 @@ class WidaBuild
 
     ## TEMPLATING ##
     build_version_id = Time.now.to_i
-    checkins = JSON.parse(File.read(checkins_json_filename))['checkins']
+    checkins = JSON.parse(File.read(@options[:checkins_file]))['checkins']
     files_to_template = Dir["#{website_build_dir}/**/*.erb"]
 
     puts "Templating"
