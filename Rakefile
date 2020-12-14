@@ -31,6 +31,8 @@ end
 
 ### BUILD TASKS
 task :build => :clean do
+  puts "STARTED"
+  puts `ls`
   WidaBuild.new(src_root: SRC_ROOT, build_root: BUILD_ROOT, checkins_file: CHECKINS_FILE).build
   puts "BUILD COMPLETE"
   puts
