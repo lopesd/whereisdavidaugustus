@@ -14,7 +14,7 @@ SRC_ROOT = "#{ROOT}/src"
 WEBSITE_SRC_ROOT = "#{SRC_ROOT}/website"
 TOOLS_ROOT = "#{SRC_ROOT}/tools"
 
-BUILD_STAGE = ENV['wida.build_stage'] || 'local'
+BUILD_STAGE = ENV['CODEBUILD_SRC_DIR'] ? 'prod' : 'local'
 
 if BUILD_STAGE == 'local'
   CREDENTIALS_FILE = "#{ROOT}/../whereisdavidaugustus-credentials/credentials/local.json"
@@ -37,8 +37,6 @@ end
 
 ### BUILD TASKS
 task :build => :clean do
-  puts 'PRINTING ENVIRONMENT VARIABLES'
-  puts ENV.keys.join("\n")
   WidaBuild.new(
     src_root: SRC_ROOT,
     build_root: BUILD_ROOT,
