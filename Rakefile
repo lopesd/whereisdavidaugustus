@@ -37,6 +37,8 @@ end
 
 ### BUILD TASKS
 task :build => :clean do
+  puts 'PRINTING ENVIRONMENT VARIABLES'
+  puts ENV.keys.join("\n")
   WidaBuild.new(
     src_root: SRC_ROOT,
     build_root: BUILD_ROOT,
