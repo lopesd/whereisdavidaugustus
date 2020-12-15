@@ -13,9 +13,10 @@ BUILD_ROOT = "#{ROOT}/build"
 SRC_ROOT = "#{ROOT}/src"
 WEBSITE_SRC_ROOT = "#{SRC_ROOT}/website"
 TOOLS_ROOT = "#{SRC_ROOT}/tools"
+WEBSITE_BUILD_DIR = "#{BUILD_ROOT}/website"
+TOOLS_SERVER_DIR = "#{TOOLS_ROOT}/server"
 
 BUILD_STAGE = ENV['CODEBUILD_SRC_DIR'] ? 'prod' : 'local'
-
 if BUILD_STAGE == 'local'
   CREDENTIALS_FILE = "#{ROOT}/../whereisdavidaugustus-credentials/credentials/local.json"
   CHECKINS_FILE = "#{ROOT}/../whereisdavidaugustus-content/content/data/checkins.json"
@@ -24,9 +25,7 @@ else
   CHECKINS_FILE = "#{ENV['CODEBUILD_SRC_DIR_CheckinsSource']}/checkins.json"
 end
 
-WEBSITE_BUILD_DIR = "#{BUILD_ROOT}/website"
 
-TOOLS_SERVER_DIR = "#{TOOLS_ROOT}/server"
 
 def run_cmd cmd, msg
   puts msg
@@ -35,7 +34,6 @@ def run_cmd cmd, msg
 end
 
 
-### BUILD TASKS
 task :build => :clean do
   WidaBuild.new(
     src_root: SRC_ROOT,
@@ -48,19 +46,16 @@ task :build => :clean do
 end
 
 task :push => :build do
+  raise 'haet.'
   run_cmd "aws s3 sync #{WEBSITE_SRC_ROOT} #{S3_ROOT} --exclude 'content/*' --delete --acl public-read", "Pushing static website files to S3"
   puts "PUSH COMPLETE"
   puts
 end
 
-
-### TOOLS SERVER TASKS
 task :tools_server do
   exec "node #{TOOLS_SERVER_DIR}/src/tools-server.js"
 end
 
-
-### CLEAN TASKS
 task :clean do
   run_cmd "rm -rf #{WEBSITE_BUILD_DIR}", 'Cleaning build directory'
   puts 'CLEAN COMPLETE'

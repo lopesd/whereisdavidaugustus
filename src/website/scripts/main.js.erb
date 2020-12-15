@@ -2,17 +2,7 @@
 var david
 david = david || {}
 david.allMarkers = {}
-david.checkins = new Promise(async (resolve, reject) => {
-  try {
-    const resp = await fetch('https://www.whereisdavidaugustus.com/get_checkins')
-    const respJson = await resp.json()
-    resolve(respJson.checkins)
-  } catch (e) {
-    console.log('Error fetching checkins: ', e)
-    reject(e)
-  }
-})
-david.checkins.then(onCheckinLoad)
+david.checkins = <%= JSON.pretty_generate(checkins) %>
 
 // SOME CONSTANTS
 const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
@@ -213,7 +203,7 @@ function highlightCheckinAndMarker(checkinTime) {
 
 
 async function unHighlightCheckinAndMarker(checkinTime) {
-  const checkins = await david.checkins
+  const checkins = david.checkins // await david.checkins
 
   // marker
   const marker = david.allMarkers[checkinTime]
@@ -324,13 +314,15 @@ function onCheckinLoad(checkins) {
 // ON DOCUMENT LOAD
 (async function () {
   // GET CHECKINS
-  const checkins = <%= JSON.pretty_generate(checkins) %> //await david.checkins
+  //const checkins = david.checkins //await david.checkins
 
   // CREATE CHECKIN HTML
+  /*
   const reversedCheckins = [].concat(checkins).reverse()
   let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
   let htmlForAllCheckinsWrapped = `<div id="checkins-wrapper" class="slide-up-and-fade-in-immediately">${htmlForAllCheckins}</div>`
-  // document.getElementById('checkins-pane').innerHTML = htmlForAllCheckinsWrapped
+  document.getElementById('checkins-pane').innerHTML = htmlForAllCheckinsWrapped
+  */
 
   // ADD LISTENERS TO MAP CONTROLS
   document.getElementById('map-down-arrow').addEventListener('click', () => {
