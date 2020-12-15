@@ -14,11 +14,17 @@ SRC_ROOT = "#{ROOT}/src"
 WEBSITE_SRC_ROOT = "#{SRC_ROOT}/website"
 TOOLS_ROOT = "#{SRC_ROOT}/tools"
 
-CONTENT_DIR = "#{ROOT}/../whereisdavidaugustus-content/content"
+BUILD_STAGE = ENV['wida.build_stage'] || 'local'
+
+if BUILD_STAGE == 'local'
+  CREDENTIALS_FILE = "#{ROOT}/../whereisdavidaugustus-credentials/credentials/local.json"
+  CHECKINS_FILE = "#{ROOT}/../whereisdavidaugustus-content/content/data/checkins.json"
+else
+  CREDENTIALS_FILE = "#{ENV['CODEBUILD_SRC_DIR_CredentialsSource']}/prod.json"
+  CHECKINS_FILE = "#{ENV['CODEBUILD_SRC_DIR_CheckinsSource']}/checkins.json"
+end
 
 WEBSITE_BUILD_DIR = "#{BUILD_ROOT}/website"
-
-CHECKINS_FILE = "#{CONTENT_DIR}/data/checkins.json"
 
 TOOLS_SERVER_DIR = "#{TOOLS_ROOT}/server"
 
@@ -31,9 +37,12 @@ end
 
 ### BUILD TASKS
 task :build => :clean do
-  puts "STARTED"
-  puts `ls`
-  WidaBuild.new(src_root: SRC_ROOT, build_root: BUILD_ROOT, checkins_file: CHECKINS_FILE).build
+  WidaBuild.new(
+    src_root: SRC_ROOT,
+    build_root: BUILD_ROOT,
+    checkins_file: CHECKINS_FILE,
+    credentials_file: CREDENTIALS_FILE
+  ).build
   puts "BUILD COMPLETE"
   puts
 end

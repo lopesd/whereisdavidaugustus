@@ -50,6 +50,7 @@ class WidaBuild
     ## TEMPLATING ##
     build_version_id = Time.now.to_i
     checkins = JSON.parse(File.read(@options[:checkins_file]))['checkins']
+    maps_api_key = JSON.parse(File.read(@options[:credentials_file]))['googleMapsAPIKey']
     files_to_template = Dir["#{website_build_dir}/**/*.erb"]
 
     puts "Templating"
