@@ -41,6 +41,28 @@
 
       <div id="main-gutters">
         <div class="devlog-entry">
+          <div class="devlog-entry-content"><span class="devlog-entry-date">Tue Dec 15 2020 7:32AM | </span><b>AWS and Google sent me angry emails | </b>From the start of this project, one of my biggest objectives was keeping this website loading as fast as possible. It was originally designed as a low-key SPA (single page application) that would fetch checkins from the backend and render them in the browser. As the number of checkins grew it became obvious that some pre-rendering would be needed if I really wanted to keep it crispy - so I've had a wonderful time in the last few days re-architecting this thing into a mostly static website.
+
+I finally uploaded my source code to GitHub. Link below. Big oops though: my git commit history apparently contains my AWS Access Key and Google Maps API Key in plaintext?? Weird, someone must've snuck in at night and committed those. AWS and Google both let me know via email that I needed to rotate those creds as soon as I could. Hey it's good to know they're scraping GitHub and looking out for you!
+
+Some bullet points to keep it digestible:
+
+- I created stronger separations between my source code and content. Images and videos have their own directory on my local machine and go into their own S3 bucket. I used distribution behaviors in CloudFront to make sure the same distribution fronts both the website source and its content.
+
+- Giulio was right, you learn the most by just messing around with the AWS console. I took a nosedive approach to AWS CodePipeline and do not regret it. Pushing code to my main GitHub branch triggers a build and a deploy.
+
+- My build step runs a simple Rakefile that uses ERB (embedded Ruby) to template the source files (index.html.erb most notably). Did you know ERB is part of the Ruby standard library???
+
+- TODO: Get peeps working again. Since the website is now static, triggering a peep doesn't do much. Ivan's idea of keeping only the latest open peep dynamic and statically generating the HTML for all claimed peeps is a good one. I still need some creative thinking to make peeps seem quick and seamless though. Might have to use HTML local storage, aka fancy cookies.
+
+Speaking of, I'm hungry. And I didn't get a wink of sleep.
+
+<b>Links:</b>
+<a href="https://github.com/lopesd/whereisdavidaugustus">whereisdavidaugustus (GitHub)</a>
+          </div>
+        </div>
+
+        <div class="devlog-entry">
           <div class="devlog-entry-content"><span class="devlog-entry-date">Fri Oct 30 2020 1:27PM | </span><b>Backfilling image dimensions | </b>I thought my days of running backfill scripts were over. Today I wrote some Ruby to grab the dimensions of every checkin image and augment the checkin JSON with those dimensions. This is needed because if you don't set width and height of the image tag before it fully loads, the page won't preallocate the right amount of room for each image. So if the user scrolls down past the images while they are still loading, the page will appear to flicker as the HTML updates the sizes of the img tags.
 
 I wasn't planning on fixing this bug yet but since I'm planning on pushing some features that require a consistent scrolling experience, the priority got bumped.</div>
