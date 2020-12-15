@@ -90,103 +90,6 @@ async function postPeep(time, peeperName) {
   return responseJson
 }
 
-// TEMPLATING HELPERS
-function innerHTMLForPeeperPane(time, peeperName, beatYouToIt=false) {
-  if (peeperName === '$LOCKED$'){
-    return ''
-  } else if (peeperName) {
-    const msg = beatYouToIt ? 'beat you to it' : 'was first peeper'
-    return `
-    <div class="checkin-peeper-pane">
-      <span class="checkin-peeper-icon">\&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name">${sanitize(peeperName)}</span> ${msg}</span>
-    </div>`
-  } else {
-    return `
-    <div onclick="peeperPaneClick(event)" class="checkin-peeper-pane available" data-checkin-time="${time}">
-      <input class="checkin-peeper-name-input" type="text" maxlength="40" placeholder="what's your name? quick!"/>
-      <button class="checkin-claim-first-peep-button" onclick="onClickPeepButton(event)">PEEP</button>
-    </div>`
-  }
-}
-
-function htmlForCheckin(checkin) {
-  let imagesInnerHtml = ''
-  if (checkin.images && checkin.images.length > 0) {
-    imagesInnerHtml = checkin.images.reduce((html, { name, width, height }) => {
-
-      return `${html}
-      <img width="${width}px" height="${height}px" loading="lazy" class="checkin-image" src="./content/images/${name}" />`
-    }, '')
-  }
-
-  let videosInnerHtml = ''
-  if (checkin.videos && checkin.videos.length > 0) {
-    videosInnerHtml = checkin.videos.reduce((html, video) => {
-      const { name, width, height } = video
-      return `${html}
-      <video style="width:${width}px;height:${height}px" class="checkin-video" controls preload="metadata" src="./content/videos/${name}" data-video-name="${name}"/>`
-    }, '')
-
-    // also add each video metadata to a global array for easy access (helpful for the video callbacks)
-    david.allCheckinVideos = david.allCheckinVideos || {}
-    checkin.videos.forEach(video => { 
-      david.allCheckinVideos[video.name] = video
-    })
-  }
-
-  let peepersHtml =
-  `<div class="checkin-peeper-pane-wrapper" id="${checkin.time}-peeper-pane-wrapper">
-    ${innerHTMLForPeeperPane(checkin.time, checkin.firstPeeper)}
-  </div>
-  `
-
-  const blurbHtml = !checkin.blurb ? '' :
-  `<div class="checkin-blurb">${checkin.blurb}</div>`
-
-  const imagesHtml = !imagesInnerHtml ? '' :
-  `<div class="checkin-image-pane">
-${imagesInnerHtml}
-  </div>`
-
-  const videosHtml = !videosInnerHtml ? '' :
-  `<div class="checkin-video-pane">
-${videosInnerHtml}
-  </div>`
-
-  const miniMapUrl = '' // `https://maps.googleapis.com/maps/api/staticmap?center=${checkin.latlng.lat},${checkin.latlng.lng}&zoom=7&size=72x72&maptype=map&markers=color:green%7Csize:tiny%7C${checkin.latlng.lat},${checkin.latlng.lng}&key=AIzaSyBf15qoVrZ2GwmdWaT-lu9PUDzxQLWmox8`
-
-  return `
-  <div class="checkin-content" 
-    onmouseenter="highlightCheckinAndMarker('${checkin.time}')"
-    onmouseleave="unHighlightCheckinAndMarker('${checkin.time}')"
-    onclick="scrollCheckinIntoView('${checkin.time}')"
-    id="checkin-content-${checkin.time}"
-    >
-    <div class="checkin-content-anchor" id="checkin-content-anchor-${checkin.time}"></div>
-
-    <div class="checkin-title">
-      <div class="checkin-title-left">
-        <div class="checkin-title-name">${checkin.name}</div>
-        <div class="checkin-title-location">${checkin.location}</div>
-        <div class="checkin-title-date">${checkin.time}</div>
-      </div>
-      <!--
-      <div class="checkin-title-right">
-        <img class="checkin-minimap" src="${miniMapUrl}" />
-      </div>
-      -->
-    </div>
-
-    ${blurbHtml}
-
-    ${imagesHtml}
-
-    ${videosHtml}
-
-    ${peepersHtml}
-  </div>`
-}
-
 // HIGHLIGHT
 function highlightCheckinAndMarker(checkinTime) {
   // marker
@@ -203,12 +106,10 @@ function highlightCheckinAndMarker(checkinTime) {
 
 
 async function unHighlightCheckinAndMarker(checkinTime) {
-  const checkins = david.checkins // await david.checkins
-
   // marker
   const marker = david.allMarkers[checkinTime]
   if (marker) {
-    if (checkins[checkins.length-1].time === checkinTime) {
+    if (david.checkins[david.checkins.length-1].time === checkinTime) {
       marker.setIcon(lastCheckinIconUrl)
     } else {
       marker.setIcon(defaultCheckinIconUrl)
@@ -307,23 +208,8 @@ async function onMapsApiLoad() {
   })
 }
 
-function onCheckinLoad(checkins) {
-  console.log('on checkin load')
-}
-
 // ON DOCUMENT LOAD
 (async function () {
-  // GET CHECKINS
-  //const checkins = david.checkins //await david.checkins
-
-  // CREATE CHECKIN HTML
-  /*
-  const reversedCheckins = [].concat(checkins).reverse()
-  let htmlForAllCheckins = reversedCheckins.reduce((allHtml, checkin) => allHtml + htmlForCheckin(checkin), '')
-  let htmlForAllCheckinsWrapped = `<div id="checkins-wrapper" class="slide-up-and-fade-in-immediately">${htmlForAllCheckins}</div>`
-  document.getElementById('checkins-pane').innerHTML = htmlForAllCheckinsWrapped
-  */
-
   // ADD LISTENERS TO MAP CONTROLS
   document.getElementById('map-down-arrow').addEventListener('click', () => {
     document.getElementById('right-pane-anchor').scrollIntoView({ behavior: 'smooth' })
@@ -382,11 +268,3 @@ function onCheckinLoad(checkins) {
   })
   */
 })()
-
-
-async function getCheckins () {
-  const url = 'https://www.whereisdavidaugustus.com/get_checkins'
-  const resp = await fetch(url)
-  const json = await resp.json()
-  david.yo = json
-}
