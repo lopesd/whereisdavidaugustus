@@ -8,7 +8,7 @@ S3_ROOT = 's3://www.whereisdavidaugustus.com'
 DEPLOYMENT_LAMBDA_ARN = 'arn:aws:lambda:us-east-1:907442024158:function:wida-deployment'
 CLOUDFRONT_DISTRIBUTION_ID = 'E8NGZT2IL30A7'
 
-ROOT = Rake.application.original_dir
+ROOT = File.dirname(__FILE__)
 BUILD_ROOT = "#{ROOT}/build"
 SRC_ROOT = "#{ROOT}/src"
 WEBSITE_SRC_ROOT = "#{SRC_ROOT}/website"
@@ -35,12 +35,12 @@ end
 
 
 task :build => :clean do
-  WidaBuild.new(
+  WidaBuild.build(
     src_root: SRC_ROOT,
     build_root: BUILD_ROOT,
     checkins_file: CHECKINS_FILE,
     credentials_file: CREDENTIALS_FILE
-  ).build
+  )
   puts "BUILD COMPLETE"
   puts
 end

@@ -3,7 +3,7 @@
 require 'json'
 require 'aws-sdk-dynamodb'
 
-CONTENT_DIR = "#{__dir__}/../../website/content"
+CONTENT_DIR = "#{__dir__}/../../../../whereisdavidaugustus-content/content"
 CHECKINS_JSON_FILENAME = "#{CONTENT_DIR}/data/checkins.json"
 
 json = JSON.parse(File.read(CHECKINS_JSON_FILENAME))
