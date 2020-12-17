@@ -73,9 +73,9 @@ async function postPeep(checkinId, peeperName) {
   const body = { checkinId, peeper: peeperName }
   const fetchParams = {
     method: 'POST',
-    //mode: 'same-origin',
+    mode: 'same-origin',
     cache: 'no-cache',
-    //credentials: 'same-origin',
+    credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
