@@ -12,9 +12,7 @@ ROOT = File.dirname(__FILE__)
 BUILD_ROOT = "#{ROOT}/build"
 SRC_ROOT = "#{ROOT}/src"
 WEBSITE_SRC_ROOT = "#{SRC_ROOT}/website"
-TOOLS_ROOT = "#{SRC_ROOT}/tools"
 WEBSITE_BUILD_DIR = "#{BUILD_ROOT}/website"
-TOOLS_SERVER_DIR = "#{TOOLS_ROOT}/server"
 
 BUILD_STAGE = ENV['CODEBUILD_SRC_DIR'] ? 'prod' : 'local'
 if BUILD_STAGE == 'local'
@@ -43,10 +41,6 @@ task :build => :clean do
   )
   puts "BUILD COMPLETE"
   puts
-end
-
-task :tools_server do
-  exec "node #{TOOLS_SERVER_DIR}/src/tools-server.js"
 end
 
 task :clean do
