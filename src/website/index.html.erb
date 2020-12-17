@@ -54,18 +54,18 @@
         <div id="checkins-pane">
           <% checkins.reverse.each do |checkin|  %>
             <div class="checkin-content"
-              onmouseenter="highlightCheckinAndMarker('<%= checkin['time'] %>')"
-              onmouseleave="unHighlightCheckinAndMarker('<%= checkin['time'] %>')"
-              onclick="scrollCheckinIntoView('<%= checkin['time'] %>')"
-              id="checkin-content-<%= checkin['time'] %>"
+              onmouseenter="highlightCheckinAndMarker('<%= checkin['checkinId'] %>')"
+              onmouseleave="unHighlightCheckinAndMarker('<%= checkin['checkinId'] %>')"
+              onclick="scrollCheckinIntoView('<%= checkin['checkinId'] %>')"
+              id="checkin-content-<%= checkin['checkinId'] %>"
               >
-              <div class="checkin-content-anchor" id="checkin-content-anchor-<%= checkin['time'] %>"></div>
+              <div class="checkin-content-anchor" id="checkin-content-anchor-<%= checkin['checkinId'] %>"></div>
 
               <div class="checkin-title">
                 <div class="checkin-title-left">
                   <div class="checkin-title-name"><%= checkin['name'] %></div>
                   <div class="checkin-title-location"><%= checkin['location'] %></div>
-                  <div class="checkin-title-date"><%= checkin['time'] %></div>
+                  <div class="checkin-title-date"><%= checkin['checkinId'] %></div>
                 </div>
               </div>
 
@@ -109,7 +109,7 @@
                 </div>
 
               <% else %> 
-                <div onclick="peeperPaneClick(event)" class="checkin-peeper-pane available" data-checkin-time="<%= checkin['time'] %>">
+                <div onclick="peeperPaneClick(event)" class="checkin-peeper-pane available" data-checkin-id="<%= checkin['checkinId'] %>">
                   <input class="checkin-peeper-name-input" type="text" maxlength="40" placeholder="what's your name? quick!"/>
                   <button class="checkin-claim-first-peep-button" onclick="onClickPeepButton(event)">PEEP</button>
                 </div>

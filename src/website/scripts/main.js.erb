@@ -28,14 +28,14 @@ function sanitize(string) {
 }
 
 // TEST UTIL
-async function spoofPostPeep(time, peeperName) {
+async function spoofPostPeep(checkinId, peeperName) {
   await sleep(1000)
   return { peepSuccessful: firstPeeper === 'david', peeperName: 'david' }
 }
 
 // BUTTON CALLBACKS
 async function onClickPeepButton(event) {
-  const time = event.target.parentElement.dataset.checkinTime
+  const checkinId = event.target.parentElement.dataset.checkinId
   const peeperName = event.target.previousElementSibling.value
   if (!peeperName) {
     event.target.previousElementSibling.placeholder = 'name is required dummy'
@@ -50,15 +50,15 @@ async function onClickPeepButton(event) {
   // send post
   let response
   try {
-    response = await postPeep(time, peeperName)
+    response = await postPeep(checkinId, peeperName)
   } catch (e) {
     console.error(e)
-    document.getElementById(`${time}-peeper-pane-wrapper`).innerHTML = 'There was an error :( pls check console and report'
+    document.getElementById(`${checkinId}-peeper-pane-wrapper`).innerHTML = 'There was an error :( pls check console and report'
     return
   }
 
   // exit loading state and update html
-  document.getElementById(`${time}-peeper-pane-wrapper`).innerHTML = innerHTMLForPeeperPane(time, response.firstPeeper, !response.peepSuccessful)
+  document.getElementById(`${checkinId}-peeper-pane-wrapper`).innerHTML = innerHTMLForPeeperPane(checkinId, response.firstPeeper, !response.peepSuccessful)
 }
 
 // Don't trigger a click on the checkin if you click in the peeper pane
@@ -68,14 +68,14 @@ function peeperPaneClick(e) {
   e.stopPropagation()
 }
 
-async function postPeep(time, peeperName) {
+async function postPeep(checkinId, peeperName) {
   const url = 'https://www.whereisdavidaugustus.com/peep'
-  const body = { time, peeper: peeperName }
+  const body = { checkinId, peeper: peeperName }
   const fetchParams = {
     method: 'POST',
-    mode: 'same-origin',
+    //mode: 'same-origin',
     cache: 'no-cache',
-    credentials: 'same-origin',
+    //credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
@@ -91,25 +91,25 @@ async function postPeep(time, peeperName) {
 }
 
 // HIGHLIGHT
-function highlightCheckinAndMarker(checkinTime) {
+function highlightCheckinAndMarker(checkinId) {
   // marker
-  const marker = david.allMarkers[checkinTime]
+  const marker = david.allMarkers[checkinId]
   if (marker) {
     marker.setIcon(highlightedCheckinIconUrl)
     marker.setZIndex(500)
   }
 
   // checkin div
-  const checkinDiv = document.getElementById(`checkin-content-${checkinTime}`)
+  const checkinDiv = document.getElementById(`checkin-content-${checkinId}`)
   checkinDiv.classList.add('mouse-over-highlight')
 }
 
 
-async function unHighlightCheckinAndMarker(checkinTime) {
+async function unHighlightCheckinAndMarker(checkinId) {
   // marker
-  const marker = david.allMarkers[checkinTime]
+  const marker = david.allMarkers[checkinId]
   if (marker) {
-    if (david.checkins[david.checkins.length-1].time === checkinTime) {
+    if (david.checkins[david.checkins.length-1].checkinId === checkinId) {
       marker.setIcon(lastCheckinIconUrl)
     } else {
       marker.setIcon(defaultCheckinIconUrl)
@@ -118,13 +118,13 @@ async function unHighlightCheckinAndMarker(checkinTime) {
   }
 
   // checkin div
-  const checkinDiv = document.getElementById(`checkin-content-${checkinTime}`)
+  const checkinDiv = document.getElementById(`checkin-content-${checkinId}`)
   checkinDiv.classList.remove('mouse-over-highlight')
 }
 
 // SCROLL CHECKIN INTO VIEW
-function scrollCheckinIntoView(checkinTime) {
-  const checkinAnchor = document.getElementById(`checkin-content-anchor-${checkinTime}`)
+function scrollCheckinIntoView(checkinId) {
+  const checkinAnchor = document.getElementById(`checkin-content-anchor-${checkinId}`)
   checkinAnchor.scrollIntoView({ behavior: 'smooth' })
 }
 
@@ -169,10 +169,10 @@ async function onMapsApiLoad() {
         icon,
         map
       })
-      marker.addListener("mouseover", () => highlightCheckinAndMarker(checkin.time))
-      marker.addListener("mouseout", () => unHighlightCheckinAndMarker(checkin.time))
-      marker.addListener("click", () => scrollCheckinIntoView(checkin.time))
-      david.allMarkers[checkin.time] = marker
+      marker.addListener("mouseover", () => highlightCheckinAndMarker(checkin.checkinId))
+      marker.addListener("mouseout", () => unHighlightCheckinAndMarker(checkin.checkinId))
+      marker.addListener("click", () => scrollCheckinIntoView(checkin.checkinId))
+      david.allMarkers[checkin.checkinId] = marker
       setTimeout(() => marker.setAnimation(null), 400)
     }
 
@@ -248,7 +248,7 @@ async function onMapsApiLoad() {
   // Note - include GSAP for this to work
   /*
   reversedCheckins.forEach(checkin => {
-    const element = document.getElementById(`checkin-content-${checkin.time}`) 
+    const element = document.getElementById(`checkin-content-${checkin.checkinId}`) 
     ScrollTrigger.create({
       trigger: element,
       scroller: '#checkins-pane',
@@ -256,12 +256,12 @@ async function onMapsApiLoad() {
       end: "bottom center",
       onToggle: self => {
         if (self.isActive) {
-          highlightCheckinAndMarker(checkin.time)
+          highlightCheckinAndMarker(checkin.checkinId)
           if (david.map) {
             david.map.panTo(checkin.latlng)
           }
         } else {
-          unHighlightCheckinAndMarker(checkin.time)
+          unHighlightCheckinAndMarker(checkin.checkinId)
         }
       }
     })
