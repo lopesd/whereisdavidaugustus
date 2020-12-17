@@ -41,14 +41,7 @@ module WidaBuild
       string.gsub(HTML_SANITIZE_REGEX) { |match| HTML_SANITIZE_MAP[match] }
     end
 
-    # get checkins from database
-    def get_checkins
-      dynamo = Aws::DynamoDB::Client.new(region: 'us-east-1')
-      result = dynamo.scan(table_name: 'checkins')
-      result.items.sort_by { |checkin| checkin['checkinId'] }
-    end
-
-    # options hash should include :stage, :src_root, :build_root, :credentials_file
+    # options hash should include :src_root, :build_root, :credentials_file, :checkins_dir
     def build(options)
       website_dir = "#{options[:src_root]}/website"
       website_build_dir = "#{options[:build_root]}/website"
@@ -60,10 +53,16 @@ module WidaBuild
       ## COPY SRC INTO BUILD ##
       FileUtils.cp_r("#{website_dir}/.", website_build_dir)
 
+      # GET CHECKINS
+      checkins = []
+      Dir.glob("#{options[:checkins_dir]}/*").each do |checkin_file|
+        checkin = JSON.parse(File.read(checkin_file))
+        checkins.push(checkin)
+      end
+      checkins.sort_by! { |checkin| checkin['checkinId'] }
 
       ## TEMPLATING ##
       build_version_id = Time.now.to_i
-      checkins = get_checkins
       maps_api_key = JSON.parse(File.read(options[:credentials_file]))['googleMapsAPIKey']
       files_to_template = Dir["#{website_build_dir}/**/*.erb"]
 

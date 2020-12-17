@@ -19,10 +19,10 @@ TOOLS_SERVER_DIR = "#{TOOLS_ROOT}/server"
 BUILD_STAGE = ENV['CODEBUILD_SRC_DIR'] ? 'prod' : 'local'
 if BUILD_STAGE == 'local'
   CREDENTIALS_FILE = "#{ROOT}/../whereisdavidaugustus-credentials/credentials/local.json"
-  CHECKINS_FILE = "#{ROOT}/../whereisdavidaugustus-content/content/data/checkins.json"
+  CHECKINS_DIR = "#{ROOT}/../whereisdavidaugustus-content/content/data/checkins"
 else
   CREDENTIALS_FILE = "#{ENV['CODEBUILD_SRC_DIR_CredentialsSource']}/prod.json"
-  CHECKINS_FILE = "#{ENV['CODEBUILD_SRC_DIR_CheckinsSource']}/checkins.json"
+  CHECKINS_DIR = "#{ENV['CODEBUILD_SRC_DIR_CheckinsSource']}/checkins"
 end
 
 
@@ -38,7 +38,7 @@ task :build => :clean do
   WidaBuild.build(
     src_root: SRC_ROOT,
     build_root: BUILD_ROOT,
-    checkins_file: CHECKINS_FILE,
+    checkins_dir: CHECKINS_DIR,
     credentials_file: CREDENTIALS_FILE
   )
   puts "BUILD COMPLETE"
