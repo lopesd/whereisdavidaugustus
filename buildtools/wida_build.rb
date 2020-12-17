@@ -1,7 +1,6 @@
 require 'erb'
 require 'fileutils'
 require 'json'
-require 'aws-sdk-dynamodb'
 
 # GASP MONKEY PATCH
 # we do this bc dynamodb returns all numbers as BigDecimals which 
