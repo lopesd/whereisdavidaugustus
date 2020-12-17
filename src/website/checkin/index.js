@@ -6,7 +6,7 @@ david = {
 // PARAMETERS
 const region = 'us-west-2'
 
-const mediaBucket = 'wwww.whereisdavidaugustus-media'
+const mediaBucket = 'www.whereisdavidaugustus.com-media'
 const signatureVersion = 'v4'
 const imagesPath = 'media/images'
 
