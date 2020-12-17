@@ -79,7 +79,7 @@
                       height="<%= image['height'] %>px"
                       loading="lazy"
                       class="checkin-image"
-                      src="./content/images/<%= image['name'] %>"
+                      src="./media/images/<%= image['name'] %>"
                     />
                   <% end %>
                 </div>
@@ -93,7 +93,7 @@
                       class="checkin-video"
                       controls
                       preload="metadata"
-                      src="./content/videos/<%= video['name'] %>"
+                      src="./media/videos/<%= video['name'] %>"
                       data-video-name="<%= video['name'] %>"
                     />
                   <% end %>
@@ -132,7 +132,6 @@
     -->
 
     <!-- MY JS -->
-    <!-- <script src="./content/data/checkins.js"></script> -->
     <script src="./scripts/main.<%= build_version_id %>.js"></script>
   </body>
 </html>
