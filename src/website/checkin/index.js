@@ -137,7 +137,7 @@ async function onDocumentLoad () {
     // GRAB STUFF FROM THE FORM
     const date = new Date()
     const currentTime = `${date.toDateString()} ${date.toLocaleTimeString()}`
-    const currentEpoch = date.getTime()
+    const currentEpoch = Math.round(date.getTime() / 1000)
     const currentTimeISO = date.toISOString()
 
     const accessKeyId = document.getElementById('access-key-id-input').value
