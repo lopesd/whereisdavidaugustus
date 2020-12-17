@@ -22,7 +22,7 @@ if BUILD_STAGE == 'local'
   CHECKINS_DIR = "#{ROOT}/../whereisdavidaugustus-content/content/data/checkins"
 else
   CREDENTIALS_FILE = "#{ENV['CODEBUILD_SRC_DIR_CredentialsSource']}/prod.json"
-  CHECKINS_DIR = "#{ENV['CODEBUILD_SRC_DIR_CheckinsSource']}/checkins"
+  CHECKINS_DIR = "#{ENV['CODEBUILD_SRC_DIR_CheckinsSource']}/content/data/checkins"
 end
 
 
@@ -42,13 +42,6 @@ task :build => :clean do
     credentials_file: CREDENTIALS_FILE
   )
   puts "BUILD COMPLETE"
-  puts
-end
-
-task :push => :build do
-  raise 'haet.'
-  run_cmd "aws s3 sync #{WEBSITE_SRC_ROOT} #{S3_ROOT} --exclude 'content/*' --delete --acl public-read", "Pushing static website files to S3"
-  puts "PUSH COMPLETE"
   puts
 end
 
