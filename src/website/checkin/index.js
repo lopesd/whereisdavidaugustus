@@ -4,10 +4,16 @@ david = {
 }
 
 // PARAMETERS
-const Bucket = 'www.whereisdavidaugustus.com'
 const region = 'us-west-2'
-const dynamoRegion = 'us-east-1'
+
+const mediaBucket = 'wwww.whereisdavidaugustus-media'
 const signatureVersion = 'v4'
+const imagesPath = 'media/images'
+
+const repositoryName = 'whereisdavidaugustus-content'
+const branchName = 'master'
+const committerName = 'whereisdavidaugustus.com/checkin'
+const checkinsPath = 'content/data/checkins'
 
 // DOM HELPERS
 function emptyHtml (id) {
@@ -21,11 +27,6 @@ function displayStatus(text) {
     .prepend(document.createTextNode(fullMsg))
 }
 
-function appendCheckinToContentString(content, checkin) {
-  return content + `
-david.checkins.push(${JSON.stringify(checkin, null, 2)})`
-}
-
 // ASYNC HELPER TO GET USER LOCATION
 async function getUserLocation(options) {
   return new Promise(function (resolve, reject) {
@@ -33,36 +34,10 @@ async function getUserLocation(options) {
   });
 }
 
-// ASYNC HELPER TO GET FROM S3
-async function getS3Object(getParams) {
-  return new Promise(function (resolve, reject) {
-    s3.getObject(getParams, function(err, data) {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(data)
-      }
-    })
-  })
-}
-
-// ASYNC HELPER TO PUT TO S3
-async function putPublicS3Object(Key, Body) {
-  const putParams = { Bucket, Key, Body, ACL: 'public-read' }
-  return new Promise(function (resolve, reject) {
-    s3.putObject(putParams, function(err, data) {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(data)
-      }
-    })
-  })
-}
-
 // ASYNC HELPER FOR THE UPLOAD FUNCTION WHICH HANDLES BIGGER FILES MORE GRACEFULLY
-async function putHeavyPublicS3Object(Key, Body) {
-  const putParams = { Bucket, Key, Body, ACL: 'public-read' }
+async function putImageToS3(imageName, Body) {
+  const Key = `${imagesPath}/${imageName}`
+  const putParams = { Bucket: mediaBucket, Key, Body, ACL: 'public-read' }
   return new Promise(function (resolve, reject) {
     s3.upload(putParams, function(err, data) {
       if (err) {
@@ -74,10 +49,35 @@ async function putHeavyPublicS3Object(Key, Body) {
   })
 }
 
-// ASYNC HELPER FUNCTION TO PUT TO DYNAMO
-async function putToDynamoDB(TableName, Item) {
+// ASYNC HELPER TO GET LATEST CODECOMMIT BRANCH
+async function getLatestCodeCommitBranchId() {
+  const params = { repositoryName, branchName }
   return new Promise(function (resolve, reject) {
-    dynamo.put({ TableName, Item }, function(err, data) {
+    codeCommitClient.getBranch(params, function(err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        console.log(data)
+        resolve(data.branch.commitId)
+      }
+    })
+  })
+}
+
+// ASYNC HELPER TO PUT FILES TO CODECOMMIT
+async function putToCodeCommit(filePath, fileContent) {
+  const parentCommitId = await getLatestCodeCommitBranchId()
+  const putFileParams = { 
+    repositoryName,
+    branchName,
+    filePath,
+    fileContent,
+    parentCommitId,
+    name: committerName
+  }
+
+  return new Promise(function (resolve, reject) {
+    codeCommitClient.putFile(putFileParams, function(err, data) {
       if (err) {
         reject(err)
       } else {
@@ -87,57 +87,59 @@ async function putToDynamoDB(TableName, Item) {
   })
 }
 
-async function onDocumentLoad () {
-  // IMAGE HANDLER AND RESIZER
-  document.getElementById('image-file-input').addEventListener('change', () => {
-    emptyHtml('images-div')
-    david.images = []
+// IMAGE HANDLER AND RESIZER
+function imageFileInputChangeListener () {
+  emptyHtml('images-div')
+  david.images = []
 
-    // get all the files from the file input element
-    const files = document.getElementById('image-file-input').files
-    if (files.length === 0) {
-      return
-    }
+  // get all the files from the file input element
+  const files = document.getElementById('image-file-input').files
+  if (files.length === 0) {
+    return
+  }
 
-    // create resizer object
-    const resizer = pica()
+  // create resizer object
+  const resizer = pica()
 
-    // for each file
-    for (let i = 0; i < files.length; ++i) {
-      const file = files[i]
-      const img = new Image()
-      img.onload = async () => {
-        const destinationCanvas = document.createElement('canvas')
-        destinationCanvas.id = 'image' + i
-        document.getElementById('images-div').append(destinationCanvas)
-        let destinationWidth, destinationHeight
-        if (img.width > img.height) {
-          destinationCanvas.width = 600
-          destinationCanvas.height = img.height * 600 / img.width
-        } else {
-          destinationCanvas.height = 600
-          destinationCanvas.width = img.width * 600 / img.height
-        }
-        await resizer.resize(img, destinationCanvas)
-        destinationCanvas.toBlob(blob => {
-          david.images.push({
-            data: blob,
-            width: destinationCanvas.width,
-            height: destinationCanvas.height
-          }) 
-        }, 'image/jpeg')
+  // for each file
+  for (let i = 0; i < files.length; ++i) {
+    const file = files[i]
+    const img = new Image()
+    img.onload = async () => {
+      const destinationCanvas = document.createElement('canvas')
+      destinationCanvas.id = 'image' + i
+      document.getElementById('images-div').append(destinationCanvas)
+      let destinationWidth, destinationHeight
+      if (img.width > img.height) {
+        destinationCanvas.width = 600
+        destinationCanvas.height = img.height * 600 / img.width
+      } else {
+        destinationCanvas.height = 600
+        destinationCanvas.width = img.width * 600 / img.height
       }
-      img.src = URL.createObjectURL(file)
+      await resizer.resize(img, destinationCanvas)
+      destinationCanvas.toBlob(blob => {
+        david.images.push({
+          data: blob,
+          width: destinationCanvas.width,
+          height: destinationCanvas.height
+        }) 
+      }, 'image/jpeg')
     }
-  })
+    img.src = URL.createObjectURL(file)
+  }
+}
 
+async function onDocumentLoad () {
+  // ATTACH IMAGE HANDLER
+  document.getElementById('image-file-input').addEventListener('change', imageFileInputChangeListener)
 
   // CHECK IN BUTTON
   document.getElementById('checkin-button').addEventListener('click', async () => {
     // GRAB STUFF FROM THE FORM
     const date = new Date()
     const currentTime = `${date.toDateString()} ${date.toLocaleTimeString()}`
-    const currentEpoch = Math.round(date.getTime() / 1000)
+    const currentEpoch = Math.round(date.getTime() / 1000) // in seconds
     const currentTimeISO = date.toISOString()
 
     const accessKeyId = document.getElementById('access-key-id-input').value
@@ -149,20 +151,18 @@ async function onDocumentLoad () {
 
     // INITIALIZE AWS CLIENTS
     displayStatus('Initializing AWS clients...')
-
-    dynamo = new AWS.DynamoDB.DocumentClient({
-      region: dynamoRegion,
-      accessKeyId,
-      secretAccessKey
-    })
-
     s3 = new AWS.S3({
       endpoint: `s3-${region}.amazonaws.com`,
       accessKeyId,
       secretAccessKey,
-      Bucket,
       signatureVersion,
-      region 
+      region
+    })
+
+    codeCommitClient = new AWS.CodeCommit({
+      accessKeyId,
+      secretAccessKey,
+      region
     })
 
     // PREPARE IMAGE JSON
@@ -205,20 +205,18 @@ async function onDocumentLoad () {
 
     const latlng = { lat, lng }
 
-    // GET S3 CHECKINS LIST
-    displayStatus('Getting S3 object...')
-    let data
-    try {
-      data = await getS3Object({
-        Bucket,
-        Key: 'content/data/checkins.json'
-      })
-    } catch (e) {
-      displayStatus(`Uh oh. ${e.toString()}`)
+    // UPLOAD IMAGES
+    for (let i = 0; i < david.images.length; ++i) {
+      displayStatus('Uploading image ' + i)
+      try {
+        await putImageToS3(`${checkinTime}/${checkinTime}-${i}.jpeg`, david.images[i].data)
+      } catch (e) {
+        displayStatus('Uh oh. ' + e.toString())
+        return
+      }
     }
 
-    // APPEND NEW CHECKIN
-    const contentJson = JSON.parse(data.Body.toString())
+    // CREATE AND UPLOAD NEW CHECKIN
     const newCheckin = {
       checkinId: currentEpoch,
       name: checkinName,
@@ -229,44 +227,20 @@ async function onDocumentLoad () {
       blurb: checkinBlurb,
       images: imageJson
     }
+    const newCheckinJsonString = JSON.stringify(newCheckin, null, 2)
     console.log(newCheckin)
-    contentJson.checkins.push(newCheckin)
-
-    // UPLOAD IMAGES
-    for (let i = 0; i < david.images.length; ++i) {
-      displayStatus('Uploading image ' + i)
-      try {
-        await putHeavyPublicS3Object(`content/images/${checkinTime}/${checkinTime}-${i}.jpeg`, david.images[i].data)
-      } catch (e) {
-        displayStatus('Uh oh. ' + e.toString())
-        return
-      }
-    }
-
-    // UPLOAD NEW CHECKIN LIST
-    displayStatus('Pushing new checkin list...')
+    displayStatus('Pushing new checkin to CodeCommit...')
     try {
-      await putPublicS3Object('content/data/checkins.json', JSON.stringify(contentJson, null, 2))
-      await putPublicS3Object('content/data/checkins.js', `david = ${JSON.stringify(contentJson, null, 2)}`)
+      await putToCodeCommit(`${checkinsPath}/${newCheckin.checkinId}.json`, newCheckinJsonString)
     } catch (e) {
       displayStatus(`Uh oh. ${e.toString()}`)
       return
     }
-    displayStatus('Push to S3 successful.')
-
-    // UPLOAD TO DYNAMODB
-    displayStatus('Putting to DynamoDB...')
-    try {
-      await putToDynamoDB('checkins', newCheckin)
-    } catch (e) {
-      displayStatus(`Uh oh. ${e.toString()}`)
-      return
-    }
-    displayStatus('Push to DynamoDB successful.')
+    displayStatus('Push to CodeCommit successful.')
 
 
     // We're done!
-    displayStatus('Completed push: ' + JSON.stringify(newCheckin, null, 2))
+    displayStatus('Completed push: ' + newCheckinJsonString)
   })
 }
 
