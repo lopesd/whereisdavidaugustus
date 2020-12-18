@@ -100,12 +100,13 @@
                 </div>
               <% end %>
 
-              <% if checkin['firstPeeper'] && checkin['firstPeeper'] == '$LOCKED$' %>
+              <% peep = peeps[checkin['checkinId']] %>
+              <% if peep['peepAllowed'] == false %>
                 <%# empty %>
 
-              <% elsif checkin['firstPeeper'] && !checkin['firstPeeper'].empty? %>
+              <% elsif peep['peeper'] %>
                 <div class="checkin-peeper-pane">
-                  <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(checkin['firstPeeper']) %></span> was first peeper</span>
+                  <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(peep['peeper']) %></span> was first peeper</span>
                 </div>
 
               <% else %> 

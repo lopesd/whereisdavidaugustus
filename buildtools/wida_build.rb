@@ -52,13 +52,19 @@ module WidaBuild
       ## COPY SRC INTO BUILD ##
       FileUtils.cp_r("#{website_dir}/.", website_build_dir)
 
-      # GET CHECKINS
+      # GET CHECKINS AND PEEPS
       checkins = []
       Dir.glob("#{options[:checkins_dir]}/*").each do |checkin_file|
         checkin = JSON.parse(File.read(checkin_file))
         checkins.push(checkin)
       end
       checkins.sort_by! { |checkin| checkin['checkinId'] }
+
+      peeps = {}
+      Dir.glob("#{options[:peeps_dir]}/*").each do |peep_file|
+        peep = JSON.parse(File.read(peep_file))
+        peeps[peep['checkinId']] = peep
+      end
 
       ## TEMPLATING ##
       build_version_id = Time.now.to_i
