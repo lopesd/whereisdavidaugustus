@@ -1,11 +1,2 @@
 .DS_Store
-logs
 build
-notes
-*.mp4
-*.MP4
-node_modules
-images
-videos
-raw
-output
