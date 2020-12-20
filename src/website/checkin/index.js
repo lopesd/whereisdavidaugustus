@@ -13,7 +13,7 @@ const imagesPath = 'media/images'
 const repositoryName = 'whereisdavidaugustus-content'
 const branchName = 'master'
 const committerName = 'whereisdavidaugustus.com/checkin'
-const checkinsPath = 'content/data/checkins'
+const checkinsPath = 'content/static/checkins'
 
 // DOM HELPERS
 function emptyHtml (id) {
