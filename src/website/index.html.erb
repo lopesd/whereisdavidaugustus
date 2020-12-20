@@ -101,7 +101,7 @@
               <% end %>
 
               <% peep = peeps[checkin['checkinId']] %>
-              <% if peep['peepAllowed'] == false %>
+              <% if peep == nil || peep['peepAllowed'] == false %>
                 <%# empty %>
 
               <% elsif peep['peeper'] %>
