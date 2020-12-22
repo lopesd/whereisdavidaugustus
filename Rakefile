@@ -23,6 +23,7 @@ else
 end
 CHECKINS_DIR = "#{CONTENT_DIR}/static/checkins"
 PEEPS_DIR = "#{CONTENT_DIR}/dynamic/peeps"
+PARTIALS_DIR = "#{WEBSITE_SRC_ROOT}/partials"
 
 # helpers
 def run_cmd cmd, msg
@@ -36,10 +37,12 @@ task default: :build
 
 task :build => :clean do
   WidaBuild.build(
+    build_stage: BUILD_STAGE,
     src_root: SRC_ROOT,
     build_root: BUILD_ROOT,
     checkins_dir: CHECKINS_DIR,
     peeps_dir: PEEPS_DIR,
+    partials_dir: PARTIALS_DIR,
     credentials_file: CREDENTIALS_FILE
   )
   puts "BUILD COMPLETE"

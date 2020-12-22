@@ -9,6 +9,9 @@ const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-do
 const lastCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
 const highlightedCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
 
+const getPeepUrl = 'https://www.whereisdavidaugustus.com/get_peep'
+const postPeepUrl = 'https://www.whereisdavidaugustus.com/peep'
+
 // UTIL
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -27,38 +30,36 @@ function sanitize(string) {
   return string.replace(reg, match => sanitizeMap[match])
 }
 
-// TEST UTIL
-async function spoofPostPeep(checkinId, peeperName) {
-  await sleep(1000)
-  return { peepSuccessful: firstPeeper === 'david', peeperName: 'david' }
-}
-
 // BUTTON CALLBACKS
 async function onClickPeepButton(event) {
-  const checkinId = event.target.parentElement.dataset.checkinId
-  const peeperName = event.target.previousElementSibling.value
+  const el = event.target
+  const parentEl = el.parentElement
+  const wrapperEl = parentEl.parentElement
+  const inputEl = parentEl.querySelector('.checkin-peeper-name-input')
+  const peeperName = inputEl.value
   if (!peeperName) {
-    event.target.previousElementSibling.placeholder = 'name is required dummy'
+    inputEl.placeholder = 'name is required dummy'
     return
   }
 
   // enter loading state
-  event.target.disabled = true
-  event.target.innerHTML = '...'
-  event.target.previousElementSibling.disabled = true
+  el.disabled = true
+  el.innerHTML = '...'
+  inputEl.disabled = true
 
   // send post
-  let response
+  const checkinId = parentEl.dataset.checkinId
+  let peep
   try {
-    response = await postPeep(checkinId, peeperName)
+    peep = await postPeep(checkinId, peeperName)
   } catch (e) {
     console.error(e)
-    document.getElementById(`${checkinId}-peeper-pane-wrapper`).innerHTML = 'There was an error :( pls check console and report'
+    wrapperEl.innerHTML = renderPeeperPane({ errored: true })
     return
   }
 
   // exit loading state and update html
-  document.getElementById(`${checkinId}-peeper-pane-wrapper`).innerHTML = innerHTMLForPeeperPane(checkinId, response.firstPeeper, !response.peepSuccessful)
+  wrapperEl.innerHTML = renderPeeperPane({ attemptedPeeper: peeperName, peep })
 }
 
 // Don't trigger a click on the checkin if you click in the peeper pane
@@ -68,10 +69,9 @@ function peeperPaneClick(e) {
   e.stopPropagation()
 }
 
-async function postPeep(checkinId, peeperName) {
-  const url = 'https://www.whereisdavidaugustus.com/peep'
-  const body = { checkinId, peeper: peeperName }
-  const fetchParams = {
+// helper function to make a fetch call with a json body and response
+async function jsonFetch(url, body) {
+  const params = {
     method: 'POST',
     mode: 'same-origin',
     cache: 'no-cache',
@@ -81,13 +81,18 @@ async function postPeep(checkinId, peeperName) {
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(body)
   }
+  const resp = await fetch(url, params)
+  return resp.json()
+}
 
-  const response = await fetch(url, fetchParams)
+// get data for a peep
+async function getPeep(checkinId) {
+  jsonFetch(getPeepUrl, { checkinId })
+}
 
-  const responseJson = await response.json()
-  console.log(response)
-  console.log(responseJson)
-  return responseJson
+// claim a peep
+async function postPeep(checkinId, peeper) {
+  return jsonFetch(postPeepUrl, { checkinId, peeper })
 }
 
 // HIGHLIGHT
@@ -145,7 +150,7 @@ async function onMapsApiLoad() {
   map.fitBounds(continentalUSABounds)
   david.map = map
 
-  const checkins = await david.checkins
+  const checkins = david.checkins
   const bounds = new google.maps.LatLngBounds()
   checkins.forEach(({ latlng, path }) => {
     if (latlng) {
@@ -209,7 +214,7 @@ async function onMapsApiLoad() {
 }
 
 // ON DOCUMENT LOAD
-(async function () {
+document.addEventListener("DOMContentLoaded", () => {
   // ADD LISTENERS TO MAP CONTROLS
   document.getElementById('map-down-arrow').addEventListener('click', () => {
     document.getElementById('right-pane-anchor').scrollIntoView({ behavior: 'smooth' })
@@ -243,6 +248,20 @@ async function onMapsApiLoad() {
     })
   })
 
+  // CHECK PEEP AVAILABILITY
+  document.querySelectorAll('.checkin-peeper-pane.loading').forEach(async el => {
+    let peep
+    try {
+      peep = await getPeep(el.dataset.checkinId)
+    } catch (e) {
+      console.error(e)
+      el.parentElement.innerHTML = renderPeeperPane({ errored: true })
+      return
+    }
+    el.parentElement.innerHTML = renderPeeperPane({ peep })
+  })
+})
+
   // WORK IN PROGRESS 
   // Code to highlight the checkin that has been scrolled to
   // Note - include GSAP for this to work
@@ -267,4 +286,3 @@ async function onMapsApiLoad() {
     })
   })
   */
-})()

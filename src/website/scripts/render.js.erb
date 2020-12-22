@@ -1,0 +1,20 @@
+function render(templateName, data) {
+  const content = document.getElementById(templateName).innerHTML
+  const template = ejs.compile(content, {
+    cache: true,
+    filename: templateName
+  })
+  return template(data)
+}
+
+function renderPeeperPane({ errored, attemptedPeeper, peep }) {
+  if (errored) {
+    return render('errored-peeper-pane-template')
+  } else if (!peep.peepAllowed) {
+    return null
+  } else if (!peep.peeper) {
+    return render('unclaimed-peeper-pane-template', peep)
+  } else {
+    return render('claimed-peeper-pane-template', { attemptedPeeper, ...peep })
+  }
+}

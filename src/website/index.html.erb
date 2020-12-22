@@ -100,28 +100,42 @@
                 </div>
               <% end %>
 
-              <% peep = peeps[checkin['checkinId']] %>
-              <% if peep == nil || peep['peepAllowed'] == false %>
-                <%# empty %>
+              <div class="checkin-peeper-pane-wrapper">
+                <% peep = peeps[checkin['checkinId']] %>
+                <% if peep == nil || peep['peepAllowed'] == false %>
+                  <%# empty %>
 
-              <% elsif peep['peeper'] %>
-                <div class="checkin-peeper-pane">
-                  <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(peep['peeper']) %></span> was first peeper</span>
-                </div>
+                <% elsif peep['peeper'] %>
+                  <div class="checkin-peeper-pane">
+                    <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(peep['peeper']) %></span> was first peeper</span>
+                  </div>
 
-              <% else %> 
-                <div onclick="peeperPaneClick(event)" class="checkin-peeper-pane available" data-checkin-id="<%= checkin['checkinId'] %>">
-                  <input class="checkin-peeper-name-input" type="text" maxlength="40" placeholder="what's your name? quick!"/>
-                  <button class="checkin-claim-first-peep-button" onclick="onClickPeepButton(event)">PEEP</button>
-                </div>
-
-              <% end %>
+                <% else %>
+                  <div class="checkin-peeper-pane loading" data-checkin-id="<%= checkin['checkinId'] %>">
+                    <span class="checkin-peeper-text">Double checking...</span>
+                  </div>
+                <% end %>
+              </div>
 
             </div>
           <% end %>
         </div>
       </div>
     </main>
+
+    <!-- RENDER TEMPLATES -->
+    <script type="text/template" id="claimed-peeper-pane-template">
+      <%= partials['claimed-peeper-pane'] %>
+    </script>
+
+    <script  type="text/template" id="unclaimed-peeper-pane-template">
+      <%= partials['unclaimed-peeper-pane'] %>
+    </script>
+
+    <script type="text/template" id="errored-peeper-pane-template">
+      <%= partials['errored-peeper-pane'] %>
+    </script>
+
 
     <!-- MAPS API -->
     <script defer src="https://maps.googleapis.com/maps/api/js?key=<%=maps_api_key%>&callback=onMapsApiLoad"></script>
@@ -132,7 +146,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
     -->
 
+    <!-- EJS -->
+    <script src="https://unpkg.com/ejs@3.1.3/ejs.min.js"></script>
+
     <!-- MY JS -->
     <script src="./scripts/main.<%= build_version_id %>.js"></script>
+    <script src="./scripts/render.<%= build_version_id %>.js"></script>
+
+    <% if build_stage == 'local' %>
+    <script src="./scripts/localoverrides.<%= build_version_id %>.js"></script>
+    <% end %>    
   </body>
 </html>

@@ -167,13 +167,21 @@
   background-color: #aadafe;
 }
 
+.checkin-peeper-pane.loading {
+  background-color: #f2eccf;
+}
+
+.checkin-peeper-pane.errored {
+  background-color: #fc7567;
+}
+
 .checkin-peeper-icon {
   font-size: 1.5rem;
-  padding: 0 1rem;
+  padding-left: 1rem;
 }
 
 .checkin-peeper-text {
-  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .checkin-peeper-name {

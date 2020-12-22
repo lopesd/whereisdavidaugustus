@@ -67,9 +67,21 @@ module WidaBuild
       end
 
       ## TEMPLATING ##
+      build_stage = options[:build_stage]
       build_version_id = Time.now.to_i
       maps_api_key = JSON.parse(File.read(options[:credentials_file]))['googleMapsAPIKey']
       files_to_template = Dir["#{website_build_dir}/**/*.erb"]
+
+      puts "Loading partials"
+      partials_to_load = Dir.glob("#{options[:partials_dir]}/**/*.html")
+      partials = {}
+      partials_to_load.each do |partial_file_name|
+        content = File.read(partial_file_name)
+        basename = File.basename(partial_file_name).delete_suffix(File.extname(partial_file_name))
+        partials[basename] = content
+        puts "  #{partial_file_name} => #{basename}"
+      end
+      puts
 
       puts "Templating"
       puts "  #{files_to_template.join("\n  ")}"
@@ -94,6 +106,7 @@ module WidaBuild
         puts "  #{filename} => #{new_filename}"
         FileUtils.mv(filename, new_filename)
       end
+      puts
     end
   end
 end
