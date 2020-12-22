@@ -8,6 +8,7 @@ function render(templateName, data) {
 }
 
 function renderPeeperPane({ errored, attemptedPeeper, peep }) {
+  console.log('rendering:', peep)
   if (errored) {
     return render('errored-peeper-pane-template')
   } else if (!peep.peepAllowed) {

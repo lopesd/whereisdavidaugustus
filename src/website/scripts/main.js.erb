@@ -51,7 +51,8 @@ async function onClickPeepButton(event) {
   const checkinId = parentEl.dataset.checkinId
   let peep
   try {
-    peep = await postPeep(checkinId, peeperName)
+    peepData = await postPeep(checkinId, peeperName)
+    console.log('received: ', peepData)
   } catch (e) {
     console.error(e)
     wrapperEl.innerHTML = renderPeeperPane({ errored: true })
@@ -59,7 +60,10 @@ async function onClickPeepButton(event) {
   }
 
   // exit loading state and update html
-  wrapperEl.innerHTML = renderPeeperPane({ attemptedPeeper: peeperName, peep })
+  wrapperEl.innerHTML = renderPeeperPane({
+    attemptedPeeper: peeperName,
+    peep: peepData.peep
+  })
 }
 
 // Don't trigger a click on the checkin if you click in the peeper pane
@@ -252,13 +256,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.checkin-peeper-pane.loading').forEach(async el => {
     let peep
     try {
-      peep = await getPeep(el.dataset.checkinId)
+      peepData = await getPeep(el.dataset.checkinId)
     } catch (e) {
       console.error(e)
       el.parentElement.innerHTML = renderPeeperPane({ errored: true })
       return
     }
-    el.parentElement.innerHTML = renderPeeperPane({ peep })
+    el.parentElement.innerHTML = renderPeeperPane({ peep: peepData.peep })
   })
 })
 

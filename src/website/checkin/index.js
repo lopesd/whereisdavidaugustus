@@ -218,7 +218,7 @@ async function onDocumentLoad () {
 
     // CREATE AND UPLOAD NEW CHECKIN
     const newCheckin = {
-      checkinId: currentEpoch,
+      checkinId: currentEpoch.toString(),
       name: checkinName,
       time: checkinTime,
       uploadTime: currentTimeISO,

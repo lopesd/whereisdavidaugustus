@@ -1,11 +1,11 @@
 async function postPeep(checkinId, peeper) {
   await sleep(1000)
-  return { checkinId, peepAllowed: true, peeper: 'test' }
+  return { peep: { checkinId, peepAllowed: true, peeper: 'test' } }
 }
 
 async function getPeep(checkinId) {
   await sleep(1000)
-  return { checkinId, peepAllowed: true, peeper: null }
+  return { peep: { checkinId, peepAllowed: true, peeper: null } }
 }
 
 console.log('Loaded local overrides.')
