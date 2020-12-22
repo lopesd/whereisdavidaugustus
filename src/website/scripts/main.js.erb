@@ -87,7 +87,7 @@ async function jsonFetch(url, body) {
 
 // get data for a peep
 async function getPeep(checkinId) {
-  jsonFetch(getPeepUrl, { checkinId })
+  return jsonFetch(getPeepUrl, { checkinId })
 }
 
 // claim a peep
