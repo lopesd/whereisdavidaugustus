@@ -53,13 +53,14 @@
         <!-- CHECKINS -->
         <div id="checkins-pane">
           <% checkins.reverse.each do |checkin|  %>
+            <% checkin_id = checkin['checkinId'] %>
             <div class="checkin-content"
-              onmouseenter="highlightCheckinAndMarker('<%= checkin['checkinId'] %>')"
-              onmouseleave="unHighlightCheckinAndMarker('<%= checkin['checkinId'] %>')"
-              onclick="scrollCheckinIntoView('<%= checkin['checkinId'] %>')"
-              id="checkin-content-<%= checkin['checkinId'] %>"
+              onmouseenter="highlightCheckinAndMarker('<%= checkin_id %>')"
+              onmouseleave="unHighlightCheckinAndMarker('<%= checkin_id %>')"
+              onclick="scrollCheckinIntoView('<%= checkin_id %>')"
+              id="checkin-content-<%= checkin_id %>"
               >
-              <div class="checkin-content-anchor" id="checkin-content-anchor-<%= checkin['checkinId'] %>"></div>
+              <div class="checkin-content-anchor" id="checkin-content-anchor-<%= checkin_id %>"></div>
 
               <div class="checkin-title">
                 <div class="checkin-title-left">
@@ -101,17 +102,17 @@
               <% end %>
 
               <div class="checkin-peeper-pane-wrapper">
-                <% peep = peeps[checkin['checkinId']] %>
-                <% if peep == nil || peep['peepAllowed'] == false %>
+                <% peep = peeps[checkin_id] %>
+                <% if peep && !peep['peepAllowed'] %>
                   <%# empty %>
 
-                <% elsif peep['peeper'] %>
+                <% elsif peep && peep['peeper'] %>
                   <div class="checkin-peeper-pane">
                     <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(peep['peeper']) %></span> was first peeper</span>
                   </div>
 
                 <% else %>
-                  <div class="checkin-peeper-pane loading" data-checkin-id="<%= checkin['checkinId'] %>">
+                  <div class="checkin-peeper-pane loading" data-checkin-id="<%= checkin_id %>">
                     <span class="checkin-peeper-text">Double checking...</span>
                   </div>
                 <% end %>
