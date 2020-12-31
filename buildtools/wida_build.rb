@@ -42,15 +42,12 @@ module WidaBuild
 
     # options hash should include :src_root, :build_root, :credentials_file, :checkins_dir
     def build(options)
-      website_dir = "#{options[:src_root]}/website"
-      website_build_dir = "#{options[:build_root]}/website"
-
       # create build folder if non existent
-      FileUtils.mkdir_p(website_build_dir)
+      FileUtils.mkdir_p(options[:build_root])
 
 
       ## COPY SRC INTO BUILD ##
-      FileUtils.cp_r("#{website_dir}/.", website_build_dir)
+      FileUtils.cp_r("#{options[:src_root]}/.", options[:build_root])
 
       # GET CHECKINS AND PEEPS
       checkins = []
@@ -70,7 +67,7 @@ module WidaBuild
       build_stage = options[:build_stage]
       build_version_id = Time.now.to_i
       maps_api_key = JSON.parse(File.read(options[:credentials_file]))['googleMapsAPIKey']
-      files_to_template = Dir["#{website_build_dir}/**/*.erb"]
+      files_to_template = Dir["#{options[:build_root]}/**/*.erb"]
 
       puts "Loading partials"
       partials_to_load = Dir.glob("#{options[:partials_dir]}/**/*.html")
@@ -100,7 +97,7 @@ module WidaBuild
       # change the filenames of all .css and .js in build folder
       puts "Versioning"
       puts "  Folders: #{FOLDERS_TO_VERSION.join(', ')}"
-      files_to_version = FOLDERS_TO_VERSION.flat_map { |folder| Dir["#{website_build_dir}/#{folder}/*"] }
+      files_to_version = FOLDERS_TO_VERSION.flat_map { |folder| Dir["#{options[:build_root]}/#{folder}/*"] }
       files_to_version.each do |filename|
         new_filename = versioned_filename(filename, build_version_id)
         puts "  #{filename} => #{new_filename}"
