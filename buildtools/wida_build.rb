@@ -2,15 +2,6 @@ require 'erb'
 require 'fileutils'
 require 'json'
 
-# GASP MONKEY PATCH
-# we do this bc dynamodb returns all numbers as BigDecimals which 
-# become strings when converted to JSON by default. fuck that noise
-class BigDecimal
-  def to_json(options)
-    self.to_f.to_s
-  end
-end
-
 module WidaBuild
   class << self
     HTML_SANITIZE_REGEX = Regexp.new('[&<>"\'/]', 'i')
