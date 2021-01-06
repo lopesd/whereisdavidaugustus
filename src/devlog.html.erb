@@ -41,6 +41,33 @@
 
       <div id="main-gutters">
         <div class="devlog-entry">
+          <div class="devlog-entry-content"><span class="devlog-entry-date">Wed Jan 6 2021 3:04PM | </span><b>Dynamic static peeps | </b>Alright! So, I took a bit of a risk by implementing Ivan's idea of keeping only the open peeps dynamic and all the claimed peeps static (I should mention, he only briefly mentioned this idea in passing and wasn't necessarily giving it his stamp of approval).
+
+For the non-technically inclined that venture into the devlog (you're welcome here too!), here's what I mean with these keywords. "Static" website content loosely means content that doesn't change very often (blog posts are the classic example). As such, its HTML is usually rendered beforehand, and handed to the client - aka your browser - immediately after the request for the website is made. So if this website were entirely static, this would be the chain of events:
+
+- 1: browser requests data from whereisdavidaugustus.com
+- 2: server responds with HTML/CSS/JS representing the entire website
+- 3: browser can render that HTML immediately with no further requests needed
+  - (except separate requests for images, videos, assets, and services like Google maps)
+
+With "dynamic" content, what happens instead is this:
+
+- 1: browser requests data from whereisdavidaugustus.com
+- 2: server responds with HTML/CSS/JS represting most of the website, but not the dynamic content (like checkins or peeps for example)
+- 3: the JS that the client just acquired requests data from a different endpoint (for example, whereisdavidaugustus.com/peep)
+- 4: the server behind that endpoint responds with data (for example JSON) representing the peeps
+- 5: the JS then generates HTML <i>on the fly</i> given that data
+- 6: the JS sticks that generated HTML into the appropriate place in the existing website
+
+Why would we ever follow the second pattern? Tons of reasons. We might need to customize content for each user, or we might need to show stuff that changes very often. We might want to allow the user to page through data without having to refresh the entire page.
+
+In the peep case, we need the peeper to update quickly and accurately! And yet, once a peeper is locked in, that name doesn't change. So I decided to take advantage of that and leave open peeps dynamic (the website will send a request to the backend database to make sure it's open) and claimed peeps static (the website will already include the HTML representing claimed peeps, and save the browser the trouble of having to check again with the database).
+
+In the backend, I keep a DynamoDB database up-to-date with all existing peeps. When a new peep gets claimed, the main peep lambda updates the entry in the database, and asynchronously (without waiting for completion) calls a second lambda that replicates this peep in the static content repo used to build the website. No big deal if this lambda fails - it's not doing anything super important (no customer impact except for saving a little bandwidth). I'm not particularly thrilled about having peep data stored in two different places as this violates the single source of truth principle, but it was sort of inevitable given that I needed a data store accessible at build time, and using a code repo as a database felt... wrong. But IDK. I'm open to suggestions. Let me know what I did wrong!
+        </div>
+      </div>
+
+        <div class="devlog-entry">
           <div class="devlog-entry-content"><span class="devlog-entry-date">Tue Dec 15 2020 7:32AM | </span><b>AWS and Google sent me angry emails | </b>From the start of this project, one of my biggest objectives was keeping this website loading as fast as possible. It was originally designed as a low-key SPA (single page application) that would fetch checkins from the backend and render them in the browser. As the number of checkins grew it became obvious that some pre-rendering would be needed if I really wanted to keep it crispy - so I've had a wonderful time in the last few days re-architecting this thing into a mostly static website.
 
 I finally uploaded my source code to GitHub. Link below. Big oops though: my git commit history apparently contains my AWS Access Key and Google Maps API Key in plaintext?? Weird, someone must've snuck in at night and committed those. AWS and Google both let me know via email that I needed to rotate those creds as soon as I could. Hey it's good to know they're scraping GitHub and looking out for you!
