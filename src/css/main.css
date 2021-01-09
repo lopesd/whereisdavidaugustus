@@ -21,8 +21,8 @@
 /* LEFT */
 #left-pane {
   position: relative;
-  height: calc(100% - 2.5rem);
-  margin-top: 2.5rem; /* should match the height of the header */
+  height: calc(100% - 5.5rem);
+  margin-top: 5.5rem; /* should match the height of the header */
   border-bottom: 1px solid #80808091;
 }
 
@@ -69,10 +69,46 @@
   top: -4.5rem;
 }
 
+#chapters-header {
+  width: 100%;
+  height: 3rem;
+
+  position: fixed;
+  top: 2.5rem;
+  left: 0;
+  z-index: 2;
+
+  border-bottom: 1px solid grey;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+}
+
+#chapters-header-chapter-name {
+  flex-grow: 1;
+  text-align: center;
+}
+
+#chapter-name-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#chapter-number-text {
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.chapters-header-arrow {
+  flex-grow: 0;
+  color: #4e69b4;
+  font-size: 1.5rem;
+  padding: 0.75rem 1rem;
+}
+
 #checkins-pane {
   padding: 0 1rem;
-
-
 }
 
 #checkins-loading-div {
@@ -234,10 +270,15 @@
     margin-top: 0;
   }
 
+  #chapters-header {
+    position: absolute;
+    height: 4rem;
+  }
+
   #checkins-pane {
     position: absolute;
-    top: 2.5rem; /* just below the header */
-    height: calc(100% - 2.5rem);
+    top: 5.5rem; /* just below the header */
+    height: calc(100% - 5.5rem);
     overflow: scroll;
 
     padding-top: 2rem;
