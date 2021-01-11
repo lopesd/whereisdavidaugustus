@@ -1,8 +1,11 @@
 // GLOBAL SCOPE
 var david
 david = david || {}
-david.allMarkers = {}
-david.checkins = <%= JSON.pretty_generate(checkins) %>
+david.allMapMarkers = {}
+david.allMapMarkerTimeouts = []
+david.allMapPolylines = []
+david.chapters = <%= JSON.pretty_generate(chapters) %>;
+david.currentChapterNumber = <%= chapters.keys.max %>
 
 // SOME CONSTANTS
 const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
@@ -30,7 +33,26 @@ function sanitize(string) {
   return string.replace(reg, match => sanitizeMap[match])
 }
 
+// HTML UTIL
+function getChapterContainerEl(chapterNumber) {
+  return document.getElementById(`chapter-${chapterNumber}-container`)
+}
+
+function getChapterHeaderContainerEl(chapterNumber) {
+  return document.getElementById(`chapter-header-${chapterNumber}-container`)
+}
+
 // BUTTON CALLBACKS
+// header arrow
+function leftChapterHeaderArrowClick(event) {
+  updateChapterSelection(david.currentChapterNumber - 1)
+}
+
+function rightChapterHeaderArrowClick(event) {
+  updateChapterSelection(david.currentChapterNumber + 1)
+}
+
+// peep button!
 async function onClickPeepButton(event) {
   const el = event.target
   const parentEl = el.parentElement
@@ -73,6 +95,7 @@ function peeperPaneClick(e) {
   e.stopPropagation()
 }
 
+// AJAX CALLS
 // helper function to make a fetch call with a json body and response
 async function jsonFetch(url, body) {
   const params = {
@@ -102,7 +125,7 @@ async function postPeep(checkinId, peeper) {
 // HIGHLIGHT
 function highlightCheckinAndMarker(checkinId) {
   // marker
-  const marker = david.allMarkers[checkinId]
+  const marker = david.allMapMarkers[checkinId]
   if (marker) {
     marker.setIcon(highlightedCheckinIconUrl)
     marker.setZIndex(500)
@@ -115,10 +138,11 @@ function highlightCheckinAndMarker(checkinId) {
 
 
 async function unHighlightCheckinAndMarker(checkinId) {
+  const checkins = david.chapters[david.currentChapterNumber].checkins
   // marker
-  const marker = david.allMarkers[checkinId]
+  const marker = david.allMapMarkers[checkinId]
   if (marker) {
-    if (david.checkins[david.checkins.length-1].checkinId === checkinId) {
+    if (checkins[checkins.length-1].checkinId === checkinId) {
       marker.setIcon(lastCheckinIconUrl)
     } else {
       marker.setIcon(defaultCheckinIconUrl)
@@ -141,20 +165,44 @@ function scrollCheckinIntoView(checkinId) {
 // ON MAP LOAD
 async function onMapsApiLoad() {
   // CREATE MAP AND CONFIGURE BOUNDS
-  const continentalUSABounds = new google.maps.LatLngBounds()
-  continentalUSABounds.extend({ lat: 49.271721, lng: -125.635007 })
-  continentalUSABounds.extend({ lat: 49.531478, lng: -59.414887 })
-  continentalUSABounds.extend({ lat: 24.186119, lng: -125.193349 })
-  continentalUSABounds.extend({ lat: 24.186119, lng: -59.414887 })
-
   const map = new google.maps.Map(document.getElementById('map'), {
     disableDefaultUI: true,
     gestureHandling: 'cooperative'
   })
-  map.fitBounds(continentalUSABounds)
   david.map = map
 
-  const checkins = david.checkins
+  // create the circular path marker for gopro videos, invisible for now
+  david.pathMarker = new google.maps.Marker({
+    map: david.map,
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 6,
+      strokeColor: "#393",
+    },
+    visibility: false
+  })
+
+  updateMapForNewChapterSelection()
+}
+
+// UPDATE MAP FOR NEW CHAPTER 
+// Remove existing markers and lines, stop existing marker pop-in animation,
+// add new markers, set up their callbacks, and kick off their animations
+function updateMapForNewChapterSelection() {
+  const map = david.map
+
+  // delete existing timeouts, markers and polylines
+  david.allMapMarkerTimeouts.forEach(timer => clearTimeout(timer))
+  david.allMapMarkerTimeouts = []
+
+  Object.values(david.allMapMarkers).forEach(marker => marker.setMap(null))
+  david.allMapMarkers = {}
+
+  david.allMapPolylines.forEach(polyline => polyline.setMap(null))
+  david.allMapPolylines = []
+
+  // fit maps to the bounds of the checkin locations
+  const checkins = david.chapters[david.currentChapterNumber].checkins
   const bounds = new google.maps.LatLngBounds()
   checkins.forEach(({ latlng, path }) => {
     if (latlng) {
@@ -163,9 +211,9 @@ async function onMapsApiLoad() {
       path.forEach(latlng => bounds.extend(latlng))
     }
   })
-  david.map.fitBounds(bounds)
+  map.fitBounds(bounds)
 
-  // CREATE CHECKIN MARKERS
+  // create checkin markers
   const addCheckinMarker = (checkin, isLastCheckin) => {
     if (checkin.latlng) {
       let icon = { url: defaultCheckinIconUrl }
@@ -181,50 +229,74 @@ async function onMapsApiLoad() {
       marker.addListener("mouseover", () => highlightCheckinAndMarker(checkin.checkinId))
       marker.addListener("mouseout", () => unHighlightCheckinAndMarker(checkin.checkinId))
       marker.addListener("click", () => scrollCheckinIntoView(checkin.checkinId))
-      david.allMarkers[checkin.checkinId] = marker
+      david.allMapMarkers[checkin.checkinId] = marker
       setTimeout(() => marker.setAnimation(null), 400)
     }
 
     if (checkin.videos) {
       checkin.videos.forEach(async ({ path }) => {
         if (!path) return
-        new google.maps.Polyline({ path, map })
+        const polyline = new google.maps.Polyline({ path, map })
+        david.allMapPolylines.push(polyline)
       })
     }
   }
 
   // animate the markers as they enter the screen
-  const pathAnimationTime = 3000 // ms
-  const pathAnimationDelay = 500 // ms
-  const pathAnimationStep = pathAnimationTime / checkins.length
+  const pathAnimationMaxTime = 3000 // in ms, longest total amount of time the whole path should take to pop up
+  const pathAnimationStepMin = 300 // in ms, shortest amount of time allowed between each marker popping up
+  const pathAnimationDelay = 600 // in ms, initial delay before path begins popping up
+
+  const pathAnimationStep = Math.min(pathAnimationMaxTime / checkins.length, pathAnimationStepMin)
   for (var i = 0; i < checkins.length; ++i) {
     const checkin = checkins[i]
     const isLastCheckin = i === checkins.length - 1
-    setTimeout(function () {
+    const timer = setTimeout(function () {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
+    david.allMapMarkerTimeouts.push(timer)
   }
+}
 
-  // create the circular path marker for gopro videos, invisible for now
-  david.pathMarker = new google.maps.Marker({
-    map: david.map,
-    icon: {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 6,
-      strokeColor: "#393",
-    },
-    visibility: false
+// swap the visibility of the rendered chapters to the current one
+function updateChapterContentForNewChapterSelection() {
+  // make all chapters invisible
+  Object.keys(david.chapters).forEach(chapterNumber => {
+    getChapterContainerEl(chapterNumber).classList.remove('current-chapter')
+    getChapterHeaderContainerEl(chapterNumber).classList.remove('current-chapter')
   })
+
+  // make the new chapter visible
+  getChapterContainerEl(david.currentChapterNumber).classList.add('current-chapter')
+  getChapterHeaderContainerEl(david.currentChapterNumber).classList.add('current-chapter')
+}
+
+// UPDATE CHAPTER SELECTION 
+// change global variable indicating current chapter, call all update functions
+function updateChapterSelection(newCurrentChapterNumber) {
+  david.currentChapterNumber = newCurrentChapterNumber
+  updateMapForNewChapterSelection()
+  updateChapterContentForNewChapterSelection()
+  document.getElementById('checkins-anchor').scrollIntoView()
+  document.getElementById('map-anchor').scrollIntoView()
 }
 
 // ON DOCUMENT LOAD
 document.addEventListener("DOMContentLoaded", () => {
-  // ADD LISTENERS TO MAP CONTROLS
-  document.getElementById('map-down-arrow').addEventListener('click', () => {
-    document.getElementById('right-pane-anchor').scrollIntoView({ behavior: 'smooth' })
+  // add listeners to chapter header arrows
+  document.querySelectorAll('.chapters-header-arrow.left').forEach(arrowEl => {
+    arrowEl.addEventListener('click', leftChapterHeaderArrowClick)
+  })
+  document.querySelectorAll('.chapters-header-arrow.right').forEach(arrowEl => {
+    arrowEl.addEventListener('click', rightChapterHeaderArrowClick)
   })
 
-  // ADD LISTENERS TO VIDEO ELEMENTS
+  // add listeners to map controls
+  document.getElementById('map-down-arrow').addEventListener('click', () => {
+    document.getElementById('checkins-anchor').scrollIntoView({ behavior: 'smooth' })
+  })
+
+  // add listeners to video elements
   document.querySelectorAll('.checkin-video').forEach(videoElement => {
     // pause all other videos when a video plays
     videoElement.addEventListener('play', () => {

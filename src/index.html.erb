@@ -41,6 +41,7 @@
       
       <!-- MAP -->
       <div id="left-pane">
+        <div id="map-anchor"></div>
         <div id="map"></div>
         <div id="map-down-arrow">
           <img id="map-down-arrow-svg" src="./assets/down-arrow.svg" />
@@ -49,95 +50,120 @@
 
       <!-- CONTENT -->
       <div id="right-pane">
-        <div id="right-pane-anchor"></div>
-
         <!-- CHAPTERS -->
-        <div id="chapters-header">
-          <div id="chapters-header-left-arrow" class="chapters-header-arrow">
-            <
-          </div>
+        <% visible_chapter_number = chapters.keys.max # display latest chapter %>
+        <div id="chapter-headers">
+          <% chapters.each do |chapter_number, chapter| %>
+            <% chapter_visible = chapter_number == visible_chapter_number %>
+            <% visibility_class = chapter_visible ? "current-chapter" : '' %>
+            <% left_arrow_visibility_class = chapter_number != chapters.keys.min ? '' : 'hidden' %>
+            <% right_arrow_visibility_class = chapter_number != chapters.keys.max ? '' : 'hidden' %>
+            <div 
+              class="chapter-header-container <%= visibility_class %>"
+              id="chapter-header-<%=chapter_number%>-container">
 
-          <div id="chapters-header-chapter-name">
-            <div id="chapter-number-text">CHAPTER 1</div>
-            <div id="chapter-name-text">THE GREAT ESCAPE</div>
-          </div>
+              <button class="chapters-header-arrow left <%= left_arrow_visibility_class %>">
+                <span class="chapters-header-arrow-text-flex-container">
+                  <div class="chapters-header-arrow-text"><</div>
+                </span>
+              </button>
 
-          <div id="chapters-header-right-arrow" class="chapters-header-arrow">
-            >
-          </div>
-        </div>
-
-        <!-- CHECKINS -->
-        <div id="checkins-pane">
-          <% checkins.reverse.each do |checkin|  %>
-            <% checkin_id = checkin['checkinId'] %>
-            <div class="checkin-content"
-              onmouseenter="highlightCheckinAndMarker('<%= checkin_id %>')"
-              onmouseleave="unHighlightCheckinAndMarker('<%= checkin_id %>')"
-              onclick="scrollCheckinIntoView('<%= checkin_id %>')"
-              id="checkin-content-<%= checkin_id %>"
-              >
-              <div class="checkin-content-anchor" id="checkin-content-anchor-<%= checkin_id %>"></div>
-
-              <div class="checkin-title">
-                <div class="checkin-title-left">
-                  <div class="checkin-title-name"><%= checkin['name'] %></div>
-                  <div class="checkin-title-location"><%= checkin['location'] %></div>
-                  <div class="checkin-title-date"><%= checkin['time'] %></div>
-                </div>
+              <div id="chapters-header-chapter-name">
+                <div id="chapter-number-text">CHAPTER <%= chapter_number %></div>
+                <div id="chapter-name-text"><%= chapter['name'] %></div>
               </div>
 
-              <div class="checkin-blurb"><%= checkin['blurb'] %></div>
-
-              <% if checkin['images'] && !checkin['images'].empty? %>
-                <div class="checkin-image-pane">
-                  <% checkin['images'].each do |image| %>
-                    <img 
-                      width="<%= image['width'] %>px"
-                      height="<%= image['height'] %>px"
-                      loading="lazy"
-                      class="checkin-image"
-                      src="./media/images/<%= image['name'] %>"
-                    />
-                  <% end %>
-                </div>
-              <% end %>
-
-              <% if checkin['videos'] && !checkin['videos'].empty? %>
-                <div class="checkin-video-pane">
-                  <% checkin['videos'].each do |video| %>
-                    <video
-                      style="width:<%= video['width'] %>px;height:<%= video['height'] %>px"
-                      class="checkin-video"
-                      controls
-                      preload="metadata"
-                      src="./media/videos/<%= video['name'] %>"
-                      data-video-name="<%= video['name'] %>"
-                    />
-                  <% end %>
-                </div>
-              <% end %>
-
-              <div class="checkin-peeper-pane-wrapper">
-                <% peep = peeps[checkin_id] %>
-                <% if peep && !peep['peepAllowed'] %>
-                  <%# empty %>
-
-                <% elsif peep && peep['peeper'] %>
-                  <div class="checkin-peeper-pane">
-                    <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(peep['peeper']) %></span> was first peeper</span>
-                  </div>
-
-                <% else %>
-                  <div class="checkin-peeper-pane loading" data-checkin-id="<%= checkin_id %>">
-                    <span class="checkin-peeper-text">Double checking...</span>
-                  </div>
-                <% end %>
-              </div>
+              <button class="chapters-header-arrow right <%= right_arrow_visibility_class %>">
+                <span class="chapters-header-arrow-text-flex-container">
+                  <div class="chapters-header-arrow-text">></div>
+                </span>
+              </button>
 
             </div>
           <% end %>
         </div>
+
+        <!-- CHECKINS -->
+        <div id="checkins-pane">
+          <div id="checkins-anchor"></div>
+          <% chapters.keys.reverse.each do |chapter_number|  %>
+            <% chapter_visible = chapter_number == visible_chapter_number %>
+            <% visibility_class = chapter_visible ? 'current-chapter' : '' %>
+            <div 
+              class="chapter-container <%= visibility_class %>"
+              id="chapter-<%=chapter_number%>-container">
+              <% checkins = chapters[chapter_number]['checkins'].reverse %>
+              <% checkins.each do |checkin| %>
+                <% checkin_id = checkin['checkinId'] %>
+                <div class="checkin-content"
+                  onmouseenter="highlightCheckinAndMarker('<%= checkin_id %>')"
+                  onmouseleave="unHighlightCheckinAndMarker('<%= checkin_id %>')"
+                  onclick="scrollCheckinIntoView('<%= checkin_id %>')"
+                  id="checkin-content-<%= checkin_id %>"
+                  >
+                  <div class="checkin-content-anchor" id="checkin-content-anchor-<%= checkin_id %>"></div>
+
+                  <div class="checkin-title">
+                    <div class="checkin-title-left">
+                      <div class="checkin-title-name"><%= checkin['name'] %></div>
+                      <div class="checkin-title-location"><%= checkin['location'] %></div>
+                      <div class="checkin-title-date"><%= checkin['time'] %></div>
+                    </div>
+                  </div>
+
+                  <div class="checkin-blurb"><%= checkin['blurb'] %></div>
+
+                  <% if checkin['images'] && !checkin['images'].empty? %>
+                    <div class="checkin-image-pane">
+                      <% checkin['images'].each do |image| %>
+                        <img 
+                          width="<%= image['width'] %>px"
+                          height="<%= image['height'] %>px"
+                          loading="lazy"
+                          class="checkin-image"
+                          src="./media/images/<%= image['name'] %>"
+                        />
+                      <% end %>
+                    </div>
+                  <% end %>
+
+                  <% if checkin['videos'] && !checkin['videos'].empty? %>
+                    <div class="checkin-video-pane">
+                      <% checkin['videos'].each do |video| %>
+                        <video
+                          style="width:<%= video['width'] %>px;height:<%= video['height'] %>px"
+                          class="checkin-video"
+                          controls
+                          preload="metadata"
+                          src="./media/videos/<%= video['name'] %>"
+                          data-video-name="<%= video['name'] %>"
+                        />
+                      <% end %>
+                    </div>
+                  <% end %>
+
+                  <div class="checkin-peeper-pane-wrapper">
+                    <% peep = peeps[checkin_id] %>
+                    <% if peep && !peep['peepAllowed'] %>
+                      <%# empty %>
+
+                    <% elsif peep && peep['peeper'] %>
+                      <div class="checkin-peeper-pane">
+                        <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(peep['peeper']) %></span> was first peeper</span>
+                      </div>
+
+                    <% else %>
+                      <div class="checkin-peeper-pane loading" data-checkin-id="<%= checkin_id %>">
+                        <span class="checkin-peeper-text">Double checking...</span>
+                      </div>
+                    <% end %>
+                  </div>
+
+                </div>
+              <% end # end checkins loop %>
+            </div> <%# close chapter container %>
+          <% end # end chapters loop %>
+        </div> <%# close checkins pane %>
       </div>
     </main>
 

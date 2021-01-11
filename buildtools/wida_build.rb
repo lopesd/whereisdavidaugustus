@@ -19,6 +19,8 @@ module WidaBuild
       'css'
     ]
 
+    CHAPTER_CONFIG_FILENAME = 'config.json'
+
     # versions the filename using the given version id
     def versioned_filename(filename, build_version_id)
       extension = File.extname(filename)
@@ -40,14 +42,25 @@ module WidaBuild
       ## COPY SRC INTO BUILD ##
       FileUtils.cp_r("#{options[:src_root]}/.", options[:build_root])
 
-      # GET CHECKINS AND PEEPS
-      checkins = []
-      Dir.glob("#{options[:checkins_dir]}/*").each do |checkin_file|
-        checkin = JSON.parse(File.read(checkin_file))
-        checkins.push(checkin)
-      end
-      checkins.sort_by! { |checkin| checkin['checkinId'] }
+      # GET CHECKINS ORGANIZED IN CHAPTERS
+      chapters = {}
+      Dir.glob("#{options[:checkins_dir]}/*").each do |chapter_dir|
+        chapter_config_json = JSON.parse(File.read("#{chapter_dir}/#{CHAPTER_CONFIG_FILENAME}"))
+        chapter_number = chapter_config_json['number']
+        throw "Chapter #{chapter_number} defined twice" if chapters.keys.include?(chapter_number)
 
+        checkins = []
+        Dir.glob("#{chapter_dir}/*").each do |checkin_file|
+          next if File.basename(checkin_file) == CHAPTER_CONFIG_FILENAME
+          checkin = JSON.parse(File.read(checkin_file))
+          checkins.push(checkin)
+        end
+        checkins.sort_by! { |checkin| checkin['checkinId'] }
+        chapter_config_json['checkins'] = checkins
+        chapters[chapter_number] = chapter_config_json
+      end
+
+      # GET PEEPS
       peeps = {}
       Dir.glob("#{options[:peeps_dir]}/*").each do |peep_file|
         peep = JSON.parse(File.read(peep_file))
@@ -72,8 +85,8 @@ module WidaBuild
       puts
 
       puts "Templating"
-      puts "  #{files_to_template.join("\n  ")}"
       files_to_template.each do |filename|
+        puts "  #{filename}"
         file_contents = File.read(filename)
         renderer = ERB.new(file_contents, trim_mode: ">")
         templated_content = renderer.result(binding)
