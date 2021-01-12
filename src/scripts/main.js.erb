@@ -5,7 +5,7 @@ david.allMapMarkers = {}
 david.allMapMarkerTimeouts = []
 david.allMapPolylines = []
 david.chapters = <%= JSON.pretty_generate(chapters) %>;
-david.currentChapterNumber = <%= chapters.keys.max %>
+david.currentChapterNumber = <%= chapters.size - 1 %>
 
 // SOME CONSTANTS
 const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
@@ -261,9 +261,9 @@ function updateMapForNewChapterSelection() {
 // swap the visibility of the rendered chapters to the current one
 function updateChapterContentForNewChapterSelection() {
   // make all chapters invisible
-  Object.keys(david.chapters).forEach(chapterNumber => {
-    getChapterContainerEl(chapterNumber).classList.remove('current-chapter')
-    getChapterHeaderContainerEl(chapterNumber).classList.remove('current-chapter')
+  david.chapters.forEach((chapter, i) => {
+    getChapterContainerEl(i).classList.remove('current-chapter')
+    getChapterHeaderContainerEl(i).classList.remove('current-chapter')
   })
 
   // make the new chapter visible

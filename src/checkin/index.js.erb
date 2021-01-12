@@ -14,7 +14,7 @@ const repositoryName = 'whereisdavidaugustus-content'
 const branchName = 'master'
 const committerName = 'whereisdavidaugustus.com/checkin'
 const checkinsPath = 'content/static/checkins'
-const currentChapter = 'chapter1'
+const currentChapterDirectory = <%= chapters[chapters.size-1]['directory'] %>
 
 // DOM HELPERS
 function emptyHtml (id) {
@@ -228,11 +228,13 @@ async function onDocumentLoad () {
       blurb: checkinBlurb,
       images: imageJson
     }
-    const newCheckinJsonString = JSON.stringify(newCheckin, null, 2)
     console.log(newCheckin)
-    displayStatus('Pushing new checkin to CodeCommit...')
+
+    const newCheckinJsonString = JSON.stringify(newCheckin, null, 2)
+    const newCheckinFilename = `${checkinsPath}/${currentChapterDirectory}/${newCheckin.checkinId}.json`
+    displayStatus('Pushing new checkin to CodeCommit: ' + newCheckinFilename)
     try {
-      await putToCodeCommit(`${checkinsPath}/${currentChapter}/${newCheckin.checkinId}.json`, newCheckinJsonString)
+      await putToCodeCommit(newCheckinFilename, newCheckinJsonString)
     } catch (e) {
       displayStatus(`Uh oh. ${e.toString()}`)
       return

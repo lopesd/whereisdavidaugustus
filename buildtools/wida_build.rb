@@ -1,6 +1,7 @@
 require 'erb'
 require 'fileutils'
 require 'json'
+require 'yaml'
 
 module WidaBuild
   class << self
@@ -19,7 +20,7 @@ module WidaBuild
       'css'
     ]
 
-    CHAPTER_CONFIG_FILENAME = 'config.json'
+    CHAPTER_CONFIG_FILENAME = 'config.yaml'
 
     # versions the filename using the given version id
     def versioned_filename(filename, build_version_id)
@@ -44,20 +45,17 @@ module WidaBuild
 
       # GET CHECKINS ORGANIZED IN CHAPTERS
       chapters = {}
-      Dir.glob("#{options[:checkins_dir]}/*").each do |chapter_dir|
-        chapter_config_json = JSON.parse(File.read("#{chapter_dir}/#{CHAPTER_CONFIG_FILENAME}"))
-        chapter_number = chapter_config_json['number']
-        throw "Chapter #{chapter_number} defined twice" if chapters.keys.include?(chapter_number)
-
+      content_config = YAML.load(File.read("#{options[:checkins_dir]}/#{CHAPTER_CONFIG_FILENAME}"))
+      chapters = content_config['chapters']
+      chapters.each do |chapter_config|
+        chapter_dir = "#{options[:checkins_dir]}/#{chapter_config['directory']}"
         checkins = []
         Dir.glob("#{chapter_dir}/*").each do |checkin_file|
-          next if File.basename(checkin_file) == CHAPTER_CONFIG_FILENAME
           checkin = JSON.parse(File.read(checkin_file))
           checkins.push(checkin)
         end
         checkins.sort_by! { |checkin| checkin['checkinId'] }
-        chapter_config_json['checkins'] = checkins
-        chapters[chapter_number] = chapter_config_json
+        chapter_config['checkins'] = checkins
       end
 
       # GET PEEPS

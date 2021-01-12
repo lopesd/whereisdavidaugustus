@@ -51,16 +51,16 @@
       <!-- CONTENT -->
       <div id="right-pane">
         <!-- CHAPTERS -->
-        <% visible_chapter_number = chapters.keys.max # display latest chapter %>
+        <% visible_chapter_index = chapters.size - 1 # display latest chapter %>
         <div id="chapter-headers">
-          <% chapters.each do |chapter_number, chapter| %>
-            <% chapter_visible = chapter_number == visible_chapter_number %>
+          <% chapters.each_with_index do |chapter, i| %>
+            <% chapter_visible = i == visible_chapter_index %>
             <% visibility_class = chapter_visible ? "current-chapter" : '' %>
-            <% left_arrow_visibility_class = chapter_number != chapters.keys.min ? '' : 'hidden' %>
-            <% right_arrow_visibility_class = chapter_number != chapters.keys.max ? '' : 'hidden' %>
+            <% left_arrow_visibility_class = i != 0 ? '' : 'hidden' %>
+            <% right_arrow_visibility_class = i != chapters.size - 1 ? '' : 'hidden' %>
             <div 
               class="chapter-header-container <%= visibility_class %>"
-              id="chapter-header-<%=chapter_number%>-container">
+              id="chapter-header-<%=i%>-container">
 
               <button class="chapters-header-arrow left <%= left_arrow_visibility_class %>">
                 <span class="chapters-header-arrow-text-flex-container">
@@ -69,7 +69,7 @@
               </button>
 
               <div id="chapters-header-chapter-name">
-                <div id="chapter-number-text">CHAPTER <%= chapter_number %></div>
+                <div id="chapter-number-text">CHAPTER <%= chapter['displayNumber'] %></div>
                 <div id="chapter-name-text"><%= chapter['name'] %></div>
               </div>
 
@@ -86,13 +86,13 @@
         <!-- CHECKINS -->
         <div id="checkins-pane">
           <div id="checkins-anchor"></div>
-          <% chapters.keys.reverse.each do |chapter_number|  %>
-            <% chapter_visible = chapter_number == visible_chapter_number %>
+          <% chapters.each_with_index do |chapter, i|  %>
+            <% chapter_visible = i == visible_chapter_index %>
             <% visibility_class = chapter_visible ? 'current-chapter' : '' %>
             <div 
               class="chapter-container <%= visibility_class %>"
-              id="chapter-<%=chapter_number%>-container">
-              <% checkins = chapters[chapter_number]['checkins'].reverse %>
+              id="chapter-<%=i%>-container">
+              <% checkins = chapter['checkins'].reverse %>
               <% checkins.each do |checkin| %>
                 <% checkin_id = checkin['checkinId'] %>
                 <div class="checkin-content"
