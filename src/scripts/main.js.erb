@@ -212,6 +212,9 @@ function updateMapForNewChapterSelection() {
     }
   })
   map.fitBounds(bounds)
+  google.maps.event.addListenerOnce(map, 'bounds_changed', () => {
+    map.setZoom(Math.min(10, map.getZoom()));
+  })
 
   // create checkin markers
   const addCheckinMarker = (checkin, isLastCheckin) => {
