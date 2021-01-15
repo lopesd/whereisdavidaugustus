@@ -14,7 +14,7 @@ const repositoryName = 'whereisdavidaugustus-content'
 const branchName = 'master'
 const committerName = 'whereisdavidaugustus.com/checkin'
 const checkinsPath = 'content/static/checkins'
-const currentChapterDirectory = <%= chapters[chapters.size-1]['directory'] %>
+const currentChapterDirectory = "<%= chapters[chapters.size-1]['directory'] %>"
 
 // DOM HELPERS
 function emptyHtml (id) {
