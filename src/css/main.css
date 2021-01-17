@@ -21,8 +21,8 @@
 /* LEFT */
 #left-pane {
   position: relative;
-  height: calc(100% - 5.5rem);
-  margin-top: 5.5rem; /* should match the height of the header */
+  height: calc(100% - 2rem);
+  margin-top: 2rem; /* should match the height of the header */
   border-bottom: 1px solid #80808091;
 }
 
@@ -75,14 +75,15 @@
 }
 
 #chapter-headers {
-  width: 100%;
+  width: 95%;
 
   position: fixed;
-  top: 2.5rem;
-  left: 0;
+  top: 2.8rem;
+  left: 2.5%;
   z-index: 2;
 
-  border-bottom: 1px solid grey;
+  border: 1px solid grey;
+  border-radius: 3px;
   background-color: white;
 }
 
@@ -173,7 +174,7 @@
 
 .checkin-content-anchor {
   position: absolute;
-  top: -2rem;
+  top: -6.5rem;
   left: 0;
 }
 
@@ -333,11 +334,11 @@
 
   #checkins-pane {
     position: absolute;
-    top: 5.5rem; /* just below the header */
-    height: calc(100% - 5.5rem);
+    top: 2.5rem; /* just below the header */
+    height: calc(100% - 2.5rem);
     overflow: scroll;
 
-    padding-top: 2rem;
+    padding-top: 6rem;
     padding-left: 3rem;
     padding-right: 3rem;
 
@@ -356,6 +357,10 @@
   #checkins-anchor {
     position: absolute;
     top: -2rem;
+  }
+
+  .checkin-content-anchor {
+    top: -5rem;
   }
 
   #map-down-arrow {
