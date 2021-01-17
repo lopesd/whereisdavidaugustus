@@ -1,4 +1,4 @@
-async function postPeep(checkinId, peeper) {
+async function postPeep(checkinId, peeper, comment) {
   await sleep(1000)
   return { peep: { checkinId, peepAllowed: true, peeper: 'test' } }
 }

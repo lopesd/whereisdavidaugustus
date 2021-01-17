@@ -54,26 +54,30 @@ function rightChapterHeaderArrowClick(event) {
 
 // peep button!
 async function onClickPeepButton(event) {
-  const el = event.target
-  const parentEl = el.parentElement
-  const wrapperEl = parentEl.parentElement
-  const inputEl = parentEl.querySelector('.checkin-peeper-name-input')
-  const peeperName = inputEl.value
+  const buttonEl = event.target
+  const peeperPaneEl = buttonEl.parentElement
+  const wrapperEl = peeperPaneEl.parentElement
+  const nameInputEl = peeperPaneEl.querySelector('.peeper-name-input')
+  const peeperName = nameInputEl.value
   if (!peeperName) {
-    inputEl.placeholder = 'name is required dummy'
+    nameInputEl.placeholder = 'name is required dummy'
     return
   }
+  const commentInputEl = peeperPaneEl.querySelector('.peeper-comment-input')
+  const comment = commentInputEl.value
 
   // enter loading state
-  el.disabled = true
-  el.innerHTML = '...'
-  inputEl.disabled = true
+  buttonEl.disabled = true
+  buttonEl.innerHTML = '...'
+  nameInputEl.disabled = true
+  commentInputEl.placeholder = 'no comment? :('
+  commentInputEl.disabled = true
 
   // send post
-  const checkinId = parentEl.dataset.checkinId
+  const checkinId = peeperPaneEl.dataset.checkinId
   let peep
   try {
-    peepData = await postPeep(checkinId, peeperName)
+    peepData = await postPeep(checkinId, peeperName, comment)
     console.log('received: ', peepData)
   } catch (e) {
     console.error(e)
@@ -118,8 +122,8 @@ async function getPeep(checkinId) {
 }
 
 // claim a peep
-async function postPeep(checkinId, peeper) {
-  return jsonFetch(postPeepUrl, { checkinId, peeper })
+async function postPeep(checkinId, peeper, comment) {
+  return jsonFetch(postPeepUrl, { checkinId, peeper, comment })
 }
 
 // HIGHLIGHT

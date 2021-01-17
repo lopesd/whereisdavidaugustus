@@ -2,14 +2,23 @@
   class="checkin-peeper-pane available"
   data-checkin-id="<%= checkinId %>"
   onclick="peeperPaneClick(event)">
-  <input 
-    class="checkin-peeper-name-input"
-    type="text"
-    maxlength="40"
-    placeholder="what's your name? quick!"/>
+
+  <div class="checkin-peeper-pane-inputs-wrapper">
+    <input 
+      class="checkin-peeper-pane-text-input peeper-name-input"
+      type="text"
+      maxlength="20"
+      placeholder="what's your name? quick!"/>
+    <input
+      class="checkin-peeper-pane-text-input peeper-comment-input"
+      type="text"
+      maxlength="30"
+      placeholder="comment? keep it PG"/>
+  </div>
+
   <button
     class="checkin-claim-first-peep-button"
     onclick="onClickPeepButton(event)">
       PEEP
-  </button>
+  </button>  
 </div>

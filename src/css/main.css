@@ -235,6 +235,7 @@
 }
 
 .checkin-peeper-pane.available {
+  height: 5rem;
   background-color: #aadafe;
 }
 
@@ -255,23 +256,40 @@
   padding-left: 1rem;
 }
 
+.checkin-peeper-comment {
+  font-weight: bold;
+}
+
 .checkin-peeper-name {
   font-weight: bold;
 }
 
-.checkin-peeper-name-input {
+.checkin-peeper-pane-inputs-wrapper {
+  margin: 0 1rem;
+  width: 80%;
+  max-width: 600px;
+}
+
+.checkin-peeper-pane-text-input {
   border: 0px;
   border-bottom: 1px solid black;
-  margin: 0 1rem;
+  
   font-family: inherit;
   background-color: rgba(1,1,1,0);
 
-  width: 80%;
+  width: 100%;
+}
+
+.checkin-peeper-pane-text-input:focus {
+  outline: none;
+}
+
+.peeper-name-input {
   max-width: 300px;
 }
 
-.checkin-peeper-name-input:focus {
-  outline: none;
+.peeper-comment-input {
+  padding-top: 0.75rem;
 }
 
 .checkin-claim-first-peep-button {
