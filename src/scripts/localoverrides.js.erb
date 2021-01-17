@@ -5,7 +5,7 @@ async function postPeep(checkinId, peeper, comment) {
 
 async function getPeep(checkinId) {
   await sleep(1000)
-  return { peep: { checkinId, peepAllowed: true, peeper: null } }
+  return { peep: { checkinId, peepAllowed: true } }
 }
 
 console.log('Loaded local overrides.')

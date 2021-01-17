@@ -1,11 +1,31 @@
 <div class="checkin-peeper-pane">
-  <span class="checkin-peeper-icon">&#128064;</span>
-  <span class="checkin-peeper-text">
-    <% const msg = !attemptedPeeper || attemptedPeeper === peeper
-        ? 'was first peeper'
-        : 'beat you to it'
-    %>
-    <span class="checkin-peeper-name"><%= sanitize(peeper) %></span>
-    <%= msg %>
-  </span>
+
+  <% if (!peep.comment) { %>
+
+    <span class="checkin-peeper-icon">&#128064;</span>
+    <span class="checkin-peeper-text">
+      <% const msg = !attemptedPeeper || attemptedPeeper === peep.peeper
+          ? 'was first peeper'
+          : 'beat you to it'
+      %>
+      <span class="checkin-peeper-name"><%= sanitize(peep.peeper) %></span>
+      <%= msg %>
+    </span>
+
+  <% } else { %>
+
+    <span class="checkin-peeper-icon">
+      &#128064;
+    </span>
+    <span class="checkin-peeper-text">
+      <span class="checkin-peeper-name">
+        <%= sanitize(peep.peeper) %>
+      </span> peeped: 
+      <span class="checkin-peeper-comment">
+        <%= sanitize(peep.comment) %>
+      </span>
+      <br>
+    </span>
+
+  <% } %>
 </div>

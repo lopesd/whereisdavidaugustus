@@ -16,6 +16,6 @@ function renderPeeperPane({ errored, attemptedPeeper, peep }) {
   } else if (!peep.peeper) {
     return render('unclaimed-peeper-pane-template', peep)
   } else {
-    return render('claimed-peeper-pane-template', { attemptedPeeper, ...peep })
+    return render('claimed-peeper-pane-template', { attemptedPeeper, peep })
   }
 }
