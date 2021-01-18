@@ -78,7 +78,7 @@
   width: 95%;
 
   position: absolute;
-  top: calc(-100vh + 0.8rem);
+  top: calc(-100% + 0.8rem);
   left: 2.5%;
   z-index: 1;
 
