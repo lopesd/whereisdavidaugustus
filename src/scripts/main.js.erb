@@ -146,7 +146,8 @@ async function unHighlightCheckinAndMarker(checkinId) {
   // marker
   const marker = david.allMapMarkers[checkinId]
   if (marker) {
-    if (checkins[checkins.length-1].checkinId === checkinId) {
+    const isLastCheckin = checkins[checkins.length-1].checkinId === checkinId && (david.chapters.length-1 === david.currentChapterNumber)
+    if (isLastCheckin) {
       marker.setIcon(lastCheckinIconUrl)
     } else {
       marker.setIcon(defaultCheckinIconUrl)
@@ -257,7 +258,7 @@ function updateMapForNewChapterSelection() {
   const pathAnimationStep = Math.min(pathAnimationMaxTime / checkins.length, pathAnimationStepMin)
   for (var i = 0; i < checkins.length; ++i) {
     const checkin = checkins[i]
-    const isLastCheckin = i === checkins.length - 1
+    const isLastCheckin = i === checkins.length - 1 && david.chapters.length-1 === david.currentChapterNumber
     const timer = setTimeout(function () {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
