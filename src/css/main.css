@@ -85,10 +85,14 @@
   border: 1px solid grey;
   border-radius: 3px;
   background-color: white;
+
+  display: flex;
+  align-items: center;
 }
 
 .chapter-header-container.current-chapter {
   display: flex;
+  flex-grow: 1;
 }
 
 .chapter-header-container {
@@ -114,7 +118,7 @@
 }
 
 .chapters-header-arrow {
-  height: 100%;
+  height: 3rem;
 
   flex-grow: 0;
   color: #4e69b4;
@@ -331,7 +335,7 @@
     top: 3rem;
   }
 
-  .chapter-header-container {
+  .chapter-header-container, .chapters-header-arrow {
     height: 4rem;
   }
 

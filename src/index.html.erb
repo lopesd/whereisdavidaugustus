@@ -52,39 +52,38 @@
         </div>
       </div>
 
+      <% visible_chapter_index = chapters.size - 1 # display latest chapter %>
+
       <!-- CONTENT -->
       <div id="right-pane">
         <!-- CHAPTERS -->
-        <% visible_chapter_index = chapters.size - 1 # display latest chapter %>
         <div id="chapter-headers">
+
+          <button class="chapters-header-arrow left">
+            <span class="chapters-header-arrow-text-flex-container">
+              <div class="chapters-header-arrow-text"><</div>
+            </span>
+          </button>
+
           <% chapters.each_with_index do |chapter, i| %>
             <% chapter_visible = i == visible_chapter_index %>
             <% visibility_class = chapter_visible ? "current-chapter" : '' %>
-            <% left_arrow_visibility_class = i != 0 ? '' : 'hidden' %>
-            <% right_arrow_visibility_class = i != chapters.size - 1 ? '' : 'hidden' %>
             <div 
               class="chapter-header-container <%= visibility_class %>"
               id="chapter-header-<%=i%>-container">
-
-              <button class="chapters-header-arrow left <%= left_arrow_visibility_class %>">
-                <span class="chapters-header-arrow-text-flex-container">
-                  <div class="chapters-header-arrow-text"><</div>
-                </span>
-              </button>
-
               <div id="chapters-header-chapter-name">
                 <div id="chapter-number-text"><%= chapter['heading'] %></div>
                 <div id="chapter-name-text"><%= chapter['name'] %></div>
               </div>
-
-              <button class="chapters-header-arrow right <%= right_arrow_visibility_class %>">
-                <span class="chapters-header-arrow-text-flex-container">
-                  <div class="chapters-header-arrow-text">></div>
-                </span>
-              </button>
-
             </div>
           <% end %>
+
+          <button class="chapters-header-arrow right hidden">
+            <span class="chapters-header-arrow-text-flex-container">
+              <div class="chapters-header-arrow-text">></div>
+            </span>
+          </button>
+
         </div>
 
         <!-- CHECKINS -->
@@ -208,8 +207,8 @@
     <script defer src="https://maps.googleapis.com/maps/api/js?key=<%=maps_api_key%>&callback=onMapsApiLoad"></script>
 
     <!-- GSAP -->
-    <!--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <!--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
     -->
 

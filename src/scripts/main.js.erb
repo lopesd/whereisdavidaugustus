@@ -45,10 +45,12 @@ function getChapterHeaderContainerEl(chapterNumber) {
 // BUTTON CALLBACKS
 // header arrow
 function leftChapterHeaderArrowClick(event) {
+  event.target.blur()
   updateChapterSelection(david.currentChapterNumber - 1)
 }
 
 function rightChapterHeaderArrowClick(event) {
+  event.target.blur()
   updateChapterSelection(david.currentChapterNumber + 1)
 }
 
@@ -187,13 +189,13 @@ async function onMapsApiLoad() {
     visibility: false
   })
 
-  updateMapForNewChapterSelection()
+  updateMapForChapterSelection(david.currentChapterNumber)
 }
 
 // UPDATE MAP FOR NEW CHAPTER 
 // Remove existing markers and lines, stop existing marker pop-in animation,
 // add new markers, set up their callbacks, and kick off their animations
-function updateMapForNewChapterSelection() {
+function updateMapForChapterSelection(chapterNumber) {
   const map = david.map
 
   // delete existing timeouts, markers and polylines
@@ -207,7 +209,7 @@ function updateMapForNewChapterSelection() {
   david.allMapPolylines = []
 
   // fit maps to the bounds of the checkin locations
-  const checkins = david.chapters[david.currentChapterNumber].checkins
+  const checkins = david.chapters[chapterNumber].checkins
   const bounds = new google.maps.LatLngBounds()
   checkins.forEach(({ latlng, path }) => {
     if (latlng) {
@@ -258,7 +260,7 @@ function updateMapForNewChapterSelection() {
   const pathAnimationStep = Math.min(pathAnimationMaxTime / checkins.length, pathAnimationStepMin)
   for (var i = 0; i < checkins.length; ++i) {
     const checkin = checkins[i]
-    const isLastCheckin = i === checkins.length - 1 && david.chapters.length-1 === david.currentChapterNumber
+    const isLastCheckin = i === checkins.length - 1 && david.chapters.length-1 === chapterNumber
     const timer = setTimeout(function () {
       addCheckinMarker(checkin, isLastCheckin)
     }, i * pathAnimationStep + pathAnimationDelay)
@@ -267,26 +269,70 @@ function updateMapForNewChapterSelection() {
 }
 
 // swap the visibility of the rendered chapters to the current one
-function updateChapterContentForNewChapterSelection() {
-  // make all chapters invisible
-  david.chapters.forEach((chapter, i) => {
-    getChapterContainerEl(i).classList.remove('current-chapter')
-    getChapterHeaderContainerEl(i).classList.remove('current-chapter')
-  })
+function updateChapterContentForNewChapterSelection(currentChapterNumber, newChapterNumber) {
+  let left = true
+  if (newChapterNumber < currentChapterNumber) {
+    left = false
+  }
+  const currentChapterContainer = document.querySelector('.chapter-container.current-chapter')
+  const currentChapterHeaderContainer = document.querySelector('.chapter-header-container.current-chapter')
+  const nextChapterContainer = getChapterContainerEl(newChapterNumber)
+  const nextChapterHeaderContainer = getChapterHeaderContainerEl(newChapterNumber)
 
-  // make the new chapter visible
-  getChapterContainerEl(david.currentChapterNumber).classList.add('current-chapter')
-  getChapterHeaderContainerEl(david.currentChapterNumber).classList.add('current-chapter')
+  // disable arrow buttons
+  document.querySelectorAll('.chapters-header-arrow').forEach(el => el.disabled = true)
+
+  const tl = gsap.timeline()
+  tl.fromTo([currentChapterContainer, currentChapterHeaderContainer], {
+    x: 0,
+    alpha: 1
+  }, {
+    x: left ? -10 : 10,
+    alpha: 0,
+    duration: 0.2,
+    ease: 'expo.out'
+  }).call(() => {
+    currentChapterContainer.classList.remove('current-chapter')
+    currentChapterHeaderContainer.classList.remove('current-chapter')
+    nextChapterContainer.classList.add('current-chapter')
+    nextChapterHeaderContainer.classList.add('current-chapter')
+
+    document.getElementById('checkins-anchor').scrollIntoView()
+    document.getElementById('map-anchor').scrollIntoView()
+  }).fromTo([nextChapterContainer, nextChapterHeaderContainer], {
+    x: left ? 10 : -10,
+    alpha: 0
+  }, {
+    x: 0,
+    alpha: 1,
+    duration: 0.2,
+    ease: 'linear'
+  }).call(() => {
+    // re-enable arrows
+    document.querySelectorAll('.chapters-header-arrow').forEach(el => el.disabled = false)
+  })
+}
+
+function updateArrowsForChapterSelection(newChapterNumber) {
+  const leftArrowEl = document.querySelector('.chapters-header-arrow.left')
+  const rightArrowEl = document.querySelector('.chapters-header-arrow.right')
+  leftArrowEl.classList.remove('hidden')
+  rightArrowEl.classList.remove('hidden')
+  if (newChapterNumber === 0) {
+    leftArrowEl.classList.add('hidden')
+  }
+  if (newChapterNumber === david.chapters.length - 1) {
+    rightArrowEl.classList.add('hidden')
+  }
 }
 
 // UPDATE CHAPTER SELECTION 
 // change global variable indicating current chapter, call all update functions
-function updateChapterSelection(newCurrentChapterNumber) {
-  david.currentChapterNumber = newCurrentChapterNumber
-  updateMapForNewChapterSelection()
-  updateChapterContentForNewChapterSelection()
-  document.getElementById('checkins-anchor').scrollIntoView()
-  document.getElementById('map-anchor').scrollIntoView()
+function updateChapterSelection(newChapterNumber) {
+  updateChapterContentForNewChapterSelection(david.currentChapterNumber, newChapterNumber)
+  updateMapForChapterSelection(newChapterNumber)
+  updateArrowsForChapterSelection(newChapterNumber)
+  david.currentChapterNumber = newChapterNumber
 }
 
 // ON DOCUMENT LOAD
