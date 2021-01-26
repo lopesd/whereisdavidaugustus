@@ -117,7 +117,7 @@
                       : '' %>
                     <tr class="<%= placement_class %>">
                       <td><%= entry['rank'] %></td>
-                      <td><%= entry['peeper'] %></td>
+                      <td><%= sanitize(entry['peeper']) %></td>
                       <td><%= entry['score'] %></td>
                     </tr>
                   <% end %>
@@ -139,7 +139,7 @@
                       : '' %>
                     <tr class="<%= placement_class %>">
                       <td><%= entry['rank'] %></td>
-                      <td><%= entry['peeper'] %></td>
+                      <td><%= sanitize(entry['peeper']) %></td>
                       <td><%= formatted_duration(entry['score']) %></td>
                     </tr>
                   <% end %>
@@ -161,7 +161,7 @@
                       : '' %>
                     <tr class="<%= placement_class %>">
                       <td><%= entry['rank'] %></td>
-                      <td><%= entry['peeper'] %></td>
+                      <td><%= sanitize(entry['peeper']) %></td>
                       <td><%= entry['score'] %></td>
                     </tr>
                   <% end %>

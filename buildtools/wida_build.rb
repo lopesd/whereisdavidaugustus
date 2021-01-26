@@ -78,7 +78,7 @@ module WidaBuild
         peeper_to_peep_count = {}
         chapter['checkins'].each do |checkin|
           peep = peeps[checkin['checkinId']]
-          next unless peep
+          next unless peep && peep['peeper']
           peeper_to_peep_count[peep['peeper']] ||= 0
           peeper_to_peep_count[peep['peeper']] += 1
         end
