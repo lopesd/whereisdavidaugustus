@@ -1,0 +1,80 @@
+david = {
+  currentChapterNumber: <%= leaderboards.size - 1 %>
+}
+david.leaderboards = <%= JSON.pretty_generate(leaderboards) %>
+
+// HTML UTIL
+function getLeaderboardContainerEl(chapterNumber) {
+  return document.getElementById(`leaderboard-${chapterNumber}-container`)
+}
+
+function getChapterHeaderContainerEl(chapterNumber) {
+  return document.getElementById(`chapter-header-${chapterNumber}-container`)
+}
+
+// HEADER ARROW BUTTON CALLBACKS
+function leftChapterHeaderArrowClick(event) {
+  updateChapterSelection(david.currentChapterNumber - 1)
+}
+
+function rightChapterHeaderArrowClick(event) {
+  updateChapterSelection(david.currentChapterNumber + 1)
+}
+
+// change global variable indicating current chapter, call all update functions
+function updateChapterSelection(newCurrentChapterNumber) {
+  david.currentChapterNumber = newCurrentChapterNumber
+  // make all chapters invisible
+  david.leaderboards.forEach((chapter, i) => {
+    getLeaderboardContainerEl(i).classList.remove('current-chapter')
+    getChapterHeaderContainerEl(i).classList.remove('current-chapter')
+  })
+
+  // make the new chapter visible
+  getLeaderboardContainerEl(david.currentChapterNumber).classList.add('current-chapter')
+  getChapterHeaderContainerEl(david.currentChapterNumber).classList.add('current-chapter')
+}
+
+// LEADERBOARD TYPE BUTTON CALLBACKS
+function leaderboardTypeButtonClicked(event) {
+  document.querySelectorAll('.leaderboard-type-button').forEach(buttonEl => {
+    buttonEl.classList.remove('selected')
+  })
+
+  const button = event.target
+  button.classList.add('selected')
+  button.blur()
+  updateLeaderboardTypeSelection(button.dataset.type)
+}
+
+function updateLeaderboardTypeSelection(leaderboardType) {
+  console.log(leaderboardType)
+  document.querySelectorAll('.leaderboard-type-container').forEach(containerEl => {
+    containerEl.classList.remove('selected-type')
+    if (containerEl.classList.contains(`leaderboard-${leaderboardType}`)) {
+      containerEl.classList.add('selected-type')
+    }
+  })
+
+  document.querySelectorAll('.leaderboard-type-emoji').forEach(emojiEl => {
+    emojiEl.classList.remove('selected')
+    if (emojiEl.classList.contains(leaderboardType)) {
+      emojiEl.classList.add('selected')
+    }
+  })
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // add listeners to chapter header arrows
+  document.querySelectorAll('.chapters-header-arrow.left').forEach(arrowEl => {
+    arrowEl.addEventListener('click', leftChapterHeaderArrowClick)
+  })
+  document.querySelectorAll('.chapters-header-arrow.right').forEach(arrowEl => {
+    arrowEl.addEventListener('click', rightChapterHeaderArrowClick)
+  })
+
+  // add listeners to the buttons that let you switch between leaderboard types
+  document.querySelectorAll('.leaderboard-type-button').forEach(buttonEl => {
+    buttonEl.addEventListener('click', leaderboardTypeButtonClicked)
+  })
+})

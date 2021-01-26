@@ -1,0 +1,186 @@
+<html>
+  <head>
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180773758-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag(){dataLayer.push(arguments)}
+      gtag('js', new Date())
+      gtag('config', 'UA-180773758-1')
+    </script>
+
+
+    <!-- TITLE N SHIT -->
+    <title>Where is David Augustus? | PEEPERS</title>
+    <meta name="description" content="where tho?">
+    <meta name="keywords" content="where, is, david, augustus, motorcycle, trip">
+    <meta name="author" content="David Augustus Schalkwijk Lopes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CONFIG -->
+    <meta charset="utf-8"/>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="./assets/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/base.<%= build_version_id %>.css">
+    <link rel="stylesheet" href="css/peepers.<%= build_version_id %>.css">
+  </head>
+
+  <body>
+    <main>
+      <!-- HEADER -->
+      <div id="header">
+        <div id="header-content">
+          <a id="header-home-link" href="./index.html">HOME</a>
+          <div class="header-vertical-line"></div>
+          <a id="header-peepers-link" class="current-page" href="./peepers.html">PEEPERS</a>
+          <div class="header-vertical-line"></div>
+          <a id="header-devlog-link" href="./devlog.html">DEVLOG</a>
+        </div>
+      </div>
+
+      <div id="main-gutters">
+        <div id="leaderboards-title">
+          <div id="leaderboards-title-big">
+            PEEPER LEADERBOARDS
+          </div>
+          <div id="leaderboards-title-explanation">
+            you can peep a post by being the first person to view it. gotta peep 'em all
+          </div>
+        </div>
+
+        <div id="chapter-headers">
+          <% visible_chapter_index = leaderboards.size - 1 %>
+          <% leaderboards.each_with_index do |leaderboard, i| %>
+            <% chapter_visible = i == visible_chapter_index %>
+            <% visibility_class = chapter_visible ? "current-chapter" : '' %>
+            <% left_arrow_visibility_class = i != 0 ? '' : 'hidden' %>
+            <% right_arrow_visibility_class = i != chapters.size - 1 ? '' : 'hidden' %>
+
+            <div 
+              class="chapter-header-container <%= visibility_class %>"
+              id="chapter-header-<%=i%>-container">
+
+              <button class="chapters-header-arrow left <%= left_arrow_visibility_class %>">
+                <span class="chapters-header-arrow-text-flex-container">
+                  <div class="chapters-header-arrow-text"><</div>
+                </span>
+              </button>
+
+              <div id="chapters-header-chapter-name">
+                <div id="chapter-number-text"><%= leaderboard['heading'] %></div>
+                <div id="chapter-name-text"><%= leaderboard['name'] %></div>
+              </div>
+
+              <button class="chapters-header-arrow right <%= right_arrow_visibility_class %>">
+                <span class="chapters-header-arrow-text-flex-container">
+                  <div class="chapters-header-arrow-text">></div>
+                </span>
+              </button>
+
+            </div>
+          <% end %>
+        </div>
+
+        <div class="leaderboard-types-wrapper content-card">
+          <div class="leaderboard-type-emoji most selected">👀</div>
+          <div class="leaderboard-type-emoji quickest">⏱</div>
+          <div class="leaderboard-type-emoji streak">🔥</div>
+          <button data-type="most" class="leaderboard-type-button selected">MOST</button>
+          <div class="leaderboard-type-vertical-line"></div>
+          <button data-type="quickest" class="leaderboard-type-button">QUICKEST</button>
+          <div class="leaderboard-type-vertical-line"></div>
+          <button data-type="streak" class="leaderboard-type-button">STREAK</button>
+        </div>
+
+        <div id="leaderboards-wrapper" class="content-card">          
+          <% leaderboards.each_with_index do |leaderboard, i| %>
+            <% leaderboard_visible = i == visible_chapter_index %>
+            <% visibility_class = leaderboard_visible ? 'current-chapter' : '' %>
+            <div class="leaderboards-container <%= visibility_class %>"
+              id="leaderboard-<%=i%>-container">
+
+              <div class="leaderboard-type-container leaderboard-most selected-type">
+                <table class="leaderboard-table">
+                  <tr>
+                    <th>RANK</th>
+                    <th>PEEPER</th>
+                    <th>PEEPS</th>
+                  </tr>
+                  <% leaderboard['most'].each_with_index do |entry, i| %>
+                    <% placement_class = 
+                        entry['rank'] == 1 ? 'first' 
+                      : entry['rank'] == 2 ? 'second' 
+                      : entry['rank'] == 3 ? 'third' 
+                      : '' %>
+                    <tr class="<%= placement_class %>">
+                      <td><%= entry['rank'] %></td>
+                      <td><%= entry['peeper'] %></td>
+                      <td><%= entry['score'] %></td>
+                    </tr>
+                  <% end %>
+                </table>
+              </div>
+
+              <div class="leaderboard-type-container leaderboard-quickest">
+                <table class="leaderboard-table">
+                  <tr>
+                    <th>RANK</th>
+                    <th>PEEPER</th>
+                    <th>TIME</th>
+                  </tr>
+                  <% leaderboard['quickest'].each_with_index do |entry, i| %>
+                    <% placement_class = 
+                        entry['rank'] == 1 ? 'first' 
+                      : entry['rank'] == 2 ? 'second' 
+                      : entry['rank'] == 3 ? 'third' 
+                      : '' %>
+                    <tr class="<%= placement_class %>">
+                      <td><%= entry['rank'] %></td>
+                      <td><%= entry['peeper'] %></td>
+                      <td><%= formatted_duration(entry['score']) %></td>
+                    </tr>
+                  <% end %>
+                </table>
+              </div>
+
+              <div class="leaderboard-type-container leaderboard-streak">
+                <table class="leaderboard-table">
+                  <tr>
+                    <th>RANK</th>
+                    <th>PEEPER</th>
+                    <th>STREAK LENGTH</th>
+                  </tr>
+                  <% leaderboard['streak'].each_with_index do |entry, i| %>
+                    <% placement_class = 
+                        entry['rank'] == 1 ? 'first' 
+                      : entry['rank'] == 2 ? 'second' 
+                      : entry['rank'] == 3 ? 'third' 
+                      : '' %>
+                    <tr class="<%= placement_class %>">
+                      <td><%= entry['rank'] %></td>
+                      <td><%= entry['peeper'] %></td>
+                      <td><%= entry['score'] %></td>
+                    </tr>
+                  <% end %>
+                </table>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+
+        <div id="bottom-spacer">
+        </div>
+
+      </div> <!-- main gutters -->
+    </main>
+
+    <!-- MAPS API -->
+
+    <!-- MY JS -->
+    <script src="./scripts/peepers.<%= build_version_id %>.js"></script>
+  </body>
+</html>

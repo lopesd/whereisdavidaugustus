@@ -6,13 +6,6 @@ main {
   overflow: scroll;
 }
 
-.devlog-entry {
-  background-color: white;
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  margin-bottom: 2rem;
-}
-
 .devlog-entry-image {
   border-top: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb;

@@ -156,12 +156,6 @@
 .checkin-content {
   position: relative;
 
-  margin-bottom: 2rem;
-
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  background-color: #ffffff;
-
   transition-property: transform, box-shadow, border-color;
   transition-duration: 0.2s;
 }
@@ -304,6 +298,14 @@
 
 /* DESKTOP MEDIA QUERY */
 @media only screen and (min-width: 769px) {
+  body {
+    overflow: hidden;
+  }
+  
+  main {
+    overflow: hidden;
+  }
+
   #left-pane {
     position: absolute;
     top: 0;
