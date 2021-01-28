@@ -279,42 +279,49 @@ function updateChapterContentForNewChapterSelection(currentChapterNumber, newCha
   const currentChapterHeaderContainer = document.querySelector('.chapter-header-container.current-chapter')
   const nextChapterContainer = getChapterContainerEl(newChapterNumber)
   const nextChapterHeaderContainer = getChapterHeaderContainerEl(newChapterNumber)
-  const currentChapterElementsToAnimate = david.isMobile ? currentChapterHeaderContainer : [currentChapterContainer, currentChapterHeaderContainer]
-  const nextChapterElementsToAnimate = david.isMobile ? nextChapterHeaderContainer : [nextChapterContainer, nextChapterHeaderContainer]
 
   // disable arrow buttons
   document.querySelectorAll('.chapters-header-arrow').forEach(el => el.disabled = true)
   
-  // not on mobile - do animations
-  const tl = gsap.timeline()
-  tl.fromTo(currentChapterElementsToAnimate, {
-    x: 0,
-    alpha: 1
-  }, {
-    x: left ? -10 : 10,
-    alpha: 0,
-    duration: 0.2,
-    ease: 'expo.out'
-  }).call(() => {
+  if (david.isMobile) {
+    // on mobile, don't animate for perf reasons
     currentChapterContainer.classList.remove('current-chapter')
     currentChapterHeaderContainer.classList.remove('current-chapter')
     nextChapterContainer.classList.add('current-chapter')
     nextChapterHeaderContainer.classList.add('current-chapter')
-
-    document.getElementById('checkins-anchor').scrollIntoView()
-    document.getElementById('map-anchor').scrollIntoView()
-  }).fromTo(nextChapterElementsToAnimate, {
-    x: left ? 10 : -10,
-    alpha: 0
-  }, {
-    x: 0,
-    alpha: 1,
-    duration: 0.2,
-    ease: 'linear'
-  }).call(() => {
-    // re-enable arrows
     document.querySelectorAll('.chapters-header-arrow').forEach(el => el.disabled = false)
-  })
+  } else {
+    // on desktop, animate header and checkins
+    const tl = gsap.timeline()
+    tl.fromTo([currentChapterContainer, currentChapterHeaderContainer], {
+      x: 0,
+      alpha: 1
+    }, {
+      x: left ? -10 : 10,
+      alpha: 0,
+      duration: 0.2,
+      ease: 'expo.out'
+    }).call(() => {
+      currentChapterContainer.classList.remove('current-chapter')
+      currentChapterHeaderContainer.classList.remove('current-chapter')
+      nextChapterContainer.classList.add('current-chapter')
+      nextChapterHeaderContainer.classList.add('current-chapter')
+
+      document.getElementById('checkins-anchor').scrollIntoView()
+      document.getElementById('map-anchor').scrollIntoView()
+    }).fromTo([nextChapterContainer, nextChapterHeaderContainer], {
+      x: left ? 10 : -10,
+      alpha: 0
+    }, {
+      x: 0,
+      alpha: 1,
+      duration: 0.2,
+      ease: 'linear'
+    }).call(() => {
+      // re-enable arrows
+      document.querySelectorAll('.chapters-header-arrow').forEach(el => el.disabled = false)
+    })
+  }
 }
 
 function updateArrowsForChapterSelection(newChapterNumber) {
