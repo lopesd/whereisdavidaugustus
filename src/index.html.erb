@@ -151,7 +151,7 @@
                     <% elsif peep && peep['peeper'] %>
                       <% if !peep['comment'] || peep['comment'].size === 0 %>
                         <div class="checkin-peeper-pane">
-                          <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(peep['peeper']) %></span> was first peeper</span>
+                          <span class="checkin-peeper-icon">&#128064;</span><span class="checkin-peeper-text"><span class="checkin-peeper-name"><%= sanitize(peep['peeper']) %></span><%= peep['leaderboardName'] ? "<span class=\"leaderboard-name\"> (#{peep['leaderboardName']}) </span>" : ''%> was first peeper</span>
                         </div>
 
                       <% else %>
