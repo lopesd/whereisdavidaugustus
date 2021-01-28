@@ -23,6 +23,8 @@ module WidaBuild
 
     CHAPTER_CONFIG_FILENAME = 'config.yaml'
 
+    MOBILE_CUTOFF_PIXELS = 798
+
     # date helper
     def formatted_duration(seconds)
       seconds = seconds.to_i

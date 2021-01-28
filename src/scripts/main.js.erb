@@ -5,7 +5,8 @@ david.allMapMarkers = {}
 david.allMapMarkerTimeouts = []
 david.allMapPolylines = []
 david.chapters = <%= JSON.pretty_generate(chapters) %>;
-david.currentChapterNumber = <%= chapters.size - 1 %>
+david.currentChapterNumber = <%= chapters.size - 1 %>;
+david.isMobile = screen.width > <%= MOBILE_CUTOFF_PIXELS %> ? false : true;
 
 // SOME CONSTANTS
 const defaultCheckinIconUrl = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
@@ -278,12 +279,15 @@ function updateChapterContentForNewChapterSelection(currentChapterNumber, newCha
   const currentChapterHeaderContainer = document.querySelector('.chapter-header-container.current-chapter')
   const nextChapterContainer = getChapterContainerEl(newChapterNumber)
   const nextChapterHeaderContainer = getChapterHeaderContainerEl(newChapterNumber)
+  const currentChapterElementsToAnimate = david.isMobile ? currentChapterHeaderContainer : [currentChapterContainer, currentChapterHeaderContainer]
+  const nextChapterElementsToAnimate = david.isMobile ? nextChapterHeaderContainer : [nextChapterContainer, nextChapterHeaderContainer]
 
   // disable arrow buttons
   document.querySelectorAll('.chapters-header-arrow').forEach(el => el.disabled = true)
-
+  
+  // not on mobile - do animations
   const tl = gsap.timeline()
-  tl.fromTo([currentChapterContainer, currentChapterHeaderContainer], {
+  tl.fromTo(currentChapterElementsToAnimate, {
     x: 0,
     alpha: 1
   }, {
@@ -299,7 +303,7 @@ function updateChapterContentForNewChapterSelection(currentChapterNumber, newCha
 
     document.getElementById('checkins-anchor').scrollIntoView()
     document.getElementById('map-anchor').scrollIntoView()
-  }).fromTo([nextChapterContainer, nextChapterHeaderContainer], {
+  }).fromTo(nextChapterElementsToAnimate, {
     x: left ? 10 : -10,
     alpha: 0
   }, {
