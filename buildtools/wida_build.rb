@@ -81,8 +81,9 @@ module WidaBuild
         chapter['checkins'].each do |checkin|
           peep = peeps[checkin['checkinId']]
           next unless peep && peep['peeper']
-          peeper_to_peep_count[peep['peeper']] ||= 0
-          peeper_to_peep_count[peep['peeper']] += 1
+          peeper_name = peep['leaderboardName'] || peep['peeper']
+          peeper_to_peep_count[peeper_name] ||= 0
+          peeper_to_peep_count[peeper_name] += 1
         end
         most = create_ranking_array(peeper_to_peep_count)
 
@@ -94,9 +95,10 @@ module WidaBuild
           peep_time = DateTime.parse(peep['peepTime'])
           upload_time = DateTime.parse(checkin['uploadTime'])
           seconds_elapsed = peep_time.to_time.to_i - upload_time.to_time.to_i
-          existing_record = peeper_to_quickest_peep[peep['peeper']]
+          peeper_name = peep['leaderboardName'] || peep['peeper']
+          existing_record = peeper_to_quickest_peep[peeper_name]
           if !existing_record || existing_record > seconds_elapsed
-            peeper_to_quickest_peep[peep['peeper']] = seconds_elapsed
+            peeper_to_quickest_peep[peeper_name] = seconds_elapsed
           end
         end
         quickest = create_ranking_array(peeper_to_quickest_peep, true)
@@ -107,7 +109,8 @@ module WidaBuild
         current_streak_length = 0
         chapter['checkins'].each do |checkin|
           peep = peeps[checkin['checkinId']]
-          if peep && peep['peeper'] == current_streaker
+          peeper_name = peep && (peep['leaderboardName'] || peep['peeper'])
+          if peeper_name == current_streaker
             current_streak_length += 1
           else
             if current_streaker
@@ -116,7 +119,7 @@ module WidaBuild
                 peeper_to_longest_streak[current_streaker] = current_streak_length
               end
             end
-            current_streaker = peep && peep['peeper']
+            current_streaker = peeper_name
             current_streak_length = 1
           end
         end
