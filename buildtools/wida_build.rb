@@ -124,6 +124,7 @@ module WidaBuild
           end
         end
 
+        peeper_to_longest_streak = peeper_to_longest_streak.delete_if { |k, v| v <= 1 }
         streak = create_ranking_array(peeper_to_longest_streak)
 
         leaderboard = { 
