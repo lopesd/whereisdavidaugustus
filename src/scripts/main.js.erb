@@ -173,9 +173,10 @@ function scrollCheckinIntoView(checkinId) {
 // ON MAP LOAD
 async function onMapsApiLoad() {
   // CREATE MAP AND CONFIGURE BOUNDS
+  const gestureHandling = david.isMobile ? 'cooperative' : 'auto'
   const map = new google.maps.Map(document.getElementById('map'), {
     disableDefaultUI: true,
-    gestureHandling: 'cooperative'
+    gestureHandling
   })
   david.map = map
 
