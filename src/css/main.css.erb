@@ -194,10 +194,17 @@
 }
 
 .open-in-google-maps-icon {
-  width: 25px;
+  width: 17px;
   position: absolute;
-  top: -15px;
-  left: -5px;
+  bottom: calc(100% - 11px);
+  left: 8px;
+  transform: translateX(-50%);
+
+  transition: width 0.1s;
+}
+
+.open-in-google-maps-icon:hover {
+  width: 19px;
 }
 
 .checkin-blurb {

@@ -141,6 +141,10 @@ function highlightCheckinAndMarker(checkinId) {
   // checkin div
   const checkinDiv = document.getElementById(`checkin-content-${checkinId}`)
   checkinDiv.classList.add('mouse-over-highlight')
+
+  // maps icon
+  const mapIconEl = checkinDiv.querySelector('img.open-in-google-maps-icon')
+  mapIconEl.setAttribute('src', 'assets/marker-icon-orange-custom.png')
 }
 
 
@@ -161,6 +165,10 @@ async function unHighlightCheckinAndMarker(checkinId) {
   // checkin div
   const checkinDiv = document.getElementById(`checkin-content-${checkinId}`)
   checkinDiv.classList.remove('mouse-over-highlight')
+
+  // maps icon
+  const mapIconEl = checkinDiv.querySelector('img.open-in-google-maps-icon')
+  mapIconEl.setAttribute('src', 'assets/marker-icon-blue.png')
 }
 
 // SCROLL CHECKIN INTO VIEW
