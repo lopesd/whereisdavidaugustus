@@ -110,6 +110,12 @@
                       <div class="checkin-title-location"><%= checkin['location'] %></div>
                       <div class="checkin-title-date"><%= checkin['time'] %></div>
                     </div>
+
+                    <div class="checkin-title-right">
+                      <a target="_blank" rel="noopener noreferrer" class="open-in-google-maps-link" href="https://www.google.com/maps/search/?api=1&query=<%= checkin['latlng']['lat'] %>,<%= checkin['latlng']['lng'] %>"> 
+                        <img class="open-in-google-maps-icon" src="./assets/marker-icon-blue.png" />
+                      </a>
+                    </div>
                   </div>
 
                   <div class="checkin-blurb"><%= checkin['blurb'] %></div>
