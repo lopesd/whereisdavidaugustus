@@ -107,14 +107,15 @@
                   <div class="checkin-title">
                     <div class="checkin-title-left">
                       <div class="checkin-title-name"><%= checkin['name'] %></div>
-                      <div class="checkin-title-location"><%= checkin['location'] %></div>
+                      <div class="checkin-title-location">
+                        <%= checkin['location'] %>
+                        <div class="open-in-google-maps-link-wrapper">
+                          <a class="open-in-google-maps-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=<%= checkin['latlng']['lat'] %>,<%= checkin['latlng']['lng'] %>">
+                            <img class="open-in-google-maps-external-link-icon" src="./assets/external-link.svg" />
+                          </a>
+                        </div>
+                      </div>
                       <div class="checkin-title-date"><%= checkin['time'] %></div>
-                    </div>
-
-                    <div class="checkin-title-right">
-                      <a target="_blank" rel="noopener noreferrer" class="open-in-google-maps-link" href="https://www.google.com/maps/search/?api=1&query=<%= checkin['latlng']['lat'] %>,<%= checkin['latlng']['lng'] %>"> 
-                        <img class="open-in-google-maps-icon" src="./assets/marker-icon-blue.png" />
-                      </a>
                     </div>
                   </div>
 
