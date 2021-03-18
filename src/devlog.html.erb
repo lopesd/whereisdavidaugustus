@@ -43,6 +43,23 @@
 
       <div id="main-gutters">
         <div class="devlog-entry content-card">
+          <div class="devlog-entry-content"><span class="devlog-entry-date">Wed Mar 17 2021 22:48PM | </span><b>Move to Mobile |</b> I'm sure you've noticed the /peepers tab. I didn't cover it with a devlog entry but to be fair it was a fairly simple implementation. It's always fun to write simple little algorithms like the one used to determine who has the longest streak.
+
+The next big thing I'm cooking up isn't very user facing. One of my main issues with this website as a user is that posting checkins can be a bit of a pain. I've been doing so via a little bare-bones webform into which I had to manually punch in my AWS credentials - yikes! The image selection process is also cumbersome and doesn't allow for rearranging or organizing them at will - plus the fact that it's a webpage means that if I accidentally swipe the wrong way I'll refresh the page and lose everything I typed! Which is pretty annoying if I'm doing one of my wordier posts.
+
+So I decided to move my checkin tool to a mobile app. While not strictly necessary for most of the improvements I want, a mobile app will allow me to implement some cool features down the road that require running in the background. And while I'm at it, I figured it was the right time to hook into Cognito for proper user credentials (I KNOW I KNOW I SHOULD'VE DONE THIS FOREVER AGO), and use AWS API Gateway to abstract checkin upload logic as opposed to manually pushing checkins to the database from the client. I'm raising the bar up from "just get the job done" to "I don't want to lose track when enumerating the corners I cut".
+
+Part of this is due to the fact that I've been considering keeping this website around for the long run. Even after I've stopped being a digital nomad bum, I think it'll be fun to create a new chapter every once in a while to track a weekend trip or a long vacation. Also, I think it'd be nice to have something technical to show potential employers to account for my extended time off, so I'm going to make sure I keep the bar high from now on.
+
+Side note: I read a blog entry about how easy it was to hack an AWS account due to misconfigured Cognito and overly permissive Lambdas... and it scared me straight. Now I only grant resources the absolute bare minimum permissions they need to function, down to the target resource ARN.
+
+<img title="you want hovertext? this isn't xkcd" class="devlog-entry-image" src="./media/images/android-app.png" />
+
+<b>Links:</b>
+<a href="https://notsosecure.com/hacking-aws-cognito-misconfigurations">NotSoSecure: Hacking AWS Cognito Misconfigurations</a></div>
+        </div>
+
+        <div class="devlog-entry content-card">
           <div class="devlog-entry-content"><span class="devlog-entry-date">Wed Jan 6 2021 3:04PM | </span><b>Dynamic static peeps | </b>Alright! So, I took a bit of a risk by implementing Ivan's idea of keeping only the open peeps dynamic and all the claimed peeps static (I should mention, he only briefly mentioned this idea in passing and wasn't necessarily giving it his stamp of approval).
 
 For the non-technically inclined that venture into the devlog (you're welcome here too!), here's what I mean with these keywords. "Static" website content loosely means content that doesn't change very often (blog posts are the classic example). As such, its HTML is usually rendered beforehand, and handed to the client - aka your browser - immediately after the request for the website is made. So if this website were entirely static, this would be the chain of events:
