@@ -78,7 +78,7 @@ async function onClickPeepButton(event) {
 
   // send post
   const checkinId = peeperPaneEl.dataset.checkinId
-  let peep
+  let peepData
   try {
     peepData = await postPeep(checkinId, peeperName, comment)
     console.log('received: ', peepData)
@@ -251,6 +251,14 @@ function updateMapForChapterSelection(chapterNumber) {
         const polyline = new google.maps.Polyline({ path, map })
         david.allMapPolylines.push(polyline)
       })
+    }
+
+    if (checkin.routes) {
+      checkin.routes.forEach(async ({ path }) => {
+        if (!path) return
+        const polyline = new google.maps.Polyline({ path, map })
+        david.allMapPolylines.push(polyline)
+      })    
     }
   }
 
