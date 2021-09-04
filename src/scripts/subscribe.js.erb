@@ -1,0 +1,28 @@
+const subscribeUrl = 'https://www.whereisdavidaugustus.com/api/subscribe_email'
+const unsubscribeUrl = 'https://www.whereisdavidaugustus.com/api/unsubscribe_email'
+
+// AJAX CALLS
+// helper function to make a fetch call with a json body and response
+async function jsonFetch(url, body) {
+  const params = {
+    method: 'POST',
+    mode: 'same-origin',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(body)
+  }
+  const resp = await fetch(url, params)
+  return resp.json()
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById('subscribe-button').addEventListener('click', () => {
+    console.log('clicked')
+    const emailAddress = document.getElementById('email-input').value
+    const resp = jsonFetch(subscribeUrl, { emailAddress })
+    console.log(resp)
+  })
+})
