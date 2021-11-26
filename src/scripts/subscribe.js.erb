@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return
     }
 
-    const emailAddress = document.getElementById('email-input').value
     const resp = await jsonFetch(unsubscribeUrl, { emailAddress })
     console.log(resp)
   })
