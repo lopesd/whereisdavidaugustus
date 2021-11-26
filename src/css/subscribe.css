@@ -58,8 +58,8 @@
   height: 1rem;
   margin-top: 5px;
   margin-bottom: 5px;
-  color: #c7eac7;
+  color: #3eaf3e;
 }
 
 #subscription-message.error {
-  color: #fc7567;
+  color: #fb3b27;

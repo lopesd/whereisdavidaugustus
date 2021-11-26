@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (resp.code === 'success') {
       setSubscriptionMessage("amazing! you're subscribed")
     } else if (resp.code === 'duplicate') {
-      setSubscriptionMessage("love the enthusiasm but you can't subscribe twice")
+      setSubscriptionMessage("love the enthusiasm but you can't subscribe twice", true)
     } else {
       setSubscriptionMessage("error! please let me know!", true)
     }
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (resp.code === 'success') {
       setSubscriptionMessage('wow ok. unsubscribed')
     } else if (resp.code === 'not_found') {
-      setSubscriptionMessage("you weren't subscribed anyway")
+      setSubscriptionMessage("you weren't subscribed anyway", true)
     } else {
       setSubscriptionMessage("error! please let me know!", true)
     }
