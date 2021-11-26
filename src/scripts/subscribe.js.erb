@@ -19,58 +19,69 @@ async function jsonFetch(url, body) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // subscribe
   document.getElementById('subscribe-button').addEventListener('click', async () => {
-    const emailInputEl = document.getElementById('email-input')
-    const emailAddress = emailInputEl.value
-
-    if (!emailAddress) {
-      emailInputEl.placeholder = 'email is required dummy!'
-      return
-    }
-
-    let resp
-    try {
-      resp = await jsonFetch(subscribeUrl, { emailAddress })
-    } catch(e) {
-      setSubscriptionMessage('error! please let me know!', true)
-    }
-
-    console.log(resp)
-    if (resp.code === 'success') {
-      setSubscriptionMessage("amazing! you're subscribed")
-    } else if (resp.code === 'duplicate') {
-      setSubscriptionMessage("love the enthusiasm but you can't subscribe twice", true)
-    } else {
-      setSubscriptionMessage("error! please let me know!", true)
-    }
+    subscriptionOperation(subscribeUrl, 'subscribe-button', 'subscribing...', resp => {
+      if (resp.code === 'success') {
+        setSubscriptionMessage("amazing! you're subscribed")
+      } else if (resp.code === 'duplicate') {
+        setSubscriptionMessage("love the enthusiasm but you can't subscribe twice", true)
+      } else {
+        setSubscriptionMessage("error! please let me know!", true)
+      }
+    })
   })
 
+  // unsubscribe
   document.getElementById('unsubscribe-button').addEventListener('click', async () => {
-    const emailInputEl = document.getElementById('email-input')
-    const emailAddress = emailInputEl.value
-
-    if (!emailAddress) {
-      emailInputEl.placeholder = 'email is required dummy!'
-      return
-    }
-
-    let resp
-    try {
-      resp = await jsonFetch(unsubscribeUrl, { emailAddress })
-    } catch(e) {
-      setSubscriptionMessage('error! please let me know!', true)
-    }
-
-    console.log(resp)
-    if (resp.code === 'success') {
-      setSubscriptionMessage('wow ok. unsubscribed')
-    } else if (resp.code === 'not_found') {
-      setSubscriptionMessage("you weren't subscribed anyway", true)
-    } else {
-      setSubscriptionMessage("error! please let me know!", true)
-    }
+    subscriptionOperation(unsubscribeUrl, 'unsubscribe-button', 'unsubscribing...', resp => {
+      if (resp.code === 'success') {
+        setSubscriptionMessage('wow ok. unsubscribed')
+      } else if (resp.code === 'not_found') {
+        setSubscriptionMessage("you weren't subscribed anyway", true)
+      } else {
+        setSubscriptionMessage("error! please let me know!", true)
+      }
+    })
   })
 })
+
+async function subscriptionOperation(url, buttonId, loadingMsg, callback) {
+  const emailInputEl = document.getElementById('email-input')
+  const emailAddress = emailInputEl.value
+
+  if (!emailAddress) {
+    emailInputEl.placeholder = 'email is required dummy!'
+    return
+  }
+
+  setLoading(true)
+  const buttonMsg = document.getElementById(buttonId).innerHTML
+  document.getElementById(buttonId).innerHTML = loadingMsg
+  let resp
+  try {
+    resp = await jsonFetch(unsubscribeUrl, { emailAddress })
+    console.log(resp)
+    callback(resp)
+  } catch(e) {
+    setSubscriptionMessage('error! please let me know!', true)
+  } finally {
+    setLoading(false)
+    document.getElementById(buttonId).innerHTML = buttonMsg
+  }
+}
+
+function setLoading(loading) {
+  if (loading) {
+    document.getElementById('subscribe-button').disabled = true
+    document.getElementById('unsubscribe-button').disabled = true
+    document.getElementById('email-input').disabled = true
+  } else {
+    document.getElementById('subscribe-button').disabled = false
+    document.getElementById('unsubscribe-button').disabled = false
+    document.getElementById('email-input').disabled = false
+  }
+}
 
 function setSubscriptionMessage(msg, error=false) {
   const el = document.getElementById('subscription-message')

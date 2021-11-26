@@ -50,6 +50,10 @@
   cursor: pointer;
 }
 
+.subscription-button.loading {
+  
+}
+
 #subscribe-button {
   background-color: #c7eac7;
 }
