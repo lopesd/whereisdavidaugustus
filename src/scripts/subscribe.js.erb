@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 })
 
-async function subscriptionOperation(url, buttonId, loadingMsg, callback) {
+async function subscriptionOperation(operationUrl, buttonId, loadingMsg, callback) {
   const emailInputEl = document.getElementById('email-input')
   const emailAddress = emailInputEl.value
 
@@ -60,7 +60,7 @@ async function subscriptionOperation(url, buttonId, loadingMsg, callback) {
   document.getElementById(buttonId).innerHTML = loadingMsg
   let resp
   try {
-    resp = await jsonFetch(unsubscribeUrl, { emailAddress })
+    resp = await jsonFetch(operationUrl, { emailAddress })
     console.log(resp)
     callback(resp)
   } catch(e) {
