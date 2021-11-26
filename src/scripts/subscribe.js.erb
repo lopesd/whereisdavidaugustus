@@ -19,10 +19,15 @@ async function jsonFetch(url, body) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById('subscribe-button').addEventListener('click', () => {
-    console.log('clicked')
+  document.getElementById('subscribe-button').addEventListener('click', async () => {
     const emailAddress = document.getElementById('email-input').value
-    const resp = jsonFetch(subscribeUrl, { emailAddress })
+    const resp = await jsonFetch(subscribeUrl, { emailAddress })
+    console.log(resp)
+  })
+
+  document.getElementById('unsubscribe-button').addEventListener('click', async () => {
+    const emailAddress = document.getElementById('email-input').value
+    const resp = await jsonFetch(unsubscribeUrl, { emailAddress })
     console.log(resp)
   })
 })
