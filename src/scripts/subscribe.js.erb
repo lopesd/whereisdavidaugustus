@@ -28,8 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
       return
     }
 
-    const resp = await jsonFetch(subscribeUrl, { emailAddress })
+    try {
+      const resp = await jsonFetch(unsubscribeUrl, { emailAddress })
+    } catch(e) {
+      setSubscriptionMessage('error! please let me know!', true)
+    }
+
     console.log(resp)
+    if (resp.code === 'success') {
+      setSubscriptionMessage("amazing! you're subscribed")
+    } else if (resp.code === 'not_found') {
+      setSubscriptionMessage("love the enthusiasm but you can't subscribe twice")
+    } else {
+      setSubscriptionMessage("error! please let me know!", true)
+    }
   })
 
   document.getElementById('unsubscribe-button').addEventListener('click', async () => {
@@ -41,7 +53,29 @@ document.addEventListener("DOMContentLoaded", () => {
       return
     }
 
-    const resp = await jsonFetch(unsubscribeUrl, { emailAddress })
+    try {
+      const resp = await jsonFetch(unsubscribeUrl, { emailAddress })
+    } catch(e) {
+      setSubscriptionMessage('error! please let me know!', true)
+    }
+
     console.log(resp)
+    if (resp.code === 'success') {
+      setSubscriptionMessage('wow ok. unsubscribed')
+    } else if (resp.code === 'not_found') {
+      setSubscriptionMessage("you weren't subscribed anyway")
+    } else {
+      setSubscriptionMessage("error! please let me know!", true)
+    }
   })
 })
+
+function setSubscriptionMessage(msg, error=false) {
+  const el = document.getElementById('subscription-message')
+  el.innerHTML = msg
+  if (error) {
+    el.classList.add('error')
+  } else {
+    el.classList.remove('error')
+  }
+}
