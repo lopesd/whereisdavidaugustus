@@ -28,8 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return
     }
 
+    let resp
     try {
-      const resp = await jsonFetch(unsubscribeUrl, { emailAddress })
+      resp = await jsonFetch(unsubscribeUrl, { emailAddress })
     } catch(e) {
       setSubscriptionMessage('error! please let me know!', true)
     }
@@ -53,8 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return
     }
 
+    let resp
     try {
-      const resp = await jsonFetch(unsubscribeUrl, { emailAddress })
+      resp = await jsonFetch(unsubscribeUrl, { emailAddress })
     } catch(e) {
       setSubscriptionMessage('error! please let me know!', true)
     }
