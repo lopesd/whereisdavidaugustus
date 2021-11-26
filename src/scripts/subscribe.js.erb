@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // unsubscribe
   document.getElementById('unsubscribe-button').addEventListener('click', async () => {
-    subscriptionOperation(unsubscribeUrl, 'unsubscribe-button', 'unsubscribing...', resp => {
+    subscriptionOperation(unsubscribeUrl, 'unsubscribe-button', 'unsubbing...', resp => {
       if (resp.code === 'success') {
         setSubscriptionMessage('wow ok. unsubscribed')
       } else if (resp.code === 'not_found') {

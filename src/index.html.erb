@@ -38,6 +38,8 @@
           <a id="header-peepers-link" href="./peepers.html">PEEPERS</a>
           <div class="header-vertical-line"></div>
           <a id="header-devlog-link" href="./devlog.html">DEVLOG</a>
+          <div class="header-vertical-line"></div>
+          <a id="header-subscribe-link" href="./subscribe.html">SUBSCRIBE!</a>
         </div>
       </div>
       
@@ -90,7 +92,7 @@
           <% chapters.each_with_index do |chapter, i|  %>
             <% chapter_visible = i == visible_chapter_index %>
             <% visibility_class = chapter_visible ? 'current-chapter' : '' %>
-            <div 
+            <div
               class="chapter-container <%= visibility_class %>"
               id="chapter-<%=i%>-container">
               <% checkins = chapter['checkins'].reverse %>
