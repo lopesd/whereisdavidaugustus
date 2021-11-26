@@ -15,7 +15,7 @@ async function jsonFetch(url, body) {
     body: JSON.stringify(body)
   }
   const resp = await fetch(url, params)
-  return resp.json()
+  return await resp.json()
 }
 
 document.addEventListener("DOMContentLoaded", () => {
