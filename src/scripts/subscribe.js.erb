@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(resp)
     if (resp.code === 'success') {
       setSubscriptionMessage("amazing! you're subscribed")
-    } else if (resp.code === 'not_found') {
+    } else if (resp.code === 'duplicate') {
       setSubscriptionMessage("love the enthusiasm but you can't subscribe twice")
     } else {
       setSubscriptionMessage("error! please let me know!", true)
