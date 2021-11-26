@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let resp
     try {
-      resp = await jsonFetch(unsubscribeUrl, { emailAddress })
+      resp = await jsonFetch(subscribeUrl, { emailAddress })
     } catch(e) {
       setSubscriptionMessage('error! please let me know!', true)
     }
