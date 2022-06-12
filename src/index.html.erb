@@ -152,6 +152,27 @@
                     </div>
                   <% end %>
 
+                  <% if checkin['music'] %>
+                    <div class="checkin-music-container">
+                      <% if checkin['music']['blurb'] %>
+                        <div class="checkin-music-blurb">
+                            <%= checkin['music']['blurb'] %>
+                        </div>
+                      <% end %>
+                      <div class="checkin-spotify-iframe-container">
+                        <iframe
+                          class="checkin-spotify-iframe"
+                          src="https://open.spotify.com/embed/track/<%= checkin['music']['spotifyId'] %>?utm_source=generator&theme=0"
+                          width="100%"
+                          height="80"
+                          frameBorder="0"
+                          allowfullscreen=""
+                          allow="autoplay;clipboard-write;encrypted-media;fullscreen;picture-in-picture">
+                        </iframe>
+                      </div>
+                    </div>
+                  <% end %>
+
                   <div class="checkin-peeper-pane-wrapper">
                     <% peep = peeps[checkin_id] %>
                     <% if peep && !peep['peepAllowed'] %>
