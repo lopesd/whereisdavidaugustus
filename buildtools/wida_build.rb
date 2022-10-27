@@ -74,8 +74,6 @@ module WidaBuild
     def calculate_leaderboards(chapters, peeps)
       leaderboards = []
       chapters.each do |chapter|
-        next unless chapter['showLeaderboards']
-
         # MOST
         peeper_to_peep_count = {}
         chapter['checkins'].each do |checkin|
